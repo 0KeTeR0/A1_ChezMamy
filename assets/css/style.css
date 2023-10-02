@@ -112,7 +112,7 @@ header nav ul li > button{
 }
 header nav ul li > button:hover{
     color: var(--secondary-color);
-    background: #EAEAEA;
+    background: #efefef;
     cursor: pointer;
 }
 #ac{
