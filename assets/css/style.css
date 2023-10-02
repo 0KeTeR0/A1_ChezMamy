@@ -36,8 +36,8 @@ header{
     position: sticky;
     top: 0;
     height: 75px;
-    padding-right: 7px;
-    padding-left: 7px;
+    padding-right: 35px;
+    padding-left: 35px;
     border: None;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
     display: flex;
@@ -169,6 +169,7 @@ header nav ul li > button{
 .page-accueil .texte-accueil h1 {
     font-family: "Segoe UI", "Arial", sans-serif;
     font-size: 30px;
+    font-weight: 700;
 }
 .page-accueil .texte-accueil p {
     font-family: 'Roboto', "Arial", sans-serif;
@@ -256,5 +257,4 @@ footer nav div p{
     text-align: center;
     color: white;
     justify-self: center;
-
 }
