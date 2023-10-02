@@ -35,5 +35,40 @@
         </nav>
     </header>
     <?= $content ?>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><p>Naviguer </p>
+                    <ul>
+                        <li><a id="accueilFooter" href="/index.php">Accueil</a></li>
+                        <li><a id="rechercherFooter" href="">Rechercher une offre</a></li>
+                        <li><a id="contactFooter" href="">Contact</a></li>
+                        <li><a id="connexionFooter" href="">Connexion</a></li>
+                        <li><a id="inscriptionFooter" href="">Inscription</a></li>
+                    </ul>
+                </li>
+                <li><p>Légalité</p>
+                    <ul>
+                        <li><a id="mentionFooter" href="">Mention légales</a></li>
+                        <li><a id="cookiesFooter" href="">Politique de cookies</a></li>
+                        <li><a id="cguFooter" href="">CGU</a></li>
+                        <li><a id="cgvFooter" href="">CGV</a></li>
+                    </ul>
+                </li>
+                <li><p>Nos réseaux</p>
+                <div>
+                    <ul>
+                        <li><a id="twitterFooter" href=""><img src="../img/twitter.png"></a></li>
+                        <li><a id="facebookFooter" href=""><img src="../img/facebook.png"></a></li>
+                        <li><a id="snapchatFooter" href=""><img src="../img/snapchat./png" </a></li>
+                    </ul>
+                </li>
+                </div>
+            </ul>
+            <div><p>&copy; 2023 Tous droits réservés</p></div>
+        </nav>
+    </footer>
+
 </body>
 </html>

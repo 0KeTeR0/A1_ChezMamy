@@ -122,24 +122,41 @@ header nav ul li > button:hover{
 
 footer{
     background-color: var(--secondary-color);
-
+    color:white;
 }
 
-footer nav ul {
+footer nav > ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
     list-style: None;
-
+    gap: 125px;
+    flex-wrap: wrap;
 }
 
 footer nav ul li {
-    font-size: 20px;
-    padding: 28px;
+    font-size: 25px;
     text-decoration: None;
 }
 
-footer nav div p {
+footer nav ul ul{
+    display: flex;
+    flex-direction: column;
+    list-style : None;
+}
+
+footer nav ul ul li a{
+    font-size:18px ;
+    padding: 5px;
+    text-decoration: None;
+}
+
+footer nav ul div ul {
+    display: flex;
+    flex-direction:row;
+}
+
+footer nav div p{
     color: white;
     justify-self: center;
 
