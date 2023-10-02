@@ -257,4 +257,51 @@ footer nav div p{
     text-align: center;
     color: white;
     justify-self: center;
+
+}
+
+.presentation{
+    display: flex;
+    margin: 0 auto;
+    width: fit-content;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    padding-left: 2em;
+}
+.presentation-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.presentation span{
+    color: #460B4A;
+}
+
+.presentation h3{
+    color: #460B4A;
+}
+
+.imgPres{
+    margin-right: 4em;
+    margin-top: 4em;
+    border: solid black;
+}
+
+.imgPres img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#img_right_Pres{
+    margin-bottom: 4em;
+}
+
+@media screen and (max-width:680px) {
+    .presentation-list {
+        flex-direction: column;
+    }
+
 }

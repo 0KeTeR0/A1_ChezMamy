@@ -14,7 +14,38 @@
             <path d="M0 89H1920V0L0 60.6592V89Z" fill="white"/>
         </svg>
     </section>
+    <section class="presentation">
+        <div>
+            <h2>Présentation de l'association</h2>
+        </div>
+        <div class="presentation-list">
+            <div>
+                <div class="imgPres"  id="img_right_Pres">
+                    <img src="../assets/img/logo.png" alt="">
+                </div>
+                <div>
+                    <h3>Quelques chiffres</h3>
+                    <p>• <span>233</span> séniors ont proposé leur logement cette année...</p>
+                    <p>• <span>1000</span> séniors qui ont proposé leur logement cette année...</p>
+                    <p>• <span>500</span> séniors ont proposé leur logement cette année...</p>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h3>Quelques chiffres</h3>
+                    <p>• <span>233</span> séniors ont proposé leur logement cette année...</p>
+                    <p>• <span>1000</span> séniors qui ont proposé leur logement cette année...</p>
+                    <p>• <span>500</span> séniors ont proposé leur logement cette année...</p>
+                </div>
+                <div class="imgPres">
+                    <img src="../assets/img/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
+
+
 
 <?php $content = ob_get_clean(); ?>
 <?php require('layout.php'); ?>
