@@ -1,6 +1,12 @@
 <?php
 namespace App\ChezMamy\Lib\Database;
 
+/**
+ * Class DatabaseConnection
+ * @package App\ChezMamy\Lib\Database
+ * @brief This class is a singleton that provides a PDO connection to the database
+ * @author Romain Card
+ */
 class DatabaseConnection
 {
     private static ?\PDO $connection = null;
