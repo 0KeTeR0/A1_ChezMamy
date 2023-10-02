@@ -36,32 +36,37 @@
     </header>
     <?= $content ?>
 
+    <div id="penche">
+        <svg viewBox="0 0 1920 89" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1920 89H0V0L1920 60.6592V89Z" fill="#460B4A"/>
+        </svg>
+    </div>
     <footer>
         <nav>
             <ul>
                 <li><p>Naviguer </p>
                     <ul>
                         <li><a id="accueilFooter" href="/index.php">Accueil</a></li>
-                        <li><a id="rechercherFooter" href="">Rechercher une offre</a></li>
-                        <li><a id="contactFooter" href="">Contact</a></li>
-                        <li><a id="connexionFooter" href="">Connexion</a></li>
-                        <li><a id="inscriptionFooter" href="">Inscription</a></li>
+                        <li><a id="rechercherFooter" href="/index.php">Rechercher une offre</a></li>
+                        <li><a id="contactFooter" href="/index.php">Contact</a></li>
+                        <li><a id="connexionFooter" href="/index.php">Connexion</a></li>
+                        <li><a id="inscriptionFooter" href="/index.php">Inscription</a></li>
                     </ul>
                 </li>
                 <li><p>Légalité</p>
                     <ul>
-                        <li><a id="mentionFooter" href="">Mention légales</a></li>
-                        <li><a id="cookiesFooter" href="">Politique de cookies</a></li>
-                        <li><a id="cguFooter" href="">CGU</a></li>
-                        <li><a id="cgvFooter" href="">CGV</a></li>
+                        <li><a id="mentionFooter" href="/index.php">Mention légales</a></li>
+                        <li><a id="cookiesFooter" href="/index.php">Politique de cookies</a></li>
+                        <li><a id="cguFooter" href="/index.php">CGU</a></li>
+                        <li><a id="cgvFooter" href="/index.php">CGV</a></li>
                     </ul>
                 </li>
                 <li><p>Nos réseaux</p>
                 <div>
                     <ul>
-                        <li><a id="twitterFooter" href=""><img src="../img/twitter.png"></a></li>
-                        <li><a id="facebookFooter" href=""><img src="../img/facebook.png"></a></li>
-                        <li><a id="snapchatFooter" href=""><img src="../img/snapchat./png" </a></li>
+                        <li><a id="twitterFooter" href=""><img src="../assets/img/twitter.png"></a></li>
+                        <li><a id="facebookFooter" href=""><img src="../assets/img/facebook.png"></a></li>
+                        <li><a id="snapchatFooter" href=""><img src="../assets/img/snapchat.png"> </a></li>
                     </ul>
                 </li>
                 </div>
