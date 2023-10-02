@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
-    --main-color: #460B4A;
-    --secondary-color: #EC4C4C;
+    --main-color: #EC4C4C;
+    --secondary-color: #460B4A;
     --txt-color: #000;
     --bg-color: #fff;
-    --transition: .15s ease-in-out;
+    --transition: .2s ease-in-out;
 }
 
 body {
@@ -187,6 +187,11 @@ header nav ul li > button{
 footer{
     background-color: var(--main-color);
     color:white;
+    font-family: "Roboto";
+}
+
+#penche {
+    transform: translateY(62%) rotateX(70deg) ;
 }
 
 footer nav > ul {
@@ -194,12 +199,13 @@ footer nav > ul {
     flex-direction: row;
     justify-content: center;
     list-style: None;
-    gap: 125px;
+    gap: 275px;
     flex-wrap: wrap;
+
 }
 
 footer nav ul li {
-    font-size: 25px;
+    font-size: 22px;
     text-decoration: None;
 }
 
@@ -207,10 +213,26 @@ footer nav ul ul{
     display: flex;
     flex-direction: column;
     list-style : None;
+    padding: 0;
 }
 
-footer nav ul ul li a{
-    font-size:18px ;
+footer nav ul ul li a:link{
+    font-size:17px ;
+    padding: 5px;
+    text-decoration: None;
+    color: white;
+}
+
+footer nav ul ul li a:hover{
+    font-size:17px ;
+    padding: 5px;
+    text-decoration: underline;
+    color: white;
+}
+
+footer nav ul ul li a:visited{
+    color:white;
+    font-size:17px ;
     padding: 5px;
     text-decoration: None;
 }
@@ -220,7 +242,14 @@ footer nav ul div ul {
     flex-direction:row;
 }
 
+footer nav ul div ul img{
+    height: 50px;
+    width: 50px;
+}
+
 footer nav div p{
+    display :block;
+    text-align: center;
     color: white;
     justify-self: center;
 
