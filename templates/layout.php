@@ -29,7 +29,7 @@
                 <li><a href="index.php">Contact</a></li>
                 <li><a href="index.php">Connexion</a></li>
                 <li>
-                    <button>Inscription</button>
+                    <button class="bouton">Inscription</button>
                 </li>
             </ul>
         </nav>
