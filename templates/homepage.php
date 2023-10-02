@@ -2,6 +2,7 @@
 <?php ob_start() ?>
 
 <main>
+
     <section class="page-accueil">
         <div class="texte-accueil">
             <h1>Bienvenue sur chezMamy, la première plateforme éthique de services entre générations.</h1>
