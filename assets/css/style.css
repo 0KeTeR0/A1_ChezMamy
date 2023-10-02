@@ -1,3 +1,146 @@
+:root {
+    --main-color: #460B4A;
+    --secondary-color: #EC4C4C;
+    --txt-color: #000;
+    --bg-color: #fff;
+    --transition: .2s ease-in-out;
+}
+
 body {
-    background: red;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+}
+
+header{
+    height: 75px;
+    padding-right: 7px;
+    padding-left: 7px;
+    border: None;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Segoe UI";
+}
+
+header img{
+    width: 190px;
+    height: 58px;
+}
+
+header nav ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+}
+
+
+header nav ul li a{
+    font-size: 20px;
+    text-decoration: None;
+    color: var(--txt-color);
+    padding: 28px;
+    transition: var(--transition);
+}
+
+header nav ul li a:hover{
+    color:var(--secondary-color);
+}
+
+header nav ul li form{
+    background: #EAEAEA;
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    width: 418px;
+    border-radius: 6px;
+}
+header nav ul li form input{
+    background: transparent;
+    outline: None;
+    box-shadow: None;
+    border: None;
+    width: 347px;
+}
+
+header nav ul li form input:focus{
+    background: transparent;
+    outline: None;
+    box-shadow: None;
+    border: None;
+}
+header nav ul li form input[placeholder]{
+    transition: var(--transition);
+    padding-left: 25px;
+    color:#C8C8C8;
+    font-size: 20px;
+
+}
+
+header nav ul li form:hover input[placeholder] {
+    transition: var(--transition);
+    color: #717171;
+}
+header nav ul li form button:hover svg{
+    fill: #EC4C4C;
+    cursor: pointer;
+}
+header nav ul li form button{
+    background: transparent;
+    border: None;
+}
+header nav ul li form button svg{
+    fill: black;
+    width: 30px;
+    height: 28.89px;
+    transition: var(--transition);
+}
+
+header nav ul li > button{
+    width: 168px;
+    height: 44px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    font-family: "Segoe UI";
+    background: var(--secondary-color);
+    transition: var(--transition);
+}
+header nav ul li > button:hover{
+    color: var(--secondary-color);
+    background: #EAEAEA;
+    cursor: pointer;
+}
+#ac{
+    color: var(--secondary-color);
+}
+
+
+footer{
+    background-color: var(--secondary-color);
+
+}
+
+footer nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: None;
+
+}
+
+footer nav ul li {
+    font-size: 20px;
+    padding: 28px;
+    text-decoration: None;
+}
+
+footer nav div p {
+    color: white;
+    justify-self: center;
+
 }
