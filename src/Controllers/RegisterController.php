@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Chezmamy\Controllers;
+namespace App\ChezMamy\Controllers;
 
 
 use App\ChezMamy\Model\Register;
-use App\Chezmamy\Model\UserModel;
+use App\ChezMamy\Model\UserModel;
 
 /**
  * Register controller for inscriptions
