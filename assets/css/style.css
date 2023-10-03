@@ -96,6 +96,7 @@ header nav ul li form{
     height: 45px;
     width: 418px;
     border-radius: 6px;
+    transition: var(--transition);
 }
 header nav ul li form input{
     background: transparent;
@@ -409,7 +410,21 @@ footer nav div p{
     display: None;
 }
 
-@media screen and (max-width: 1205px){
+@media screen and (max-width: 1250px){
+    header nav ul li {
+    }
+    header nav ul li a,
+    header nav ul li form input[placeholder] {
+        font-size: 17px;
+        padding: 15px;
+    }
+    header nav form {
+        width: 300px!important;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    /* Menu burger */
 
     #logo_burger{
         visibility: visible;
@@ -505,6 +520,7 @@ footer nav div p{
         font-size: 30px;
     }
 
+    /*-------------*/
 }
 
 @media screen and (max-width:768px) {
