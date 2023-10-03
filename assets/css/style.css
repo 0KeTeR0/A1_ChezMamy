@@ -261,6 +261,7 @@ footer nav div p{
 
 }
 
+
 .presentation{
     display: flex;
     margin: 0 auto;
@@ -317,4 +318,22 @@ footer nav div p{
     .presentation-list {
         flex-direction: column;
     }
+
+    footer nav > ul {
+        flex-direction: row;
+        gap: 30px;
+        text-align: center;
+        align-items: flex-start;
+        margin-block-start: 0;
+        padding-inline-start: 0;
+    }
+
+    footer nav ul div ul{
+        flex-direction: row;
+    }
+
+    #penche{
+        visibility: hidden;
+    }
+
 }
