@@ -1,10 +1,10 @@
 <?php
 
-namespace App\ChezMamy\Controllers;
+namespace App\Chezmamy\Controllers;
 
 
-use App\ChezMamy\Model\Register;
-use App\ChezMamy\Model\UserModel;
+use App\Chezmamy\Model\Register;
+use App\Chezmamy\Model\UserModel;
 
 /**
  * Register controller for inscriptions
@@ -34,7 +34,7 @@ class RegisterController
                     $newUser->setFirst_Name($input['first_name']);
                     $newUser->setDate_Of_Birth($input['date_of_birth']);
                     $newUser->setNationality($input['nationality']);
-                    $newUser->setPhone($input('phone'));
+                    $newUser->setPhone($input['phone']);
                     $newUser->setParents_Adress($input['parents_address']);
                     $newUser->setCity($input['city']);
                     $newUser->setPostalCode($input['postal_code']);
@@ -44,7 +44,7 @@ class RegisterController
                     $newUser->setEstablishment($input['establishment']);
                     $newUser->setEnd_Of_Studies(date('m/d/Y h:i:s a', time()+((($input['end_of_studies']*365)*24)*60)));
                     $newUser->setDate_Of_Arrival($input['date_of_arrival']);
-                    $newUser->setMotivation($input['motivations']);
+                    $newUser->setMotivation($input['motivation']);
                     $newUser->setIs_Smoking($input['is_smoking']);
                     $newUser->setIs_Allergic($input['is_allergic']);
                     $newUser->setAllergies($input['allergies']);
@@ -53,10 +53,10 @@ class RegisterController
                     $newUser->setInterests($input['interests']);
                     $newUser->setWhy($input['why']);
                     $newUser->setHousing($input['housing']);
-                    $newUser->setHousing_2_Availabilities($input('housing_2_availabilities'));
-                    $newUser->setHousing_3_Budget($input('housing_3_budget'));
-                    $newUser->setPreferences($input('preferences'));
-                    $newUser->setPassword($input('password'));
+                    $newUser->setHousing_2_Availabilities($input['housing_2_availabilities']);
+                    $newUser->setHousing_3_Budget($input['housing_3_budget']);
+                    $newUser->setPreferences($input['preferences']);
+                    $newUser->setPassword($input['password']);
 
                     //We add it to the database using the register model
                     $register = new Register();

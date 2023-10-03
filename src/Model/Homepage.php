@@ -1,7 +1,7 @@
 <?php
 namespace App\ChezMamy\Model;
 
-use App\Chezmamy\Lib\DatabaseConnection;
+use App\ChezMamy\Lib\DatabaseConnection;
 
 class Homepage
 {

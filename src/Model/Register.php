@@ -27,6 +27,12 @@ class Register
         // If the email is not yet used, ok, we add the user
         if($statement->rowCount() == 0) {
             if($newUser->GetPassword() == $password_repeat) {
+
+                $statement = $database->prepare(
+                    "USE ChezMamy"
+                );
+                $statement->execute();
+
                 $statement = $database->prepare(
                     "INSERT INTO users (email,last_name, first_name,date_of_birth,nationality,phone,parents_address,city,postal_code,know_association,education_level,internships,establishment,end_of_studies,date_of_arrival,motivations,is_smoking,is_allergic,allergies,can_drive,means_of_locomotion,interests,why,housing,housing_2_availabilities,housing_3_budget,preferences,password,id_role) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
                 );
