@@ -2,16 +2,17 @@
 <?php ob_start() ?>
 
     <main>
-        <section id="register">
-            <div>
+        <section class="registerForm">
+            <div class="registerBox">
                 <div>
                     <h1 class="section-title">Création de profil</h1>
-                    <p>Je suis...</p>
+                    <small class="registerStep">Etape <span>1</span>/5</small>
                 </div>
                 <div>
-                    <div>
-                        <div id="jeSuisEtudiant" class="bouton"></div>
-                        <div id="jeSuisSenior" class="bouton"></div>
+                    <div id="registerChoice">
+                        <p><b>Je suis...</b></p>
+                        <div id="jeSuisEtudiant" class="bouton">Étudiant à la recherche d’un logement</div>
+                        <div id="jeSuisSenior" class="bouton">Sénior avec un logement à partager</div>
                     </div>
                     <!-- Formulaire de création de profil étudiant -->
                     <form action="" method="post">
@@ -19,7 +20,7 @@
                             <h1>Profil Etudiant</h1>
                         </div>
 
-                        <div id="Etudiant_etape1">
+                        <div id="Etudiant_etape1" class="form-group">
                             <h2>Identité</h2>
                             <div>
                                 <label for="fname">Prénom :</label>
@@ -72,7 +73,7 @@
                             </div>
                         </div>
 
-                        <div id="Etudiant_etape2">
+                        <div id="Etudiant_etape2" class="form-group">
                             <div>
                                 <h2>Etudes / stages</h2>
                             </div>
@@ -101,7 +102,7 @@
                             </div>
                         </div>
 
-                        <div id="Etudiant_etape3">
+                        <div id="Etudiant_etape3" class="form-group">
                             <div>
                                 <h2>Mieux vous connaître</h2>
                             </div>
@@ -156,7 +157,7 @@
                                 <h2>Logement</h2>
                             </div>
 
-                            <div class="radio-group-2" >
+                            <div class="form-group">
                                 <div>
                                     <input type="radio" name="housing" id="lgmtGratuit" required>
                                     <label for="lgmtGratuit">1-logement gratuit, en échange de présence soirs et nuits.</label>
@@ -174,7 +175,7 @@
                                 </div>
                             </div>
 
-                            <div>
+                            <div class="form-group">
                                 <div>
                                     <h3>Précision selon votre choix de logement</h3>
                                 </div>
@@ -431,6 +432,7 @@
                         </div>
                     </div>
                     -->
+                </div>
             </div>
         </section>
     </main>

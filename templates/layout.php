@@ -33,9 +33,7 @@
                     </li>
                     <li id="contact"><a href="index.php">Contact</a></li>
                     <li id="connect"><a href="index.php">Connexion</a></li>
-                    <li id="inscri">
-                        <a class="bouton" href="?p=inscription">Inscription</a>
-                    </li>
+                    <li id="inscri"><a class="bouton" href="?p=inscription">Inscription</a></li>
                 </ul>
             </nav>
         </div>
