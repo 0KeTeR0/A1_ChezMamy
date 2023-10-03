@@ -34,7 +34,7 @@
                     <li id="contact"><a href="index.php">Contact</a></li>
                     <li id="connect"><a href="index.php">Connexion</a></li>
                     <li id="inscri">
-                        <button class="bouton">Inscription</button>
+                        <a class="bouton" href="?p=inscription">Inscription</a>
                     </li>
                 </ul>
             </nav>
@@ -76,19 +76,19 @@
             <ul>
                 <li><p>Naviguer </p>
                     <ul>
-                        <li><a id="accueilFooter" href="/index.php">Accueil</a></li>
-                        <li><a id="rechercherFooter" href="/index.php">Rechercher une offre</a></li>
-                        <li><a id="contactFooter" href="/index.php">Contact</a></li>
-                        <li><a id="connexionFooter" href="/index.php">Connexion</a></li>
-                        <li><a id="inscriptionFooter" href="/index.php">Inscription</a></li>
+                        <li><a id="accueilFooter" href="index.php">Accueil</a></li>
+                        <li><a id="rechercherFooter" href="index.php">Rechercher une offre</a></li>
+                        <li><a id="contactFooter" href="index.php">Contact</a></li>
+                        <li><a id="connexionFooter" href="index.php">Connexion</a></li>
+                        <li><a id="inscriptionFooter" href="?p=inscription">Inscription</a></li>
                     </ul>
                 </li>
                 <li><p>Légalité</p>
                     <ul>
-                        <li><a id="mentionFooter" href="/index.php">Mention légales</a></li>
-                        <li><a id="cookiesFooter" href="/index.php">Politique de cookies</a></li>
-                        <li><a id="cguFooter" href="/index.php">CGU</a></li>
-                        <li><a id="cgvFooter" href="/index.php">CGV</a></li>
+                        <li><a id="mentionFooter" href="index.php">Mention légales</a></li>
+                        <li><a id="cookiesFooter" href="index.php">Politique de cookies</a></li>
+                        <li><a id="cguFooter" href="index.php">CGU</a></li>
+                        <li><a id="cgvFooter" href="index.php">CGV</a></li>
                     </ul>
                 </li>
                 <li><p>Nos réseaux</p>
