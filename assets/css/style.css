@@ -242,7 +242,7 @@ header nav ul li > button{
 
 /* ----------------------- FAQ ----------------------- */
 .faq .list-questions .question {
-    padding: 10px 0;
+    padding: 10px 75px 10px 0;
     position: relative;
     font-size: 25px;
     font-weight: 700;
@@ -416,7 +416,7 @@ footer nav div p{
         display: inline-block;
     }
 
-    nav {
+    header nav {
         padding: 0;
         z-index: 1;
         transform: translateX(110%);
@@ -429,21 +429,21 @@ footer nav div p{
         background: #fff;
         transition: .2s transform ease-out;
     }
-    nav.active {
+    header nav.active {
         transform: translateX(12px);
     }
-    nav .menu {
+    header nav .menu {
         margin-top: -250px;
         width: 100%;
     }
-    nav .menu .menuBtn {
+    header nav .menu .menuBtn {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    nav .menu .menuBtn a {
+    header nav .menu .menuBtn a {
         color: #460B4A;
     }
-    nav .menu .menuBtn a:after {
+    header nav .menu .menuBtn a:after {
         background: #460B4A;
     }
 

@@ -88,14 +88,12 @@
                     </ul>
                 </li>
                 <li><p>Nos réseaux</p>
-                <div>
                     <ul>
                         <li><a id="twitterFooter" href=""><img src="../assets/img/twitter.png"></a></li>
                         <li><a id="facebookFooter" href=""><img src="../assets/img/facebook.png"></a></li>
                         <li><a id="snapchatFooter" href=""><img src="../assets/img/snapchat.png"> </a></li>
                     </ul>
                 </li>
-                </div>
             </ul>
             <div><p>&copy; 2023 Tous droits réservés</p></div>
         </nav>
