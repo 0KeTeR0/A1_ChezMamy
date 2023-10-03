@@ -165,7 +165,7 @@ header nav ul li > button{
     max-width: 100%;
     height: 90vh;
     min-height: 500px;
-    background-image: url('../img/image-accueil.png');
+    background-image: url('/A1_ChezMamy/assets/img/image-accueil.png');
     background-position: center;
     background-size: cover;
     display: flex;
@@ -179,7 +179,7 @@ header nav ul li > button{
     max-width: 620px;
     color: #fff;
     text-align: center;
-    background-image: url('../img/bulle-accueil.svg');
+    background-image: url('/A1_ChezMamy/assets/img/bulle-accueil.svg');
     background-size: 100%;
     background-repeat: no-repeat;
 }
