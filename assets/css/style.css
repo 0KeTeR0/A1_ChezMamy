@@ -556,5 +556,16 @@ footer nav div p{
         flex-direction: row;
     }
 
-
+    .page-accueil .texte-accueil {
+        width: 100%;
+        padding: 15px 10px;
+        max-width: 620px;
+        color: #fff;
+        text-align: center;
+        background-color: rgba(70,11,74,0.5) ;
+        background-image: none;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        border-radius: 5px;
+    }
 }
