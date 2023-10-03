@@ -187,16 +187,21 @@ header nav ul li > button{
 }
 
 
+#penche {
+    position: relative;
+    margin-top: 100px;
+}
+#penche svg {
+    position: absolute;
+    bottom: -5px;
+}
+
 footer{
     padding: 10px 30px;
     background-color: var(--main-color);
     color:white;
     font-family: "Roboto", "Arial", sans-serif;
     font-size: 15px;
-}
-
-#penche {
-    transform: translateY(62%) rotateX(70deg) ;
 }
 
 footer nav > ul {
@@ -206,7 +211,6 @@ footer nav > ul {
     list-style: None;
     gap: 275px;
     flex-wrap: wrap;
-
 }
 
 footer nav ul li {
@@ -332,8 +336,5 @@ footer nav div p{
         flex-direction: row;
     }
 
-    #penche{
-        visibility: hidden;
-    }
 
 }
