@@ -33,7 +33,7 @@
         <section id="Form_Etudiant">
             <form action="" method="post">
                 <div>
-                    <h1>Fiche d'inscription Etudiant</h1>
+                    <h1>Profil Etudiant</h1>
                 </div>
 
                 <div id="Etudiant_etape1">
@@ -75,20 +75,19 @@
                         <input type="text" id="postal" name="postal_code" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
                     </div>
 
-                    <div class="checkbox-group-1">
-                        <label>Comment avez-vous connu notre association ?</label><br>
-                        <label for="checkbox">Bouche/oreille</label>
-                        <input type="checkbox">
-                        <label for="checkbox">journaux</label>
-                        <input type="checkbox">
-                        <label for="checkbox">internet</label>
-                        <input type="checkbox">
-                    </div><br>
+                    <div>
+                        <label for="knowAssociation">Comment avez-vous connu notre association ?</label>
+                        <input type="text" id="knowAssociation" name="know_association" required>
+                    </div>
 
-                    <label for="notoriéter">Autres :</label>
-                    <input type="text" id="notoriéter" name="notoriéter">
-
-                </div><br><br>
+                    <div>
+                        <label for="motivation">Vos motivations pour choisir ce mode de logement</label>
+                        <textarea name="motivation" id="motivation" cols="4" rows="2" required></textarea>
+                    </div>
+                    <div>
+                        <div class="bouton">Étape suivante</div>
+                    </div>
+                </div>
 
                 <div id="Etudiant_etape2">
                     <div>
@@ -215,13 +214,31 @@
                     </div>
                 </div>
 
+                <div id="Etudiant_etape5">
+                    <div>
+                        <h2>Mot de passe</h2>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div>
+                            <label for="password_repeat">Répéter le mot de passe :</label>
+                            <input type="password" id="password_repeat" name="password_repeat" required>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" class="bouton" name="registerStudent" value="Créer mon compte étudiant">
+                    </div>
+                </div>
             </form>
         </section>
 
         <section id="Form_Senior">
             <form action="" method="post">
                 <div>
-                    <h1>Fiche d'inscription Sénior</h1>
+                    <h1>Profil Sénior</h1>
                 </div>
 
                 <label for="fname">Prénom:</label>
