@@ -15,7 +15,7 @@ class DatabaseConnection
 
     public static function GetConnection(): \PDO
     {
-        if(self::$connection == null) self::$connection = new \PDO('mysql:host=SRV-IQ-SQL;dbname="ChezMamy";charset=utf8', 'rc212120', 'rc212120noob');
+        if(self::$connection == null) self::$connection = new \PDO('mysql:host=SRV-IQ-SQL;dbname=ChezMamy;charset=utf8', 'rc212120', 'rc212120noob');
         return self::$connection;
     }
 }

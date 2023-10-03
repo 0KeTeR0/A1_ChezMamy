@@ -42,7 +42,7 @@ class RegisterController
                     $newUser->setEducation_Level($input['education_level']);
                     $newUser->setInterships($input['internships']);
                     $newUser->setEstablishment($input['establishment']);
-                    $newUser->setEnd_Of_Studies(date('m/d/Y h:i:s a', time()+((($input['end_of_studies']*365)*24)*60)));
+                    $newUser->setEnd_Of_Studies(date('Y-m-d', time()+((($input['end_of_studies']*365)*24)*60)));
                     $newUser->setDate_Of_Arrival($input['date_of_arrival']);
                     $newUser->setMotivation($input['motivation']);
                     $newUser->setIs_Smoking($input['is_smoking']);

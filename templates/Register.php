@@ -159,17 +159,17 @@
 
                             <div class="form-group">
                                 <div>
-                                    <input type="radio" name="housing" id="lgmtGratuit" required>
+                                    <input type="radio" name="housing" id="lgmtGratuit" value="1" required>
                                     <label for="lgmtGratuit">1-logement gratuit, en échange de présence soirs et nuits.</label>
                                     <span>Vos journées sont libres. Vous êtes présent le soir à l'heure du repas excepté une soirée par semaine, deux week-ends par mois du vendredi soir au dimanche soir et trois semaines de vacances entre septembre et juin.</span>
                                 </div>
                                 <div>
-                                    <input type="radio" name="housing" id="lgmtEco+" required>
+                                    <input type="radio" name="housing" id="lgmtEco+" value="2" required>
                                     <label for="lgmtEco+">2-Logement économique, avec une participation aux frais d'usage et d'échange de services</label>
                                     <span>Vous avez du temps et de la disponibilité au cœur de votre horaire de cours pour assurer ponctuellement des services en journée (sorties, theatre, lecture,...) ainsi qu'une présence régulière. Vous versez une participation mensuelle entre 125$ et 225$, selon les services offerts et les services utilisés.</span>
                                 </div>
                                 <div>
-                                    <input type="radio" name="housing" id="lgmtSolid" required>
+                                    <input type="radio" name="housing" id="lgmtSolid" value="3" required>
                                     <label for="lgmtSolid">3-Logement solidaire, en échange de loyer et veille passive</label>
                                     <span>Vos études ne vous permettent pas de donner du temps, mais vous assurez une veille passive et des services spontanés. Vous versez une indemnité d'occupation mensuelle entre 300$ et 425$, selon les caractéristiques du logement</span>
                                 </div>
