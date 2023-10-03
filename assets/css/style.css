@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+/* ----------------------- Variables CSS ----------------------- */
 :root {
     --main-color: #460B4A;
     --secondary-color: #EC4C4C;
@@ -8,12 +9,26 @@
     --transition: .2s ease-in-out;
 }
 
+/* ----------------------- CSS Général CSS ----------------------- */
 body {
     margin: 0;
     padding: 0;
     background: var(--bg-color);
     font-family: 'Roboto', "Arial", sans-serif;
     overflow-x: hidden;
+}
+
+section {
+    margin: 0;
+    padding: 30px 20%;
+}
+
+section .section-title {
+    margin: 25px auto 10px;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--main-color);
 }
 
 .bouton {
@@ -186,7 +201,79 @@ header nav ul li > button{
     right: 0;
 }
 
+/* ----------------------- Présentation de l'association ----------------------- */
+.presentation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: fit-content;
+    position: relative;
+}
+.presentation-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.presentation span{
+    color: #460B4A;
+}
+
+.presentation h3{
+    color: #460B4A;
+}
+
+.imgPres{
+    margin-right: 4em;
+    margin-top: 4em;
+    border: solid black;
+}
+
+.imgPres img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#img_right_Pres{
+    margin-bottom: 4em;
+}
+
+/* ----------------------- FAQ ----------------------- */
+.faq .list-questions .question {
+    padding: 10px 0;
+    position: relative;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: "Segoe UI", "Arial", sans-serif;
+    cursor: pointer;
+}
+.faq .list-questions .question span {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    transition: var(--transition);
+}
+.faq .list-questions .question.active span {
+    transform: rotate(180deg);
+}
+.faq .list-questions .answer {
+    font-size: 18px;
+    font-family: 'Roboto', "Arial", sans-serif;
+    margin: 0 auto;
+    overflow-y: hidden;
+    height: 0;
+    transition: var(--transition);
+}
+.faq .list-questions .question.active + .answer {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: fit-content;
+}
+
+
+/* ----------------------- Footer ----------------------- */
 #penche {
     position: relative;
     margin-top: 100px;
@@ -265,48 +352,11 @@ footer nav div p{
 
 }
 
-
-.presentation{
-    display: flex;
-    margin: 0 auto;
-    width: fit-content;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
-    padding-left: 2em;
-}
-.presentation-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.presentation span{
-    color: #460B4A;
-}
-
-.presentation h3{
-    color: #460B4A;
-}
-
-.imgPres{
-    margin-right: 4em;
-    margin-top: 4em;
-    border: solid black;
-}
-
-.imgPres img{
-    max-height: 100%;
-    max-width: 100%;
-}
-
-#img_right_Pres{
-    margin-bottom: 4em;
-}
-
 /* Responsive mobile */
 @media screen and (max-width:768px) {
+    section {
+        padding: 30px;
+    }
     .page-accueil {
         height: 75vh;
     }

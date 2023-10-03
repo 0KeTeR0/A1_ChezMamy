@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $title ?></title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/script.js"></script>
 </head>
 <body>
     <header>
@@ -34,7 +35,27 @@
             </ul>
         </nav>
     </header>
+
     <?= $content ?>
+
+    <section class="faq">
+        <h2 class="section-title">FAQ</h2>
+        <dl id="faq-accordion" class="list-questions">
+            <dt class="question active">Peut-on faire de la cohabitation intergénérationnelle et solidaire à tout âge ?<span><svg width="67" height="65" viewBox="0 0 67 65" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.0586 41.6412L33.5796 23.36L52.1007 41.6412" stroke="black" stroke-width="1.00189" stroke-miterlimit="10" stroke-linecap="square"/></svg></span></dt>
+            <dd class="answer">Le concept de cohabitation intergénérationnelle et solidaire est encadré par la Loi Elan et stipule que les jeunes de moins de 30 ans et les personnes de plus de 60 ans, peuvent faire de la cohabitation intergénérationnelle.
+                <br><br>
+                Si vous avez plus de 30 ans et moins de 60 ans, nous vous invitons à vous rendre sur le site "La Carte des Colocs" ou encore "Cooloc". Ils proposent de la cohabitation, des chambres chez l'habitant ou encore de la colocation, pour tous les âges.</dd>
+            <hr>
+            <dt class="question">Question : blabla <span><svg width="67" height="65" viewBox="0 0 67 65" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.0586 41.6412L33.5796 23.36L52.1007 41.6412" stroke="black" stroke-width="1.00189" stroke-miterlimit="10" stroke-linecap="square"/></svg></span></dt>
+            <dd class="answer">Réponse à la questiooooooooon : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam architecto at dignissimos eaque eius ex exercitationem harum maiores molestias mollitia natus nesciunt obcaecati officiis perferendis rem ullam, veniam vitae.</dd>
+            <hr>
+            <dt class="question">Question : blabla <span><svg width="67" height="65" viewBox="0 0 67 65" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.0586 41.6412L33.5796 23.36L52.1007 41.6412" stroke="black" stroke-width="1.00189" stroke-miterlimit="10" stroke-linecap="square"/></svg></span></dt>
+            <dd class="answer">Réponse à la questiooooooooon : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam architecto at dignissimos eaque eius ex exercitationem harum maiores molestias mollitia natus nesciunt obcaecati officiis perferendis rem ullam, veniam vitae.</dd>
+            <hr>
+            <dt class="question">Question : blabla <span><svg width="67" height="65" viewBox="0 0 67 65" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.0586 41.6412L33.5796 23.36L52.1007 41.6412" stroke="black" stroke-width="1.00189" stroke-miterlimit="10" stroke-linecap="square"/></svg></span></dt>
+            <dd class="answer">Réponse à la questiooooooooon : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam architecto at dignissimos eaque eius ex exercitationem harum maiores molestias mollitia natus nesciunt obcaecati officiis perferendis rem ullam, veniam vitae.</dd>
+        </dl>
+    </section>
 
     <div id="penche">
         <svg viewBox="0 0 1920 89" fill="none" xmlns="http://www.w3.org/2000/svg">

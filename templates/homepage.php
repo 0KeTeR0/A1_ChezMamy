@@ -16,9 +16,7 @@
         </svg>
     </section>
     <section class="presentation">
-        <div>
-            <h2>Présentation de l'association</h2>
-        </div>
+        <h2 class="section-title">Présentation de l'association</h2>
         <div class="presentation-list">
             <div>
                 <div class="imgPres"  id="img_right_Pres">
