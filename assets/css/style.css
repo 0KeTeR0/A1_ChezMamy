@@ -353,6 +353,160 @@ footer nav div p{
 }
 
 /* Responsive mobile */
+
+
+/*--------------------responsive (header/footer */
+
+
+.menuBurger {
+    visibility: hidden;
+    position: relative;
+    margin-top: 0;
+    height: 6px;
+    width: 40px;
+    background: #460B4A;
+    cursor: pointer;
+    border-radius: 50px;
+}
+.menuBurger:before,
+.menuBurger:after {
+    border-radius: 50px;
+    content: '';
+    position: absolute;
+    top: -10px;
+    height: 6px;
+    width: 40px;
+    background: #460B4A;
+}
+.menuBurger:after {
+    top: 10px;
+}
+
+.closeMenu {
+    visibility: hidden;
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    cursor: pointer;
+}
+.closeMenu:before, .closeMenu:after {
+    top:20px;
+    content: '';
+    position: absolute;
+    right: 40px;
+    height: 6px;
+    width: 40px;
+    transform: rotateZ(45deg);
+    background: #460B4A;
+    border-radius: 50px;
+}
+.closeMenu:after {
+    transform: rotateZ(-45deg);
+}
+
+#logo_burger{
+    visibility: hidden;
+    display: None;
+}
+
+@media screen and (max-width: 1205px){
+
+    #logo_burger{
+        visibility: visible;
+        display: inline-block;
+    }
+
+    nav {
+        padding: 0;
+        z-index: 1;
+        transform: translateX(110%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background: #fff;
+        transition: .2s transform ease-out;
+    }
+    nav.active {
+        transform: translateX(12px);
+    }
+    nav .menu {
+        margin-top: -250px;
+        width: 100%;
+    }
+    nav .menu .menuBtn {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    nav .menu .menuBtn a {
+        color: #460B4A;
+    }
+    nav .menu .menuBtn a:after {
+        background: #460B4A;
+    }
+
+    header nav ul li{
+        margin-bottom: 10px;
+    }
+
+    .closeMenu{
+        visibility: visible;
+    }
+
+    .menuBurger{
+        visibility: visible;
+    }
+
+    header nav ul{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+    }
+
+    #search_bar{
+        order:0;
+        margin-top:20px;
+        margin-bottom: 200px;
+        font-size: 30px;
+    }
+
+    header nav ul li form{
+        height: 45px;
+        width: 318px;
+    }
+    header nav ul li form input{
+        width: 247px;
+    }
+
+    #ac_li{
+        order:1;
+    }
+
+    #contact{
+        order:2;
+    }
+    #connect{
+        order:3;
+    }
+    #inscri{
+        order:4;
+    }
+
+    header nav ul li a{
+        font-size: 30px;
+    }
+
+    header nav ul li > button.bouton{
+        width: 160px;
+        padding:0;
+        font-size: 30px;
+    }
+
+}
+
 @media screen and (max-width:768px) {
     section {
         padding: 30px;
