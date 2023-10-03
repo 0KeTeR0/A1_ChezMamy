@@ -3,226 +3,255 @@
 namespace App\Chezmamy\Model;
 
 use App\ChezMamy\Lib\Database\DatabaseConnection;
+/** Class receiving the form's data  **/
 class UserModel
 {
 
-    private ?string $adresseCourriel;
+    private ?string $email;
     private ?string $password;
-    private ?string $nom;
-    private ?string $prenom;
-    private ?string $dateDeNaissance;
-    private ?string $telephone;
-    private ?string $adresseDesParents;
-    private ?string $ville;
-    private ?string $codePostal;
-    private ?string $connuAssociation;
-    private ?string $niveauEtudes;
-    private ?string $dureeRestante;
-    private ?string $dateArriveeRegion;
+    private ?string $last_name;
+    private ?string $first_name;
+    private ?string $date_of_birth;
+    private ?string $nationality;
+    private ?string $phone;
+    private ?string $parents_adress;
+    private ?string $city;
+    private ?string $postal_code;
+    private ?string $know_association;
+    private ?string $education_level;
+    private ?string $interships;
+    private ?string $establishment;
+    private ?string $end_of_studies;
+    private ?string $date_of_arrival;
     private ?string $motivation;
-    private bool $fumeur;
-    private bool $allergies;
-    private ?string $lesquelles;
-    private ?string $permisDeConduire;
-    private ?string $moyenLocomotion;
-    private ?string $centresInteret;
-    private ?string $pourquoiCohabitation;
-    private ?string $typeLogement;
-    private ?string $informationsAdditionnelles;
-    private ?string $preferencesQuartier;
+    private bool $is_smoking;
+    private bool $is_allergic;
+    private ?string $allergies;
+    private bool $can_drive;
+    private ?string $means_of_locomotion;
+    private ?string $interests;
+    private ?string $why;
+    private ?string $housing;
+    private ?string $housing_2_availabilities;
+    private ?string $housing_3_budget;
+    private ?string $preferences;
 
 
 
 // Méthodes Getter
-    public function getAdresseCourriel(): ?string {
-        return $this->adresseCourriel;
+    public function getEmail(): ?string {
+        return $this->email;
     }
 
     public function getPassword(): ?string {
         return $this->password;
     }
 
-    public function getNom(): ?string {
-        return $this->nom;
+    public function getLast_Name(): ?string {
+        return $this->last_name;
     }
 
-    public function getPrenom(): ?string {
-        return $this->prenom;
+    public function getFirst_Name(): ?string {
+        return $this->first_name;
     }
-    public function getDateDeNaissance(): ?string {
-        return $this->dateDeNaissance;
-    }
-
-    public function getTelephone(): ?string {
-        return $this->telephone;
+    public function getDate_Of_Birth(): ?string {
+        return $this->date_of_birth;
     }
 
-    public function getAdresseDesParents(): ?string {
-        return $this->adresseDesParents;
+    public function getNationality(): ?string {
+        return $this->nationality;
     }
 
-    public function getVille(): ?string {
-        return $this->ville;
+    public function getPhone(): ?string {
+        return $this->phone;
     }
 
-    public function getCodePostal(): ?string {
-        return $this->codePostal;
+    public function getParents_Adress(): ?string {
+        return $this->parents_adress;
     }
 
-    public function getConnuAssociation(): ?string {
-        return $this->connuAssociation;
+    public function getCity(): ?string {
+        return $this->city;
     }
 
-    public function getNiveauEtudes(): ?string {
-        return $this->niveauEtudes;
+    public function getPostalCode(): ?string {
+        return $this->postal_code;
     }
 
-    public function getDureeRestante(): ?string {
-        return $this->dureeRestante;
+    public function getKnow_Association(): ?string {
+        return $this->know_association;
     }
 
-    public function getDateArriveeRegion(): ?string {
-        return $this->dateArriveeRegion;
+    public function getEducation_Level(): ?string {
+        return $this->education_level;
+    }
+    public function getInternships(): ?string {
+        return $this->interships;
+    }
+    public function getEstablishment(): ?string{
+        return $this->establishment;
+    }
+
+    public function getEnd_Of_Studies(): ?string {
+        return $this->end_of_studies;
+    }
+
+    public function getDate_Of_Arrival(): ?string {
+        return $this->date_of_arrival;
     }
 
     public function getMotivation(): ?string {
         return $this->motivation;
     }
 
-    public function isFumeur(): bool {
-        return $this->fumeur;
+    public function getIs_Smoking(): bool {
+        return $this->is_smoking;
     }
 
-    public function hasAllergies(): bool {
+    public function getIs_Allergic(): bool {
+        return $this->is_allergic;
+    }
+
+    public function getAllergies(): ?string {
         return $this->allergies;
     }
 
-    public function getLesquelles(): ?string {
-        return $this->lesquelles;
+    public function getCan_Drive(): ?bool {
+        return $this->can_drive;
     }
 
-    public function getPermisDeConduire(): ?string {
-        return $this->permisDeConduire;
+    public function getMeans_Of_Locomotion(): ?string {
+        return $this->means_of_locomotion;
     }
 
-    public function getMoyenLocomotion(): ?string {
-        return $this->moyenLocomotion;
+    public function getInterests(): ?string {
+        return $this->interests;
     }
 
-    public function getCentresInteret(): ?string {
-        return $this->centresInteret;
+    public function getWhy(): ?string {
+        return $this->why;
     }
 
-    public function getPourquoiCohabitation(): ?string {
-        return $this->pourquoiCohabitation;
+    public function getHousing(): ?string {
+        return $this->housing;
     }
 
-    public function getTypeLogement(): ?string {
-        return $this->typeLogement;
+    public function getHousing_2_Availabilities(): ?string{
+        return $this->housing_2_availabilities;
     }
-
-    public function getInformationsAdditionnelles(): ?string {
-        return $this->informationsAdditionnelles;
+    public function getHousing_3_Budget(): ?string{
+        return $this->housing_3_budget;
     }
-
-    public function getPreferencesQuartier(): ?string {
-        return $this->preferencesQuartier;
+    public function getPreferences(): ?string {
+        return $this->preferences;
     }
 
     // Méthodes Setter
 
-    public function setAdresseCourriel(?string $adresseCourriel): void {
-        $this->adresseCourriel = $adresseCourriel;
+    public function setEmail(?string $email): void {
+        $this->email = $email;
     }
 
     public function setPassword(?string $password): void {
         $this->password = $password;
     }
 
-    public function setNom(?string $nom): void {
-        $this->nom = $nom;
+    public function setLast_Name(?string $last_name): void {
+        $this->last_name = $last_name;
     }
 
-    public function setPrenom(?string $prenom): void {
-        $this->prenom = $prenom;
+    public function setFirst_Name(?string $first_name): void {
+        $this->first_name = $first_name;
     }
-    public function setDateDeNaissance(?string $dateDeNaissance): void {
-        $this->dateDeNaissance = $dateDeNaissance;
-    }
-
-    public function setTelephone(?string $telephone): void {
-        $this->telephone = $telephone;
+    public function setDate_Of_Birth(?string $date_of_birth): void {
+        $this->date_of_birth = $date_of_birth;
     }
 
-    public function setAdresseDesParents(?string $adresseDesParents): void {
-        $this->adresseDesParents = $adresseDesParents;
+    public function setNationality(?string $nationality):void {
+        $this->nationality = $nationality;
+    }
+    public function setPhone(?string $phone): void {
+        $this->phone = $phone;
     }
 
-    public function setVille(?string $ville): void {
-        $this->ville = $ville;
+    public function setParents_Adress(?string $parents_adress): void {
+        $this->parents_adress = $parents_adress;
     }
 
-    public function setCodePostal(?string $codePostal): void {
-        $this->codePostal = $codePostal;
+    public function setCity(?string $city): void {
+        $this->city = $city;
     }
 
-    public function setConnuAssociation(?string $connuAssociation): void {
-        $this->connuAssociation = $connuAssociation;
+    public function setPostalCode(?string $postal_code): void {
+        $this->postal_code = $postal_code;
     }
 
-    public function setNiveauEtudes(?string $niveauEtudes): void {
-        $this->niveauEtudes = $niveauEtudes;
+    public function setKnow_Association(?string $know_association): void {
+        $this->know_association = $know_association;
     }
 
-    public function setDureeRestante(?string $dureeRestante): void {
-        $this->dureeRestante = $dureeRestante;
+    public function setEducation_Level(?string $education_level): void {
+        $this->education_level = $education_level;
+    }
+    public function setInterships(?string $interships): void{
+        $this->interships = $interships;
+    }
+    public function setEstablishment(?string $establishment): void{
+        $this->establishment = $establishment;
     }
 
-    public function setDateArriveeRegion(?string $dateArriveeRegion): void {
-        $this->dateArriveeRegion = $dateArriveeRegion;
+    public function setEnd_Of_Studies(?string $end_of_studies): void {
+        $this->end_of_studies = $end_of_studies;
+    }
+
+    public function setDate_Of_Arrival(?string $date_of_arrival): void {
+        $this->date_of_arrival= $date_of_arrival;
     }
 
     public function setMotivation(?string $motivation): void {
         $this->motivation = $motivation;
     }
 
-    public function setFumeur(bool $fumeur): void {
-        $this->fumeur = $fumeur;
+    public function setIs_Smoking(bool $is_smoking): void {
+        $this->is_smoking = $is_smoking;
     }
 
-    public function setAllergies(bool $allergies): void {
+    public function setIs_Allergic(bool $is_allergic): void {
+        $this->is_allergic = $is_allergic;
+    }
+
+    public function setAllergies(?string $allergies): void {
         $this->allergies = $allergies;
     }
 
-    public function setLesquelles(?string $lesquelles): void {
-        $this->lesquelles = $lesquelles;
+    public function setCan_Drive(bool $can_drive): void {
+        $this->can_drive = $can_drive;
     }
 
-    public function setPermisDeConduire(?string $permisDeConduire): void {
-        $this->permisDeConduire = $permisDeConduire;
+    public function setMeans_Of_Locomotion(?string $means_of_locomotion): void {
+        $this->means_of_locomotion = $means_of_locomotion;
     }
 
-    public function setMoyenLocomotion(?string $moyenLocomotion): void {
-        $this->moyenLocomotion = $moyenLocomotion;
+    public function setInterests(?string $interests): void {
+        $this->interests = $interests;
     }
 
-    public function setCentresInteret(?string $centresInteret): void {
-        $this->centresInteret = $centresInteret;
+    public function setWhy(?string $why): void {
+        $this->why = $why;
     }
 
-    public function setPourquoiCohabitation(?string $pourquoiCohabitation): void {
-        $this->pourquoiCohabitation = $pourquoiCohabitation;
+    public function setHousing(?string $housing ): void {
+        $this->housing = $housing;
     }
 
-    public function setTypeLogement(?string $typeLogement): void {
-        $this->typeLogement = $typeLogement;
+    public function setHousing_2_Availabilities(?string $availability): void{
+        $this->housing_2_availabilities = $availability;
     }
 
-    public function setInformationsAdditionnelles(?string $informationsAdditionnelles): void {
-        $this->informationsAdditionnelles = $informationsAdditionnelles;
+    public function setHousing_3_Budget(?string $budget):void {
+        $this->housing_3_budget = $budget;
     }
-
-    public function setPreferencesQuartier(?string $preferencesQuartier): void {
-        $this->preferencesQuartier = $preferencesQuartier;
+    public function setPreferences(?string $preferencesQuartier): void {
+        $this->preferences = $preferencesQuartier;
     }
 }
