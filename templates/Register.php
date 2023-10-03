@@ -36,26 +36,44 @@
                     <h1>Fiche d'inscription Etudiant</h1>
                 </div>
 
-                <div >
+                <div id="Etudiant_etape1">
                     <h2>Identité</h2>
-                    <label for="fname">Prénom :</label>
-                    <input type="text" id="fname" name="fname" autofocus required><br></br>
-                    <label for="lname">Nom :</label>
-                    <input type="text" id="lname" name="lname" required><br></br>
-                    <label for="bdate">Date de naissance :</label>
-                    <input type="date" id="bdate" name="bdate" max="2008-01-01"><br></br>
-                    <label for="nationalité">Nationalité :</label>
-                    <input type="text" name="nationalité" id="nationalité"><br><br>
-                    <label for="num">Téléphone :</label>
-                    <input type="tel" id="num" name="num" placeholder="Au format 00-00-00-00-00" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required><br><br>
-                    <label for="mail">Adresse courriel :</label>
-                    <input type="email" id="mail" name="mail" placeholder="exemple@gmail.com" required><br></br>
-                    <label for="AdressePrt">Adresse des parents :</label>
-                    <input type="text" name="AdressePrt" id="AdressePrt"><br><br>
-                    <label for="residence">Ville :</label>
-                    <input type="text" id="residence" name="residence">
-                    <label for="postal">Code postal :</label>
-                    <input type="text" id="postal" name="postal" maxlength="5" minlength="5" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required><br></br>
+                    <div>
+                        <label for="fname">Prénom :</label>
+                        <input type="text" id="fname" name="first_name" autofocus required>
+                    </div>
+                    <div>
+                        <label for="lname">Nom :</label>
+                        <input type="text" id="lname" name="last_name" required>
+                    </div>
+                    <div>
+                        <label for="bdate">Date de naissance :</label>
+                        <input type="date" id="bdate" name="date_of_birth" max="2008-01-01" required>
+                    </div>
+                    <div>
+                        <label for="nationalité">Nationalité :</label>
+                        <input type="text" name="nationality" id="nationalité" required>
+                    </div>
+                    <div>
+                        <label for="num">Téléphone :</label>
+                        <input type="tel" id="num" name="phone" placeholder="Au format 00-00-00-00-00" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required>
+                    </div>
+                    <div>
+                        <label for="mail">Adresse email <i>(identifiant de connexion)</i> :</label>
+                        <input type="email" id="mail" name="email" placeholder="exemple@gmail.com" required>
+                    </div>
+                    <div>
+                        <label for="AdressePrt">Adresse des parents :</label>
+                        <input type="text" name="parents_address" id="AdressePrt" required>
+                    </div>
+                    <div>
+                        <label for="residence">Ville :</label>
+                        <input type="text" id="residence" name="city" required>
+                    </div>
+                    <div>
+                        <label for="postal">Code postal :</label>
+                        <input type="text" id="postal" name="postal_code" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
+                    </div>
 
                     <div class="checkbox-group-1">
                         <label>Comment avez-vous connu notre association ?</label><br>
@@ -72,87 +90,129 @@
 
                 </div><br><br>
 
-                <div>
-                    <h2>Etudes / stages</h2>
-                </div>
-                <div>
-                    <label for="Collégiale, programme">Collégiale, programme :</label>
-                    <input type="text" name="Collégiale, programme" id="Collégiale, programme"><br>
-                    <label for="1er cycle, programme">Universitaire cycle supérieur, précisé :</label>
-                    <input type="text" name="1er cycle, programme" id="1er cycle, programme"><br>
-                    <label for="cycle supérieur">Universitaire cycle supérieur, précisé :</label>
-                    <input type="text" name="cycle supérieur" id="cycle supérieur"><br>
-                    <label for="stages">Stages, précisé :</label>
-                    <input type="text" name="stages" id="stages"><br>
-                    <label for="etablissement">Etablissement d'enseignement :</label>
-                    <input type="text" name="etablissement" id="etablissement"><br>
-                    <label for="duree etude">Durée d'étude restante :</label>
-                    <input type="number" name="duree etude" id="duree etude" value="0" min="0" max="12"><br>
-                    <label for="date arrivee">Si vous êtes nouveau venu dans notre région, précisez votre date d'arrivée :</label>
-                    <input type="date" name="date arrivee" id="date arrivee" min="" > <!-- mettre la date actuelle en PHP pour min-->
-                </div>
-
-                <div>
-                    <h2>Votre motivation</h2>
-                </div>
-                <div>
-                    <label for="motivation">Vos motivations pour choisir ce mode de logement</label>
-                    <textarea name="motivation" id="motivation" cols="4" rows="2"></textarea>
-                </div>
-
-                <div>
-                    <h2>Mieux vous connaître</h2>
-                </div>
-                <div class="radio-group-1">
-                    <label for="fumeur">Êtes-vous fumeur ?</label>
-                    <input type="radio" id="fumeur_oui" name="fumeur" value="oui">
-                    <label for="fumeur_oui">Oui</label>
-                    <input type="radio" id="fumeur_non" name="fumeur" value="non">
-                    <label for="fumeur_non">Non</label><br>
-
-                    <label for="allergie">Avez-vous des allergies ?</label>
-                    <input type="radio" id="allergie_oui" name="allergie" value="oui">
-                    <label for="fumeur_oui">Oui</label>
-                    <input type="radio" id="allergie_non" name="allergie" value="non">
-                    <label for="allergie_non">Non</label>
-                </div>
-                <div>
-                    <label for="allergique">Si oui, précisé :</label>
-                    <input type="search" name="allergique" id="allergique">
-                </div>
-                <div>
-                    <label for="permis">Êtes-vous titulaire d'un permis de conduire ?</label>
-                    <input type="radio" id="oui" name="permis" value="oui">
-                    <label for="oui">Oui</label>
-                    <input type="radio" id="non" name="permis" value="non">
-                    <label for="non">Non</label>
+                <div id="Etudiant_etape2">
+                    <div>
+                        <h2>Etudes / stages</h2>
+                    </div>
+                    <div>
+                        <label for="education_level">Collégiale et cycle supérieur :</label>
+                        <input type="text" name="education_level" id="education_level">
+                    </div>
+                    <div>
+                        <label for="stages">Stages, préciser :</label>
+                        <input type="text" name="internships" id="stages">
+                    </div>
+                    <div>
+                        <label for="etablissement">Etablissement d'enseignement :</label>
+                        <input type="text" name="establishment" id="etablissement">
+                    </div>
+                    <div>
+                        <label for="end_of_studies">Durée d'étude restante :</label>
+                        <input type="number" name="end_of_studies" id="end_of_studies" value="0" min="0" max="12">
+                    </div>
+                    <div>
+                        <label for="date_of_arrival">Si vous êtes nouveau venu dans notre région, précisez votre date d'arrivée :</label>
+                        <input type="date" name="date_of_arrival" id="date_of_arrival" min="<?= date('Y/m/d') ?>" > <!-- mettre la date actuelle en PHP pour min-->
+                    </div>
+                    <div>
+                        <div class="bouton">Étape suivante</div>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="locomotion">Si vous avez un moyen de locomotion, précisez: </label><br>
-                    <input type="text" name="locomotion" id="locomotion">
-                </div>
-                <div>
-                    <label for="centresInteret">Vos centres d'intérêts majeurs :</label><br>
-                    <input type="text" name="centres d'intérêts" id="centresInteret">
-                </div>
-                <div>
-                    <label for="but">Qu'est-ce qui vous pousse à rechercher la cohabitation avec une personne âgée ?</label><br>
-                    <input type="text" name="but rechercher" id="but">
+                <div id="Etudiant_etape3">
+                    <div>
+                        <h2>Mieux vous connaître</h2>
+                    </div>
+                    <div class="radio-group-1">
+                        <label for="fumeur">Êtes-vous fumeur ?</label>
+                        <div>
+                            <input type="radio" id="fumeur_oui" name="is_smoking" value="oui">
+                            <label for="fumeur_oui">Oui</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="fumeur_non" name="is_smoking" value="non">
+                            <label for="fumeur_non">Non</label>
+                        </div>
+
+                        <label for="allergie">Avez-vous des allergies ?</label>
+                        <input type="radio" id="allergie_oui" name="is_allergic" value="oui">
+                        <label for="allergie_oui">Oui</label>
+                        <input type="radio" id="allergie_non" name="is_allergic" value="non">
+                        <label for="allergie_non">Non</label>
+                    </div>
+                    <div>
+                        <label for="allergique">Si oui, précisé :</label>
+                        <input type="search" name="allergies" id="allergique">
+                    </div>
+                    <div>
+                        <label for="permis">Êtes-vous titulaire d'un permis de conduire ?</label>
+                        <input type="radio" id="oui" name="can_drive" value="oui">
+                        <label for="oui">Oui</label>
+                        <input type="radio" id="non" name="can_drive" value="non">
+                        <label for="non">Non</label>
+                    </div>
+
+                    <div>
+                        <label for="locomotion">Si vous avez un moyen de locomotion, précisez: </label>
+                        <input type="text" name="means_of_locomotion" id="locomotion">
+                    </div>
+                    <div>
+                        <label for="centresInteret">Vos centres d'intérêts majeurs :</label>
+                        <input type="text" name="interests" id="centresInteret">
+                    </div>
+                    <div>
+                        <label for="but">Qu'est-ce qui vous pousse à rechercher la cohabitation avec une personne âgée ?</label>
+                        <input type="text" name="why" id="but">
+                    </div>
+                    <div>
+                        <div class="bouton">Étape suivante</div>
+                    </div>
                 </div>
 
-                <div>
-                    <h2>Logement</h2>
-                </div>
+                <div id="Etudiant_etape4">
+                    <div>
+                        <h2>Logement</h2>
+                    </div>
 
-                <div class="radio-group-2">
-                    <input type="radio" name="logement" id="lgmtGratuit">
-                    <label for="lgmtGratuit">1-logement gratuit, en échange de présence soirs et nuits.</label>
-                    <span>Vos journées sont libres. Vous êtes présent le soir à l'heure du repas excepté une soirée par semaine, deux week-ends par mois du vendredi soir au dimanche soir et trois semaines de vacances entre septembre et juin.</span>
-                    <input type="radio" name="logement" id="lgmtEco+">
-                    <label for="lgmtEco+"></label>
-                    <input type="radio" name="logement" id="lgmtSolid">
-                    <label for="lgmtSolid"></label>
+                    <div class="radio-group-2" >
+                        <div>
+                            <input type="radio" name="housing" id="lgmtGratuit" required>
+                            <label for="lgmtGratuit">1-logement gratuit, en échange de présence soirs et nuits.</label>
+                            <span>Vos journées sont libres. Vous êtes présent le soir à l'heure du repas excepté une soirée par semaine, deux week-ends par mois du vendredi soir au dimanche soir et trois semaines de vacances entre septembre et juin.</span>
+                        </div>
+                        <div>
+                            <input type="radio" name="housing" id="lgmtEco+" required>
+                            <label for="lgmtEco+">2-Logement économique, avec une participation aux frais d'usage et d'échange de services</label>
+                            <span>Vous avez du temps et de la disponibilité au cœur de votre horaire de cours pour assurer ponctuellement des services en journée (sorties, theatre, lecture,...) ainsi qu'une présence régulière. Vous versez une participation mensuelle entre 125$ et 225$, selon les services offerts et les services utilisés.</span>
+                        </div>
+                        <div>
+                            <input type="radio" name="housing" id="lgmtSolid" required>
+                            <label for="lgmtSolid">3-Logement solidaire, en échange de loyer et veille passive</label>
+                            <span>Vos études ne vous permettent pas de donner du temps, mais vous assurez une veille passive et des services spontanés. Vous versez une indemnité d'occupation mensuelle entre 300$ et 425$, selon les caractéristiques du logement</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <h3>Précision selon votre choix de logement</h3>
+                        </div>
+                        <div>
+                            <label for="housing_2_availabilities">Pour la formule 2, vos disponibilités :</label>
+                            <input type="text" id="housing_2_availabilities" name="housing_2_availabilities">
+                        </div>
+                        <div>
+                            <label for="housing_3_budget">Pour la formule 3, votre budget maximum pour le loyer</label>
+                            <input type="number" id="housing_3_budget" name="housing_3_budget" min="0">
+                        </div>
+                        <div>
+                            <label for="preferencesQuartier">* Si vous avez des préférences de quartier d'habitation (pour Montréal), précisez :</label>
+                            <input type="text" id="preferencesQuartier" name="preferences">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="bouton">Étape suivante</div>
+                    </div>
                 </div>
 
             </form>
@@ -260,7 +320,7 @@
                 </div>
 
                 <div>
-                    <label><h2>Nature des services ou présence</h2></label>
+                    <h2>Nature des services ou présence</h2>
                 </div>
                 <div>
                     <label for="textBesion">Votre besoin :</label><br>
