@@ -16,7 +16,6 @@ class UserModel
     private ?string $ville;
     private ?string $codePostal;
     private ?string $connuAssociation;
-    private ?string $autre;
     private ?string $niveauEtudes;
     private ?string $dureeRestante;
     private ?string $dateArriveeRegion;
@@ -72,10 +71,6 @@ class UserModel
 
     public function getConnuAssociation(): ?string {
         return $this->connuAssociation;
-    }
-
-    public function getAutre(): ?string {
-        return $this->autre;
     }
 
     public function getNiveauEtudes(): ?string {
@@ -173,10 +168,6 @@ class UserModel
 
     public function setConnuAssociation(?string $connuAssociation): void {
         $this->connuAssociation = $connuAssociation;
-    }
-
-    public function setAutre(?string $autre): void {
-        $this->autre = $autre;
     }
 
     public function setNiveauEtudes(?string $niveauEtudes): void {
