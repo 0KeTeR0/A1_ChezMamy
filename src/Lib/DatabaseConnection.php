@@ -1,5 +1,5 @@
 <?php
-namespace App\Chezmamy\Lib\Database;
+namespace App\Chezmamy\Lib;
 
 /**
  * Class DatabaseConnection

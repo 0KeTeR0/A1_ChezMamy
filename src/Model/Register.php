@@ -2,7 +2,7 @@
 
 namespace App\Chezmamy\Model;
 
-use App\Chezmamy\Lib\Database\DatabaseConnection;
+use App\Chezmamy\Lib\DatabaseConnection;
 class Register
 {
 
