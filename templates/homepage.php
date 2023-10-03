@@ -20,7 +20,7 @@
         <div class="presentation-list">
             <div>
                 <div class="imgPres"  id="img_right_Pres">
-                    <img src="../assets/img/logo.png" alt="">
+                    <img src="../assets/img/bob-joie.png" alt="">
                 </div>
                 <div>
                     <h3>Quelques chiffres</h3>
@@ -37,7 +37,7 @@
                     <p>• <span>500</span> séniors ont proposé leur logement cette année...</p>
                 </div>
                 <div class="imgPres">
-                    <img src="../assets/img/logo.png" alt="">
+                    <img src="../assets/img/alice-joie.png" alt="">
                 </div>
             </div>
         </div>
