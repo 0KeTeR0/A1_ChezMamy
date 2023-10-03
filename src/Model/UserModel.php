@@ -18,7 +18,6 @@ class UserModel
     private ?string $city;
     private ?string $postal_code;
     private ?string $know_association;
-    private ?string $other_information;
     private ?string $education_level;
     private ?string $interships;
     private ?string $establishment;
@@ -81,9 +80,6 @@ class UserModel
 
     public function getKnow_Association(): ?string {
         return $this->know_association;
-    }
-    public function getOther_Information(): ?string{
-        return $this->other_information;
     }
 
     public function getEducation_Level(): ?string {
@@ -192,9 +188,6 @@ class UserModel
 
     public function setKnow_Association(?string $know_association): void {
         $this->know_association = $know_association;
-    }
-    public function setOtherInformation(?string $other_information): void{
-        $this->other_information = $other_information;
     }
 
     public function setEducation_Level(?string $education_level): void {
