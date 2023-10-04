@@ -31,6 +31,14 @@ function clear_shown(){
  * with its first step
  */
 function switch_form_etu(){
+    /* only for the appearance of the button */
+    let elems = document.getElementsByClassName("btn-selected");
+    for(let i=0;i<elems.length;i++){
+        elems[i].classList.remove("btn-selected");
+    }
+    document.getElementById("jeSuisEtudiant").classList.add("btn-selected");
+
+
     clear_shown()
     selected="student";
     cstep=1;
@@ -47,6 +55,14 @@ function switch_form_etu(){
  * with its first step
  */
 function switch_form_sen(){
+    /* only for the appearance of the button */
+    let elems = document.getElementsByClassName("btn-selected");
+    for(let i=0;i<elems.length;i++){
+        elems[i].classList.remove("btn-selected");
+    }
+    document.getElementById("jeSuisSenior").classList.add("btn-selected");
+
+
     clear_shown()
     selected="senior";
     cstep=1;
@@ -74,6 +90,7 @@ function next_step(){
             document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
             document.getElementById("Etudiant_etape"+(cstep-1).toString()).classList.remove("show");
             document.getElementById("Etudiant_etape"+cstep.toString()).classList.add("show");
+            scroll(0,0);
         }
     }
     else{
@@ -87,6 +104,7 @@ function next_step(){
             document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
             document.getElementById("Senior_etape" + (cstep - 1).toString()).classList.remove("show");
             document.getElementById("Senior_etape" + cstep.toString()).classList.add("show");
+            scroll(0,0);
         }
     }
 }
@@ -108,6 +126,54 @@ function previous_step(){
     }
 }
 
+/**
+ * show the details input
+ * for the allergies
+ */
+function show_allergies(){
+    document.getElementById("allergies_champ").classList.add("show");
+}
+
+/**
+ * hide the details input
+ * for the allergies
+ */
+function hide_allergies(){
+    document.getElementById("allergies_champ").classList.remove("show");
+}
+
+/**
+ * show the complementary details
+ * of the 2nd type of housing
+ */
+function show_eco(){
+    document.getElementById("housing2").classList.add("show");
+}
+
+/**
+ * hide the complementary details
+ * of the 2nd type of housing
+ */
+function hide_eco(){
+    document.getElementById("housing2").classList.remove("show");
+}
+
+/**
+ * show the complementary details
+ * of the 2nd type of housing
+ */
+function show_solid(){
+    document.getElementById("housing3").classList.add("show");
+}
+
+/**
+ * hide the complementary details
+ * of the 2nd type of housing
+ */
+function hide_solid(){
+    document.getElementById("housing3").classList.remove("show");
+}
+
 /* we bind the buttons to the right functions */
 document.getElementById("jeSuisEtudiant").addEventListener("click",switch_form_etu);
 document.getElementById("jeSuisSenior").addEventListener("click",switch_form_sen);
@@ -121,3 +187,13 @@ elems = document.getElementsByClassName("registerPreviousStep");
 for(i=0;i<elems.length;i++){
     elems[i].addEventListener("click",previous_step);
 }
+
+document.getElementById("allergie_oui").addEventListener("click",show_allergies);
+document.getElementById("allergie_non").addEventListener("click",hide_allergies);
+document.getElementById("lgmtEco+").addEventListener("click",show_eco);
+document.getElementById("lgmtGratuit").addEventListener("click",hide_eco);
+document.getElementById("lgmtGratuit").addEventListener("click",hide_solid);
+document.getElementById("lgmtEco+").addEventListener("click",hide_solid);
+document.getElementById("lgmtSolid").addEventListener("click",hide_eco);
+document.getElementById("lgmtSolid").addEventListener("click",show_solid);
+show_allergies();

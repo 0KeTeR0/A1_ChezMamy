@@ -367,10 +367,15 @@ section.registerForm {
 .registerBox .form-group .bouton {
     padding: 15px;
 }
-.registerBox #registerChoice .bouton:hover {
+.registerBox #registerChoice .bouton:hover,
+.registerBox #registerChoice .bouton.btn-selected{
     background: var(--main-color);
     color: #fff;
 }
+
+#housing2,
+#housing3,
+#allergies_champ,
 .registerBox #student_form,
 .registerBox #senior_form,
 .registerBox div.form-group {

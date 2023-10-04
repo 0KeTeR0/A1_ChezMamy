@@ -84,7 +84,7 @@ class RegisterController
      * @param array $input new student data to verify
      * @return bool false if the data is incorrect, true if correct
      */
-    private function verifyStudent(array $input){
+    private function verifyStudent(array $input): bool {
         #A changer : faire en sorte que si un des tests est vrai alors les autres ne peuvent pas le remettre à faux
         $result = true;
         $result = ( filter_var($input['email'],FILTER_VALIDATE_EMAIL))&&$result;
@@ -121,8 +121,12 @@ class RegisterController
         return $result;
     }
 
-
-    private function verifyDate(string $date){
+    /**
+     * verify the date format
+     * @param string $date
+     * @return bool
+     */
+    private function verifyDate(string $date): bool{
         $result = false;
         $test_arr  = explode('/', $date);
         if (count($test_arr) == 3) {
