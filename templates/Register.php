@@ -24,11 +24,11 @@
                             <h2>Identité</h2>
                             <div class="form-pair">
                                 <label for="fname">Prénom</label>
-                                <input type="text" id="fname" name="first_name" autofocus required>
+                                <input type="text" id="fname" name="first_name" minlength="2" maxlength="40" required>
                             </div>
                             <div class="form-pair">
                                 <label for="lname">Nom</label>
-                                <input type="text" id="lname" name="last_name" required>
+                                <input type="text" id="lname" name="last_name" minlength="2" maxlength="50" required>
                             </div>
                             <div class="form-pair">
                                 <label for="bdate">Date de naissance</label>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-pair">
                                 <label for="num">Téléphone</label>
-                                <input type="tel" id="num" name="phone" placeholder="Au format 00-00-00-00-00" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required>
+                                <input type="tel" id="num" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}" required>
                             </div>
                             <div class="form-pair">
                                 <label for="mail">Adresse email <i>(identifiant de connexion)</i></label>
@@ -48,11 +48,11 @@
                             </div>
                             <div class="form-pair">
                                 <label for="AdressePrt">Adresse des parents</label>
-                                <input type="text" name="parents_address" id="AdressePrt" required>
+                                <input type="text" name="parents_address" id="AdressePrt" minlength="2" required>
                             </div>
                             <div class="form-pair">
                                 <label for="residence">Ville</label>
-                                <input type="text" id="residence" name="city" required>
+                                <input type="text" id="residence" name="city" minlength="2" required>
                             </div>
                             <div class="form-pair">
                                 <label for="postal">Code postal</label>
@@ -61,12 +61,12 @@
 
                             <div class="form-pair">
                                 <label for="knowAssociation">Comment avez-vous connu notre association ?</label>
-                                <input type="text" id="knowAssociation" name="know_association" required>
+                                <input type="text" id="knowAssociation" name="know_association">
                             </div>
 
                             <div class="form-pair">
                                 <label for="motivation">Vos motivations pour choisir ce mode de logement</label>
-                                <textarea name="motivation" id="motivation" cols="4" rows="2" required></textarea>
+                                <textarea name="motivation" id="motivation"></textarea>
                             </div>
                             <div>
                                 <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
@@ -80,19 +80,19 @@
                             </div>
                             <div class="form-pair">
                                 <label for="education_level">Collégiale et cycle supérieur</label>
-                                <input type="text" name="education_level" id="education_level">
+                                <input type="text" name="education_level" id="education_level" minlength="2" required>
                             </div>
                             <div class="form-pair">
                                 <label for="stages">Stages, préciser</label>
-                                <input type="text" name="internships" id="stages">
+                                <input type="text" name="internships" id="stages" placeholder="Aucun stage">
                             </div>
                             <div class="form-pair">
                                 <label for="etablissement">Etablissement d'enseignement</label>
-                                <input type="text" name="establishment" id="etablissement">
+                                <input type="text" name="establishment" id="etablissement" minlength="2" required>
                             </div>
                             <div class="form-pair">
                                 <label for="end_of_studies">Durée d'étude restante</label>
-                                <input type="number" name="end_of_studies" id="end_of_studies" value="0" min="0" max="12">
+                                <input type="number" name="end_of_studies" id="end_of_studies" value="0" min="0" max="12" placeholder="Aucune information">
                             </div>
                             <div class="form-pair">
                                 <label for="date_of_arrival">Si vous êtes nouveau venu dans notre région, précisez votre date d'arrivée</label>
@@ -111,24 +111,24 @@
                             <div class="radio-group-1">
                                 <div class="form-pair">
                                     <label for="fumeur">Êtes-vous fumeur ?</label>
-                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="1">
+                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="1" required>
                                     <label for="fumeur_oui">Oui</label>
-                                    <input type="radio" id="fumeur_non" name="is_smoking" value="0">
+                                    <input type="radio" id="fumeur_non" name="is_smoking" value="0" required>
                                     <label for="fumeur_non">Non</label>
                                 </div>
                                 <br>
                                 <div class="form-pair">
                                     <label for="allergie">Avez-vous des allergies ?</label>
-                                    <input type="radio" id="allergie_oui" name="is_allergic" value="1">
+                                    <input type="radio" id="allergie_oui" name="is_allergic" value="1" required>
                                     <label for="allergie_oui">Oui</label>
-                                    <input type="radio" id="allergie_non" name="is_allergic" value="0">
+                                    <input type="radio" id="allergie_non" name="is_allergic" value="0" required>
                                     <label for="allergie_non">Non</label>
                                 </div>
                             </div>
                             <br>
                             <div class="form-pair">
                                 <label for="allergique">Précisez</label>
-                                <input type="search" name="allergies" id="allergique">
+                                <input type="search" name="allergies" id="allergique" placeholder="Aucune allergie">
                             </div>
                             <div class="form-pair">
                                 <label for="permis">Êtes-vous titulaire d'un permis de conduire ?</label>
@@ -179,7 +179,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div>
                                 <div>
                                     <h3>Précision selon votre choix de logement</h3>
                                 </div>
@@ -210,11 +210,11 @@
                             <div>
                                 <div class="form-pair">
                                     <label for="password">Mot de passe</label>
-                                    <input type="password" id="password" name="password" required>
+                                    <input type="password" id="password" name="password" minlength="8" required>
                                 </div>
                                 <div class="form-pair">
                                     <label for="password_repeat">Répéter le mot de passe</label>
-                                    <input type="password" id="password_repeat" name="password_repeat" required>
+                                    <input type="password" id="password_repeat" name="password_repeat" minlength="8" required>
                                 </div>
                             </div>
                             <div>
