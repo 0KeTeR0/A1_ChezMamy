@@ -116,6 +116,7 @@
                                     <input type="radio" id="fumeur_non" name="is_smoking" value="0">
                                     <label for="fumeur_non">Non</label>
                                 </div>
+                                <br>
                                 <div class="form-pair">
                                     <label for="allergie">Avez-vous des allergies ?</label>
                                     <input type="radio" id="allergie_oui" name="is_allergic" value="1">
@@ -124,8 +125,9 @@
                                     <label for="allergie_non">Non</label>
                                 </div>
                             </div>
-                            <div class="form-pair">
-                                <label for="allergique">Précisé</label>
+                            <br>
+                            <div class="form-pair" id="allergies_champ">
+                                <label for="allergique">Précisez</label>
                                 <input type="search" name="allergies" id="allergique">
                             </div>
                             <div class="form-pair">

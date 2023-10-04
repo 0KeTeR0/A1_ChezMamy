@@ -53,8 +53,7 @@ section .section-title {
     transition: var(--transition);
     cursor: pointer;
 }
-.bouton:hover,
-.bouton.btn-selected {
+.bouton:hover {
     filter: brightness(80%);
 }
 .bouton.btn-gray {
@@ -368,10 +367,13 @@ section.registerForm {
 .registerBox .form-group .bouton {
     padding: 15px;
 }
-.registerBox #registerChoice .bouton:hover {
+.registerBox #registerChoice .bouton:hover,
+.registerBox #registerChoice .bouton.btn-selected{
     background: var(--main-color);
     color: #fff;
 }
+
+#allergies_champ,
 .registerBox #student_form,
 .registerBox #senior_form,
 .registerBox div.form-group {
