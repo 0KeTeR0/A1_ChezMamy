@@ -69,6 +69,7 @@ function next_step(){
         }
         if(is_valid){
             cstep+=1;
+            document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
             document.getElementById("Etudiant_etape"+(cstep-1).toString()).classList.remove("show");
             document.getElementById("Etudiant_etape"+cstep.toString()).classList.add("show");
         }
@@ -81,6 +82,7 @@ function next_step(){
         }
         if(is_valid) {
             cstep+=1;
+            document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
             document.getElementById("Senior_etape" + (cstep - 1).toString()).classList.remove("show");
             document.getElementById("Senior_etape" + cstep.toString()).classList.add("show");
         }
@@ -93,6 +95,7 @@ function next_step(){
  */
 function previous_step(){
     cstep-=1;
+    document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
     if(selected=="student"){
         document.getElementById("Etudiant_etape"+(cstep+1).toString()).classList.remove("show");
         document.getElementById("Etudiant_etape"+cstep.toString()).classList.add("show");
