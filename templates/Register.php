@@ -216,6 +216,7 @@
                                 </div>
                             </div>
                             <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
                                 <input type="submit" class="bouton" name="registerStudent" value="Créer mon compte étudiant">
                             </div>
                         </div>
@@ -439,6 +440,7 @@
             </div>
         </section>
     </main>
+    <script src="../assets/js/register.js"></script>
 
 
 <?php $content = ob_get_clean(); ?>
