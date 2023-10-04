@@ -11,11 +11,13 @@
 
 /* ----------------------- CSS Général CSS ----------------------- */
 body {
+    position: relative;
     margin: 0;
     padding: 0;
     background: var(--bg-color);
     font-family: 'Roboto', "Arial", sans-serif;
-    overflow-x: hidden;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 section {
@@ -282,16 +284,14 @@ section.registerForm {
     position: relative;
     margin: 0 auto;
     padding: 10px 60px;
-    width: 100%;
-    max-width: 600px;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(50, 50, 50, .15);
 }
 .registerBox .registerStep {
     position: absolute;
-    top: 50px;
-    right: 60px;
+    top: 10px;
+    right: 30px;
     margin: 0;
     font-size: 16px;
     color: #7d7d7d;
@@ -302,6 +302,7 @@ section.registerForm {
     width: 100%;
 }
 .registerBox #registerChoice .bouton {
+    box-sizing: border-box;
     margin: 10px 0;
     padding: 15px 20px;
     font-size: 20px;

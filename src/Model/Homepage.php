@@ -5,5 +5,4 @@ use App\ChezMamy\Lib\DatabaseConnection;
 
 class Homepage
 {
-
 }
