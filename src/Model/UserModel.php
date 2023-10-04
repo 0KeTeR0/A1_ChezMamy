@@ -428,6 +428,6 @@ class UserModel
 
     public function setHasInternet(bool $has_internet): void {
         $this->has_internet = $has_internet;
-    }
+    }.
      */
 }
