@@ -183,11 +183,11 @@
                                 <div>
                                     <h3>Précision selon votre choix de logement</h3>
                                 </div>
-                                <div class="form-pair">
+                                <div class="form-pair" id="housing2">
                                     <label for="housing_2_availabilities">Pour la formule 2, vos disponibilités</label>
                                     <input type="text" id="housing_2_availabilities" name="housing_2_availabilities">
                                 </div>
-                                <div class="form-pair">
+                                <div class="form-pair" id="housing3">
                                     <label for="housing_3_budget">Pour la formule 3, votre budget maximum pour le loyer</label>
                                     <input type="number" id="housing_3_budget" name="housing_3_budget" min="0">
                                 </div>
