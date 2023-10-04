@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="form-pair">
+                            <div class="form-pair" id="allergies_champ">
                                 <label for="allergique">Précisez</label>
                                 <input type="search" name="allergies" id="allergique">
                             </div>
