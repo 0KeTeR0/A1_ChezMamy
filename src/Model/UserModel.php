@@ -35,7 +35,27 @@ class UserModel
     private ?string $housing_2_availabilities;
     private ?string $housing_3_budget;
     private ?string $preferences;
-
+   /*
+   private ?string $marital_status;
+    private bool $is_house;
+    private bool $is_landlord;
+    private bool $have_animal;
+    private ?string $animal;
+    private ?string $public_transport_distance;
+    private ?string $needs;
+    private ?string $passion_to_share;
+    private bool $can_stay_summer;
+    private ?string $profession;
+    private ?string $advantages_with_you;
+    private bool $has_kids;
+    private bool $has_grandkids;
+    private bool $is_family_present;
+    private ?string $is_family_ok;
+    private ?string $room_surface;
+    private bool $has_furniture;
+    private bool $can_clean;
+    private bool $has_internet;
+   */
 
 
 // Méthodes Getter
@@ -146,6 +166,85 @@ class UserModel
         return $this->preferences;
     }
 
+    /*
+     *  public function getMaritalStatus(): ?string {
+        return $this->marital_status;
+    }
+
+    public function getIsHouse(): bool {
+        return $this->is_house;
+    }
+
+    public function getIsLandlord(): bool {
+        return $this->is_landlord;
+    }
+
+    public function getHaveAnimal(): bool {
+        return $this->have_animal;
+    }
+
+    public function getAnimal(): ?string {
+        return $this->animal;
+    }
+
+    public function getPublicTransportDistance(): ?string {
+        return $this->public_transport_distance;
+    }
+
+    public function getNeeds(): ?string {
+        return $this->needs;
+    }
+
+    public function getPassionToShare(): ?string {
+        return $this->passion_to_share;
+    }
+
+    public function getCanStaySummer(): bool {
+        return $this->can_stay_summer;
+    }
+
+    public function getProfession(): ?string {
+        return $this->profession;
+    }
+
+    public function getAdvantagesWithYou(): ?string {
+        return $this->advantages_with_you;
+    }
+
+    public function getHasKids(): bool {
+        return $this->has_kids;
+    }
+
+    public function getHasGrandkids(): bool {
+        return $this->has_grandkids;
+    }
+
+    public function getIsFamilyPresent(): bool {
+        return $this->is_family_present;
+    }
+
+    public function getIsFamilyOk(): ?string {
+        return $this->is_family_ok;
+    }
+
+    public function getRoomSurface(): ?string {
+        return $this->room_surface;
+    }
+
+    public function getHasFurniture(): bool {
+        return $this->has_furniture;
+    }
+
+    public function getCanClean(): bool {
+        return $this->can_clean;
+    }
+
+    public function getHasInternet(): bool {
+        return $this->has_internet;
+    }
+
+     */
+
     // Méthodes Setter
 
     public function setEmail(?string $email): void {
@@ -254,4 +353,81 @@ class UserModel
     public function setPreferences(?string $preferencesQuartier): void {
         $this->preferences = $preferencesQuartier;
     }
+    /*
+     * public function setMaritalStatus(?string $marital_status): void {
+        $this->marital_status = $marital_status;
+    }
+
+    public function setIsHouse(bool $is_house): void {
+        $this->is_house = $is_house;
+    }
+
+    public function setIsLandlord(bool $is_landlord): void {
+        $this->is_landlord = $is_landlord;
+    }
+
+    public function setHaveAnimal(bool $have_animal): void {
+        $this->have_animal = $have_animal;
+    }
+
+    public function setAnimal(?string $animal): void {
+        $this->animal = $animal;
+    }
+
+    public function setPublicTransportDistance(?string $public_transport_distance): void {
+        $this->public_transport_distance = $public_transport_distance;
+    }
+
+    public function setNeeds(?string $needs): void {
+        $this->needs = $needs;
+    }
+
+    public function setPassionToShare(?string $passion_to_share): void {
+        $this->passion_to_share = $passion_to_share;
+    }
+
+    public function setCanStaySummer(bool $can_stay_summer): void {
+        $this->can_stay_summer = $can_stay_summer;
+    }
+
+    public function setProfession(?string $profession): void {
+        $this->profession = $profession;
+    }
+
+    public function setAdvantagesWithYou(?string $advantages_with_you): void {
+        $this->advantages_with_you = $advantages_with_you;
+    }
+
+    public function setHasKids(bool $has_kids): void {
+        $this->has_kids = $has_kids;
+    }
+
+    public function setHasGrandkids(bool $has_grandkids): void {
+        $this->has_grandkids = $has_grandkids;
+    }
+
+    public function setIsFamilyPresent(bool $is_family_present): void {
+        $this->is_family_present = $is_family_present;
+    }
+
+    public function setIsFamilyOk(?string $is_family_ok): void {
+        $this->is_family_ok = $is_family_ok;
+    }
+
+    public function setRoomSurface(?string $room_surface): void {
+        $this->room_surface = $room_surface;
+    }
+
+    public function setHasFurniture(bool $has_furniture): void {
+        $this->has_furniture = $has_furniture;
+    }
+
+    public function setCanClean(bool $can_clean): void {
+        $this->can_clean = $can_clean;
+    }
+
+    public function setHasInternet(bool $has_internet): void {
+        $this->has_internet = $has_internet;
+    }
+     */
 }
