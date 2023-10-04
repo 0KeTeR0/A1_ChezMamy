@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-pair">
                                 <label for="bdate">Date de naissance</label>
-                                <input type="date" id="bdate" name="date_of_birth" max="2008-01-01" required>
+                                <input type="date" id="bdate" name="date_of_birth" max="<?= ((new DateTime())->sub(new DateInterval('P18Y')))->format("Y/m/d") ?>" required>
                             </div>
                             <div class="form-pair">
                                 <label for="nationalité">Nationalité</label>
@@ -92,11 +92,11 @@
                             </div>
                             <div class="form-pair">
                                 <label for="end_of_studies">Durée d'étude restante</label>
-                                <input type="number" name="end_of_studies" id="end_of_studies" value="0" min="0" max="12" placeholder="Aucune information">
+                                <input type="number" name="end_of_studies" id="end_of_studies" value="0" min="0" max="12" required>
                             </div>
                             <div class="form-pair">
                                 <label for="date_of_arrival">Si vous êtes nouveau venu dans notre région, précisez votre date d'arrivée</label>
-                                <input type="date" name="date_of_arrival" id="date_of_arrival" min="<?= date('Y/m/d') ?>" > <!-- mettre la date actuelle en PHP pour min-->
+                                <input type="date" name="date_of_arrival" id="date_of_arrival" > <!-- mettre la date actuelle en PHP pour min-->
                             </div>
                             <div>
                                 <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
@@ -111,17 +111,17 @@
                             <div class="radio-group-1">
                                 <div class="form-pair">
                                     <label for="fumeur">Êtes-vous fumeur ?</label>
-                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="1" required>
+                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="1">
                                     <label for="fumeur_oui">Oui</label>
-                                    <input type="radio" id="fumeur_non" name="is_smoking" value="0" required>
+                                    <input type="radio" id="fumeur_non" name="is_smoking" value="0" checked>
                                     <label for="fumeur_non">Non</label>
                                 </div>
                                 <br>
                                 <div class="form-pair">
                                     <label for="allergie">Avez-vous des allergies ?</label>
-                                    <input type="radio" id="allergie_oui" name="is_allergic" value="1" required>
+                                    <input type="radio" id="allergie_oui" name="is_allergic" value="1">
                                     <label for="allergie_oui">Oui</label>
-                                    <input type="radio" id="allergie_non" name="is_allergic" value="0" required>
+                                    <input type="radio" id="allergie_non" name="is_allergic" value="0" checked>
                                     <label for="allergie_non">Non</label>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                                 <label for="permis">Êtes-vous titulaire d'un permis de conduire ?</label>
                                 <input type="radio" id="oui" name="can_drive" value="1">
                                 <label for="oui">Oui</label>
-                                <input type="radio" id="non" name="can_drive" value="0">
+                                <input type="radio" id="non" name="can_drive" value="0" checked>
                                 <label for="non">Non</label>
                             </div>
 
@@ -163,17 +163,17 @@
 
                             <div>
                                 <div class="form-pair">
-                                    <input type="radio" name="housing" id="lgmtGratuit" value="1" required>
+                                    <input type="radio" name="housing" id="lgmtGratuit" value="1" checked>
                                     <label for="lgmtGratuit">1-logement gratuit, en échange de présence soirs et nuits.</label>
                                     <span>Vos journées sont libres. Vous êtes présent le soir à l'heure du repas excepté une soirée par semaine, deux week-ends par mois du vendredi soir au dimanche soir et trois semaines de vacances entre septembre et juin.</span>
                                 </div>
                                 <div class="form-pair">
-                                    <input type="radio" name="housing" id="lgmtEco+" value="2" required>
+                                    <input type="radio" name="housing" id="lgmtEco+" value="2">
                                     <label for="lgmtEco+">2-Logement économique, avec une participation aux frais d'usage et d'échange de services</label>
                                     <span>Vous avez du temps et de la disponibilité au cœur de votre horaire de cours pour assurer ponctuellement des services en journée (sorties, theatre, lecture,...) ainsi qu'une présence régulière. Vous versez une participation mensuelle entre 125$ et 225$, selon les services offerts et les services utilisés.</span>
                                 </div>
                                 <div class="form-pair">
-                                    <input type="radio" name="housing" id="lgmtSolid" value="3" required>
+                                    <input type="radio" name="housing" id="lgmtSolid" value="3">
                                     <label for="lgmtSolid">3-Logement solidaire, en échange de loyer et veille passive</label>
                                     <span>Vos études ne vous permettent pas de donner du temps, mais vous assurez une veille passive et des services spontanés. Vous versez une indemnité d'occupation mensuelle entre 300$ et 425$, selon les caractéristiques du logement</span>
                                 </div>
@@ -184,11 +184,11 @@
                                     <h3>Précision selon votre choix de logement</h3>
                                 </div>
                                 <div class="form-pair" id="housing2">
-                                    <label for="housing_2_availabilities">Pour la formule 2, vos disponibilités</label>
+                                    <label for="housing_2_availabilities">Vos disponibilités</label>
                                     <input type="text" id="housing_2_availabilities" name="housing_2_availabilities">
                                 </div>
                                 <div class="form-pair" id="housing3">
-                                    <label for="housing_3_budget">Pour la formule 3, votre budget maximum pour le loyer</label>
+                                    <label for="housing_3_budget">Votre budget maximum pour le loyer</label>
                                     <input type="number" id="housing_3_budget" name="housing_3_budget" min="0">
                                 </div>
                                 <div class="form-pair">

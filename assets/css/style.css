@@ -65,6 +65,7 @@ label:has(+ input[required]):after {
     content: ' *';
     color: red;
 }
+textarea { resize: vertical; }
 input,
 textarea {
     display: block;
