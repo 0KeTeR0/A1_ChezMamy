@@ -26,7 +26,8 @@ class RegisterController
             //We verify which type of account needs to be created
             if (isset($input['registerStudent'])) {
                 //We then verify the necessary fields
-                if(!empty($input['email']) && !empty($input['last_name']) && !empty($input['first_name']) && !empty($input['date_of_birth'])&& !empty($input['phone'])&& !empty($input['nationality'])&& !empty($input['parents_address'])&& !empty($input['city'])&& !empty($input['postal_code'])&& !empty($input['education_level'])&& !empty($input['establishment'])&& !empty($input['end_of_studies'])&& !empty($input['is_smoking'])&& !empty($input['is_allergic'])&& !empty($input['can_drive'])&& !empty($input['housing'])&& !empty($input['password'])&& !empty($input['password_repeat']) && $this->verifyStudent($input)){
+                $verification=$this->verifyStudent($input);
+                if(!empty($input['email']) && !empty($input['last_name']) && !empty($input['first_name']) && !empty($input['date_of_birth'])&& !empty($input['phone'])&& !empty($input['nationality'])&& !empty($input['parents_address'])&& !empty($input['city'])&& !empty($input['postal_code'])&& !empty($input['education_level'])&& !empty($input['establishment'])&& !empty($input['end_of_studies'])&& !empty($input['is_smoking'])&& !empty($input['is_allergic'])&& !empty($input['can_drive'])&& !empty($input['housing'])&& !empty($input['password'])&& !empty($input['password_repeat']) && $verification==""){
 
                     //We create an object of the user class to work more easily with it.
                     $newUser = new UserModel();
@@ -69,7 +70,7 @@ class RegisterController
                         header('Location: index.php?action=login');
                     }
                 }
-                else throw new \Exception("Veuillez remplir tous les champs correctement.");
+                else throw new \Exception("Veuillez remplir tous les champs correctement :".$verification);
             }
             else throw new \Exception("Type de compte invalide");
 
@@ -84,39 +85,42 @@ class RegisterController
      * @param array $input new student data to verify
      * @return bool false if the data is incorrect, true if correct
      */
-    private function verifyStudent(array $input): bool {
+    private function verifyStudent(array $input): string {
         #A changer : faire en sorte que si un des tests est vrai alors les autres ne peuvent pas le remettre à faux
-        $result = true;
-        $result = ( filter_var($input['email'],FILTER_VALIDATE_EMAIL))&&$result;
-        $result = strlen($input['last_name'])>1&&$result;
-        $result = strlen($input['first_name'])>1&&$result;
-        $result = $this->verifyDate($input['date_of_birth'])&&$result;
-        $result = DateTime::createFromFormat('d/m/Y',$input['date_of_birth'])<((new DateTime())->modify('-18 year'))&&$result;
-        $result = strlen($input['nationality'])>1&&$result;
-        $result = preg_match("/^[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}$/", $input['phone'])&&$result;
-        $result = strlen($input['parents_address'])>1&&$result;
-        $result = strlen($input['city'])>1&&$result;
-        $result = (filter_var($input['postal_code'],FILTER_VALIDATE_INT))&&$result;
-        $result = strlen($input['education_level'])>1&&$result;
-        $result = strlen($input['establishment'])>1&&$result;
-        $result = $input['end_of_studies']>0&&$result;
+        $result = "";
+        if(!filter_var($input['email'],FILTER_VALIDATE_EMAIL)){$result ="Email invalide";}
+        if(strlen($input['last_name'])<=1){$result="Nom de famille invalide";}
+        if(strlen($input['first_name'])<=1){$result="Prenom invalide.";}
+        if(!$this->verifyDate($input['date_of_birth'])){$result="Date de naissance invalide";}
+        if(!DateTime::createFromFormat('d/m/Y',$input['date_of_birth'])<((new DateTime())->modify('-18 year'))){$result="Date de naissance invalide";}
+        if(strlen($input['nationality'])<=1){$result="Nationalité invalide.";}
+        if(!preg_match("/^[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}$/", $input['phone'])){$result="numéro de téléphone invalide.";}
+        if(strlen($input['parents_address'])<=1){$result="Addresse des parents invalide.";}
+        if(strlen($input['city'])>1){$result="Ville invalide.";}
+        if(!filter_var($input['postal_code'],FILTER_VALIDATE_INT)){$result="Code postal invalide.";}
+        if(strlen($input['education_level'])<=1){$result="Education invalide.";}
+        if(strlen($input['establishment'])<=1){$result="Etablissement invalide.";}
+        if($input['end_of_studies']>0){$result="Année restante d'étude invalide.";}
         if(strlen($input['date_of_arrival'])>1) {
-            $result = $this->verifyDate($input['date_of_arrival'])&&$result;
-            $result = DateTime::createFromFormat('d/m/Y',$input['date_of_arrival'])<(new DateTime())&&$result;
+            if(!$this->verifyDate($input['date_of_arrival'])){$result="Date d'arrivée invalide.";}
+            if(!DateTime::createFromFormat('d/m/Y',$input['date_of_arrival'])<(new DateTime())){$result="Date d'arrivée invalide.";}
         }
-        $result = filter_var($input['is_smoking'],FILTER_VALIDATE_BOOL)&&$result;
-        $result = filter_var($input['is_allergic'],FILTER_VALIDATE_BOOL)&&$result;
-        if($input['is_allergic']){$result=strlen($input['allergies'])>1;}
-        $result = filter_var($input['can_drive'],FILTER_VALIDATE_BOOL)&&$result;
+        if(!filter_var($input['is_smoking'],FILTER_VALIDATE_BOOL)){$result="Fume invalide.";}
+        if(!filter_var($input['is_allergic'],FILTER_VALIDATE_BOOL)){$result="Allergique invalide";}
+        if($input['is_allergic'])
+        {
+            if(strlen($input['allergies'])<=1){$result="Details allergies invalide.";}
+        }
+        if(filter_var($input['can_drive'],FILTER_VALIDATE_BOOL)){$result="Permis de conduire invalide.";}
 
-        $result = filter_var($input['housing'],FILTER_VALIDATE_INT)&&$result;
+        if(filter_var($input['housing'],FILTER_VALIDATE_INT)){$result="type d'hébergement invalide.";}
         if($input['housing']==2){
-            $result = strlen($input['housing_2_availabilities'])>1&&$result;
+            if(strlen($input['housing_2_availabilities'])<=1){$result="disponibilités pour l'hébergement participatif invalide.";}
         }
         if($input['housing']==3){
-            $result = strlen($input['housing_3_budget'])>1&&$result;
+            if(strlen($input['housing_3_budget'])<=1){$result="informations de budget pour l'hébergement invalide.";}
         }
-        $result = strlen($input['password'])>=8&&$result;
+        if(strlen($input['password'])<=8){$result="mot de passe invalide.";}
 
         return $result;
     }
