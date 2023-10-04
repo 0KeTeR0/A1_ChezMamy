@@ -53,7 +53,8 @@ section .section-title {
     transition: var(--transition);
     cursor: pointer;
 }
-.bouton:hover {
+.bouton:hover,
+.bouton.btn-selected {
     filter: brightness(80%);
 }
 .bouton.btn-gray {

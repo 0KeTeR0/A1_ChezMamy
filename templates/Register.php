@@ -15,7 +15,7 @@
                         <div id="jeSuisSenior" class="bouton">Sénior avec un logement à partager</div>
                     </div>
                     <!-- Formulaire de création de profil étudiant -->
-                    <form id="student_form" class="show" action="" method="post">
+                    <form id="student_form" action="" method="post">
                         <div>
                             <h1>Profil Etudiant</h1>
                         </div>
