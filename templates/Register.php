@@ -10,12 +10,12 @@
                 </div>
                 <div>
                     <div id="registerChoice">
-                        <label>Je suis...</label>
+                        <label>Je suis...</label><br>
                         <div id="jeSuisEtudiant" class="bouton">Étudiant à la recherche d’un logement</div>
                         <div id="jeSuisSenior" class="bouton">Sénior avec un logement à partager</div>
                     </div>
                     <!-- Formulaire de création de profil étudiant -->
-                    <form action="" method="post">
+                    <form id="student_form" action="" method="post">
                         <div>
                             <h1>Profil Etudiant</h1>
                         </div>
@@ -69,7 +69,8 @@
                                 <textarea name="motivation" id="motivation" cols="4" rows="2" required></textarea>
                             </div>
                             <div>
-                                <div class="bouton">Étape suivante</div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
@@ -98,6 +99,7 @@
                                 <input type="date" name="date_of_arrival" id="date_of_arrival" min="<?= date('Y/m/d') ?>" > <!-- mettre la date actuelle en PHP pour min-->
                             </div>
                             <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
                                 <div class="bouton">Étape suivante</div>
                             </div>
                         </div>
@@ -147,7 +149,8 @@
                                 <input type="text" name="why" id="but">
                             </div>
                             <div>
-                                <div class="bouton">Étape suivante</div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
@@ -193,7 +196,8 @@
                             </div>
 
                             <div>
-                                <div class="bouton">Étape suivante</div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
@@ -217,7 +221,7 @@
                         </div>
                     </form>
 
-                    <!--<form action="" method="post">
+                    <!--<form id="senior_form" action="" method="post">
                         <div>
                             <h1>Profil Sénior</h1>
                         </div>

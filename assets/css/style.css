@@ -29,6 +29,10 @@ section {
     padding: 30px 20%;
 }
 
+.show {
+    display: inline!important;
+}
+
 section .section-title {
     margin: 25px auto 10px;
     font-size: 30px;
@@ -52,7 +56,15 @@ section .section-title {
 .bouton:hover {
     filter: brightness(80%);
 }
+.bouton.btn-gray {
+    background: #e3e3e3;
+    color: #000;
+}
 
+label:has(+ input[required]):after {
+    content: ' *';
+    color: red;
+}
 input,
 textarea {
     display: block;
@@ -69,6 +81,14 @@ input:focus,
 textarea:focus {
     outline: none;
     border-color: var(--main-color);
+}
+input:valid,
+textarea:valid {
+    border-color: green!important;
+}
+input:not(:valid),
+textarea:not(:valid) {
+    border-color: red;
 }
 .form-pair {
     display: flex;
@@ -310,7 +330,7 @@ section.registerForm {
 .registerBox {
     position: relative;
     margin: 0 auto;
-    padding: 10px 60px;
+    padding: 10px 60px 50px;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(50, 50, 50, .15);
@@ -350,6 +370,9 @@ section.registerForm {
 .registerBox #registerChoice .bouton:hover {
     background: var(--main-color);
     color: #fff;
+}
+.registerBox #student_form,
+.registerBox #senior_form {
 }
 
 
