@@ -100,7 +100,7 @@
                             </div>
                             <div>
                                 <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
-                                <div class="bouton">Étape suivante</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
@@ -154,12 +154,12 @@
                             </div>
                         </div>
 
-                        <div id="Etudiant_etape4">
+                        <div id="Etudiant_etape4" class="form-group">
                             <div>
                                 <h2>Logement</h2>
                             </div>
 
-                            <div class="form-group">
+                            <div>
                                 <div class="form-pair">
                                     <input type="radio" name="housing" id="lgmtGratuit" value="1" required>
                                     <label for="lgmtGratuit">1-logement gratuit, en échange de présence soirs et nuits.</label>
@@ -201,7 +201,7 @@
                             </div>
                         </div>
 
-                        <div id="Etudiant_etape5">
+                        <div id="Etudiant_etape5" class="form-group">
                             <div>
                                 <h2>Mot de passe</h2>
                             </div>
@@ -216,6 +216,7 @@
                                 </div>
                             </div>
                             <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
                                 <input type="submit" class="bouton" name="registerStudent" value="Créer mon compte étudiant">
                             </div>
                         </div>
@@ -439,6 +440,7 @@
             </div>
         </section>
     </main>
+    <script src="../assets/js/register.js"></script>
 
 
 <?php $content = ob_get_clean(); ?>
