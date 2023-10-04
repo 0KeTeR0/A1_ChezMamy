@@ -20,6 +20,10 @@ body {
     max-width: 100%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
 section {
     margin: 0;
     padding: 30px 20%;
@@ -36,7 +40,7 @@ section .section-title {
 .bouton {
     display: inline-block;
     margin: 5px 0;
-    padding: 5px 20px;
+    padding: 7px 15px;
     border-radius: 5px;
     width: fit-content;
     color: #fff;
@@ -47,6 +51,29 @@ section .section-title {
 }
 .bouton:hover {
     filter: brightness(80%);
+}
+
+input,
+textarea {
+    display: block;
+    margin: 5px 0;
+    padding: 15px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Roboto', "Arial", sans-serif;
+    transition: var(--transition);
+}
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--main-color);
+}
+.form-pair {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
 }
 
 header{
@@ -296,6 +323,10 @@ section.registerForm {
     font-size: 16px;
     color: #7d7d7d;
 }
+
+.registerBox label {
+    font-weight: bold;
+}
 .registerBox #registerChoice {
     display: flex;
     flex-direction: column;
@@ -304,7 +335,7 @@ section.registerForm {
 .registerBox #registerChoice .bouton {
     box-sizing: border-box;
     margin: 10px 0;
-    padding: 15px 20px;
+    padding: 20px;
     font-size: 20px;
     font-weight: 500;
     width: 100%;
@@ -312,6 +343,9 @@ section.registerForm {
     background-color: #F4F4F4;
     text-align: left;
     filter: none!important;
+}
+.registerBox .form-group .bouton {
+    padding: 15px;
 }
 .registerBox #registerChoice .bouton:hover {
     background: var(--main-color);
@@ -432,7 +466,7 @@ footer nav div p{
     visibility: hidden;
     position: absolute;
     top: 20px;
-    right: 0px;
+    right: 0;
     cursor: pointer;
 }
 .closeMenu:before, .closeMenu:after {
