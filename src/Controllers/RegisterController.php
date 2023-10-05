@@ -92,11 +92,11 @@ class RegisterController
                     $newUser->setWhy(strip_tags($input['why']));
                     $newUser->setHousing($input['housing']);
                     $newUser->setPassword(strip_tags($input['password']));
-                    $newUser->setMaritalStatus($input['marital_status']);
+                    $newUser->setMarital_Status($input['marital_status']);
                     $newUser->setIs_House($input['is_house']);
                     $newUser->setIs_Landlord($input['is_landlord']);
                     $newUser->setHave_Animal($input['have_animal']);
-                    $newUser->setSetAnimal($input['animal']);
+                    $newUser->setAnimal($input['animal']);
                     $newUser->setPublic_Transport_Distance($input['public_transport_distance']);
                     $newUser->setNeeds($input['needs']);
                     $newUser->setPassion_To_Share($input['passion_to_share']);
@@ -161,6 +161,36 @@ class RegisterController
             if(strlen($input['housing_3_budget'])<=1){$result="informations de budget pour l'hébergement invalide.";}
         }
         else if(strlen($input['password'])<=8){$result="mot de passe invalide.";}
+
+        return $result;
+    }
+
+    private function verifySenior(array $input): string {
+        $result="";
+        if(!filter_var($input['email'], FILTER_VALIDATE_EMAIL)){$result="email invalide";}
+        else if(strlen($input['last_name'])<=1){$result="Nom de famille invalide";}
+        else if(strlen($input['first_name'])<=1){$result="Prénom invalide.";}
+        else if(!$this->verifyDate($input['date_of_birth']) || strtotime($input['date_of_birth']) > strtotime(((new DateTime())->sub(new \DateInterval('P18Y')))->format("Y/m/d"))){ $result="Date de naissance invalide"; }
+        else if(!preg_match("/^[0-9]{10}$/", $input['phone'])){$result="numéro de téléphone invalide.";}
+        else if(strlen($input['city'])<1){$result="Ville invalide.";}
+        else if(!filter_var($input['postal_code'],FILTER_VALIDATE_INT)){$result="Code postal invalide.";}
+        else if(!in_array($input['is_smoking'], [0, 1])){$result="Fume invalide.";}
+        else if(!is_numeric($input['housing'])){$result=$input['housing']."type d'hébergement invalide.";}
+        else if(strlen($input['password'])<=8){$result="mot de passe invalide.";}
+        else if(strlen($input['marital_status']<=1)){$result="situation invalide";}
+        else if(!in_array($input['is_house'],[0,1])){$result="type de maison invalide";}
+        else if(!in_array($input['is_landlord'],[0,1])){$result="propriétaire invalide";}
+        else if(!in_array($input['have_animal'],[0,1])){$result="avoir animal invalide";}
+        else if($input['have_animal'])
+        {
+            if(strlen($input['animal'])<=1){$result="animal invalide";}
+        }
+        else if(!in_array($input['can_stay_summer'],[0,1])){$result="rester l'été invalide";}
+        //else if(!in_array($input['is_family_present'],[0,1])){$result="présence de la famille invalide";}
+        else if(strlen($input['room_surface'])){$result="surface de pièce invalide";}
+        else if(!in_array($input['has_furniture'],[0,1])){$result="meublé invalide";}
+        else if(!in_array($input['can_clean'],[0,1])){$result="possibilité de nettoyer invalide";}
+        else if(!in_array($input['has_internet'],[0,1])){$result="internet invalide";}
 
         return $result;
     }
