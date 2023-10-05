@@ -356,6 +356,11 @@
                                 </div>
                             </div>
 
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
+                            </div>
+
                         </div>
 
                         <div id="Senior_etape2" class="form-group">
@@ -365,6 +370,10 @@
                             <div>
                                 <label for="textBesoin">Votre besoin :</label><br>
                                 <textarea class="textarea-1" id="textBesoin" name="needs"></textarea>
+                            </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
 
                         </div>
@@ -399,8 +408,11 @@
                                     <input type="radio" id="non_ete" name="can_stay_summer" value="non">
                                 </div>
                             </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
+                            </div>
                         </div>
-
 
 
                         <div id="Senior_etape4" class="form-group">
@@ -429,7 +441,10 @@
                                     <label for="textAvantage">Quel avantage aurait un étudiant à cohabiter avec vous ?</label>
                                     <textarea id="textAvantage" name="advantages_with_you"></textarea>
                                 </div>
-
+                            </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
@@ -474,6 +489,10 @@
                             <div>
                                 <label for="textFamille">Votre famille est-elle en accord avec votre décision ?</label><br>
                                 <textarea id="textFamille" name="is_family_ok"></textarea> <!--Pourquoi c'est textarea pour une question fermer (remplacer par radio oui non) -->
+                            </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
@@ -525,6 +544,10 @@
                                     <label for="non_internet">non</label>
                                     <input type="radio" id="non_internet" name="has_internet" value="non_internet">
                                 </div>
+                            </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
