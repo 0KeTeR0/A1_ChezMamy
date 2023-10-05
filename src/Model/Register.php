@@ -27,10 +27,12 @@ class Register
         // If the email is not yet used, ok, we add the user
         if($statement->rowCount() == 0) {
             if($newUser->GetPassword() == $password_repeat) {
-                if(empty($newUser->getDate_Of_Arrival())) $date_of_arrival = null; else $date_of_arrival = $newUser->getDate_Of_Arrival();
+                if($role_id == 1) {
+                    if(empty($newUser->getDate_Of_Arrival())) $date_of_arrival = null; else $date_of_arrival = $newUser->getDate_Of_Arrival();
+                    if(empty($newUser->getIs_Allergic())) $is_allergic = 0; else $is_allergic = 1;
+                    if(empty($newUser->getCan_Drive())) $can_drive = 0; else $can_drive = 1;
+                }
                 if(empty($newUser->getIs_Smoking())) $is_smoking = 0; else $is_smoking = 1;
-                if(empty($newUser->getIs_Allergic())) $is_allergic = 0; else $is_allergic = 1;
-                if(empty($newUser->getCan_Drive())) $can_drive = 0; else $can_drive = 1;
 
                 if($role_id==1)
                 {
@@ -45,7 +47,7 @@ class Register
                     $statement = $database->prepare(
                         "INSERT INTO Users (email,last_name, first_name,date_of_birth,phone,city,postal_code,know_association,is_smoking,why,housing,password,marital_status,is_house,is_landlord,have_animal,animal,public_transport_distance,passion_to_share,can_stay_summer,profession,advantages_with_you,has_kids,has_grandkids,is_family_present,is_family_ok,room_surface,has_furniture,can_clean,has_internet,id_role) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
                     );
-                    $res = $statement->execute([$newUser->getEmail(),$newUser->getLast_Name(),$newUser->getFirst_Name(),$newUser->getDate_Of_Birth(),$newUser->getPhone(),$newUser->getCity(),$newUser->getPostalCode(),$newUser->getKnow_Association(),$is_smoking,$newUser->getWhy(),$newUser->getHousing(), password_hash($newUser->getPassword(), PASSWORD_DEFAULT),$newUser->getMarital_Status(),$newUser->getIs_house(),$newUser->getIs_Landlord(),$newUser->getHave_Animal(),$newUser->getAnimal(),$newUser->getPublic_Transport_Distance(),$newUser->getPassion_To_Share(),$newUser->getCan_Stay_Summer(),$newUser->getProfession(),$newUser->getAdvantages_With_You(),$newUser->getHas_Kids(),$newUser->getHas_Grandkids(),$newUser->getIs_Family_Present(),$newUser->getIs_Family_Ok(),$newUser->getRoom_Surface(),$newUser->getHas_Furniture(),$newUser->getCan_Clean(),$newUser->getHas_Internet,$role_id]);
+                    $res = $statement->execute([$newUser->getEmail(),$newUser->getLast_Name(),$newUser->getFirst_Name(),$newUser->getDate_Of_Birth(),$newUser->getPhone(),$newUser->getCity(),$newUser->getPostalCode(),$newUser->getKnow_Association(),$is_smoking,$newUser->getWhy(),$newUser->getHousing(), password_hash($newUser->getPassword(), PASSWORD_DEFAULT),$newUser->getMarital_Status(),$newUser->getIs_house(),$newUser->getIs_Landlord(),$newUser->getHave_Animal(),$newUser->getAnimal(),$newUser->getPublic_Transport_Distance(),$newUser->getPassion_To_Share(),$newUser->getCan_Stay_Summer(),$newUser->getProfession(),$newUser->getAdvantages_With_You(),$newUser->getHas_Kids(),$newUser->getHas_Grandkids(),$newUser->getIs_Family_Present(),$newUser->getIs_Family_Ok(),$newUser->getRoom_Surface(),$newUser->getHas_Furniture(),$newUser->getCan_Clean(),$newUser->getHas_Internet(),$role_id]);
 
                 }
 

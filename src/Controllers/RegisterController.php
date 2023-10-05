@@ -113,6 +113,17 @@ class RegisterController
                     $newUser->setHas_Furniture($input['has_furniture']);
                     $newUser->setCan_Clean($input['can_clean']);
                     $newUser->setHas_Internet($input['has_internet']);
+
+                    //We add it to the database using the register model
+                    $register = new Register();
+                    $res = $register->execute($newUser,strip_tags($input['password_repeat']),2);
+
+                    //If everything went well we send the user to the login page
+                    if(!$res['success']) $message=($res['message']);
+                    else {
+                        $message=($res['message']);
+                        header('Location: index.php?p=login');
+                    }
                 }
                 else $message=("Veuillez remplir tous les champs correctement :".$verification);
             }
@@ -181,7 +192,7 @@ class RegisterController
         else if(!in_array($input['is_house'],[1,2])){$result="type de maison invalide";}
         else if(!in_array($input['is_landlord'],[0,1])){$result="propriétaire invalide";}
         else if(!in_array($input['have_animal'],[0,1])){$result="avoir animal invalide";}
-        else if($input['have_animal'])
+        else if($input['have_animal'] == 1)
         {
             if(strlen($input['animal'])<=1){$result="animal invalide";}
         }

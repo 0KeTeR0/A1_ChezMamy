@@ -66,7 +66,7 @@ label:has(+ input[required]):after {
     color: red;
 }
 textarea { resize: vertical; }
-input,
+.registerBox input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
     display: block;
@@ -79,24 +79,24 @@ select {
     font-family: 'Roboto', "Arial", sans-serif;
     transition: var(--transition);
 }
-input:focus,
+.registerBox input:focus,
 textarea:focus,
 select:focus {
     outline: none;
     border-color: var(--main-color);
 }
-input:valid,
+.registerBox input:valid,
 textarea:valid {
     border-color: green!important;
 }
-input:not(:valid),
-textarea:not(:valid) {
+.registerBox input:not([type="checkbox"]):not([type="radio"]):not(:valid),
+textarea:not([type="checkbox"]):not([type="radio"]):not(:valid) {
     border-color: red;
 }
-.form-pair {
+.form-pair { margin: 10px 0; }
+.form-pair:not(> input[type="checkbox"]):not(> input[type="radio"]) {
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
 }
 
 header{
