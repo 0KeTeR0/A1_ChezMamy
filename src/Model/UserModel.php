@@ -35,7 +35,7 @@ class UserModel
     private ?string $housing_2_availabilities;
     private ?string $housing_3_budget;
     private ?string $preferences;
-   /*
+
    private ?string $marital_status;
     private bool $is_house;
     private bool $is_landlord;
@@ -55,7 +55,7 @@ class UserModel
     private bool $has_furniture;
     private bool $can_clean;
     private bool $has_internet;
-   */
+
 
 
 // Méthodes Getter
@@ -166,20 +166,20 @@ class UserModel
         return $this->preferences;
     }
 
-    /*
-     *  public function getMaritalStatus(): ?string {
+
+    public function getMarital_Status(): ?string {
         return $this->marital_status;
     }
 
-    public function getIsHouse(): bool {
+    public function getIs_House(): bool {
         return $this->is_house;
     }
 
-    public function getIsLandlord(): bool {
+    public function getIs_Landlord(): bool {
         return $this->is_landlord;
     }
 
-    public function getHaveAnimal(): bool {
+    public function getHave_Animal(): bool {
         return $this->have_animal;
     }
 
@@ -187,7 +187,7 @@ class UserModel
         return $this->animal;
     }
 
-    public function getPublicTransportDistance(): ?string {
+    public function getPublic_Transport_Distance(): ?string {
         return $this->public_transport_distance;
     }
 
@@ -195,11 +195,11 @@ class UserModel
         return $this->needs;
     }
 
-    public function getPassionToShare(): ?string {
+    public function getPassion_To_Share(): ?string {
         return $this->passion_to_share;
     }
 
-    public function getCanStaySummer(): bool {
+    public function getCan_Stay_Summer(): bool {
         return $this->can_stay_summer;
     }
 
@@ -207,43 +207,42 @@ class UserModel
         return $this->profession;
     }
 
-    public function getAdvantagesWithYou(): ?string {
+    public function getAdvantages_With_You(): ?string {
         return $this->advantages_with_you;
     }
 
-    public function getHasKids(): bool {
+    public function getHas_Kids(): bool {
         return $this->has_kids;
     }
 
-    public function getHasGrandkids(): bool {
+    public function getHas_Grandkids(): bool {
         return $this->has_grandkids;
     }
 
-    public function getIsFamilyPresent(): bool {
+    public function getIs_Family_Present(): bool {
         return $this->is_family_present;
     }
 
-    public function getIsFamilyOk(): ?string {
+    public function getIs_Family_Ok(): ?string {
         return $this->is_family_ok;
     }
 
-    public function getRoomSurface(): ?string {
+    public function getRoom_Surface(): ?string {
         return $this->room_surface;
     }
 
-    public function getHasFurniture(): bool {
+    public function getHas_Furniture(): bool {
         return $this->has_furniture;
     }
 
-    public function getCanClean(): bool {
+    public function getCan_Clean(): bool {
         return $this->can_clean;
     }
 
-    public function getHasInternet(): bool {
+    public function getHas_Internet(): bool {
         return $this->has_internet;
     }
 
-     */
 
     // Méthodes Setter
 
@@ -353,20 +352,20 @@ class UserModel
     public function setPreferences(?string $preferencesQuartier): void {
         $this->preferences = $preferencesQuartier;
     }
-    /*
-     * public function setMaritalStatus(?string $marital_status): void {
+
+    public function setMarital_Status(?string $marital_status): void {
         $this->marital_status = $marital_status;
     }
 
-    public function setIsHouse(bool $is_house): void {
+    public function setIs_House(bool $is_house): void {
         $this->is_house = $is_house;
     }
 
-    public function setIsLandlord(bool $is_landlord): void {
+    public function setIs_Landlord(bool $is_landlord): void {
         $this->is_landlord = $is_landlord;
     }
 
-    public function setHaveAnimal(bool $have_animal): void {
+    public function setHave_Animal(bool $have_animal): void {
         $this->have_animal = $have_animal;
     }
 
@@ -374,7 +373,7 @@ class UserModel
         $this->animal = $animal;
     }
 
-    public function setPublicTransportDistance(?string $public_transport_distance): void {
+    public function setPublic_Transport_Distance(?string $public_transport_distance): void {
         $this->public_transport_distance = $public_transport_distance;
     }
 
@@ -382,11 +381,11 @@ class UserModel
         $this->needs = $needs;
     }
 
-    public function setPassionToShare(?string $passion_to_share): void {
+    public function setPassion_To_Share(?string $passion_to_share): void {
         $this->passion_to_share = $passion_to_share;
     }
 
-    public function setCanStaySummer(bool $can_stay_summer): void {
+    public function setCan_Stay_Summer(bool $can_stay_summer): void {
         $this->can_stay_summer = $can_stay_summer;
     }
 
@@ -394,40 +393,40 @@ class UserModel
         $this->profession = $profession;
     }
 
-    public function setAdvantagesWithYou(?string $advantages_with_you): void {
+    public function setAdvantages_With_You(?string $advantages_with_you): void {
         $this->advantages_with_you = $advantages_with_you;
     }
 
-    public function setHasKids(bool $has_kids): void {
+    public function setHas_Kids(bool $has_kids): void {
         $this->has_kids = $has_kids;
     }
 
-    public function setHasGrandkids(bool $has_grandkids): void {
+    public function setHas_Grandkids(bool $has_grandkids): void {
         $this->has_grandkids = $has_grandkids;
     }
 
-    public function setIsFamilyPresent(bool $is_family_present): void {
+    public function setIs_Family_Present(bool $is_family_present): void {
         $this->is_family_present = $is_family_present;
     }
 
-    public function setIsFamilyOk(?string $is_family_ok): void {
+    public function setIs_Family_Ok(?string $is_family_ok): void {
         $this->is_family_ok = $is_family_ok;
     }
 
-    public function setRoomSurface(?string $room_surface): void {
+    public function setRoom_Surface(?string $room_surface): void {
         $this->room_surface = $room_surface;
     }
 
-    public function setHasFurniture(bool $has_furniture): void {
+    public function setHas_Furniture(bool $has_furniture): void {
         $this->has_furniture = $has_furniture;
     }
 
-    public function setCanClean(bool $can_clean): void {
+    public function setCan_Clean(bool $can_clean): void {
         $this->can_clean = $can_clean;
     }
 
-    public function setHasInternet(bool $has_internet): void {
+    public function setHas_Internet(bool $has_internet): void {
         $this->has_internet = $has_internet;
-    }.
-     */
+    }
+
 }
