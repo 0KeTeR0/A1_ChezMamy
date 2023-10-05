@@ -72,6 +72,50 @@ class RegisterController
                 }
                 else throw new \Exception("Veuillez remplir tous les champs correctement :".$verification);
             }
+            //We verify if it's a senior
+            elseif(isset($input['registerSenior'])){
+                //We verify the fields
+                $verification=$this->verifySenior($input);
+                if($verification==""){
+
+                    //we fill a new user with the senior data
+                    $newUser = new UserModel();
+                    $newUser->setEmail(filter_var($input['email'],FILTER_SANITIZE_EMAIL));
+                    $newUser->setLast_Name(strip_tags($input['last_name']));
+                    $newUser->setFirst_Name(strip_tags($input['first_name']));
+                    $newUser->setDate_Of_Birth($input['date_of_birth']);
+                    $newUser->setPhone($input['phone']);
+                    $newUser->setCity(strip_tags($input['city']));
+                    $newUser->setPostalCode($input['postal_code']);
+                    $newUser->setKnow_Association(strip_tags($input['know_association']));
+                    $newUser->setIs_Smoking($input['is_smoking']);
+                    $newUser->setWhy(strip_tags($input['why']));
+                    $newUser->setHousing($input['housing']);
+                    $newUser->setPassword(strip_tags($input['password']));
+                    $newUser->setMaritalStatus($input['marital_status']);
+                    $newUser->setIs_House($input['is_house']);
+                    $newUser->setIs_Landlord($input['is_landlord']);
+                    $newUser->setHave_Animal($input['have_animal']);
+                    $newUser->setSetAnimal($input['animal']);
+                    $newUser->setPublic_Transport_Distance($input['public_transport_distance']);
+                    $newUser->setNeeds($input['needs']);
+                    $newUser->setPassion_To_Share($input['passion_to_share']);
+                    $newUser->setCan_Stay_Summer($input['can_stay_summer']);
+                    $newUser->setProfession($input['profession']);
+                    $newUser->setAdvantages_With_You($input['advantages_with_you']);
+                    $newUser->setHas_Kids($input['has_kids']);
+                    $newUser->setHas_Grandkids($input['has_grandkids']);
+                    $newUser->setIs_Family_Present($input['is_family_present']);
+                    $newUser->setIs_Family_Ok($input['is_family_ok']);
+                    $newUser->setRoom_Surface($input['room_surface']);
+                    $newUser->setHas_Furniture($input['has_furniture']);
+                    $newUser->setCan_Clean($input['can_clean']);
+                    $newUser->setHas_Internet($input['has_internet']);
+                }
+
+            }
+
+
             else throw new \Exception("Type de compte invalide");
 
         }
