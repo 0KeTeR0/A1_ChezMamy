@@ -43,12 +43,12 @@
                                 <input type="text" name="nationality" id="nationalité" required>
                             </div>
                             <div class="form-pair">
-                                <label for="num">Téléphone</label>
-                                <input type="tel" id="num" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}" required>
+                                <label for="num_etudiant">Téléphone</label>
+                                <input type="tel" id="num_etudiant" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}" required>
                             </div>
                             <div class="form-pair">
-                                <label for="mail">Adresse email <i>(identifiant de connexion)</i></label>
-                                <input type="email" id="mail" name="email" placeholder="exemple@gmail.com" required>
+                                <label for="mail_etudiant">Adresse email <i>(identifiant de connexion)</i></label>
+                                <input type="email" id="mail_etudiant" name="email" placeholder="exemple@gmail.com" required>
                             </div>
                             <div class="form-pair">
                                 <label for="AdressePrt">Adresse des parents</label>
@@ -59,8 +59,8 @@
                                 <input type="text" id="residence" name="city" minlength="2" required>
                             </div>
                             <div class="form-pair">
-                                <label for="postal">Code postal</label>
-                                <input type="text" id="postal" name="postal_code" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
+                                <label for="postal_e">Code postal</label>
+                                <input type="text" id="postal_e" name="postal_code" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
                             </div>
 
                             <div class="form-pair">
@@ -115,9 +115,9 @@
                             <div class="radio-group-1">
                                 <div class="form-pair">
                                     <label for="fumeur">Êtes-vous fumeur ?</label>
-                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="1">
+                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="oui">
                                     <label for="fumeur_oui">Oui</label>
-                                    <input type="radio" id="fumeur_non" name="is_smoking" value="0" checked>
+                                    <input type="radio" id="fumeur_non" name="is_smoking" value="non" checked>
                                     <label for="fumeur_non">Non</label>
                                 </div>
                                 <br>
@@ -270,12 +270,12 @@
                                 <input type="text" id="city" name="city">
                             </div>
                             <div>
-                                <label for="postal">Code postal</label>
-                                <input type="text" id="postal" name="postal_code" maxlength="5" minlength="5" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
+                                <label for="postal_s">Code postal</label>
+                                <input type="text" id="postal_s" name="postal_code" maxlength="5" minlength="5" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
                             </div>
                             <div>
-                                <label for="num">Numéro de telephone</label>
-                                <input type="tel" id="num" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}" required>
+                                <label for="num_senior">Numéro de telephone</label>
+                                <input type="tel" id="num_senior" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}" required>
                             </div>
 
                             <div class="radio-group-2">
@@ -301,8 +301,8 @@
                             </div>
 
                             <div>
-                                <label for="mail">Adresse courriel :</label>
-                                <input type="email" id="mail" name="email" placeholder="exemple@gmail.com" required>
+                                <label for="mail_senior">Adresse courriel :</label>
+                                <input type="email" id="mail_senior" name="email" placeholder="exemple@gmail.com" required>
                             </div>
 
                             <div class="radio-group-4">
@@ -339,12 +339,12 @@
                             <div class="radio-group-5">
                                 <label>Êtes-vous fumeur ?</label>
                                 <div>
-                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="oui">
-                                    <label for="fumeur_oui">Oui</label>
+                                    <input type="radio" id="fumeur_senior_oui" name="is_smoking" value="oui">
+                                    <label for="fumeur_senior_oui">Oui</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="fumeur_non" name="is_smoking" value="non">
-                                    <label for="fumeur_non">Non</label>
+                                    <input type="radio" id="fumeur_senior_non" name="is_smoking" value="non">
+                                    <label for="fumeur_senior_non">Non</label>
                                 </div>
                             </div>
 
