@@ -1,12 +1,10 @@
 <?php $title = "Page d'inscription"; ?>
-<?php ob_start() ?>
+<?php ob_start(); ?>
 
     <main>
-        <section id="error_message" class="alert">
-            <h3><?php echo $message; ?></h3>
-        </section>
 
         <section class="registerForm">
+            <?= $message ?>
             <div class="registerBox">
                 <div>
                     <h1 class="section-title">Création de profil</h1>

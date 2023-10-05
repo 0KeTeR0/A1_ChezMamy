@@ -119,18 +119,15 @@ class RegisterController
                     $res = $register->execute($newUser,strip_tags($input['password_repeat']),2);
 
                     //If everything went well we send the user to the login page
-                    if(!$res['success']) $message=($res['message']);
-                    else {
-                        $message=($res['message']);
-                        header('Location: index.php?p=login');
-                    }
+                    $message = "<div id='error_message' class='alert alert-error'><p>".$res['message']."</p></div>";
+
+                    if($res['success']) header('Location: index.php?p=login');
                 }
                 else $message=("Veuillez remplir tous les champs correctement :".$verification);
             }
             else $message=("Type de compte invalide");
 
         }
-
         require('templates/Register.php');
     }
 

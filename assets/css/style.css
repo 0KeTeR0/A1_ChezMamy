@@ -41,6 +41,21 @@ section .section-title {
     color: var(--main-color);
 }
 
+.alert {
+    position: relative;
+    width: 100%;
+    margin: 30px auto;
+    padding: 5px 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+.alert.alert-error {
+    color: #cf3636;
+    background: #ffdede;
+    border: 1px solid #cf3636;
+}
 .bouton {
     display: inline-block;
     margin: 5px 0;
