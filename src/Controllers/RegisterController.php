@@ -68,6 +68,7 @@ class RegisterController
                     //If everything went well we send the user to the login page
                     if(!$res['success']) $message=($res['message']);
                     else {
+                        $message=($res['message']);
                         header('Location: index.php?p=login');
                     }
                 }
