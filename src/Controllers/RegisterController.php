@@ -114,8 +114,6 @@ class RegisterController
                 }
 
             }
-
-
             else throw new \Exception("Type de compte invalide");
 
         }
