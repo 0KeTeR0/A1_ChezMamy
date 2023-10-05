@@ -275,7 +275,7 @@
                             </div>
                             <div>
                                 <label for="num">Numéro de telephone</label>
-                                <input type="tel" id="num" name="phone" placeholder="Au format 00-00-00-00-00" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required>
+                                <input type="tel" id="num" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}" required>
                             </div>
 
                             <div class="radio-group-2">
@@ -450,7 +450,7 @@
                             </div>
                         </div>
 
-                        <div id="Senior_etape5" class="">
+                        <div id="Senior_etape5" class="form-group">
                             <div>
                                 <h2>Votre entourage</h2>
                             </div>
