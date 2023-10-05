@@ -67,7 +67,8 @@ label:has(+ input[required]):after {
 }
 textarea { resize: vertical; }
 input,
-textarea {
+textarea,
+select {
     display: block;
     margin: 5px 0;
     padding: 15px;
@@ -79,7 +80,8 @@ textarea {
     transition: var(--transition);
 }
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
     outline: none;
     border-color: var(--main-color);
 }

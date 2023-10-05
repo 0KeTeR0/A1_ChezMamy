@@ -75,7 +75,7 @@ class RegisterController
                 else $message=("Veuillez remplir tous les champs correctement :".$verification);
             }
             //We verify if it's a senior
-            elseif(isset($input['registerSenior'])){
+            else if(isset($input['registerSenior'])){
                 //We verify the fields
                 $verification=$this->verifySenior($input);
                 if($verification==""){
@@ -114,7 +114,7 @@ class RegisterController
                     $newUser->setCan_Clean($input['can_clean']);
                     $newUser->setHas_Internet($input['has_internet']);
                 }
-
+                else $message=("Veuillez remplir tous les champs correctement :".$verification);
             }
             else $message=("Type de compte invalide");
 
@@ -142,7 +142,7 @@ class RegisterController
         else if(!filter_var($input['postal_code'],FILTER_VALIDATE_INT)){$result="Code postal invalide.";}
         else if(strlen($input['education_level'])<=1){$result="Education invalide.";}
         else if(strlen($input['establishment'])<=1){$result="Etablissement invalide.";}
-        else if($input['end_of_studies']>0){$result="Année restante d'étude invalide.";}
+        else if($input['end_of_studies']<0){$result="Année restante d'étude invalide.";}
         else if(strlen($input['date_of_arrival'])>1) {
             if(!$this->verifyDate($input['date_of_arrival']) || !DateTime::createFromFormat('d/m/Y',$input['date_of_arrival'])<(new DateTime())){$result="Date d'arrivée invalide.";}
         }
@@ -177,8 +177,8 @@ class RegisterController
         else if(!in_array($input['is_smoking'], [0, 1])){$result="Fume invalide.";}
         else if(!is_numeric($input['housing'])){$result=$input['housing']."type d'hébergement invalide.";}
         else if(strlen($input['password'])<=8){$result="mot de passe invalide.";}
-        else if(strlen($input['marital_status']<=1)){$result="situation invalide";}
-        else if(!in_array($input['is_house'],[0,1])){$result="type de maison invalide";}
+        else if(strlen($input['marital_status']<1)){$result="situation invalide";}
+        else if(!in_array($input['is_house'],[1,2])){$result="type de maison invalide";}
         else if(!in_array($input['is_landlord'],[0,1])){$result="propriétaire invalide";}
         else if(!in_array($input['have_animal'],[0,1])){$result="avoir animal invalide";}
         else if($input['have_animal'])
@@ -186,8 +186,8 @@ class RegisterController
             if(strlen($input['animal'])<=1){$result="animal invalide";}
         }
         else if(!in_array($input['can_stay_summer'],[0,1])){$result="rester l'été invalide";}
-        //else if(!in_array($input['is_family_present'],[0,1])){$result="présence de la famille invalide";}
-        else if(strlen($input['room_surface'])){$result="surface de pièce invalide";}
+        else if(!in_array($input['is_family_present'],[1,2,3])){$result="présence de la famille invalide";}
+        else if(!is_numeric($input['room_surface'])){$result="surface de pièce invalide";}
         else if(!in_array($input['has_furniture'],[0,1])){$result="meublé invalide";}
         else if(!in_array($input['can_clean'],[0,1])){$result="possibilité de nettoyer invalide";}
         else if(!in_array($input['has_internet'],[0,1])){$result="internet invalide";}
