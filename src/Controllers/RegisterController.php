@@ -21,6 +21,7 @@ class RegisterController
      */
     public function execute(?array $input)
     {
+        $message="";
         //If the input contains information
         if(count($input) > 0) {
             //We verify which type of account needs to be created
@@ -65,12 +66,12 @@ class RegisterController
                     $res = $register->execute($newUser,strip_tags($input['password_repeat']),1);
 
                     //If everything went well we send the user to the login page
-                    if(!$res['success']) throw new \Exception($res['message']);
+                    if(!$res['success']) $message=($res['message']);
                     else {
                         header('Location: index.php?p=login');
                     }
                 }
-                else throw new \Exception("Veuillez remplir tous les champs correctement :".$verification);
+                else $message=("Veuillez remplir tous les champs correctement :".$verification);
             }
             //We verify if it's a senior
             elseif(isset($input['registerSenior'])){
@@ -114,9 +115,7 @@ class RegisterController
                 }
 
             }
-
-
-            else throw new \Exception("Type de compte invalide");
+            else $message=("Type de compte invalide");
 
         }
 

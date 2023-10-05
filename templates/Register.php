@@ -229,90 +229,93 @@
                             <h1>Profil Sénior</h1>
                         </div>
 
-                        <div id="" class="" >
+                        <div id="Senior_etape1" class="form-group" >
                             <div>
-                                <label for="fname">Prénom:</label>
-                                <input type="text" id="fname" name="fname" autofocus required>
+                                <h2>Identité</h2>
                             </div>
                             <div>
-                                <label for="lname">Nom:</label>
-                                <input type="text" id="lname" name="lname" required>
+                                <label for="first_name">Prénom:</label>
+                                <input type="text" id="first_name" name="first_name" autofocus required>
                             </div>
                             <div>
-                                <label for="bdate">Date de naissance:</label>
-                                <input type="date" id="bdate" name="bdate" max="2008-01-01">
-                            </div>
-
-                            <div class="checkbox-group-1">
-                                <div>
-                                    <label for="vitSeul">Vit seul</label>
-                                    <input type="radio" id="vitSeul" name="Situation_Social">
-                                </div>
-                                <div>
-                                    <label for="enCouple">En couple</label>
-                                    <input type="radio" id="enCouple" name="Situation_Social">
-                                </div>
-                                <div>
-                                    <label for="Autres">Autres</label>
-                                    <input type="radio" id="Autres" name="Situation_Social">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label for="residence">Ville</label>
-                                <input type="text" id="residence" name="residence">
+                                <label for="last_name">Nom:</label>
+                                <input type="text" id="last_name" name="last_name" required>
                             </div>
                             <div>
-                                <label for="postal">Code postal</label>
-                                <input type="text" id="postal" name="postal" maxlength="5" minlength="5" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
-                            </div>
-                            <div>
-                                <label for="num">Numéro de telephone</label>
-                                <input type="tel" id="num" name="num" placeholder="Au format 00-00-00-00-00" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required>
+                                <label for="date_of_brith">Date de naissance:</label>
+                                <input type="date" id="date_of_brith" name="date_of_brith" max="2008-01-01">
                             </div>
 
                             <div class="radio-group-1">
                                 <div>
-                                    <input type="radio" id="Maison" name="nature de la residence" value="Maison">
-                                    <label for="Maison">Maison</label>
+                                    <label for="vitSeul">Vit seul</label>
+                                    <input type="radio" id="vitSeul" value="1" name="marital_status">
                                 </div>
                                 <div>
-                                    <input type="radio" id="Appartement" name="nature de la residence" value="Appartement">
-                                    <label for="Appartement">Appartement</label>
+                                    <label for="enCouple">En couple</label>
+                                    <input type="radio" id="enCouple" value="2" name="marital_status">
                                 </div>
+                                <div>
+                                    <label for="Autres">Autres</label>
+                                    <input type="radio" id="Autres" value="3" name="marital_status">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="city">Ville</label>
+                                <input type="text" id="city" name="city">
+                            </div>
+                            <div>
+                                <label for="postal">Code postal</label>
+                                <input type="text" id="postal" name="postal_code" maxlength="5" minlength="5" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
+                            </div>
+                            <div>
+                                <label for="num">Numéro de telephone</label>
+                                <input type="tel" id="num" name="phone" placeholder="Au format 00-00-00-00-00" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}" required>
                             </div>
 
                             <div class="radio-group-2">
                                 <div>
-                                    <input type="radio" id="Propriétaire" name="type de possesion" value="Propriétaire">
+                                    <input type="radio" id="Maison" name="is_house" value="Maison">
+                                    <label for="Maison">Maison</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="Appartement" name="is_house" value="Appartement">
+                                    <label for="Appartement">Appartement</label>
+                                </div>
+                            </div>
+
+                            <div class="radio-group-3">
+                                <div>
+                                    <input type="radio" id="Propriétaire" name="is_landlord" value="Propriétaire">
                                     <label for="Propriétaire">Propriétaire</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="Locataire" name="type de possesion" value="Locataire">
+                                    <input type="radio" id="Locataire" name=" is_landlord" value="Locataire">
                                     <label for="Locataire">Locataire</label>
                                 </div>
                             </div>
 
                             <div>
                                 <label for="mail">Adresse courriel :</label>
-                                <input type="email" id="mail" name="mail" placeholder="exemple@gmail.com" required>
+                                <input type="email" id="mail" name="email" placeholder="exemple@gmail.com" required>
                             </div>
 
-                            <div class="radio-group-3">
+                            <div class="radio-group-4">
                                 <label>avez-vous un animal ?</label>
                                 <div>
-                                    <input type="radio" id="oui" name="animal de compagnie" value="Oui">
-                                    <label for="oui">Oui</label>
+                                    <input type="radio" id="animal_oui" name="have_animal" value="oui">
+                                    <label for="animal_oui">Oui</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="non" name="animal de compagnie" value="non">
-                                    <label for="non">Non</label>
+                                    <input type="radio" id="animal_non" name="have_animal" value="non">
+                                    <label for="animal_non">Non</label>
                                 </div>
                             </div>
 
                             <div class="Select-animal">
                                 <label for="Animaux">Si oui, choisir :</label>
-                                <select name="animaux domestiques" id="Animaux">
+                                <select name="animal" id="Animaux">
                                     <option value="aucun">Aucun</option>
                                     <option value="Chien">Chien</option>
                                     <option value="Chat">Chat</option>
@@ -329,70 +332,57 @@
                                 </select>
                             </div>
 
-                            <div class="radio-group-4">
+                            <div class="radio-group-5">
                                 <label>Êtes-vous fumeur ?</label>
                                 <div>
-                                    <input type="radio" id="oui" name="fumeur" value="oui">
-                                    <label for="oui">Oui</label>
+                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="oui">
+                                    <label for="fumeur_oui">Oui</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="non" name="fumeur" value="non">
-                                    <label for="non">Non</label>
+                                    <input type="radio" id="fumeur_non" name="is_smoking" value="non">
+                                    <label for="fumeur_non">Non</label>
                                 </div>
                             </div>
 
                             <div>
                                 <label for="distanceTransport">Transport en commun les plus proches (distance en Km) :</label>
-                                <input type="number" id="distanceTransport" name="distanceTransport" min="0" max="99" value="0" >
+                                <input type="number" id="distanceTransport" name="public_transport_distance" min="0" max="99" value="0" >
                             </div>
 
-                            <div class="checkbox-group-2">
-                                <label>Comment avez-vous connu notre association ?</label>
+                            <div>
                                 <div>
-                                    <label for="Bouche_oreille">Bouche_oreille</label>
-                                    <input type="checkbox" id="Bouche_oreille">
-                                </div>
-                                <div>
-                                    <label for="journaux">journaux</label>
-                                    <input type="checkbox" id="journaux">
-                                </div>
-                                <div>
-                                    <label for="internet">internet</label>
-                                    <input type="checkbox" id="internet">
+                                    <label for="notoriety">Comment avez-vous connu notre association ?</label>
+                                    <input type="text" id="notoriety" name="know_association">
                                 </div>
                             </div>
 
                             <div>
-                                <label for="notoriety">Autres :</label>
-                                <input type="text" id="notoriety" name="notoriety">
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
+
                         </div>
 
-                        <div id="" class="">
+                        <div id="Senior_etape2" class="form-group">
                             <div>
                                 <h2>Nature des services ou présence</h2>
                             </div>
                             <div>
-                                <label for="textBesion">Votre besoin :</label><br>
-                                <textarea class="textarea-1" id="textBesion"></textarea>
+                                <label for="textBesoin">Votre besoin :</label><br>
+                                <textarea class="textarea-1" id="textBesoin" name="needs"></textarea>
                             </div>
-                            <div class="checkbox-group-3">
-                                <div>
-                                    <label for="initiation_info">initiation informatique</label>
-                                    <input type="checkbox" id="initiation_info">
-                                </div>
-                                <div>
-                                    <label for="langue">langue étrangère</label>
-                                    <input type="checkbox" id="langue">
-                                </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
+
                         </div>
 
-                        <div id="" class="">
+                        <div id="Senior_etape3" class="form-group">
                             <div>
                                 <h2>Logement</h2>
                             </div>
-                            <div class="checkbox-group-4">
+                            <div class="radio-group-6">
                                 <div>
                                     <input type="radio" name="housing" id="gratuit" value="1">
                                     <label for="gratuit">1 - Logement gratuit, en échange de présence soirs et nuits.</label>
@@ -407,22 +397,25 @@
                                 </div>
 
                             </div>
-                            <div class="radio-group-5">
-                                <label for="vacances été">L'étudiant peut-il demeurer pendant la session d'été ?</label>
+                            <div class="radio-group-7">
+                                <label >L'étudiant peut-il demeurer pendant la session d'été ?</label>
                                 <div>
                                     <label for="oui_ete">Oui</label>
-                                    <input type="radio" id="oui_ete" name="vacances été" value="Oui">
+                                    <input type="radio" id="oui_ete" name="can_stay_summer" value="oui">
                                 </div>
                                 <div>
                                     <label for="non_ete">Non</label>
-                                    <input type="radio" id="non_ete" name="vacances été" value="non">
+                                    <input type="radio" id="non_ete" name="can_stay_summer" value="non">
                                 </div>
+                            </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
 
-
-                        <div id="" class="">
+                        <div id="Senior_etape4" class="form-group">
                             <div>
                                 <h2>Mieux vous connaître</h2>
                             </div>
@@ -430,73 +423,80 @@
                             <div class="textarea-group-1">
                                 <div>
                                     <label for="textInteret">Vos centres d'intérêts :</label>
-                                    <textarea id="textInteret"></textarea>
+                                    <textarea id="textInteret" name="interests"></textarea>
                                 </div>
                                 <div>
                                     <label for="textPassion">Votre passion a partagé :</label>
-                                    <textarea id="textPassion"></textarea>
+                                    <textarea id="textPassion" name="passion_to_share"></textarea>
                                 </div>
                                 <div>
                                     <label for="textProfession">Avez-vous exercé une profession ? Si oui, laquelle ?</label>
-                                    <textarea id="textProfession"></textarea>
+                                    <textarea id="textProfession" name="profession"></textarea>
                                 </div>
                                 <div>
                                     <label for="textCohabitation">Qu'est-ce qui vous pousse à rechercher la cohabitation avec un étudiant ?</label>
-                                    <textarea id="textCohabitation"></textarea>
+                                    <textarea id="textCohabitation" name="why"></textarea>
                                 </div>
                                 <div>
                                     <label for="textAvantage">Quel avantage aurait un étudiant à cohabiter avec vous ?</label>
-                                    <textarea id="textAvantage"></textarea>
+                                    <textarea id="textAvantage" name="advantages_with_you"></textarea>
                                 </div>
-
+                            </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
-                        <div id="" class="">
+                        <div id="Senior_etape5" class="">
                             <div>
                                 <h2>Votre entourage</h2>
                             </div>
-                            <div class="radio-group-6">
+                            <div class="radio-group-8">
                                 <label for="enfants">Avez-vous des enfants ?</label>
                                 <div>
                                     <label for="oui_enfants">oui</label>
-                                    <input type="radio" id="oui_enfants" name="enfants" value="oui_enfants">
+                                    <input type="radio" id="oui_enfants" name="has_kids" value="oui_enfants">
                                 </div>
                                 <div>
                                     <label for="non_enfants">non</label>
-                                    <input type="radio" id="non_enfants" name="enfants" value="non_enfants">
+                                    <input type="radio" id="non_enfants" name="has_kids" value="non_enfants">
                                 </div>
                                 <div>
                                     <label for="enfants++">Des petits enfants :</label>
                                 </div>
                                 <div>
                                     <label for="oui_enfants++">oui</label>
-                                    <input type="radio" id="oui_enfants++" name="enfants++" value="oui_enfants++">
+                                    <input type="radio" id="oui_enfants++" name="has_grandkids" value="oui_enfants++">
                                 </div>
                                 <div>
                                    <label for="non_enfants++">non</label>
-                                   <input type="radio" id="non_enfants++" name="enfants++" value="non_enfants++">
+                                   <input type="radio" id="non_enfants++" name="has_grandkids" value="non_enfants++">
                                 </div>
                                 <div>
                                     <label for="Presence_fml">Famille très présente</label>
-                                    <input type="radio" id="Presence_fml" name="Presence_fml" value="trés">
+                                    <input type="radio" id="Presence_fml" name="is_family_present" value="trés">
                                 </div>
                                 <div>
                                     <label for="presence">Présente</label>
-                                    <input type="radio" id="presence" name="Presence_fml" value="Présente">
+                                    <input type="radio" id="presence" name="is_family_present" value="Présente">
                                 </div>
                                 <div>
                                     <label for="peu">Peu présente</label>
-                                    <input type="radio" id="peu" name="Presence_fml" value="Peu">
+                                    <input type="radio" id="peu" name="is_family_present" value="Peu">
                                 </div>
                             </div>
                             <div>
                                 <label for="textFamille">Votre famille est-elle en accord avec votre décision ?</label><br>
-                                <textarea id="textFamille"></textarea> <!--Pourquoi c'est textarea pour une question fermer (remplacer par radio oui non) -->
+                                <textarea id="textFamille" name="is_family_ok"></textarea> <!--Pourquoi c'est textarea pour une question fermer (remplacer par radio oui non) -->
+                            </div>
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
                         </div>
 
-                        <div>
+                        <div id="Senior_etape6" class="form-group">
                             <div>
                                 <h2>Caractéristique de la chambre</h2>
                             </div>
@@ -504,49 +504,51 @@
                             <div>
                                 <label for="Surface">Surface de la chambre :</label>
                                 <div>
-                                    <input type="number" name="Surface" id="Surface" value="5" min="5" max="99">
+                                    <input type="number" name="room_surface" id="Surface" value="5" min="5" max="99">
                                     <label for="Surface">m²</label>
                                 </div>
 
                             </div>
 
-                            <div class="radio-group-7">
+                            <div class="radio-group-9">
                                 <div>
                                     <label for="Meubles">Meublée :</label>
                                 </div>
                                 <div>
                                     <label for="oui_Meubles">oui</label>
-                                    <input type="radio" id="oui_Meubles" name="Meubles" value="oui_Meubles">
+                                    <input type="radio" id="oui_Meubles" name="has_furniture" value="oui_Meubles">
                                 </div>
                                 <div>
                                     <label for="non_Meubles">non</label>
-                                    <input type="radio" id="non_Meubles" name="Meubles" value="non_Meubles">
+                                    <input type="radio" id="non_Meubles" name="has_furniture" value="non_Meubles">
                                 </div>
                                 <div>
                                     <label for="lavage">Appareils pour lavage disponible ?</label>
                                 </div>
                                 <div>
                                     <label for="oui_lavage">oui</label>
-                                    <input type="radio" id="oui_lavage" name="lavage" value="oui_lavage">
+                                    <input type="radio" id="oui_lavage" name="can_clean" value="oui_lavage">
                                 </div>
                                <div>
                                    <label for="non_lavage">non</label>
-                                   <input type="radio" id="non_lavage" name="lavage" value="non_lavage">
+                                   <input type="radio" id="non_lavage" name="can_clean" value="non_lavage">
                                </div>
                                 <div>
                                     <label for="internet">Internet disponible ?</label>
                                 </div>
                                 <div>
                                     <label for="oui_internet">oui</label>
-                                    <input type="radio" id="oui_internet" name="internet" value="oui_internet">
+                                    <input type="radio" id="oui_internet" name="has_internet" value="oui_internet">
                                 </div>
                                 <div>
                                     <label for="non_internet">non</label>
-                                    <input type="radio" id="non_internet" name="internet" value="non_internet">
+                                    <input type="radio" id="non_internet" name="has_internet" value="non_internet">
                                 </div>
-
                             </div>
-
+                            <div>
+                                <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                                <div class="bouton registerNextStep">Étape suivante</div>
+                            </div>
                         </div>
 
                     </form>
