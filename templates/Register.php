@@ -3,7 +3,7 @@
 
     <main>
         <section id="error_message" class="alert">
-            <h3></h3>
+            <h3><?php echo $message; ?></h3>
         </section>
 
         <section class="registerForm">
