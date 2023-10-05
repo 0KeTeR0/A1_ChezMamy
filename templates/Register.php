@@ -2,6 +2,10 @@
 <?php ob_start() ?>
 
     <main>
+        <section id="error_message" class="alert">
+            <h3></h3>
+        </section>
+
         <section class="registerForm">
             <div class="registerBox">
                 <div>
@@ -360,7 +364,6 @@
                                 <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
                                 <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
-
                         </div>
 
                         <div id="Senior_etape2" class="form-group">
@@ -375,7 +378,6 @@
                                 <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
                                 <div class="bouton registerNextStep">Étape suivante</div>
                             </div>
-
                         </div>
 
                         <div id="Senior_etape3" class="form-group">
