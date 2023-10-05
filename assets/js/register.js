@@ -1,7 +1,7 @@
 /* the current step of the form */
 var cstep = 1;
 /* the form selected : student or senior */
-var selected = "senior";
+var selected = "";
 
 
 /**
@@ -9,17 +9,10 @@ var selected = "senior";
  * from all the elements
  */
 function clear_shown(){
-    if(cstep!=1){
-        if(selected=="senior"){
-            document.getElementById("Senior_etape"+cstep.toString()).classList.remove("show");
-        }
-        else{
-            document.getElementById("Etudiant_etape"+cstep.toString()).classList.remove("show");
-        }
-    }
     let elems = document.getElementsByClassName("show");
-    for(let i=0;i<elems.length;i++){
-        elems[i].classList.remove("show");
+
+    while(elems.length>0){
+        elems[0].classList.remove("show");
     }
 }
 
@@ -39,7 +32,7 @@ function switch_form_etu(){
     document.getElementById("jeSuisEtudiant").classList.add("btn-selected");
 
 
-    clear_shown()
+    clear_shown();
     selected="student";
     cstep=1;
     document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
@@ -63,7 +56,7 @@ function switch_form_sen(){
     document.getElementById("jeSuisSenior").classList.add("btn-selected");
 
 
-    clear_shown()
+    clear_shown();
     selected="senior";
     cstep=1;
     document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
