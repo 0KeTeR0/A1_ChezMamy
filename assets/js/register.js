@@ -174,6 +174,49 @@ function hide_solid(){
     document.getElementById("housing3").classList.remove("show");
 }
 
+
+/**
+ * show the complementary details
+ * of the animal details in the senior
+ * form
+ */
+function show_animals(){
+    document.getElementsByClassName("Select-animal")[0].classList.add("show");
+}
+
+/**
+ * hide the complementary details
+ * of the animal details in the senior
+ * form
+ */
+function hide_animals(){
+    document.getElementsByClassName("Select-animal")[0].classList.remove("show");
+}
+
+/**
+ * show the complementary details
+ * of the kids field in the senior
+ * form
+ */
+function show_grandkids(){
+    let list = document.getElementsByClassName("grand-kids");
+    for (let i =0;i<list.length;i++){
+        list[i].classList.add("show");
+    }
+}
+
+/**
+ * hide the complementary details
+ * of the kids field in the senior
+ * form
+ */
+function hide_grandkids(){
+    let list = document.getElementsByClassName("grand-kids");
+    for (let i =0;i<list.length;i++){
+        list[i].classList.remove("show");
+    }
+}
+
 /* we bind the buttons to the right functions */
 document.getElementById("jeSuisEtudiant").addEventListener("click",switch_form_etu);
 document.getElementById("jeSuisSenior").addEventListener("click",switch_form_sen);
@@ -190,10 +233,16 @@ for(i=0;i<elems.length;i++){
 
 document.getElementById("allergie_oui").addEventListener("click",show_allergies);
 document.getElementById("allergie_non").addEventListener("click",hide_allergies);
+
 document.getElementById("lgmtEco+").addEventListener("click",show_eco);
 document.getElementById("lgmtGratuit").addEventListener("click",hide_eco);
 document.getElementById("lgmtGratuit").addEventListener("click",hide_solid);
 document.getElementById("lgmtEco+").addEventListener("click",hide_solid);
 document.getElementById("lgmtSolid").addEventListener("click",hide_eco);
 document.getElementById("lgmtSolid").addEventListener("click",show_solid);
-show_allergies();
+
+document.getElementById("animal_oui").addEventListener("click",show_animals);
+document.getElementById("animal_non").addEventListener("click",hide_animals);
+
+document.getElementById("oui_enfants").addEventListener("click",show_grandkids);
+document.getElementById("non_enfants").addEventListener("click",hide_grandkids);

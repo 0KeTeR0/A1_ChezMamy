@@ -464,14 +464,14 @@
                                     <label for="non_enfants">non</label>
                                     <input type="radio" id="non_enfants" name="has_kids" value="non_enfants">
                                 </div>
-                                <div>
+                                <div class="grand-kids">
                                     <label for="enfants++">Des petits enfants :</label>
                                 </div>
-                                <div>
+                                <div class="grand-kids">
                                     <label for="oui_enfants++">oui</label>
                                     <input type="radio" id="oui_enfants++" name="has_grandkids" value="oui_enfants++">
                                 </div>
-                                <div>
+                                <div class="grand-kids">
                                    <label for="non_enfants++">non</label>
                                    <input type="radio" id="non_enfants++" name="has_grandkids" value="non_enfants++">
                                 </div>
