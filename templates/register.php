@@ -296,7 +296,7 @@
                                     <label for="Propriétaire">Propriétaire</label>
                                 </div>
                                 <div class="form-pair">
-                                    <input type="radio" id="Locataire" name="is_landlord" value="2">
+                                    <input type="radio" id="Locataire" name="is_landlord" value="0">
                                     <label for="Locataire">Locataire</label>
                                 </div>
                             </div>
