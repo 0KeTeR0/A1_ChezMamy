@@ -128,7 +128,7 @@ class RegisterController
             else $message=("Type de compte invalide");
         }
 
-        $message = "<div id='error_message  ' class='alert alert-error'><p>".$message."</p></div>";
+        if($message!="") $message = "<div id='error_message  ' class='alert alert-error'><p>".$message."</p></div>";
         require('templates/register.php');
     }
 
@@ -188,7 +188,7 @@ class RegisterController
         else if(strlen($input['password'])<=8){$result="mot de passe invalide.";}
         else if(strlen($input['marital_status']<1)){$result="situation invalide";}
         else if(!in_array($input['is_house'],[1,2])){$result="type de maison invalide";}
-        else if(!in_array($input['is_landlord'],[0,1])){$result="propriétaire invalide";}
+        else if(!in_array($input['is_landlord'],[0,1])){$result="propriétaire invalide : ".$input['is_landlord'];}
         else if(!in_array($input['have_animal'],[0,1])){$result="avoir animal invalide";}
         else if($input['have_animal'] == 1)
         {
