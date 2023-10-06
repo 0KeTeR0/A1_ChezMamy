@@ -11,7 +11,6 @@ session_start();
 
 // We catch any error that could happen
 try {
-
     // Configuration of the router to redirect to the right page
     if (!empty($_GET['p'])) {
         $action = $_GET['p'];
@@ -25,6 +24,11 @@ try {
             case 'connexion':
                 if (!array_key_exists('id_user',$_SESSION))(new LoginController())->execute($_POST);
                 else{header('Location: index.php');}
+                break;
+            // Logout
+            case 'deconnexion':
+                session_destroy();
+                header('Location: index.php');
                 break;
             default:
                 throw new Exception("404 - La page demandée n'existe pas");
