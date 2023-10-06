@@ -16,29 +16,39 @@ class LoginController
     {
         $message="";
         if(count($input) > 0) {
-            $username = null;
+            $email = null;
             $password = null;
 
-            if(!empty($input['username']) && !empty($input['password']))
+            /* we verify if both values are correct */
+            if(!empty($input['email']) && !empty($input['password']))
             {
-                $username = htmlspecialchars(strip_tags($input['username']));
-                $password = $input['password'];
-            }
-            else throw new \Exception("Veuillez remplir tous les champs.");
+                if(!filter_var($input['email'], FILTER_VALIDATE_EMAIL)){$message="email invalide";}
+                else{ $email = filter_var(strip_tags($input['email']),FILTER_SANITIZE_EMAIL); }
+                if(strlen($input['password'])<=8){$result="mot de passe invalide.";}
+                else{ $password = strip_tags($input['password']); }
 
-            $login = new Login($username, $password);
-            $success = $login->checkLogin();
-            if(!$success) throw new \Exception("Nom d'utilisateur ou mot de passe incorrect.");
-            else {
-                $_SESSION['username'] = $username;
-                header('Location: index.php');
+            }
+            else $message=("Veuillez remplir tous les champs.");
+
+            if($message==""){
+
+                $login = new Login($password,$email);
+                $res = $login->execute();
+                if($res[0]==""){
+                    $_SESSION['user_id'] = $res[1];
+                    header('Location: index.php');
+                    $message="succès de la connexion!";
+                }
+                else{
+                    $message=$res[0];
+                }
             }
         }
 
 
 
 
-        require('templates/homepage.php');
+        require('templates/connexion.php');
     }
 
 
