@@ -17,7 +17,7 @@
                         </div>
                         <div>
                             <label for="mdp">Mot de passe</label>
-                            <input type="password" name="password" id="mdp">
+                            <input type="password" name="password" id="mdp  ">
                         </div>
                     </div>
                     <div class="form-group">

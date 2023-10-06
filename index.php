@@ -5,6 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Chezmamy\Controllers\HomepageController;
 use App\Chezmamy\Controllers\RegisterController;
+use App\Chezmamy\Controllers\LoginController;
 
 // We catch any error that could happen
 try {
