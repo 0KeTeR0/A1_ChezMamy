@@ -12,49 +12,31 @@ class Login
     public function execute(array $input): array
     {
         $result= array("","");
-        $tempUserId="";
-        $tempEmail="";
-        $tempPassword="";
         $database = DatabaseConnection::GetConnection();
 
-        $statementEmail = $database->prepare(
-            "SELECT email FROM Users WHERE email = $input[1]"
+        $statementUser= $database->prepare(
+            "SELECT * FROM Users WHERE email = ?"
         );
-        $statementEmail->execute();
+        $statementUser->execute([$input[1]]);
 
-        $statementPassword = $database->prepare(
-            "SELECT password FROM Users WHERE email = $input[1]"
-        );
-        $statementPassword->execute();
-        $tempPassword=$statementPassword->fetch();
 
-        if(password_verify($input[0],$tempPassword))
-        {
-
-            $statementUserId = $database->prepare(
-                "SELECT user_id FROM Users WHERE email = $input[1] AND password = $input[0]"
-            );
-            $statementUserId->execute();
-            $tempUserId = $statementUserId->fetch();
+        if($statementUser->rowCount() == 1) {
+            $user = $statementUser->fetch();
+            if(password_verify($input[0], $user['password'])) {
+                $result[0]="";
+                $statementId= $database->prepare(
+                    "SELECT user_id FROM Users WHERE email = ?"
+                );
+                $statementId->execute([$input[1]]);
+                $result[1]=$statementId->fetch()['user_id'];
+            }
+            else{$result[0]="Mauvais mot de passe.";}
         }
-
-        $tempEmail = $statementEmail->fetch();
-
-
-        if($tempUserId == "" )
-        {
-            $result[0] = "Adresse mail + mot de passe introuvable";
+        else{
+            $result[0]="mauvaise addresse mail";
         }
-
-        else if($tempEmail == "")
-        {
-            $result[0] = "Adresse mail introuvable";
-        }
-
-        else{$result[1]=$tempUserId; }
 
         return $result;
-
 
     }
 }
