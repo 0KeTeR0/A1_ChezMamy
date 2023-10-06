@@ -1,4 +1,4 @@
-<?php $title = "Page d'inscription"; ?>
+<?php $title = "Création de mon profil"; ?>
 <?php ob_start(); ?>
 
     <main>
