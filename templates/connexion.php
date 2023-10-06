@@ -3,7 +3,7 @@
 
 <main>
     <section class="loginForm">
-        <div class="image1"></div>
+        <div class="image-connexion"></div>
         <div class="loginBox">
             <div class="logo">
                 <img src="../assets/img/logo.png" alt="">

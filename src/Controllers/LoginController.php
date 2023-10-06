@@ -35,10 +35,7 @@ class LoginController
             }
         }
 
-
-
-
-        require('templates/homepage.php');
+        require('templates/connexion.php');
     }
 
 

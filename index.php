@@ -16,6 +16,10 @@ try {
             case 'inscription':
                 (new RegisterController())->execute($_POST);
                 break;
+            // Login page
+            case 'connexion':
+                (new LoginController())->execute($_POST);
+                break;
             default:
                 throw new Exception("404 - La page demandée n'existe pas");
                 break;

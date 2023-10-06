@@ -82,6 +82,7 @@ label:has(+ input[required]):after {
 }
 textarea { resize: vertical; }
 .registerBox input:not([type="checkbox"]):not([type="radio"]),
+.loginBox input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
     display: block;
@@ -93,18 +94,22 @@ select {
     font-size: 16px;
     font-family: 'Roboto', "Arial", sans-serif;
     transition: var(--transition);
+    box-sizing: border-box;
 }
 .registerBox input:focus,
+.loginBox input:focus,
 textarea:focus,
 select:focus {
     outline: none;
     border-color: var(--main-color);
 }
-.registerBox input:valid,
+.registerBox input:not([type="submit"]):valid,
+.loginBox input:not([type="submit"]):valid,
 textarea:valid {
     border-color: green!important;
 }
-.registerBox input:not([type="checkbox"]):not([type="radio"]):not(:valid),
+.registerBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
+.loginBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
 textarea:not([type="checkbox"]):not([type="radio"]):not(:valid) {
     border-color: red;
 }
@@ -402,6 +407,58 @@ section.registerForm {
 
 }
 
+/* ----------------------- Connexion ----------------------- */
+.loginForm {
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    min-height: 500px;
+    height: calc(100vh - 75px);
+    transition: var(--transition);
+}
+.loginForm .image-connexion {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-image: url('/A1_ChezMamy/assets/img/photo-connexion.png');
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    box-shadow: inset -5px 0 5px rgba(0, 0, 0, .2);
+    /*filter: brightness(0.8); */
+}
+.loginForm .loginBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px 150px 50px;
+}
+.loginForm .loginBox .logo {
+    margin-bottom: 10%;
+    max-width: 700px;
+    min-width: 300px;
+    width: 80%;
+}
+.loginForm .loginBox .logo img {
+    width: 100%;
+    height: auto;
+}
+.loginForm .loginBox > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.loginForm .loginBox .login_form,
+.loginForm .loginBox form {
+    width: 100%;
+}
+
+
 
 /* ----------------------- Footer ----------------------- */
 #penche {
@@ -482,7 +539,6 @@ footer nav div p{
 
 }
 
-/* Responsive mobile */
 
 
 /*--------------------responsive (header/footer */
@@ -550,6 +606,11 @@ footer nav div p{
     header nav form {
         width: 300px!important;
     }
+
+    .loginForm {
+        grid-template-columns: 40% 60%;
+    }
+
 }
 
 @media screen and (max-width:1000px) {
@@ -625,6 +686,7 @@ footer nav div p{
         width: 247px;
     }
 
+
     #ac_li{
         order:1;
     }
@@ -671,6 +733,18 @@ footer nav div p{
     .presentation-list {
         flex-direction: column;
     }
+
+    .loginForm {
+        margin: 50px auto;
+        height: fit-content;
+        grid-template-columns: 1fr;
+    }
+    .loginForm .loginBox {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+    .loginForm .image-connexion { display: none; }
 
     footer nav > ul {
         flex-direction: row;
