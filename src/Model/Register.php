@@ -39,6 +39,7 @@ class Register
                     if(empty($newUser->getHas_Grandkids())) $has_grand_kids = 0; else $has_grand_kids = 1;
                     if(empty($newUser->getCan_Clean())) $can_clean = 0; else $can_clean = 1;
                     if(empty($newUser->getHas_Internet())) $has_internet = 0; else $has_internet = 1;
+                    if(empty($newUser->getIs_Landlord())) $is_landlord = 0; else $is_landlord=1;
                 }
                 if(empty($newUser->getIs_Smoking())) $is_smoking = 0; else $is_smoking = 1;
 
@@ -55,7 +56,7 @@ class Register
                     $statement = $database->prepare(
                         "INSERT INTO Users (email,last_name, first_name,date_of_birth,phone,city,postal_code,know_association,is_smoking,why,housing,password,marital_status,is_house,is_landlord,have_animal,animal,public_transport_distance,passion_to_share,can_stay_summer,profession,advantages_with_you,has_kids,has_grandkids,is_family_present,is_family_ok,room_surface,has_furniture,can_clean,has_internet,id_role) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
                     );
-                    $res = $statement->execute([$newUser->getEmail(),$newUser->getLast_Name(),$newUser->getFirst_Name(),$newUser->getDate_Of_Birth(),$newUser->getPhone(),$newUser->getCity(),$newUser->getPostalCode(),$newUser->getKnow_Association(),$is_smoking,$newUser->getWhy(),$newUser->getHousing(), password_hash($newUser->getPassword(), PASSWORD_DEFAULT),$newUser->getMarital_Status(),$newUser->getIs_house(),$newUser->getIs_Landlord(),$have_animal,implode(',', $newUser->getAnimal()),$newUser->getPublic_Transport_Distance(),$newUser->getPassion_To_Share(),$can_stay_summer,$newUser->getProfession(),$newUser->getAdvantages_With_You(),$has_kids,$has_grand_kids,$newUser->getIs_Family_Present(),$newUser->getIs_Family_Ok(),$newUser->getRoom_Surface(),$newUser->getHas_Furniture(),$can_clean,$has_internet,$role_id]);
+                    $res = $statement->execute([$newUser->getEmail(),$newUser->getLast_Name(),$newUser->getFirst_Name(),$newUser->getDate_Of_Birth(),$newUser->getPhone(),$newUser->getCity(),$newUser->getPostalCode(),$newUser->getKnow_Association(),$is_smoking,$newUser->getWhy(),$newUser->getHousing(), password_hash($newUser->getPassword(), PASSWORD_DEFAULT),$newUser->getMarital_Status(),$newUser->getIs_house(),$is_landlord,$have_animal,implode(',', $newUser->getAnimal()),$newUser->getPublic_Transport_Distance(),$newUser->getPassion_To_Share(),$can_stay_summer,$newUser->getProfession(),$newUser->getAdvantages_With_You(),$has_kids,$has_grand_kids,$newUser->getIs_Family_Present(),$newUser->getIs_Family_Ok(),$newUser->getRoom_Surface(),$newUser->getHas_Furniture(),$can_clean,$has_internet,$role_id]);
 
                 }
 
