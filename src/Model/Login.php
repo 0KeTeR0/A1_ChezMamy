@@ -7,7 +7,7 @@ class Login
 {
     /**
      * @param array $input the data entered by the user [0] = password; [1] = email
-     * @return void "" if success.
+     * @return array [0] = message, [1] = user_id
      */
     public function execute(array $input): array
     {
