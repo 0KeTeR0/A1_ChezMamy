@@ -11,17 +11,20 @@ session_start();
 
 // We catch any error that could happen
 try {
+
     // Configuration of the router to redirect to the right page
     if (!empty($_GET['p'])) {
         $action = $_GET['p'];
         switch ($action) {
             // Register page
             case 'inscription':
-                (new RegisterController())->execute($_POST);
+                if (!array_key_exists('id_user',$_SESSION))(new RegisterController())->execute($_POST);
+                else{header('Location: index.php');}
                 break;
             // Login page
             case 'connexion':
-                (new LoginController())->execute($_POST);
+                if (!array_key_exists('id_user',$_SESSION))(new LoginController())->execute($_POST);
+                else{header('Location: index.php');}
                 break;
             default:
                 throw new Exception("404 - La page demandée n'existe pas");

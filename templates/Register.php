@@ -266,7 +266,7 @@
 
                             <div class="form-pair">
                                 <label for="city">Ville</label>
-                                <input type="text" id="city" name="city">
+                                <input type="text" id="city" name="city" required>
                             </div>
                             <div class="form-pair">
                                 <label for="postal_s">Code postal</label>

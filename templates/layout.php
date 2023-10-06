@@ -32,8 +32,12 @@
                     </div>
                 </li>
                 <li id="contact"><a href="index.php">Contact</a></li>
-                <li id="connect"><a href="?p=connexion">Connexion</a></li>
-                <li id="inscri"><a class="bouton" href="?p=inscription">Inscription</a></li>
+                <?php if(!array_key_exists('id_user',$_SESSION)){ ?>
+                    <li id="connect"><a href="?p=connexion">Connexion</a></li>
+                    <li id="inscri"><a class="bouton" href="?p=inscription">Inscription</a></li>
+                <?php } else { ?>
+                    <li><a href="?p=deconnexion">Déconnexion</a></li>
+                <?php } ?>
             </ul>
         </nav>
     </div>
