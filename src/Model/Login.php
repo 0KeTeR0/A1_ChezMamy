@@ -9,10 +9,11 @@ class Login
      * @param array $input the data entered by the user [0] = password; [1] = email
      * @return void "" if success.
      */
-    public function execute(array $input): string
+    public function execute(array $input): array
     {
-        $result="";
-        $temp="";
+        $result= array("","");
+        $tempPassword="";
+        $tempEmail="";
         $database = DatabaseConnection::GetConnection();
 
         $statementEmail = $database->prepare(
@@ -21,10 +22,25 @@ class Login
         $statementEmail->execute();
 
         $statementPassword = $database->prepare(
-            "SELECT password,email FROM Users WHERE email = $input[1] AND password = $input[0]"
+            "SELECT user_id FROM Users WHERE email = $input[1] AND password = $input[0]"
         );
+        $statementPassword->execute();
 
-        if;
+        $tempEmail = $statementEmail->fetch();
+        $tempPassword = $statementPassword->fetch();
+
+        if($tempPassword = "" )
+        {
+            $result[0] = "Adresse mail + mot de passe introuvable";
+        }
+
+        else if($tempEmail = "")
+        {
+            $result[0] = "Adresse mail introuvable";
+        }
+
+        else{$result[1]=$tempPassword; }
+
         return $result;
 
 
