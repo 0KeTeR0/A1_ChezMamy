@@ -119,7 +119,7 @@ class RegisterController
                     $res = $register->execute($newUser,strip_tags($input['password_repeat']),2);
 
                     //If everything went well we send the user to the login page
-                    $message = "<div id='error_message  ' class='alert alert-error'><p>".$res['message']."</p></div>";
+                    $message = $res['message'];
 
                     if($res['success']) header('Location: index.php?p=connexion');
                 }
