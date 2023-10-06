@@ -126,9 +126,8 @@ class RegisterController
                 else $message=("Veuillez remplir tous les champs correctement :".$verification);
             }
             else $message=("Type de compte invalide");
-
         }
-        require('templates/Register.php');
+        require('templates/register.php');
     }
 
 

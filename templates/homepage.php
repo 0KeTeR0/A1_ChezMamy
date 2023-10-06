@@ -1,4 +1,4 @@
-<?php $title = "Page d'accueil"; ?>
+<?php $title = "Accueil"; ?>
 <?php ob_start() ?>
 
 <main>

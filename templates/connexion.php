@@ -1,4 +1,4 @@
-<?php $title = "Login à mon compte"; ?>
+<?php $title = "Connexion à mon compte"; ?>
 <?php ob_start(); ?>
 
 <main>
