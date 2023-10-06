@@ -318,9 +318,9 @@
                                 </div>
                             </div>
 
-                            <div class="form-pair">
+                            <div class="form-pair Select-animal">
                                 <label for="Animaux">Choisir</label>
-                                <select name="animal" id="Animaux" multiple>
+                                <select name="animal[]" id="Animaux" multiple>
                                     <option value="aucun">Aucun</option>
                                     <option value="Chien">Chien</option>
                                     <option value="Chat">Chat</option>
@@ -465,7 +465,7 @@
                                     <input type="radio" id="non_enfants" name="has_kids" value="0" checked>
                                     <label for="non_enfants">Non</label>
                                 </div>
-                                <label>Des petits enfants</label>
+                                <label class="grand-kids">Des petits enfants</label>
                                 <div class="form-pair grand-kids">
                                     <input type="radio" id="oui_enfants++" name="has_grandkids" value="1">
                                     <label for="oui_enfants++">oui</label>
@@ -474,6 +474,7 @@
                                    <input type="radio" id="non_enfants++" name="has_grandkids" value="0" checked>
                                    <label for="non_enfants++">non</label>
                                 </div>
+                                <br>
                                 <label>Présence de la famille</label>
                                 <div class="form-pair">
                                     <input type="radio" id="Presence_fml" name="is_family_present" value="3">

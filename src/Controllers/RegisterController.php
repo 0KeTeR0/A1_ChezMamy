@@ -66,9 +66,9 @@ class RegisterController
                     $res = $register->execute($newUser,strip_tags($input['password_repeat']),1);
 
                     //If everything went well we send the user to the login page
-                    if(!$res['success']) $message=($res['message']);
-                    else {
-                        $message=($res['message']);
+                    $message = "<div id='error_message  ' class='alert alert-error'><p>".$res['message']."</p></div>";
+
+                    if($res['success']) {
                         header('Location: index.php?p=login');
                     }
                 }
@@ -119,7 +119,7 @@ class RegisterController
                     $res = $register->execute($newUser,strip_tags($input['password_repeat']),2);
 
                     //If everything went well we send the user to the login page
-                    $message = "<div id='error_message' class='alert alert-error'><p>".$res['message']."</p></div>";
+                    $message = "<div id='error_message  ' class='alert alert-error'><p>".$res['message']."</p></div>";
 
                     if($res['success']) header('Location: index.php?p=login');
                 }
@@ -191,7 +191,7 @@ class RegisterController
         else if(!in_array($input['have_animal'],[0,1])){$result="avoir animal invalide";}
         else if($input['have_animal'] == 1)
         {
-            if(strlen($input['animal'])<=1){$result="animal invalide";}
+            if(strlen(implode(',', $input['animal']))<=1){$result="animal invalide";}
         }
         else if(!in_array($input['can_stay_summer'],[0,1])){$result="rester l'été invalide";}
         else if(!in_array($input['is_family_present'],[1,2,3])){$result="présence de la famille invalide";}

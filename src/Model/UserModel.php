@@ -40,7 +40,7 @@ class UserModel
     private bool $is_house;
     private bool $is_landlord;
     private bool $have_animal;
-    private ?string $animal;
+    private ?array $animal;
     private ?string $public_transport_distance;
     private ?string $needs;
     private ?string $passion_to_share;
@@ -183,7 +183,7 @@ class UserModel
         return $this->have_animal;
     }
 
-    public function getAnimal(): ?string {
+    public function getAnimal(): ?array {
         return $this->animal;
     }
 
@@ -369,7 +369,7 @@ class UserModel
         $this->have_animal = $have_animal;
     }
 
-    public function setAnimal(?string $animal): void {
+    public function setAnimal(?array $animal): void {
         $this->animal = $animal;
     }
 
