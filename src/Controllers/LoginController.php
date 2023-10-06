@@ -3,7 +3,7 @@
 namespace App\Chezmamy\Controllers;
 
 
-use App\Chezmamy\Model\Connexion;
+use App\Chezmamy\Model\Login;
 use App\Chezmamy\Model\UserModel;
 use DateTime;
 
@@ -32,8 +32,8 @@ class LoginController
 
             if($message==""){
 
-                $login = new Login($password,$email);
-                $res = $login->execute();
+                $login = new Login();
+                $res = $login->execute(array($password,$email));
                 if($res[0]==""){
                     $_SESSION['user_id'] = $res[1];
                     header('Location: index.php');
@@ -44,8 +44,6 @@ class LoginController
                 }
             }
         }
-
-
 
 
         require('templates/connexion.php');
