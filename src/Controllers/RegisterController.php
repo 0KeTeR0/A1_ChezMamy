@@ -127,6 +127,8 @@ class RegisterController
             }
             else $message=("Type de compte invalide");
         }
+
+        $message = "<div id='error_message  ' class='alert alert-error'><p>".$message."</p></div>";
         require('templates/register.php');
     }
 
