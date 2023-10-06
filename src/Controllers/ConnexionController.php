@@ -3,12 +3,12 @@
 namespace App\Chezmamy\Controllers;
 
 
-use App\Chezmamy\Model\Connexion;
+use App\Chezmamy\Model\Login;
 use App\Chezmamy\Model\UserModel;
 use DateTime;
 
 /**
- * Connexion controller for connexions.
+ * Login controller for connexions.
  */
 class ConnexionController
 {
