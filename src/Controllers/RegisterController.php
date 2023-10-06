@@ -69,7 +69,7 @@ class RegisterController
                     $message = "<div id='error_message  ' class='alert alert-error'><p>".$res['message']."</p></div>";
 
                     if($res['success']) {
-                        header('Location: index.php?p=login');
+                        header('Location: index.php?p=connexion');
                     }
                 }
                 else $message=("Veuillez remplir tous les champs correctement :".$verification);
@@ -121,7 +121,7 @@ class RegisterController
                     //If everything went well we send the user to the login page
                     $message = "<div id='error_message  ' class='alert alert-error'><p>".$res['message']."</p></div>";
 
-                    if($res['success']) header('Location: index.php?p=login');
+                    if($res['success']) header('Location: index.php?p=connexion');
                 }
                 else $message=("Veuillez remplir tous les champs correctement :".$verification);
             }
@@ -154,7 +154,7 @@ class RegisterController
         else if(strlen($input['date_of_arrival'])>1) {
             if(!$this->verifyDate($input['date_of_arrival']) || !DateTime::createFromFormat('d/m/Y',$input['date_of_arrival'])<(new DateTime())){$result="Date d'arrivée invalide.";}
         }
-        else if(!in_array($input['is_smoking'], [0, 1])){$result="Fume invalide.";}
+        else if(!in_array($input['is_smoking'], [0, 1])){$result="Fume invalide." . $input['is_smoking'];}
         else if(!in_array($input['is_allergic'], [0, 1])){$result="Allergique invalide";}
         else if($input['is_allergic'])
         {

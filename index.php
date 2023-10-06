@@ -7,6 +7,8 @@ use App\Chezmamy\Controllers\HomepageController;
 use App\Chezmamy\Controllers\RegisterController;
 use App\Chezmamy\Controllers\LoginController;
 
+session_start();
+
 // We catch any error that could happen
 try {
     // Configuration of the router to redirect to the right page

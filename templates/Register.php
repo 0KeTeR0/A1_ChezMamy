@@ -113,9 +113,9 @@
                             <div class="radio-group-1">
                                 <div class="form-pair">
                                     <label for="fumeur">Êtes-vous fumeur ?</label>
-                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="oui">
+                                    <input type="radio" id="fumeur_oui" name="is_smoking" value="1">
                                     <label for="fumeur_oui">Oui</label>
-                                    <input type="radio" id="fumeur_non" name="is_smoking" value="non" checked>
+                                    <input type="radio" id="fumeur_non" name="is_smoking" value="0" checked>
                                     <label for="fumeur_non">Non</label>
                                 </div>
                                 <br>

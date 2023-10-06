@@ -25,15 +25,15 @@ class Login
             if(password_verify($input[0], $user['password'])) {
                 $result[0]="";
                 $statementId= $database->prepare(
-                    "SELECT user_id FROM Users WHERE email = ?"
+                    "SELECT id_user FROM Users WHERE email = ?"
                 );
                 $statementId->execute([$input[1]]);
-                $result[1]=$statementId->fetch()['user_id'];
+                $result[1]=$statementId->fetch()['id_user'];
             }
-            else{$result[0]="Mauvais mot de passe.";}
+            else{$result[0]="Mot de passe incorrect.";}
         }
         else{
-            $result[0]="mauvaise addresse mail";
+            $result[0]="Adresse email invalide";
         }
 
         return $result;

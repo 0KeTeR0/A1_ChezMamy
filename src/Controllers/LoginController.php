@@ -35,7 +35,7 @@ class LoginController
                 $login = new Login();
                 $res = $login->execute(array($password,$email));
                 if($res[0]==""){
-                    $_SESSION['user_id'] = $res[1];
+                    $_SESSION['id_user'] = $res[1];
                     header('Location: index.php');
                     $message="succès de la connexion!";
                 }
@@ -44,6 +44,8 @@ class LoginController
                 }
             }
         }
+
+        if(!empty($message)) $message = "<div id='error_message  ' class='alert alert-error'><p>".$message."</p></div>";
 
         require('templates/connexion.php');
     }

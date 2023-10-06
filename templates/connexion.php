@@ -9,6 +9,7 @@
                 <img src="../assets/img/logo.png" alt="">
             </div>
             <div>
+                <?= $message ?>
                 <form id="login_form" action="" method="post">
                     <div class="form-group">
                         <div class="form-pair">
