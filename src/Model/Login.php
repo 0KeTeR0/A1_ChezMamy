@@ -12,8 +12,9 @@ class Login
     public function execute(array $input): array
     {
         $result= array("","");
-        $tempPassword="";
+        $tempUserId="";
         $tempEmail="";
+        $tempPassword="";
         $database = DatabaseConnection::GetConnection();
 
         $statementEmail = $database->prepare(
@@ -22,24 +23,35 @@ class Login
         $statementEmail->execute();
 
         $statementPassword = $database->prepare(
-            "SELECT user_id FROM Users WHERE email = $input[1] AND password = $input[0]"
+            "SELECT password FROM Users WHERE email = $input[1]"
         );
         $statementPassword->execute();
+        $tempPassword=$statementPassword->fetch();
+
+        if(password_verify($input[0],$tempPassword))
+        {
+
+            $statementUserId = $database->prepare(
+                "SELECT user_id FROM Users WHERE email = $input[1] AND password = $input[0]"
+            );
+            $statementUserId->execute();
+            $tempUserId = $statementUserId->fetch();
+        }
 
         $tempEmail = $statementEmail->fetch();
-        $tempPassword = $statementPassword->fetch();
 
-        if($tempPassword = "" )
+
+        if($tempUserId == "" )
         {
             $result[0] = "Adresse mail + mot de passe introuvable";
         }
 
-        else if($tempEmail = "")
+        else if($tempEmail == "")
         {
             $result[0] = "Adresse mail introuvable";
         }
 
-        else{$result[1]=$tempPassword; }
+        else{$result[1]=$tempUserId; }
 
         return $result;
 
