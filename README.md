@@ -1,5 +1,24 @@
 # A1_ChezMamy
-![logo_chezMamy.png](..%2F..%2F..%2F..%2F..%2FDownloads%2Flogo_chezMamy.png)
+
+![logo.png](assets%2Fimg%2Flogo.png)
+
+---
+
+<!-- TOC -->
+* [A1_ChezMamy](#a1chezmamy)
+  * [Résumer](#résumer)
+  * [Introduction](#introduction)
+  * [Contexte](#contexte-)
+      * [PROCEDURE ACTUELLE :](#procedure-actuelle-)
+  * [Profil de l'application](#profil-de-lapplication)
+    * [Objectifs et cibles de l’application:](#objectifs-et-cibles-de-lapplication)
+    * [Contenu potentiel du logiciel :](#contenu-potentiel-du-logiciel-)
+      * [APPLICATION WEB](#application-web)
+      * [BASE DE DONNES](#base-de-donnes)
+      * [MODULES STATISTIQUES](#modules-statistiques)
+      * [AUTRES ELEMENTS](#autres-elements)
+<!-- TOC -->
+
 ## Résumer
 Application web facilitant les relations
 intergénérationnelles, de « rencontre
@@ -7,8 +26,6 @@ sociale entre jeunes et retraités ». Le site
 permet de partager un repas, une
 chambre ou un moment avec une
 personne dite senior.
-
----
 
 ## Introduction
 « _Au départ, nous avons fait le constat d’une précarité étudiante et d’un isolement des
@@ -29,8 +46,6 @@ Aussi dans ce cadre, **chezMamy** œuvre avec ses partenaires à la mise en plac
 application web expérimentale. Cette application a pour objet la création d’un site web
 ergonomique et accessible à toutes les populations. Cette application a pour nom temporaire :
 **chezMamy**.
-
----
 
 ## Contexte 
 Avec le vieillissement de la population, le maintien à domicile et l’importance du lien social
