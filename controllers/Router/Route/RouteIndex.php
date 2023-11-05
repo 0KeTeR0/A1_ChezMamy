@@ -2,8 +2,8 @@
 
 namespace App\ChezMamy\controllers\Router\Route;
 
-use App\ChezMamy\controllers\Router\Route;
 use App\ChezMamy\controllers\MainController;
+use App\ChezMamy\controllers\Router\Route;
 
 /**
  * Classe RouteIndex
