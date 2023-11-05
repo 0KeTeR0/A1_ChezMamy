@@ -15,5 +15,7 @@
             "name": "A1 Drop Table"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pdo": "*"
+    }
 }
