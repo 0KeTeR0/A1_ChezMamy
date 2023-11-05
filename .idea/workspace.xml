@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c8f857d3-5fad-45fd-bf77-01841c139f03" name="Changes" comment="nouvelle structure de projet" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="sprint1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Synxgz&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e85387b3-b999-4763-97fc-4bcf2d67ebed" />
+        <option name="url" value="https://github.com/0KeTeR0/A1_ChezMamy.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="E:\Applications\XamppServer\php\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2WCxXYOeDWOHVqgODRBEYINGXlQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;nouvelle__structure&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Applications/XamppServer/htdocs/A1_ChezMamy&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Applications\XamppServer\htdocs\A1_ChezMamy\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Applications\XamppServer\htdocs\A1_ChezMamy" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHP Script.index.php">
+    <configuration name="homepage.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/index.php/templates/homepage.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="layout.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/A1_ChezMamy/templates/layout.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="homepage.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/templates/homepage.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/index.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.index.php" />
+        <item itemvalue="PHP Script.homepage.php" />
+        <item itemvalue="JavaScript Debug.layout.php" />
+        <item itemvalue="JavaScript Debug.homepage.php" />
+        <item itemvalue="PHP Script.index.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8f857d3-5fad-45fd-bf77-01841c139f03" name="Changes" comment="" />
+      <created>1696250402942</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696250402942</updated>
+      <workItem from="1696250406421" duration="5228000" />
+      <workItem from="1696262213494" duration="5524000" />
+      <workItem from="1696319092222" duration="2508000" />
+      <workItem from="1696321920985" duration="10968000" />
+      <workItem from="1696339644517" duration="11407000" />
+      <workItem from="1696356278510" duration="332000" />
+      <workItem from="1696422723593" duration="13634000" />
+      <workItem from="1696441450527" duration="104000" />
+      <workItem from="1696491036908" duration="10905000" />
+      <workItem from="1696546654046" duration="318000" />
+      <workItem from="1696577215429" duration="10883000" />
+      <workItem from="1696598440788" duration="1893000" />
+      <workItem from="1696600628529" duration="2771000" />
+      <workItem from="1697977712614" duration="724000" />
+      <workItem from="1699174970288" duration="571000" />
+      <workItem from="1699178529430" duration="74000" />
+      <workItem from="1699178604790" duration="120000" />
+    </task>
+    <task id="LOCAL-00001" summary="top homepage (image and button)">
+      <option name="closed" value="true" />
+      <created>1696264958856</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696264958856</updated>
+    </task>
+    <task id="LOCAL-00002" summary="top homepage (image and button)">
+      <option name="closed" value="true" />
+      <created>1696265023812</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696265023812</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixes css">
+      <option name="closed" value="true" />
+      <created>1696265347874</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696265347874</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixes css">
+      <option name="closed" value="true" />
+      <created>1696266779454</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696266779454</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixes css">
+      <option name="closed" value="true" />
+      <created>1696319525364</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696319525364</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixes responsive page d'accueil">
+      <option name="closed" value="true" />
+      <created>1696319577780</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696319577780</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fixes responsive footer top bar">
+      <option name="closed" value="true" />
+      <created>1696321783552</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696321783552</updated>
+    </task>
+    <task id="LOCAL-00008" summary="faq terminé">
+      <option name="closed" value="true" />
+      <created>1696325539880</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696325539880</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix footer et faq">
+      <option name="closed" value="true" />
+      <created>1696326381983</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696326381983</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added questions to faq and fix footer">
+      <option name="closed" value="true" />
+      <created>1696326682624</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696326682624</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix responsive of burger menu">
+      <option name="closed" value="true" />
+      <created>1696327419909</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696327419909</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix images">
+      <option name="closed" value="true" />
+      <created>1696327664205</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696327664205</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix images">
+      <option name="closed" value="true" />
+      <created>1696339719926</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1696339719926</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix images">
+      <option name="closed" value="true" />
+      <created>1696340029752</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696340029752</updated>
+    </task>
+    <task id="LOCAL-00015" summary="register router">
+      <option name="closed" value="true" />
+      <created>1696343212407</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1696343212407</updated>
+    </task>
+    <task id="LOCAL-00016" summary="register choice buttons">
+      <option name="closed" value="true" />
+      <created>1696351335344</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1696351335344</updated>
+    </task>
+    <task id="LOCAL-00017" summary="database connection">
+      <option name="closed" value="true" />
+      <created>1696352004072</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1696352004072</updated>
+    </task>
+    <task id="LOCAL-00018" summary="corrects">
+      <option name="closed" value="true" />
+      <created>1696352694472</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1696352694472</updated>
+    </task>
+    <task id="LOCAL-00019" summary="sql">
+      <option name="closed" value="true" />
+      <created>1696352926980</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1696352926980</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix register form (backend)">
+      <option name="closed" value="true" />
+      <created>1696354529346</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1696354529346</updated>
+    </task>
+    <task id="LOCAL-00021" summary="class and id added in register form + checks in css">
+      <option name="closed" value="true" />
+      <created>1696424079830</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1696424079830</updated>
+    </task>
+    <task id="LOCAL-00022" summary="css corrects">
+      <option name="closed" value="true" />
+      <created>1696427293596</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1696427293596</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add .btn-selected in css">
+      <option name="closed" value="true" />
+      <created>1696427532910</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1696427532910</updated>
+    </task>
+    <task id="LOCAL-00024" summary="add .btn-selected in css">
+      <option name="closed" value="true" />
+      <created>1696427846481</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1696427846481</updated>
+    </task>
+    <task id="LOCAL-00025" summary="setting student register form conditions on inputs">
+      <option name="closed" value="true" />
+      <created>1696429862313</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1696429862313</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fixing student register backend (checks and errors)">
+      <option name="closed" value="true" />
+      <created>1696437217034</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1696437217034</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fixing forms and php checks for senior register">
+      <option name="closed" value="true" />
+      <created>1696527258195</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1696527258195</updated>
+    </task>
+    <task id="LOCAL-00028" summary="fixing forms and php checks for senior register">
+      <option name="closed" value="true" />
+      <created>1696530404512</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1696530404512</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fixing error message">
+      <option name="closed" value="true" />
+      <created>1696531184684</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1696531184684</updated>
+    </task>
+    <task id="LOCAL-00030" summary="basing connexion on creationcompte">
+      <option name="closed" value="true" />
+      <created>1696582608945</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1696582608945</updated>
+    </task>
+    <task id="LOCAL-00031" summary="css of login page">
+      <option name="closed" value="true" />
+      <created>1696586291869</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1696586291869</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Changes by louis">
+      <option name="closed" value="true" />
+      <created>1696586395663</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1696586395663</updated>
+    </task>
+    <task id="LOCAL-00033" summary="php fixes">
+      <option name="closed" value="true" />
+      <created>1696587787443</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1696587787443</updated>
+    </task>
+    <task id="LOCAL-00034" summary="gitignore">
+      <option name="closed" value="true" />
+      <created>1696598551196</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1696598551196</updated>
+    </task>
+    <task id="LOCAL-00035" summary="tabs names">
+      <option name="closed" value="true" />
+      <created>1696599253971</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1696599253971</updated>
+    </task>
+    <task id="LOCAL-00036" summary="tab icon added">
+      <option name="closed" value="true" />
+      <created>1696600504823</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1696600504823</updated>
+    </task>
+    <task id="LOCAL-00037" summary="adding disconnection">
+      <option name="closed" value="true" />
+      <created>1696600700500</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1696600700500</updated>
+    </task>
+    <task id="LOCAL-00038" summary="nouvelle structure de projet">
+      <option name="closed" value="true" />
+      <created>1699178682038</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1699178682038</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="added questions to faq and fix footer" />
+    <MESSAGE value="fix responsive of burger menu" />
+    <MESSAGE value="fix images" />
+    <MESSAGE value="register router" />
+    <MESSAGE value="register choice buttons" />
+    <MESSAGE value="database connection" />
+    <MESSAGE value="corrects" />
+    <MESSAGE value="sql" />
+    <MESSAGE value="fix register form (backend)" />
+    <MESSAGE value="class and id added in register form + checks in css" />
+    <MESSAGE value="css corrects" />
+    <MESSAGE value="add .btn-selected in css" />
+    <MESSAGE value="setting student register form conditions on inputs" />
+    <MESSAGE value="fixing student register backend (checks and errors)" />
+    <MESSAGE value="fixing forms and php checks for senior register" />
+    <MESSAGE value="fixing error message" />
+    <MESSAGE value="basing connexion on creationcompte" />
+    <MESSAGE value="css of login page" />
+    <MESSAGE value="Changes by louis" />
+    <MESSAGE value="php fixes" />
+    <MESSAGE value="gitignore" />
+    <MESSAGE value="tabs names" />
+    <MESSAGE value="tab icon added" />
+    <MESSAGE value="adding disconnection" />
+    <MESSAGE value="nouvelle structure de projet" />
+    <option name="LAST_COMMIT_MESSAGE" value="nouvelle structure de projet" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
