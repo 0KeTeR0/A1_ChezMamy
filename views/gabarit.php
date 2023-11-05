@@ -12,7 +12,7 @@
 </head>
 <body>
 <header>
-    <a href="../index.php">
+    <a href="accueil">
         <img alt="" src="public/img/logo.png">
     </a>
     <div>
@@ -21,7 +21,7 @@
             <div class="closeMenu" ></div>
             <ul id="menu_list">
                 <li id="logo_burger"><img alt="" src="public/img/logo.png"></li>
-                <li id="ac_li"><a id="ac" href="index.php">Accueil</a></li>
+                <li id="ac_li"><a id="ac" href="accueil">Accueil</a></li>
                 <li id="search_bar">
                     <div>
                         <form>
@@ -36,8 +36,8 @@
                 </li>
                 <li id="contact"><a href="#">Contact</a></li>
                 <?php if(!array_key_exists('id_user',$_SESSION)){ ?>
-                    <li id="connect"><a href="index.php">Connexion</a></li>
-                    <li id="inscri"><a class="bouton" href="index.php">Inscription</a></li>
+                    <li id="connect"><a href="connexion">Connexion</a></li>
+                    <li id="inscri"><a class="bouton" href="inscription">Inscription</a></li>
                 <?php } else { ?>
                     <li><a href="index.php">Déconnexion</a></li>
                 <?php } ?>
