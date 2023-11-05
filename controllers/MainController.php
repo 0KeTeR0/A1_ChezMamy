@@ -20,6 +20,11 @@ class MainController
         $indexView->generer([]);
     }
 
+    /**
+     * Affiche la page d'exception
+     * @param array|null $params Paramètres à passer à la page
+     * @return void
+     */
     public function Exception(?array $params = null): void
     {
         $notFoundView = new View('Exception');

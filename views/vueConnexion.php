@@ -4,7 +4,7 @@
     <div class="image-connexion"></div>
     <div class="loginBox">
         <div class="logo">
-            <img src="assets/img/logo.png" alt="">
+            <img src="public/img/logo.png" alt="">
         </div>
         <div>
             <?= $message ?>

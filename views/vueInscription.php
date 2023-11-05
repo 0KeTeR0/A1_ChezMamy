@@ -577,4 +577,4 @@
     </div>
 </section>
 
-<script src="../assets/js/register.js"></script>
+<script src="public/js/register.js"></script>

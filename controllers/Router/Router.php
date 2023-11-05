@@ -3,8 +3,11 @@
 namespace App\ChezMamy\controllers\Router;
 
 use App\ChezMamy\controllers\MainController;
+use App\ChezMamy\controllers\Router\Route\RouteConnexion;
 use App\ChezMamy\controllers\Router\Route\RouteException;
 use App\ChezMamy\controllers\Router\Route\RouteIndex;
+use App\ChezMamy\controllers\Router\Route\RouteInscription;
+use App\ChezMamy\controllers\UtilisateurController;
 
 /**
  * Classe Router
@@ -30,7 +33,8 @@ class Router
     private function CreateControllerList(): void
     {
         $this->ctrlList = [
-            "main" => new MainController()
+            "main" => new MainController(),
+            "utilisateur" => new UtilisateurController()
         ];
     }
 
@@ -38,6 +42,8 @@ class Router
     {
         $this->routeList = [
             "index" => new RouteIndex($this->ctrlList["main"]),
+            "connexion" => new RouteConnexion($this->ctrlList["utilisateur"]),
+            "inscription" => new RouteInscription($this->ctrlList["utilisateur"]),
             "exception" => new RouteException($this->ctrlList["main"])
         ];
     }
