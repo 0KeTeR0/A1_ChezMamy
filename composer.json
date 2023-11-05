@@ -3,12 +3,13 @@
     "description": "Application web facilitant les relations intergénérationnelles, de « rencontre sociale entre jeunes et retraités ». Le site permet de partager un repas, une chambre ou un moment avec une personne dite senior.",
     "autoload": {
         "psr-4": {
-            "App\\Chezmamy\\": "src/"
+            "App\\ChezMamy\\": "src/",
+            "App\\ChezMamy\\Views\\": "views/"
         }
     },
     "authors": [
         {
-            "name": "DropTable"
+            "name": "A1 Drop Table"
         }
     ],
     "require": {}
