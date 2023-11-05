@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8f857d3-5fad-45fd-bf77-01841c139f03" name="Changes" comment="nouvelle structure de projet" />
+    <list default="true" id="c8f857d3-5fad-45fd-bf77-01841c139f03" name="Changes" comment="nouvelle structure de projet">
+      <change afterPath="$PROJECT_DIR$/composer.phar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/Config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/dev.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/dev_sample.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/dev_sample.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Router/Route.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Router/Route.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Router/Route/RouteException.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Router/Route/RouteException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Router/Route/RouteIndex.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Router/Route/RouteIndex.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Router/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Router/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/Message.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,7 +29,9 @@
   </component>
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <phar pharPath="$PROJECT_DIR$/composer.phar" />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -46,7 +65,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="E:\Applications\XamppServer\php\php.exe" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="E:\Applications\XamppServer\php\php.exe">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -136,6 +159,7 @@
       <workItem from="1699174970288" duration="571000" />
       <workItem from="1699178529430" duration="74000" />
       <workItem from="1699178604790" duration="120000" />
+      <workItem from="1699209665056" duration="807000" />
     </task>
     <task id="LOCAL-00001" summary="top homepage (image and button)">
       <option name="closed" value="true" />

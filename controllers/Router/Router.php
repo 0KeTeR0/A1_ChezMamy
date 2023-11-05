@@ -3,8 +3,8 @@
 namespace App\ChezMamy\controllers\Router;
 
 use App\ChezMamy\controllers\MainController;
-use App\ChezMamy\controllers\Router\Route\RouteIndex;
 use App\ChezMamy\controllers\Router\Route\RouteException;
+use App\ChezMamy\controllers\Router\Route\RouteIndex;
 
 /**
  * Classe Router

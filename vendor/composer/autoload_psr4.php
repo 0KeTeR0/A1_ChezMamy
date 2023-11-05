@@ -6,6 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\ChezMamy\\models\\' => array($baseDir . '/models'),
+    'App\\ChezMamy\\helpers\\' => array($baseDir . '/helpers'),
+    'App\\ChezMamy\\controllers\\' => array($baseDir . '/controllers'),
+    'App\\ChezMamy\\config\\' => array($baseDir . '/config'),
     'App\\ChezMamy\\Views\\' => array($baseDir . '/views'),
-    'App\\ChezMamy\\' => array($baseDir . '/src'),
 );

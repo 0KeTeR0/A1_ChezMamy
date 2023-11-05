@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ChezMamy\config;
+namespace config;
 
 /**
  * Classe Config
