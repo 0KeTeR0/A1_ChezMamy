@@ -1,6 +1,8 @@
 <?php
 namespace App\ChezMamy\models;
 
+
+
 /**
  * Représentation de la table COMPTES_SENIORS
  * de la BD

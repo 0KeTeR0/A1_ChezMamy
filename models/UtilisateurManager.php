@@ -1,7 +1,6 @@
 <?php
 namespace App\ChezMamy\models;
 
-use Utilisateur;
 
 /**
  * Représentation de la table UTILISATEURS

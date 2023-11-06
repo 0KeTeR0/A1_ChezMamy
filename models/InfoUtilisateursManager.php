@@ -3,7 +3,6 @@
 namespace App\ChezMamy\models;
 
 
-use InfoUtilisateur;
 
 /**
  * Représentation de la table INFO_UTILISATEUR
