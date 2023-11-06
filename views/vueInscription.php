@@ -46,10 +46,6 @@
                         <input type="email" id="mail_etudiant" name="email" placeholder="exemple@gmail.com" required>
                     </div>
                     <div class="form-pair">
-                        <label for="AdressePrt">Adresse des parents</label>
-                        <input type="text" name="parents_address" id="AdressePrt" minlength="2" required>
-                    </div>
-                    <div class="form-pair">
                         <label for="residence">Ville</label>
                         <input type="text" id="residence" name="city" minlength="2" required>
                     </div>
@@ -347,8 +343,8 @@
                     </div>
 
                     <div class="form-pair">
-                        <label for="distanceTransport">Transport en commun les plus proches (distance en Km)</label>
-                        <input type="number" id="distanceTransport" name="public_transport_distance" min="0" max="99" value="0" >
+                        <label for="distanceTransport">Transport en commun les plus proches (distance en m)</label>
+                        <input type="number" id="distanceTransport" name="public_transport_distance" min="0" value="0" >
                     </div>
 
                     <div class="form-pair">
