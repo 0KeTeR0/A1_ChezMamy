@@ -78,6 +78,11 @@ function next_step(){
                 is_valid=false;
             }
         }
+        if(cstep === 1) {
+            if (!validateCoordonnesEtudiant()){
+                is_valid = false;
+            }
+        }
         if(is_valid){
             cstep+=1;
             document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
@@ -90,6 +95,11 @@ function next_step(){
         for (const el of document.getElementById("Senior_etape"+(cstep).toString()).querySelectorAll("[required]")) {
             if (!el.reportValidity()) {
                 is_valid=false;
+            }
+        }
+        if(cstep === 1) {
+            if (!validateCoordonnesSenior()){
+                is_valid = false;
             }
         }
         if(is_valid) {
@@ -208,6 +218,30 @@ function hide_grandkids(){
     for (let i =0;i<list.length;i++){
         list[i].classList.remove("show");
     }
+}
+
+/**
+ * check if at least one of two field is filled in the Student's form
+ * @returns {boolean} False if the two field are empty
+ */
+function validateCoordonnesEtudiant() {
+    if (student_form.phone.value == '' && student_form.email.value == '') {
+        alert('Vous devez saisir au moins un numéro de téléphone ou une addresse email');
+        return false;
+    }
+    else return true;
+}
+
+/**
+ * check if at least one of two field is filled in the Senior's form
+ * @returns {boolean} False if the two field are empty
+ */
+function validateCoordonnesSenior() {
+    if (senior_form.phone.value == '' && senior_form.email.value == '') {
+        alert('Vous devez saisir au moins un numéro de téléphone ou une addresse email');
+        return false;
+    }
+    else return true;
 }
 
 /* we bind the buttons to the right functions */
