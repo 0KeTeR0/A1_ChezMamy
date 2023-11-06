@@ -2,6 +2,8 @@
 namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
+use App\ChezMamy\models\TokensManager;
+use App\ChezMamy\models\UtilisateurManager;
 use App\ChezMamy\Views\View;
 
 /**
@@ -15,11 +17,13 @@ class UtilisateurController
      * @return void
      * @author Romain Card
      */
-    public function displayConnexion(): void
+    public function displayConnexion(?string $message = null, ?string $login = null): void
     {
+        if ($message !== null) $message = new Message($message, "Erreur de connexion", "danger");
+
         // affichage de la vue
         $connexionView = new View('Connexion');
-        $connexionView->generer([]);
+        $connexionView->generer(["message" => $message ?? null, "login" => $login ?? null]);
     }
 
     /**
@@ -29,7 +33,21 @@ class UtilisateurController
      */
     public function Connexion(array $data): void
     {
+        // Manager de l'utilisateur
+        $utilisateurManager = new UtilisateurManager();
+        $res = $utilisateurManager->checkLogin($data["login"], $data["password"]);
 
+        if (!$res['success']) throw new \Exception($res['message']);
+
+        // Création du token de connexion
+        $tokensManager = new TokensManager();
+        $token = $tokensManager->createToken($res['utilisateur']->getIdUtilisateur());
+
+        // Connexion
+        $_SESSION['auth_token'] = $token;
+
+        // Redirection
+        header('Location: accueil');
     }
 
     /**

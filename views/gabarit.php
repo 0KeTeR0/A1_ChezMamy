@@ -71,7 +71,7 @@
             </li>
             <li><p>Légalité</p>
                 <ul>
-                    <li><a id="mentionFooter" href="#">Mention légales</a></li>
+                    <li><a id="mentionFooter" href="#">Mentions légales</a></li>
                     <li><a id="cookiesFooter" href="#">Politique de cookies</a></li>
                     <li><a id="cguFooter" href="#">CGU</a></li>
                     <li><a id="cgvFooter" href="#">CGV</a></li>
