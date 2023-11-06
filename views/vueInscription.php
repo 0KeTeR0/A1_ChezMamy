@@ -500,7 +500,7 @@
                     <div class="form-pair">
                         <label for="Surface">Surface de la chambre</label>
                         <div class="form-pair">
-                            <input type="number" name="room_surface" id="Surface" value="5" min="5" max="99">
+                            <input type="number" name="room_surface" id="Surface" value="9" min="9" max="99">
                             <p>m²</p>
                         </div>
 
