@@ -10,6 +10,26 @@ namespace App\ChezMamy\models;
 Class UtilisateurManager extends Model{
 
     /**
+     * Créer un nouvel utilisateur à partir d'un login
+     * et d'un mot de passe. Renvoi vrai si l'opération
+     * a été un succès. Faux sinon.
+     * @param string $login Le login, l'identifiant de l'utilisateur : doit être unique
+     * @param string $mdp le mdp de l'utilisateur
+     * @return bool vrai si réussite, faux si échec.
+     */
+    public function creationUtilisateur(string $login, string $mdp):bool{
+        $result = false;
+        if($this->getByLogin($login)==null){
+            $hash = password_hash($mdp,PASSWORD_DEFAULT);
+            if($this->execRequest("INSERT INTO UTILISATEURS (login,hash) VALUES(?,?)",array($login,$hash))!==false){
+                $result=true;
+            }
+
+        }
+        return $result;
+    }
+
+    /**
      * Récupère tout les utilisateurs de la DB
      * @return array array contenant tous les utilisateurs de la DB
      * @author Valentin Colindre
@@ -33,7 +53,7 @@ Class UtilisateurManager extends Model{
      */
     public function getByID(int $idUtilisateur):?Utilisateur{
         $result = $this->execRequest("SELECT * FROM UTILISATEURS WHERE idUtilisateur=?",array($idUtilisateur))->fetch();
-        if($result!=null){
+        if($result!=false){
             $utilisateur = new Utilisateur();
             $utilisateur->hydrate($result);
         }
@@ -50,7 +70,7 @@ Class UtilisateurManager extends Model{
      */
     public function getByLogin(int $loginUtilisateur):?Utilisateur{
         $result = $this->execRequest("SELECT * FROM UTILISATEURS WHERE login=?",array($loginUtilisateur))->fetch();
-        if($result!=null){
+        if($result!=false){
             $utilisateur = new Utilisateur();
             $utilisateur->hydrate($result);
         }
