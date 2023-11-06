@@ -1,6 +1,7 @@
 <?php
 namespace App\ChezMamy\controllers;
 
+use App\ChezMamy\helpers\Message;
 use App\ChezMamy\Views\View;
 
 /**
@@ -34,13 +35,14 @@ class UtilisateurController
     /**
      * Affiche la page d'inscription
      * @return void
-     * @author Romain Card
+     * @author Valentin Colindre
      */
-    public function displayInscription()
+    public function displayInscription(?string $message = null)
     {
+        if ($message !== null) $message = new Message($message, "Erreur d'inscription", "danger");
         // affichage de la vue
         $inscriptionView = new View('Inscription');
-        $inscriptionView->generer([]);
+        $inscriptionView->generer(["message" => $message ?? null]);
     }
 
     /**
