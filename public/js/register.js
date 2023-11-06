@@ -72,14 +72,20 @@ function switch_form_sen(){
  */
 function next_step(){
     let is_valid=true;
-    if(selected=="student"){
-        for (const el of document.getElementById("Etudiant_etape"+(cstep).toString()).querySelectorAll("[required]")) {
-            if (!el.reportValidity()) {
-                is_valid=false;
-            }
-        }
+    if(selected == "student"){
         if(cstep === 1) {
             if (!validateCoordonnesEtudiant()){
+                is_valid = false;
+            }
+            if (!document.getElementById("Etudiant_etape"+(cstep).toString()).querySelector("input#num_etudiant").reportValidity()){
+                is_valid = false;
+            }
+            if (!document.getElementById("Etudiant_etape"+(cstep).toString()).querySelector("input#mail_etudiant").reportValidity()){
+                is_valid = false;
+            }
+        }
+        for (const el of document.getElementById("Etudiant_etape"+(cstep).toString()).querySelectorAll("[required]")) {
+            if (!el.reportValidity()) {
                 is_valid = false;
             }
         }
@@ -92,14 +98,20 @@ function next_step(){
         }
     }
     else{
-        for (const el of document.getElementById("Senior_etape"+(cstep).toString()).querySelectorAll("[required]")) {
-            if (!el.reportValidity()) {
-                is_valid=false;
-            }
-        }
         if(cstep === 1) {
             if (!validateCoordonnesSenior()){
                 is_valid = false;
+            }
+            if (!document.getElementById("Senior_etape"+(cstep).toString()).querySelector("input#num_senior").reportValidity()){
+                is_valid = false;
+            }
+            if (!document.getElementById("Senior_etape"+(cstep).toString()).querySelector("input#mail_senior").reportValidity()){
+                is_valid = false;
+            }
+        }
+        for (const el of document.getElementById("Senior_etape"+(cstep).toString()).querySelectorAll("[required]")) {
+            if (!el.reportValidity()) {
+                is_valid=false;
             }
         }
         if(is_valid) {
@@ -119,7 +131,7 @@ function next_step(){
 function previous_step(){
     cstep-=1;
     document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
-    if(selected=="student"){
+    if(selected == "student"){
         document.getElementById("Etudiant_etape"+(cstep+1).toString()).classList.remove("show");
         document.getElementById("Etudiant_etape"+cstep.toString()).classList.add("show");
     }
