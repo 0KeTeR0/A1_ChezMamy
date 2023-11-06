@@ -3,9 +3,15 @@
         <h1>Bienvenue sur chezMamy, la première plateforme éthique de services entre générations.</h1>
         <p>Nous connectons les seniors et les étudiants pour favoriser le partage de compétences, d'expériences et d'entraide. Rejoignez-nous pour faire partie de cette belle initiative !</p>
     </div>
-    <div class="bouton">
-        <p>Je cherche un logement</p>
+    <div class="bouton-group">
+        <div class="bouton">
+            <p>Je cherche un logement</p>
+        </div>
+        <div class="bouton">
+            <p>J'ai un logement à proposer</p>
+        </div>
     </div>
+
     <svg viewBox="0 0 1920 89" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 89H1920V0L0 60.6592V89Z" fill="white"/>
     </svg>
