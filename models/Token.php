@@ -37,4 +37,44 @@ Class Token{
             }
         }
     }
+
+    public function getIdToken(): int
+    {
+        return $this->idToken;
+    }
+
+    public function setIdToken(int $idToken): void
+    {
+        $this->idToken = $idToken;
+    }
+
+    public function getIdUtilisateur(): int
+    {
+        return $this->idUtilisateur;
+    }
+
+    public function setIdUtilisateur(int $idUtilisateur): void
+    {
+        $this->idUtilisateur = $idUtilisateur;
+    }
+
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token): void
+    {
+        $this->token = $token;
+    }
+
+    public function getExpirationTime(): DateTime
+    {
+        return $this->expirationTime;
+    }
+
+    public function setExpirationTime(DateTime $expirationTime): void
+    {
+        $this->expirationTime = $expirationTime;
+    }
 }
