@@ -16,6 +16,7 @@ Class UtilisateurManager extends Model{
      * @param string $login Le login, l'identifiant de l'utilisateur : doit être unique
      * @param string $mdp le mdp de l'utilisateur
      * @return bool vrai si réussite, faux si échec.
+     * @author Valentin Colindre
      */
     public function creationUtilisateur(string $login, string $mdp):bool{
         $result = false;

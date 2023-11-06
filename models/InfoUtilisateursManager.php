@@ -17,12 +17,13 @@ Class InfoUtilisateursManager extends Model{
      * a été un succès. Faux sinon.
      * @param array $params liste des paramètres pour l'infoUtilisateur.
      * @return bool vrai si réussite, faux si échec.
+     * @author Valentin Colindre
      */
     public function creationInfoUtilisateur(array $params):bool{
         $result = false;
         if($this->getByIdUtilisateur($params['idUtilisateur'])==null){
 
-            if($this->execRequest("INSERT INTO INFOS_UTILISATEUR (mail,numero,nom,prenom,dateDeNaissance,ville,codePostal,adresse,fumeur,interets,raison,idUtilisateur) VALUES(?,?,?,?,?,?,?,?,?,?,?)",array($params['mail'],$params['numero'],$params['nom'],$params['prenom'],$params['dateDeNaissance'],$params['ville'],$params['codePostal'],$params['adresse'],$params['fumeur'],$params['interets'],$params['raison'],$params['idUtilisateur']))!==false){
+            if($this->execRequest("INSERT INTO INFOS_UTILISATEUR (mail,numero,nom,prenom,dateDeNaissance,ville,codePostal,adresse,fumeur,interets,raison,idUtilisateur,idTypeLogement,idConnaissanceAssociation) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",array($params['mail'],$params['numero'],$params['nom'],$params['prenom'],$params['dateDeNaissance'],$params['ville'],$params['codePostal'],$params['adresse'],$params['fumeur'],$params['interets'],$params['raison'],$params['idUtilisateur'],$params['idTypeLogement'],$params['idConnaissanceAssociation']))!==false){
                 $result=true;
             }
         }
