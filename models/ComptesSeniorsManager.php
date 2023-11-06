@@ -2,7 +2,6 @@
 namespace App\ChezMamy\models;
 
 
-use CompteSenior;
 
 /**
  * Représentation de la table COMPTES_SENIORS
