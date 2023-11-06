@@ -78,6 +78,7 @@ section .section-title {
 }
 .bouton:hover {
     filter: brightness(80%);
+    color: white;
 }
 .bouton.btn-gray {
     background: #e3e3e3;
