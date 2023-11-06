@@ -6,6 +6,8 @@
     --secondary-color: #EC4C4C;
     --txt-color: #000;
     --bg-color: #fff;
+    --success-color: #4BB543;
+    --danger-color: #ab1515;
     --transition: .2s ease-in-out;
 }
 
@@ -44,20 +46,29 @@ section .section-title {
     color: var(--main-color);
 }
 
-.alert {
-    position: relative;
-    width: 100%;
-    margin: 30px auto;
-    padding: 5px 25px;
+.notif {
+    margin-bottom: 20px;
+    padding: 1px 20px;
     border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    box-sizing: border-box;
+    font-size: 14px;
+    transition: var(--transition);
 }
-.alert.alert-error {
-    color: #cf3636;
-    background: #ffdede;
-    border: 1px solid #cf3636;
+.notif h2 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.notif p {
+    margin-top: 7px;
+    font-size: 14px;
+}
+.notif-success {
+    background-color: var(--success-color);
+    color: var(--bg-color);
+}
+.notif-danger {
+    background-color: var(--danger-color);
+    color: var(--bg-color);
 }
 
 .bouton-group{
@@ -162,7 +173,7 @@ header nav ul{
 
 
 header nav ul li a{
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: None;
     color: var(--txt-color);
     padding: 28px;
@@ -187,7 +198,8 @@ header nav ul li form input{
     outline: None;
     box-shadow: None;
     border: None;
-    width: 347px;
+    width: 350px;
+    font-size: 18px;
 }
 
 header nav ul li form input:focus{
@@ -199,14 +211,11 @@ header nav ul li form input:focus{
 header nav ul li form input[placeholder]{
     transition: var(--transition);
     padding-left: 25px;
-    color:#C8C8C8;
-    font-size: 20px;
+    color: #2d2d2d;
 
 }
-
 header nav ul li form:hover input[placeholder] {
     transition: var(--transition);
-    color: #717171;
 }
 header nav ul li form button:hover svg{
     fill: var(--main-color);
@@ -229,7 +238,7 @@ header nav ul li > button{
     color: white;
     border-radius: 5px;
     border: none;
-    font-size: 20px;
+    font-size: 18px;
     font-family: "Segoe UI", "Arial", sans-serif;
     background: var(--main-color);
     transition: var(--transition);
