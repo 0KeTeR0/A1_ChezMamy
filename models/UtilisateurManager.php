@@ -15,14 +15,15 @@ Class UtilisateurManager extends Model{
      * a été un succès. Faux sinon.
      * @param string $login Le login, l'identifiant de l'utilisateur : doit être unique
      * @param string $mdp le mdp de l'utilisateur
+     * @param int $role rôle de l'utilisateur
      * @return bool vrai si réussite, faux si échec.
      * @author Valentin Colindre
      */
-    public function creationUtilisateur(string $login, string $mdp):bool{
+    public function creationUtilisateur(string $login, string $mdp,int $role):bool{
         $result = false;
         if($this->getByLogin($login)==null){
             $hash = password_hash($mdp,PASSWORD_DEFAULT);
-            if($this->execRequest("INSERT INTO UTILISATEURS (login,hash) VALUES(?,?)",array($login,$hash))!==false){
+            if($this->execRequest("INSERT INTO UTILISATEURS (login,hash,idRole) VALUES(?,?,?)",array($login,$hash,$role))!==false){
                 $result=true;
             }
 
