@@ -343,8 +343,8 @@
                     </div>
 
                     <div class="form-pair">
-                        <label for="distanceTransport">Transport en commun les plus proches (distance en Km)</label>
-                        <input type="number" id="distanceTransport" name="public_transport_distance" min="0" max="99" value="0" >
+                        <label for="distanceTransport">Transport en commun les plus proches (distance en m)</label>
+                        <input type="number" id="distanceTransport" name="public_transport_distance" min="0" value="0" >
                     </div>
 
                     <div class="form-pair">
