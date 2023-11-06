@@ -1,7 +1,7 @@
 <?php include('message.php'); ?>
 
 <section class="registerForm">
-    <?= $message ?>
+    <?php include('message.php'); ?>
     <div class="registerBox">
         <div>
             <h1 class="section-title">Création de profil</h1>
@@ -214,7 +214,7 @@
                     </div>
                     <div>
                         <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
-                        <input type="submit" class="bouton" name="registerStudent" value="Créer mon compte étudiant">
+                        <input type="submit" class="bouton" name="registerStudent" value="Créer mon compte étudiant•e">
                     </div>
                 </div>
             </form>
@@ -393,7 +393,7 @@
 
                     </div>
                     <div class="form-pair radio-group-7">
-                        <label >L'étudiant peut-il demeurer pendant la session d'été ?</label>
+                        <label >L'étudiant•e peut-il•elle demeurer pendant la session d'été ?</label>
                         <div>
                             <input type="radio" id="oui_ete" name="can_stay_summer" value="1">
                             <label for="oui_ete">Oui</label>
@@ -417,11 +417,11 @@
 
                     <div class="textarea-group-1">
                         <div class="form-pair">
-                            <label for="textInteret">Vos centres d'intérêts :</label>
+                            <label for="textInteret">Vos centres d'intérêts</label>
                             <textarea id="textInteret" name="interests"></textarea>
                         </div>
                         <div class="form-pair">
-                            <label for="textPassion">Votre passion a partagé :</label>
+                            <label for="textPassion">Votre passion à partager</label>
                             <textarea id="textPassion" name="passion_to_share"></textarea>
                         </div>
                         <div class="form-pair">
@@ -493,11 +493,11 @@
 
                 <div id="Senior_etape6" class="form-group">
                     <div>
-                        <h2>Caractéristique de la chambre</h2>
+                        <h2>Caractéristiques de la chambre</h2>
                     </div>
 
                     <div class="form-pair">
-                        <label for="Surface">Surface de la chambre</label>
+                        <label for="Surface">Surface</label>
                         <div class="form-pair">
                             <input type="number" name="room_surface" id="Surface" value="9" min="9" max="99">
                             <p>m²</p>
@@ -518,25 +518,25 @@
                             <input type="radio" id="non_Meubles" name="has_furniture" value="0">
                         </div>
                         <div>
-                            <label for="lavage">Appareils pour lavage disponible ?</label>
+                            <label for="lavage">Appareils pour lavage disponibles ?</label>
                         </div>
                         <div class="form-pair">
-                            <label for="oui_lavage">oui</label>
+                            <label for="oui_lavage">Oui</label>
                             <input type="radio" id="oui_lavage" name="can_clean" value="1">
                         </div>
                         <div class="form-pair">
-                            <label for="non_lavage">non</label>
+                            <label for="non_lavage">Non</label>
                             <input type="radio" id="non_lavage" name="can_clean" value="0" checked>
                         </div>
                         <div>
                             <label for="internet">Internet disponible ?</label>
                         </div>
                         <div class="form-pair">
-                            <label for="oui_internet">oui</label>
+                            <label for="oui_internet">Oui</label>
                             <input type="radio" id="oui_internet" name="has_internet" value="1" checked>
                         </div>
                         <div class="form-pair">
-                            <label for="non_internet">non</label>
+                            <label for="non_internet">Non</label>
                             <input type="radio" id="non_internet" name="has_internet" value="0">
                         </div>
                     </div>
@@ -563,7 +563,7 @@
                     </div>
                     <div>
                         <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
-                        <input type="submit" class="bouton" name="registerSenior" value="Créer mon compte Senior">
+                        <input type="submit" class="bouton" value="Créer mon compte Senior">
                     </div>
                 </div>
 

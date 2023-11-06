@@ -65,18 +65,41 @@ Class UtilisateurManager extends Model{
 
     /**
      * récupère l'utilisateur de login $loginUtilisateur
-     * @param int $loginUtilisateur le login de l'utilisateur recherché
+     * @param string $loginUtilisateur le login de l'utilisateur recherché
      * @return Utilisateur|null renvoi l'utilisateur ou rien s'il n'existe pas dans la DB.
      * @author Valentin Colindre
      */
-    public function getByLogin(int $loginUtilisateur):?Utilisateur{
+    public function getByLogin(string $loginUtilisateur):?Utilisateur{
         $result = $this->execRequest("SELECT * FROM UTILISATEURS WHERE login=?",array($loginUtilisateur))->fetch();
-        if($result!=false){
+        if($result !== false){
             $utilisateur = new Utilisateur();
             $utilisateur->hydrate($result);
         }
         else $utilisateur=null;
 
         return $utilisateur;
+    }
+
+    /**
+     * Vérifie si l'utilisateur existe dans la DB avec le bon mdp
+     * @param string $loginUtilisateur le login de l'utilisateur recherché
+     * @param string $password le mot de passe de l'utilisateur
+     * @return array array contenant un booléen représentant le succès et un message d'erreur si besoin
+     * @author Romain Card
+     */
+    public function checkLogin(string $loginUtilisateur, string $password):array{
+        $success = false;
+        $utilisateur = $this->getByLogin($loginUtilisateur);
+
+        if ($utilisateur != null)
+            if (password_verify($password,$utilisateur->getHash())) {
+                $success = true;
+                $message = "Connexion réussie";
+            }
+            else {
+                $message = "Mot de passe incorrect";
+            }
+
+        return ["success" => $success, "message" => $message ?? "La connexion est impossibles", "utilisateur" => $utilisateur];
     }
 }

@@ -43,11 +43,15 @@ class RouteConnexion extends Route
      */
     protected function post(array $params = []): void
     {
-        $data = [
-            "email" => $this->getParam($params, "email", false),
-            "password" => $this->getParam($params, "password", false)
-        ];
+        try {
+            $data = [
+                "login" => $this->getParam($params, "login", false),
+                "password" => $this->getParam($params, "password", false)
+            ];
 
-        $this->controller->Connexion($data);
+            $this->controller->Connexion($data);
+        } catch (\Exception $e) {
+            $this->controller->displayConnexion($e->getMessage(), $params['login']);
+        }
     }
 }
