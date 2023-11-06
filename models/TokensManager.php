@@ -5,7 +5,7 @@ namespace App\ChezMamy\models;
 
 
 /**
- * Représentation de la table COMPTES_SENIORS
+ * Représentation de la table Tokens
  * de la BD
  * @author Valentin Colindre
  */
