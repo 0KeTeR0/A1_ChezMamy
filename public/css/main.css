@@ -10,6 +10,9 @@
 }
 
 /* ----------------------- CSS Général CSS ----------------------- */
+* {
+    scroll-behavior: smooth;
+}
 body {
     position: relative;
     margin: 0;

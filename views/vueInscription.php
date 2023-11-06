@@ -10,7 +10,7 @@
         <div>
             <div id="registerChoice">
                 <label>Je suis...</label><br>
-                <div id="jeSuisEtudiant" class="bouton">Étudiant à la recherche d’un logement</div>
+                <div id="jeSuisEtudiant" class="bouton">Étudiant•e à la recherche d’un logement</div>
                 <div id="jeSuisSenior" class="bouton">Senior avec un logement à partager</div>
             </div>
             <!-- Formulaire de création de profil étudiant -->
@@ -38,7 +38,7 @@
                         <input type="text" name="nationality" id="nationalité" required>
                     </div>
                     <div class="form-pair">
-                        <label for="num_etudiant">Téléphone</label>
+                        <label for="num_etudiant">Numéro de téléphone</label>
                         <input type="tel" id="num_etudiant" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}">
                     </div>
                     <div class="form-pair">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-pair">
                         <label for="postal_e">Code postal</label>
-                        <input type="text" id="postal_e" name="postal_code" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
+                        <input type="text" id="postal_e" name="postal_code" title="Doit comporter 5 chiffres" pattern="[0-9]{5}" required>
                     </div>
 
                     <div class="form-pair">
@@ -86,11 +86,11 @@
                         <input type="text" name="establishment" id="etablissement" minlength="2" required>
                     </div>
                     <div class="form-pair">
-                        <label for="end_of_studies">Durée d'étude restante</label>
+                        <label for="end_of_studies">Années d'études restantes</label>
                         <input type="number" name="end_of_studies" id="end_of_studies" value="0" min="0" max="12" required>
                     </div>
                     <div class="form-pair">
-                        <label for="date_of_arrival">Si vous êtes nouveau venu dans notre région, précisez votre date d'arrivée</label>
+                        <label for="date_of_arrival">Si vous êtes nouveau•elle venu•e dans notre région, précisez votre date d'arrivée</label>
                         <input type="date" name="date_of_arrival" id="date_of_arrival" > <!-- mettre la date actuelle en PHP pour min-->
                     </div>
                     <div>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="radio-group-1">
                         <div class="form-pair">
-                            <label for="fumeur">Êtes-vous fumeur ?</label>
+                            <label for="fumeur">Êtes-vous fumeur•se ?</label>
                             <input type="radio" id="fumeur_oui" name="is_smoking" value="1">
                             <label for="fumeur_oui">Oui</label>
                             <input type="radio" id="fumeur_non" name="is_smoking" value="0" checked>
@@ -159,18 +159,18 @@
                     <div>
                         <div class="form-pair">
                             <input type="radio" name="housing" id="lgmtGratuit" value="1" checked>
-                            <label for="lgmtGratuit">1-logement gratuit, en échange de présence soirs et nuits.</label>
-                            <span>Vos journées sont libres. Vous êtes présent le soir à l'heure du repas excepté une soirée par semaine, deux week-ends par mois du vendredi soir au dimanche soir et trois semaines de vacances entre septembre et juin.</span>
+                            <label for="lgmtGratuit">1 - Logement gratuit, en échange de présence soirs et nuits.</label>
+                            <span>Vos journées sont libres. Vous êtes présent•e le soir à l'heure du repas excepté une soirée par semaine, deux week-ends par mois du vendredi soir au dimanche soir et trois semaines de vacances entre septembre et juin.</span>
                         </div>
                         <div class="form-pair">
                             <input type="radio" name="housing" id="lgmtEco+" value="2">
-                            <label for="lgmtEco+">2-Logement économique, avec une participation aux frais d'usage et d'échange de services</label>
-                            <span>Vous avez du temps et de la disponibilité au cœur de votre horaire de cours pour assurer ponctuellement des services en journée (sorties, theatre, lecture,...) ainsi qu'une présence régulière. Vous versez une participation mensuelle entre 125$ et 225$, selon les services offerts et les services utilisés.</span>
+                            <label for="lgmtEco+">2 - Logement économique, avec une participation aux frais d'usage et d'échange de services</label>
+                            <span>Vous avez du temps et de la disponibilité au cœur de votre horaire de cours pour assurer ponctuellement des services en journée (sorties, theatre, lecture,...) ainsi qu'une présence régulière. Vous versez une participation mensuelle entre 125€ et 225€, selon les services offerts et les services utilisés.</span>
                         </div>
                         <div class="form-pair">
                             <input type="radio" name="housing" id="lgmtSolid" value="3">
-                            <label for="lgmtSolid">3-Logement solidaire, en échange de loyer et veille passive</label>
-                            <span>Vos études ne vous permettent pas de donner du temps, mais vous assurez une veille passive et des services spontanés. Vous versez une indemnité d'occupation mensuelle entre 300$ et 425$, selon les caractéristiques du logement</span>
+                            <label for="lgmtSolid">3 - Logement solidaire, en échange de loyer et veille passive</label>
+                            <span>Vos études ne vous permettent pas de donner du temps, mais vous assurez une veille passive et des services spontanés. Vous versez une indemnité d'occupation mensuelle entre 300€ et 425€, selon les caractéristiques du logement.</span>
                         </div>
                     </div>
 
@@ -253,7 +253,7 @@
                         </div>
                         <div class="form-pair">
                             <input type="radio" id="Autres" value="3" name="marital_status">
-                            <label for="Autres">Autres</label>
+                            <label for="Autres">Autre</label>
                         </div>
                     </div>
 
@@ -266,8 +266,12 @@
                         <input type="text" id="postal_s" name="postal_code" maxlength="5" minlength="5" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
                     </div>
                     <div class="form-pair">
-                        <label for="num_senior">Numéro de telephone</label>
-                        <input type="tel" id="num_senior" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}" required>
+                        <label for="num_senior">Numéro de téléphone</label>
+                        <input type="tel" id="num_senior" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}">
+                    </div>
+                    <div class="form-pair">
+                        <label for="mail_senior">Adresse courriel</label>
+                        <input type="email" id="mail_senior" name="email" placeholder="exemple@gmail.com">
                     </div>
 
                     <div class="radio-group-2">
@@ -294,13 +298,8 @@
                         </div>
                     </div>
 
-                    <div class="form-pair">
-                        <label for="mail_senior">Adresse courriel (identifiant de connexion)</label>
-                        <input type="email" id="mail_senior" name="email" placeholder="exemple@gmail.com" required>
-                    </div>
-
                     <div class="radio-group-4">
-                        <label>Avez-vous un animal ?</label>
+                        <label>Avez-vous un ou plusieurs animaux ?</label>
                         <div class="form-pair">
                             <input type="radio" id="animal_oui" name="have_animal" value="1">
                             <label for="animal_oui">Oui</label>
@@ -312,9 +311,9 @@
                     </div>
 
                     <div class="form-pair Select-animal">
-                        <label for="Animaux">Choisir</label>
+                        <label for="Animaux">Le(s)quel(s)</label>
                         <select name="animal[]" id="Animaux" multiple>
-                            <option value="aucun" selected>Aucun</option>
+                            <option value="null" selected>Aucun</option>
                             <option value="Chien">Chien</option>
                             <option value="Chat">Chat</option>
                             <option value="Furet">Furet</option>
@@ -331,7 +330,7 @@
                     </div>
 
                     <div class="form-pair radio-group-5">
-                        <label>Êtes-vous fumeur ?</label>
+                        <label>Êtes-vous fumeur•se ?</label>
                         <div>
                             <input type="radio" id="fumeur_senior_oui" name="is_smoking" value="1">
                             <label for="fumeur_senior_oui">Oui</label>
@@ -343,7 +342,7 @@
                     </div>
 
                     <div class="form-pair">
-                        <label for="distanceTransport">Transport en commun les plus proches (distance en m)</label>
+                        <label for="distanceTransport">Transports en commun les plus proches (distance en m)</label>
                         <input type="number" id="distanceTransport" name="public_transport_distance" min="0" value="0" >
                     </div>
 
