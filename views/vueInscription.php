@@ -11,7 +11,7 @@
             <div id="registerChoice">
                 <label>Je suis...</label><br>
                 <div id="jeSuisEtudiant" class="bouton">Étudiant à la recherche d’un logement</div>
-                <div id="jeSuisSenior" class="bouton">Sénior avec un logement à partager</div>
+                <div id="jeSuisSenior" class="bouton">Senior avec un logement à partager</div>
             </div>
             <!-- Formulaire de création de profil étudiant -->
             <form id="student_form" action="" method="post">
@@ -225,7 +225,7 @@
 
             <form id="senior_form" action="" method="post">
                 <div>
-                    <h1>Profil Sénior</h1>
+                    <h1>Profil Senior</h1>
                 </div>
 
                 <div id="Senior_etape1" class="form-group" >
@@ -568,7 +568,7 @@
                     </div>
                     <div>
                         <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
-                        <input type="submit" class="bouton" name="registerSenior" value="Créer mon compte sénior">
+                        <input type="submit" class="bouton" name="registerSenior" value="Créer mon compte Senior">
                     </div>
                 </div>
 
