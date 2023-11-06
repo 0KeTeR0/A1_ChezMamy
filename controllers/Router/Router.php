@@ -22,6 +22,7 @@ class Router
     /**
      * Initialise le routeur
      * @param string $name_of_action_key Nom de la clé dans le tableau GET ou POST qui contient le nom de l'action à effectuer
+     * @author Romain Card
      */
     public function __construct(string $name_of_action_key = "action")
     {
@@ -30,6 +31,9 @@ class Router
         $this->action_key = $name_of_action_key;
     }
 
+    /**
+     * @author Romain Card
+     */
     private function CreateControllerList(): void
     {
         $this->ctrlList = [
@@ -38,6 +42,9 @@ class Router
         ];
     }
 
+    /**
+     * @author Romain Card
+     */
     private function CreateRouteList(): void
     {
         $this->routeList = [
@@ -53,6 +60,7 @@ class Router
      * @param array $get Paramètres GET
      * @param array $post Paramètres POST
      * @return void
+     * @author Romain Card
      */
     public function routing(array $get = [], array $post = []): void
     {

@@ -12,6 +12,7 @@ class MainController
     /**
      * Affiche la page d'accueil
      * @return void
+     * @author Romain Card
      */
     public function Index(): void
     {
@@ -24,6 +25,7 @@ class MainController
      * Affiche la page d'exception
      * @param array|null $params Paramètres à passer à la page
      * @return void
+     * @author Romain Card
      */
     public function Exception(?array $params = null): void
     {

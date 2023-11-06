@@ -16,6 +16,7 @@ class RouteIndex extends Route
     /**
      * Prépare l'affichage de la page
      * @param MainController $controller
+     * @author Romain Card
      */
     public function __construct(MainController $controller)
     {
@@ -27,6 +28,7 @@ class RouteIndex extends Route
      * Affiche la page d'accueil
      * @param array $params Paramètres à passer à la page
      * @return void
+     * @author Romain Card
      */
     protected function get(array $params = []): void
     {
@@ -37,6 +39,7 @@ class RouteIndex extends Route
      * Exécute une action
      * @param array $params Paramètres à passer à l'exécution
      * @return void
+     * @author Romain Card
      */
     protected function post(array $params = []): void
     {

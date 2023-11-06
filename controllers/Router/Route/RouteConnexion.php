@@ -16,6 +16,7 @@ class RouteConnexion extends Route
     /**
      * Prépare l'affichage de la page
      * @param UtilisateurController $controller
+     * @author Romain Card
      */
     public function __construct(UtilisateurController $controller)
     {
@@ -27,6 +28,7 @@ class RouteConnexion extends Route
      * Affiche la page de connexion
      * @param array $params Paramètres à passer à la page
      * @return void
+     * @author Romain Card
      */
     protected function get(array $params = []): void
     {
@@ -37,6 +39,7 @@ class RouteConnexion extends Route
      * Exécute une action
      * @param array $params Paramètres à passer à l'exécution
      * @return void
+     * @author Romain Card
      */
     protected function post(array $params = []): void
     {

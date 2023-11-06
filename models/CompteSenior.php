@@ -16,53 +16,53 @@ class CompteSenior{
     private int $idUtilisateur;
 
     //animaux possédés par l'utilisateur
-    private string $animal;
+    private ?string $animal;
 
     //distance entre le logement et le moyen de transport le plus proche
-    private int $transportPlusProche;
+    private ?int $transportPlusProche;
 
     //Si les étudiants peuvent rester en été
-    private bool $resterEnEte;
+    private ?bool $resterEnEte;
 
     //la passion à partager avec les étudiants
-    private string $passionAPartager;
+    private ?string $passionAPartager;
 
     //La profession exercée par le senior dans le passé
-    private string $professionExercee;
+    private ?string $professionExercee;
 
     //les avantages qu'auraient un étudiant à cohabiter ici
-    private string $avantagesCohabitation;
+    private ?string $avantagesCohabitation;
 
     //Si la famille est d'accord
-    private bool $accordFamille;
+    private ?bool $accordFamille;
 
     //La surface de la chambre (m²)
-    private int $surfaceChambre;
+    private ?int $surfaceChambre;
 
     //Si la chambre est meublée
-    private bool $meublee;
+    private ?bool $meublee;
 
     //s'il y a des appareils de lavage
-    private bool $appareilsDeLavage;
+    private ?bool $appareilsDeLavage;
 
     //Si il y a internet
-    private bool $internet;
+    private ?bool $internet;
 
     //id vers la table S_SITUATIONS,
     //la situation familiale du senior
-    private int $idSituation;
+    private ?int $idSituation;
 
     //id vers la table S_PRESENCE_FAMILLE
     //la présence de la famille du senior
-    private int $idFamillePresente;
+    private ?int $idFamillePresente;
 
     //id vers la table S_PROPRIETE
     //Si le senior est locataire ou propriétaire
-    private int $idPropriete;
+    private ?int $idPropriete;
 
     //id vers la table S_LOGEMENT
     //Si le logement est un appartement ou une maison
-    private int $idLogement;
+    private ?int $idLogement;
 
 
     /**
