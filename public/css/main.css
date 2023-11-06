@@ -56,6 +56,14 @@ section .section-title {
     background: #ffdede;
     border: 1px solid #cf3636;
 }
+
+.bouton-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
 .bouton {
     display: inline-block;
     margin: 5px 0;

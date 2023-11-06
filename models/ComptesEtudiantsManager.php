@@ -1,7 +1,7 @@
 <?php
 namespace App\ChezMamy\models;
 
-use CompteEtudiant;
+
 
 /**
  * Représentation de la table COMPTES_SENIORS
