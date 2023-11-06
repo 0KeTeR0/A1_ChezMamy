@@ -12,6 +12,24 @@ namespace App\ChezMamy\models;
 Class InfoUtilisateursManager extends Model{
 
     /**
+     * Créer un nouvel infoUtilisateur à partir des champs
+     * nécessaires. Renvoi vrai si l'opération
+     * a été un succès. Faux sinon.
+     * @param array $params liste des paramètres pour l'infoUtilisateur.
+     * @return bool vrai si réussite, faux si échec.
+     */
+    public function creationInfoUtilisateur(array $params):bool{
+        $result = false;
+        if($this->getByIdUtilisateur($params['idUtilisateur'])==null){
+
+            if($this->execRequest("INSERT INTO INFOS_UTILISATEUR (mail,numero,nom,prenom,dateDeNaissance,ville,codePostal,adresse,fumeur,interets,raison,idUtilisateur) VALUES(?,?,?,?,?,?,?,?,?,?,?)",array($params['mail'],$params['numero'],$params['nom'],$params['prenom'],$params['dateDeNaissance'],$params['ville'],$params['codePostal'],$params['adresse'],$params['fumeur'],$params['interets'],$params['raison'],$params['idUtilisateur']))!==false){
+                $result=true;
+            }
+        }
+        return $result;
+    }
+
+    /**
      * Récupère tout les InfoUtilisateur de la DB
      * @return array array contenant tous les InfoUtilisateur de la DB
      * @author Valentin Colindre
@@ -35,7 +53,7 @@ Class InfoUtilisateursManager extends Model{
      */
     public function getByID(int $idInfosUtilisateur):?InfoUtilisateur{
         $result = $this->execRequest("SELECT * FROM INFO_UTILISATEUR WHERE idInfosUtilisateur=?",array($idInfosUtilisateur))->fetch();
-        if($result!=null){
+        if($result!==false){
             $utilisateur = new InfoUtilisateur();
             $utilisateur->hydrate($result);
         }
@@ -52,7 +70,7 @@ Class InfoUtilisateursManager extends Model{
      */
     public function getByIdUtilisateur(int $idUtilisateur):?InfoUtilisateur{
         $result = $this->execRequest("SELECT * FROM INFO_UTILISATEUR WHERE idUtilisateur=?",array($idUtilisateur))->fetch();
-        if($result!=null){
+        if($result!==false){
             $utilisateur = new InfoUtilisateur();
             $utilisateur->hydrate($result);
         }
