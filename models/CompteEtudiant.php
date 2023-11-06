@@ -22,38 +22,35 @@ class CompteEtudiant{
     private int $idDomaineEtude;
 
     //Le niveau d'étude de l'étudiant
-    private int $niveauEtude;
+    private ?int $niveauEtude;
 
     //les stages qu'à fait l'étudiant
-    private string $stages;
+    private ?string $stages;
 
     //L'établissement d'étude de l'étudiant
-    private string $etablissementEtude;
+    private ?string $etablissementEtude;
 
     //date de fin d'étude de l'étudiant
-    private DateTime $dateFinEtude;
+    private ?DateTime $dateFinEtude;
 
     //date d'arrivée dans la région de l'étudiant (ou rien)
     private ?DateTime $dateArriveeRegion;
 
     //motivations de l'étudiant
     //par rapport à l'utilisation du site
-    private string $motivations;
+    private ?string $motivations;
 
     //si l'étudiant a le permis de conduire
-    private bool $permisDeConduire;
+    private ?bool $permisDeConduire;
 
     //si l'étudiant est allergique
-    private bool $allergique;
+    private ?bool $allergique;
 
     //Si oui, les allergies de l'étudiant
     private ?string $allergies;
 
     //Les moyens de locomotion de l'étudiant
-    private string $moyenLocomotion;
-
-    //Les heures de dispo si utilisation du type de logement2
-    private ?string $f2Dispos;
+    private ?string $moyenLocomotion;
 
     //Le budget maximal si utilisation du type de logement3
     private ?int $f3BudgetMax;

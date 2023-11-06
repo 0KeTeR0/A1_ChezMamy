@@ -20,6 +20,7 @@ abstract class Model
      * @param string $sql Requête SQL à exécuter
      * @param array|null $params Paramètres de la requête
      * @return PDOStatement|false Résultats de la requête
+     * @author Romain Card
      */
     protected function execRequest(string $sql, ?array $params = null): PDOStatement|false
     {
@@ -39,6 +40,7 @@ abstract class Model
     /**
      * Crée et/ou retourne la connexion à la base de données
      * @return PDO
+     * @author Romain Card
      */
     private function getDB(): PDO
     {

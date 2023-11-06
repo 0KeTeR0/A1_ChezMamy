@@ -12,6 +12,7 @@ class UtilisateurController
     /**
      * Affiche la page de connexion
      * @return void
+     * @author Romain Card
      */
     public function displayConnexion(): void
     {
@@ -23,6 +24,7 @@ class UtilisateurController
     /**
      * Exécute la connexion de l'utilisateur
      * @return void
+     * @author Romain Card
      */
     public function Connexion(array $data): void
     {
@@ -32,6 +34,7 @@ class UtilisateurController
     /**
      * Affiche la page d'inscription
      * @return void
+     * @author Romain Card
      */
     public function displayInscription()
     {

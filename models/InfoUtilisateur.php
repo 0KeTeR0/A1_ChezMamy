@@ -1,12 +1,13 @@
 <?php
 namespace App\ChezMamy\models;
+
 use DateTime;
 
 /**
- * informations générales d'un
+ * Informations générales d'un
  * utilisateur, provient de la table INFOS_UTILISATEUR
  * (une entrée de la table)
- * @author valentin Colindre
+ * @author Valentin Colindre
  */
 class InfoUtilisateur{
 
@@ -14,43 +15,43 @@ class InfoUtilisateur{
     private int $idInfosUtilisateur;
 
     //mail de l'utilisateur
-    private string $mail;
+    private ?string $mail;
 
     //numéro de l'utilisateur
-    private string $numero;
+    private ?string $numero;
 
     //nom de l'utilisateur
-    private string $nom;
+    private ?string $nom;
 
     //prenom de l'utilisateur
-    private string $prenom;
+    private ?string $prenom;
 
     //date de naissance de l'utilisateur
-    private DateTime $dateDeNaissance;
+    private ?DateTime $dateDeNaissance;
 
     //ville de l'utilisateur
-    private string $ville;
+    private ?string $ville;
 
     //codePostal de l'utilisateur
-    private int $codePostal;
+    private ?int $codePostal;
 
     //addresse de l'utilisateur
-    private string $adresse;
+    private ?string $adresse;
 
     //si l'utilisateur fume ou non
-    private bool $fumeur;
+    private ?bool $fumeur;
 
     //les intérêts de l'utilisateur pour le site
-    private string $interets;
+    private ?string $interets;
 
     //La raison pour la quelle l'utilisateur à décidé d'utiliser le site
-    private string $raison;
+    private ?string $raison;
 
     //L'id de la table ConnaissanceAssociation (façon dont l'utilisateur à connu l'asso)
-    private int $idConnaissanceAssociation;
+    private ?int $idConnaissanceAssociation;
 
     //L'id du type de "service de logement" que souhaite l'utilisateur
-    private int $idTypeLogement;
+    private ?int $idTypeLogement;
 
     //id vers l'utilisateur
     private int $idUtilisateur;

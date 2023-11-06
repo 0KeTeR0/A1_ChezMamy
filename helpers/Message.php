@@ -3,6 +3,7 @@
 namespace App\ChezMamy\helpers;
 
 /**
+ * @author Romain Card
  * Classe Message
  * Gère les messages d'erreur
  */
@@ -16,6 +17,7 @@ class Message
      * @param string $message Message à afficher
      * @param string $title Titre du message
      * @param string $color Couleur du message
+     * @author Romain Card
      */
     public function __construct(string $message, string $title = "Erreur", string $color = "danger")
     {

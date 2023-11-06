@@ -16,6 +16,7 @@ class RouteInscription extends Route
     /**
      * Prépare l'affichage de la page
      * @param UtilisateurController $controller
+     * @author Romain Card
      */
     public function __construct(UtilisateurController $controller)
     {
@@ -27,6 +28,7 @@ class RouteInscription extends Route
      * Affiche la page d'inscription
      * @param array $params Paramètres à passer à la page
      * @return void
+     * @author Romain Card
      */
     protected function get(array $params = []): void
     {
@@ -37,6 +39,7 @@ class RouteInscription extends Route
      * Exécute une action
      * @param array $params Paramètres à passer à l'exécution
      * @return void
+     * @author Romain Card
      */
     protected function post(array $params = []): void
     {
