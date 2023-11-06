@@ -18,7 +18,7 @@
                 <div>
                     <h1>Profil Etudiant</h1>
                 </div>
-
+                <input type="hidden" name="typeCompte" value="0">
                 <div id="Etudiant_etape1" class="form-group">
                     <h2>Identité</h2>
                     <div class="form-pair">
@@ -200,9 +200,13 @@
 
                 <div id="Etudiant_etape5" class="form-group">
                     <div>
-                        <h2>Mot de passe</h2>
+                        <h2>Mot de passe & Login</h2>
                     </div>
                     <div>
+                        <div class="form-pair">
+                            <label for="flogin">Login</label>
+                            <input type="text" id="flogin" name="login" minlength="2" maxlength="80" required>
+                        </div>
                         <div class="form-pair">
                             <label for="password">Mot de passe</label>
                             <input type="password" id="password" name="password" minlength="8" required>
@@ -224,6 +228,7 @@
                     <h1>Profil Senior</h1>
                 </div>
 
+                <input type="hidden" name="typeCompte" value="1">
                 <div id="Senior_etape1" class="form-group" >
                     <div>
                         <h2>Identité</h2>
@@ -549,9 +554,13 @@
 
                 <div id="Senior_etape7" class="form-group">
                     <div>
-                        <h2>Mot de passe</h2>
+                        <h2>Mot de passe & Login</h2>
                     </div>
                     <div>
+                        <div class="form-pair">
+                            <label for="flogin">Login</label>
+                            <input type="text" id="flogin" name="login" minlength="2" maxlength="80" required>
+                        </div>
                         <div class="form-pair">
                             <label for="password">Mot de passe</label>
                             <input type="password" id="password" name="password" minlength="8" required>
