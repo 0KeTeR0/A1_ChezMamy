@@ -46,10 +46,6 @@
                         <input type="email" id="mail_etudiant" name="email" placeholder="exemple@gmail.com" required>
                     </div>
                     <div class="form-pair">
-                        <label for="AdressePrt">Adresse des parents</label>
-                        <input type="text" name="parents_address" id="AdressePrt" minlength="2" required>
-                    </div>
-                    <div class="form-pair">
                         <label for="residence">Ville</label>
                         <input type="text" id="residence" name="city" minlength="2" required>
                     </div>
