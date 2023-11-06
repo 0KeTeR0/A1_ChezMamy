@@ -62,4 +62,25 @@ Class TokensManager extends Model{
 
         return $this->getByIdUtilisateur($idUtilisateur);
     }
+
+    /**
+     * Vérifie si le token de l'utilisateur est encore valide, si oui le prolonge de 15minutes.
+     * @param int $idUtilisateur idUtilisateur de l'utilisateur
+     * @return bool vrai si le token est actif (et prolongé) faux sinon
+     * @author Valentin Colindre
+     */
+    public function checkToken(int $idUtilisateur):bool{
+        $oldToken = $this->getByIdUtilisateur($idUtilisateur);
+        $result = false;
+        if($oldToken!==false){
+            $diff = date_diff($oldToken->getExpirationTime(),new \DateTime("now"));
+            if($diff->format("s")>0){
+                $time=$oldToken->getExpirationTime()->add(\DateInterval::createFromDateString("900 seconds"));
+                $this->execRequest("UPDATE TOKENS SET expirationTime=? WHERE idUtilisateur=?",array($time->format("hh:mm:ss"),$idUtilisateur));
+                $result=true;
+            }
+        }
+
+        return $result;
+    }
 }
