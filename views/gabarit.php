@@ -62,11 +62,11 @@
         <ul>
             <li><p>Naviguer </p>
                 <ul>
-                    <li><a id="accueilFooter" href="../index.php">Accueil</a></li>
-                    <li><a id="rechercherFooter" href="../index.php">Rechercher une offre</a></li>
-                    <li><a id="contactFooter" href="../index.php">Contact</a></li>
-                    <li><a id="connexionFooter" href="../index.php">Connexion</a></li>
-                    <li><a id="inscriptionFooter" href="?action=inscription">Inscription</a></li>
+                    <li><a id="accueilFooter" href="accueil">Accueil</a></li>
+                    <li><a id="rechercherFooter" href="#">Rechercher une offre</a></li>
+                    <li><a id="contactFooter" href="#">Contact</a></li>
+                    <li><a id="connexionFooter" href="connexion">Connexion</a></li>
+                    <li><a id="inscriptionFooter" href="inscription">Inscription</a></li>
                 </ul>
             </li>
             <li><p>Légalité</p>
@@ -80,9 +80,9 @@
             <li><p>Nos réseaux</p>
                 <div>
                     <ul>
-                        <li><a id="twitterFooter" href="#"><img src="assets/img/twitter.png"></a></li>
-                        <li><a id="facebookFooter" href="#"><img src="assets/img/facebook.png"></a></li>
-                        <li><a id="snapchatFooter" href="#"><img src="assets/img/snapchat.png"> </a></li>
+                        <li><a id="twitterFooter" href="#"><img src="public/img/twitter.png"></a></li>
+                        <li><a id="facebookFooter" href="#"><img src="public/img/facebook.png"></a></li>
+                        <li><a id="snapchatFooter" href="#"><img src="public/img/snapchat.png"> </a></li>
                     </ul>
                 </div>
             </li>
@@ -90,6 +90,6 @@
         <div><p>&copy; 2023 Tous droits réservés</p></div>
     </nav>
 </footer>
-<script src="assets/js/burger.js"></script>
+<script src="public/js/burger.js"></script>
 </body>
 </html>

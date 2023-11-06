@@ -25,17 +25,17 @@
             </div>
             <div>
                 <h3>Quelques chiffres</h3>
-                <p>• <span>233</span> senior ont proposé leur logement cette année...</p>
-                <p>• <span>1000</span> senior qui ont proposé leur logement cette année...</p>
-                <p>• <span>500</span> senior ont proposé leur logement cette année...</p>
+                <p>• <span>233</span> seniors ont proposé leur logement cette année...</p>
+                <p>• <span>1000</span> seniors qui ont proposé leur logement cette année...</p>
+                <p>• <span>500</span> seniors ont proposé leur logement cette année...</p>
             </div>
         </div>
         <div>
             <div>
                 <h3>Quelques chiffres</h3>
-                <p>• <span>233</span> senior ont proposé leur logement cette année...</p>
-                <p>• <span>1000</span> senior qui ont proposé leur logement cette année...</p>
-                <p>• <span>500</span> senior ont proposé leur logement cette année...</p>
+                <p>• <span>233</span> seniors ont proposé leur logement cette année...</p>
+                <p>• <span>1000</span> seniors qui ont proposé leur logement cette année...</p>
+                <p>• <span>500</span> seniors ont proposé leur logement cette année...</p>
             </div>
             <div class="imgPres">
                 <img src="assets/img/alice-joie.png" alt="">
