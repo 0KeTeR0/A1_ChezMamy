@@ -15,6 +15,7 @@ class View
     /**
      * Constructeur de la vue
      * @param string $action Action à laquelle la vue est associée
+     * @author Romain Card
      */
     public function __construct(string $action)
     {
@@ -27,6 +28,7 @@ class View
      * Génère et affiche la vue
      * @param array $donnees Données nécessaires à la vue
      * @return void
+     * @author Romain Card
      */
     public function generer(array $donnees): void
     {
@@ -43,6 +45,7 @@ class View
      * @param string $fichier Fichier à générer
      * @param array $donnees Données nécessaires à la vue
      * @return string Résultat de la génération de la vue
+     * @author Romain Card
      */
     private function genererFichier(string $fichier, array $donnees): string
     {

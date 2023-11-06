@@ -1,9 +1,6 @@
 <?php
 namespace App\ChezMamy\models;
 
-
-
-
 /**
  * Représentation de la table Tokens
  * de la BD
@@ -19,7 +16,7 @@ Class TokensManager extends Model{
      */
     public function getByID(int $idToken):?Token{
         $result = $this->execRequest("SELECT * FROM TOKENS WHERE idToken=?",array($idToken))->fetch();
-        if($result!=null){
+        if($result !== false){
             $utilisateur = new Token();
             $utilisateur->hydrate($result);
         }
@@ -36,7 +33,7 @@ Class TokensManager extends Model{
      */
     public function getByIdUtilisateur(int $idUtilisateur):?Token{
         $result = $this->execRequest("SELECT * FROM TOKENS WHERE idUtilisateur=?",array($idUtilisateur))->fetch();
-        if($result!=null){
+        if($result !== false){
             $utilisateur = new Token();
             $utilisateur->hydrate($result);
         }
@@ -56,7 +53,7 @@ Class TokensManager extends Model{
         $time = new \DateTime("now");
         $time->add(\DateInterval::createFromDateString("900 seconds"));
 
-        if($oldToken!=null){
+        if($oldToken !== false){
             $this->execRequest("UPDATE TOKENS SET token=?, expirationTime=? WHERE idUtilisateur=?",array(\OAuthProvider::generateToken(200),$time->format("hh:mm:ss"),$idUtilisateur));
         }
         else{
