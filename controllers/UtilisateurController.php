@@ -73,22 +73,24 @@ class UtilisateurController
      */
     public function Inscription(array $data): void
     {
-
+        //On crée un nouvel Utilisateur
         $UManager = new UtilisateurManager();
 
         if($UManager->creationUtilisateur($data["login"],$data["password"],1)){
 
+            //On ajoute son id à l'array de donnée
             $data["idUtilisateur"]= $UManager->getByLogin($data["login"])->getIdUtilisateur();
-
+            //Puis on crée un nouvel InfoUtilisateurs à partir de l'id de l'Utilisateur
+            // et les données de Data
             $IUManager = new InfoUtilisateursManager();
 
             $IUManager->creationInfoUtilisateur($data);
-
+            //Si c'est un compte étudiant, on crée aussi un CompteEtudiant à partir de data dans la BDD
             if($this->$data["typeCompte"]=="0"){
                 $CompteManager = new ComptesEtudiantsManager();
 
                 $CompteManager->creationCompteEtudiant($data);
-            }
+            }//Sinon on crée un CompteSenior dans la BDD
             else{
                 $CompteManager = new ComptesSeniorsManager();
 
@@ -96,7 +98,7 @@ class UtilisateurController
             }
 
 
-        }
+        }//Sinon on affiche que le compte existe déjà
         else{
             $this->displayInscription("Login déjà utilisé");
         }
