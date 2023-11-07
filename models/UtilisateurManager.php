@@ -101,6 +101,6 @@ Class UtilisateurManager extends Model{
                 $message = "Mot de passe incorrect";
             }
 
-        return ["success" => $success, "message" => $message ?? "La connexion est impossibles", "utilisateur" => $utilisateur];
+        return ["success" => $success, "message" => $message ?? "La connexion est impossible", "utilisateur" => $utilisateur];
     }
 }

@@ -82,7 +82,7 @@ class InfoUtilisateur{
         $this->idInfosUtilisateur = $idInfosUtilisateur;
     }
 
-    public function getMail(): string
+    public function getMail(): ?string
     {
         return $this->mail;
     }
@@ -92,7 +92,7 @@ class InfoUtilisateur{
         $this->mail = $mail;
     }
 
-    public function getNumero(): string
+    public function getNumero(): ?string
     {
         return $this->numero;
     }
@@ -102,7 +102,7 @@ class InfoUtilisateur{
         $this->numero = $numero;
     }
 
-    public function getNom(): string
+    public function getNom(): ?string
     {
         return $this->nom;
     }
@@ -112,7 +112,7 @@ class InfoUtilisateur{
         $this->nom = $nom;
     }
 
-    public function getPrenom(): string
+    public function getPrenom(): ?string
     {
         return $this->prenom;
     }
@@ -122,7 +122,7 @@ class InfoUtilisateur{
         $this->prenom = $prenom;
     }
 
-    public function getDateDeNaissance(): DateTime
+    public function getDateDeNaissance(): ?DateTime
     {
         return $this->dateDeNaissance;
     }
@@ -132,7 +132,7 @@ class InfoUtilisateur{
         $this->dateDeNaissance = $dateDeNaissance;
     }
 
-    public function getVille(): string
+    public function getVille(): ?string
     {
         return $this->ville;
     }
@@ -142,7 +142,7 @@ class InfoUtilisateur{
         $this->ville = $ville;
     }
 
-    public function getCodePostal(): int
+    public function getCodePostal(): ?int
     {
         return $this->codePostal;
     }
@@ -152,7 +152,7 @@ class InfoUtilisateur{
         $this->codePostal = $codePostal;
     }
 
-    public function getAdresse(): string
+    public function getAdresse(): ?string
     {
         return $this->adresse;
     }
@@ -162,7 +162,7 @@ class InfoUtilisateur{
         $this->adresse = $adresse;
     }
 
-    public function isFumeur(): bool
+    public function isFumeur(): ?bool
     {
         return $this->fumeur;
     }
@@ -172,7 +172,7 @@ class InfoUtilisateur{
         $this->fumeur = $fumeur;
     }
 
-    public function getInterets(): string
+    public function getInterets(): ?string
     {
         return $this->interets;
     }
@@ -182,7 +182,7 @@ class InfoUtilisateur{
         $this->interets = $interets;
     }
 
-    public function getRaison(): string
+    public function getRaison(): ?string
     {
         return $this->raison;
     }
@@ -192,7 +192,7 @@ class InfoUtilisateur{
         $this->raison = $raison;
     }
 
-    public function getIdConnaissanceAssociation(): int
+    public function getIdConnaissanceAssociation(): ?int
     {
         return $this->idConnaissanceAssociation;
     }
@@ -202,7 +202,7 @@ class InfoUtilisateur{
         $this->idConnaissanceAssociation = $idConnaissanceAssociation;
     }
 
-    public function getIdTypeLogement(): int
+    public function getIdTypeLogement(): ?int
     {
         return $this->idTypeLogement;
     }

@@ -71,7 +71,7 @@ class CompteEtudiant{
         }
     }
 
-    public function getIdCompteEtudiant(): int
+    public function getIdCompteEtudiant(): ?int
     {
         return $this->idCompteEtudiant;
     }
@@ -81,7 +81,7 @@ class CompteEtudiant{
         $this->idCompteEtudiant = $idCompteEtudiant;
     }
 
-    public function getIdUtilisateur(): int
+    public function getIdUtilisateur(): ?int
     {
         return $this->idUtilisateur;
     }
@@ -91,7 +91,7 @@ class CompteEtudiant{
         $this->idUtilisateur = $idUtilisateur;
     }
 
-    public function getIdDomaineEtude(): int
+    public function getIdDomaineEtude(): ?int
     {
         return $this->idDomaineEtude;
     }
@@ -101,7 +101,7 @@ class CompteEtudiant{
         $this->idDomaineEtude = $idDomaineEtude;
     }
 
-    public function getNiveauEtude(): int
+    public function getNiveauEtude(): ?int
     {
         return $this->niveauEtude;
     }
@@ -111,7 +111,7 @@ class CompteEtudiant{
         $this->niveauEtude = $niveauEtude;
     }
 
-    public function getStages(): string
+    public function getStages(): ?string
     {
         return $this->stages;
     }
@@ -121,7 +121,7 @@ class CompteEtudiant{
         $this->stages = $stages;
     }
 
-    public function getEtablissementEtude(): string
+    public function getEtablissementEtude(): ?string
     {
         return $this->etablissementEtude;
     }
@@ -131,7 +131,7 @@ class CompteEtudiant{
         $this->etablissementEtude = $etablissementEtude;
     }
 
-    public function getDateFinEtude(): DateTime
+    public function getDateFinEtude(): ?DateTime
     {
         return $this->dateFinEtude;
     }
@@ -151,7 +151,7 @@ class CompteEtudiant{
         $this->dateArriveeRegion = $dateArriveeRegion;
     }
 
-    public function getMotivations(): string
+    public function getMotivations(): ?string
     {
         return $this->motivations;
     }
@@ -161,7 +161,7 @@ class CompteEtudiant{
         $this->motivations = $motivations;
     }
 
-    public function isPermisDeConduire(): bool
+    public function isPermisDeConduire(): ?bool
     {
         return $this->permisDeConduire;
     }
@@ -171,7 +171,7 @@ class CompteEtudiant{
         $this->permisDeConduire = $permisDeConduire;
     }
 
-    public function isAllergique(): bool
+    public function isAllergique(): ?bool
     {
         return $this->allergique;
     }
@@ -191,7 +191,7 @@ class CompteEtudiant{
         $this->allergies = $allergies;
     }
 
-    public function getMoyenLocomotion(): string
+    public function getMoyenLocomotion(): ?string
     {
         return $this->moyenLocomotion;
     }
@@ -199,16 +199,6 @@ class CompteEtudiant{
     public function setMoyenLocomotion(string $moyenLocomotion): void
     {
         $this->moyenLocomotion = $moyenLocomotion;
-    }
-
-    public function getF2Dispos(): ?string
-    {
-        return $this->f2Dispos;
-    }
-
-    public function setF2Dispos(?string $f2Dispos): void
-    {
-        $this->f2Dispos = $f2Dispos;
     }
 
     public function getF3BudgetMax(): ?int
