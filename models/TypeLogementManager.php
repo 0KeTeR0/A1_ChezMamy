@@ -14,7 +14,7 @@ class TypeLogementManager extends Model
         $typeLogement_array = array();
         foreach ($request->fetchAll() as $logement)
         {
-            $typeLogement_objet = new ConnaissancesAssociation();
+            $typeLogement_objet = new TypeLogement();
             $typeLogement_objet->hydrate($logement);
             $typeLogement_array[] = $typeLogement_objet;
         }

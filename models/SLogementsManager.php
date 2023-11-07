@@ -14,7 +14,7 @@ class SLogementsManager extends Model
         $sLogement_array = array();
         foreach ($request->fetchAll() as $logement)
         {
-            $sLogement_objet = new ConnaissancesAssociation();
+            $sLogement_objet = new SLogements();
             $sLogement_objet->hydrate($logement);
             $sLogement_array[] = $sLogement_objet;
         }

@@ -5,8 +5,16 @@ use App\ChezMamy\helpers\Message;
 use App\ChezMamy\models\ComptesEtudiantsManager;
 use App\ChezMamy\models\ComptesSeniorsManager;
 use App\ChezMamy\models\ConnaissancesAssociationManager;
+use App\ChezMamy\models\EDomaineEtude;
+use App\ChezMamy\models\EDomainesEtudeManager;
 use App\ChezMamy\models\InfoUtilisateursManager;
+use App\ChezMamy\models\SLogementsManager;
+use App\ChezMamy\models\SPresenceFamillesManager;
+use App\ChezMamy\models\SProprietesManager;
+use App\ChezMamy\models\SSituationsManager;
 use App\ChezMamy\models\TokensManager;
+use App\ChezMamy\models\TypeLogement;
+use App\ChezMamy\models\TypeLogementManager;
 use App\ChezMamy\models\UtilisateurManager;
 use App\ChezMamy\Views\View;
 
@@ -59,13 +67,35 @@ class UtilisateurController
      * @return void
      * @author Valentin Colindre
      */
-    public function displayInscription(?string $message = null)
+    public function displayInscription(?string $message = null):void
     {
         if ($message !== null) $message = new Message($message, "Erreur d'inscription", "danger");
+        // ensembles des manières de connaitre l'association
         $connaissancesAssociation = new ConnaissancesAssociationManager();
+        // ensembles des types de logement contre services proposé
+        $typeLogement = new TypeLogementManager();
+        // ensembles des types d'habitation possibles
+        $slogement = new SLogementsManager();
+        // ensembles des domaines d'études considérés
+        $edomaineEtude = new EDomainesEtudeManager();
+        // ensembles des situations familiales considérés
+        $ssituations = new SSituationsManager();
+        // ensembles des niveaux de la famille
+        $spresenceFamilles = new SPresenceFamillesManager();
+        // si tes locataires ou si propriétaires
+        $spropriete = new SProprietesManager();
+
         // affichage de la vue
         $inscriptionView = new View('Inscription');
-        $inscriptionView->generer(["message" => $message ?? null, "option_connaissances" => $connaissancesAssociation->getAll()]);
+        $inscriptionView->generer(["message" => $message ?? null,
+            "option_connaissances" => $connaissancesAssociation->getAll(),
+            "type_logement" => $typeLogement->getAll(),
+            "SLogement" => $slogement->getAll(),
+            "EdomaineEtudes" => $edomaineEtude->getAll(),
+            "SSistuation" => $ssituations->getAll(),
+            "SPresenceFamilles" => $spresenceFamilles->getAll(),
+            "SProprietes" => $spropriete->getAll()
+        ]);
     }
 
     /**
