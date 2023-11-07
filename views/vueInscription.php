@@ -1,5 +1,3 @@
-<?php include('message.php'); ?>
-
 <section class="registerForm">
     <?php include('message.php'); ?>
     <div class="registerBox">
@@ -18,7 +16,7 @@
                 <div>
                     <h1>Profil Etudiant</h1>
                 </div>
-                <input type="hidden" name="typeCompte" value="0">
+                <input type="hidden" name="typeCompte" value="etudiant">
                 <div id="Etudiant_etape1" class="form-group">
                     <h2>Identité</h2>
                     <div class="form-pair">
@@ -233,7 +231,7 @@
                     <h1>Profil Senior</h1>
                 </div>
 
-                <input type="hidden" name="typeCompte" value="1">
+                <input type="hidden" name="typeCompte" value="senior">
                 <div id="Senior_etape1" class="form-group" >
                     <div>
                         <h2>Identité</h2>
