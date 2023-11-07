@@ -11,7 +11,7 @@ class ConnaissancesAssociationManager extends Model
 {
     public function getAll():array
     {
-        $request = $this->execRequest("SELECT * FROM Connaissances_Association");
+        $request = $this->execRequest("SELECT * FROM CONNAISSANCES_ASSOCIATION");
         $connaissances_array = array();
         foreach ($request->fetchAll() as $connaissances)
         {

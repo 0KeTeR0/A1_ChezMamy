@@ -4,6 +4,7 @@ namespace App\ChezMamy\controllers;
 use App\ChezMamy\helpers\Message;
 use App\ChezMamy\models\ComptesEtudiantsManager;
 use App\ChezMamy\models\ComptesSeniorsManager;
+use App\ChezMamy\models\ConnaissancesAssociationManager;
 use App\ChezMamy\models\InfoUtilisateursManager;
 use App\ChezMamy\models\TokensManager;
 use App\ChezMamy\models\UtilisateurManager;
@@ -61,9 +62,10 @@ class UtilisateurController
     public function displayInscription(?string $message = null)
     {
         if ($message !== null) $message = new Message($message, "Erreur d'inscription", "danger");
+        $connaissancesAssociation = new ConnaissancesAssociationManager();
         // affichage de la vue
         $inscriptionView = new View('Inscription');
-        $inscriptionView->generer(["message" => $message ?? null]);
+        $inscriptionView->generer(["message" => $message ?? null, "option_connaissances" => $connaissancesAssociation->getAll()]);
     }
 
     /**
