@@ -54,7 +54,17 @@
 
                     <div class="form-pair">
                         <label for="knowAssociation">Comment avez-vous connu notre association ?</label>
-                        <input type="text" id="knowAssociation" name="know_association">
+                        <label for="notoriety">Comment avez-vous connu notre association ?</label>
+                        <select id="notoriety" name="know_association">
+                            <?php
+                            foreach($option_connaissances as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdConnaissanceAssociation()
+                                    ."\">".$objet->getMoyen()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <div class="form-pair">
@@ -70,6 +80,19 @@
                 <div id="Etudiant_etape2" class="form-group">
                     <div>
                         <h2>Etudes / stages</h2>
+                    </div>
+                    <div class="form-pair">
+                        <label for="idDomaineEtude">Domaine d'étude</label>
+                        <select name="idDomaineEtude" id="idDomaineEtude">
+                            <?php
+                            foreach($EdomaineEtudes as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdDomaineEtude()
+                                    ."\">".$objet->getDomaine()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="form-pair">
                         <label for="education_level">Niveau d'étude (années d'études ciblées)</label>
@@ -90,11 +113,6 @@
                     <div class="form-pair">
                         <label for="date_of_arrival">Si vous êtes nouveau•elle venu•e dans notre région, précisez votre date d'arrivée</label>
                         <input type="date" name="date_of_arrival" id="date_of_arrival" > <!-- mettre la date actuelle en PHP pour min-->
-                    </div>
-                    <div class="form-pair">
-                        <label for="idDomaineEtude"></label>
-                        <select name="idDomaineEtude" id="idDomaineEtude" >
-                        </select>
                     </div>
                     <div>
                         <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
@@ -160,21 +178,17 @@
                     </div>
 
                     <div>
-                        <div class="form-pair">
-                            <input type="radio" name="housing" id="lgmtGratuit" value="1" checked>
-                            <label for="lgmtGratuit">1 - Logement gratuit, en échange de présence soirs et nuits.</label>
-                            <span>Vos journées sont libres. Vous êtes présent•e le soir à l'heure du repas excepté une soirée par semaine, deux week-ends par mois du vendredi soir au dimanche soir et trois semaines de vacances entre septembre et juin.</span>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" name="housing" id="lgmtEco+" value="2">
-                            <label for="lgmtEco+">2 - Logement économique, avec une participation aux frais d'usage et d'échange de services</label>
-                            <span>Vous avez du temps et de la disponibilité au cœur de votre horaire de cours pour assurer ponctuellement des services en journée (sorties, theatre, lecture,...) ainsi qu'une présence régulière. Vous versez une participation mensuelle entre 125€ et 225€, selon les services offerts et les services utilisés.</span>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" name="housing" id="lgmtSolid" value="3">
-                            <label for="lgmtSolid">3 - Logement solidaire, en échange de loyer et veille passive</label>
-                            <span>Vos études ne vous permettent pas de donner du temps, mais vous assurez une veille passive et des services spontanés. Vous versez une indemnité d'occupation mensuelle entre 300€ et 425€, selon les caractéristiques du logement.</span>
-                        </div>
+                        <label for="housing">Type de logement rechercher :</label>
+                        <select name="housing" id="housing">
+                            <?php
+                            foreach($type_logement as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdTypeLogement()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <div>
@@ -283,27 +297,31 @@
                     </div>
 
                     <div class="radio-group-2">
-                        <label>Type de logement</label>
-                        <div class="form-pair">
-                            <input type="radio" id="Maison" name="is_house" value="1">
-                            <label for="Maison">Maison</label>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" id="Appartement" name="is_house" value="2" checked>
-                            <label for="Appartement">Appartement</label>
-                        </div>
+                        <label for="is_house">Type de logement</label>
+                        <select name="is_house" id="is_house">
+                            <?php
+                            foreach($SLogement as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdLogement()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
 
-                    <div class="radio-group-3">
-                        <label>Je suis...</label>
-                        <div class="form-pair">
-                            <input type="radio" id="Propriétaire" name="is_landlord" value="1" checked>
-                            <label for="Propriétaire">Propriétaire</label>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" id="Locataire" name="is_landlord" value="0">
-                            <label for="Locataire">Locataire</label>
-                        </div>
+                    <div class="form-pair">
+                        <label for="is_landlord">Je suis...</label>
+                        <select name="is_landlord" id="is_landlord">
+                            <?php
+                            foreach($SProprietes as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdPropriete()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <div class="radio-group-4">
@@ -359,12 +377,12 @@
                             <label for="notoriety">Comment avez-vous connu notre association ?</label>
                             <select id="notoriety" name="know_association">
                                 <?php
-                                    foreach($option_connaissances as $objet){
-                                        echo "<option value=\""
-                                            .$objet->getIdConnaissanceAssociation()
-                                            ."\">".$objet->getMoyen()
-                                            ."</option>";
-                                    }
+                                foreach($option_connaissances as $objet){
+                                    echo "<option value=\""
+                                        .$objet->getIdConnaissanceAssociation()
+                                        ."\">".$objet->getMoyen()
+                                        ."</option>";
+                                }
                                 ?>
                             </select>
                         </div>
@@ -395,19 +413,17 @@
                         <h2>Logement</h2>
                     </div>
                     <div class="form-pair radio-group-6">
-                        <div>
-                            <input type="radio" name="housing" id="gratuit" value="1" checked>
-                            <label for="gratuit">1 - Logement gratuit, en échange de présence soirs et nuits.</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="housing" id="economique" value="2">
-                            <label for="economique">2 - Logement économique, avec une participation aux frais d'usage et d'échange de services.</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="housing" id="solidaire" value="3">
-                            <label for="solidaire">3 - Logement solidaire, en échange de loyer et veille passive.</label>
-                        </div>
-
+                        <label for="housing">Type de logement rechercher :</label>
+                        <select name="housing" id="housing">
+                            <?php
+                            foreach($type_logement as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdTypeLogement()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="form-pair radio-group-7">
                         <label >L'étudiant•e peut-il•elle demeurer pendant la session d'été ?</label>
@@ -484,23 +500,30 @@
                             <label for="non_enfants++">non</label>
                         </div>
                         <br>
-                        <label>Présence de la famille</label>
                         <div class="form-pair">
-                            <input type="radio" id="Presence_fml" name="is_family_present" value="3">
-                            <label for="Presence_fml">Famille très présente</label>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" id="presence" name="is_family_present" value="2" checked>
-                            <label for="presence">Présente</label>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" id="peu" name="is_family_present" value="1">
-                            <label for="peu">Peu présente</label>
+                            <label for="is_family_present">Présence de la famille</label>
+                            <select name="is_family_present" id="is_family_present">
+                                <?php
+                                foreach($SPresenceFamilles as $objet){
+                                    echo "<option value=\""
+                                        .$objet->getIdFamillePresente()
+                                        ."\">".$objet->getType()
+                                        ."</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     <div class="form-pair">
-                        <label for="textFamille">Votre famille est-elle en accord avec votre décision ?</label><br>
-                        <textarea id="textFamille" name="is_family_ok"></textarea> <!--Pourquoi c'est textarea pour une question fermer (remplacer par radio oui non) -->
+                        <label for="textFamille">Votre famille est-elle en accord avec votre décision ?</label>
+                        <div class="form-pair">
+                            <input type="radio" id="non_accord" name="is_family_ok" value="1" checked>
+                            <label for="non_accord">oui</label>
+                        </div>
+                        <div class="form-pair">
+                            <input type="radio" id="oui_accord" name="is_family_ok" value="0">
+                            <label for="oui_accord">non</label>
+                        </div>
                     </div>
                     <div>
                         <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
