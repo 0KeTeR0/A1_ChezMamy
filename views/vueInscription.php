@@ -261,20 +261,18 @@
                         <input type="date" id="date_of_brith" name="date_of_birth" max="2008-01-01" required>
                     </div>
 
-                    <div class="radio-group-1">
-                        <label>Je vis...</label>
-                        <div class="form-pair">
-                            <input type="radio" id="vitSeul" value="1" name="marital_status" checked>
-                            <label for="vitSeul">Seul•e</label>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" id="enCouple" value="2" name="marital_status">
-                            <label for="enCouple">En couple</label>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" id="Autres" value="3" name="marital_status">
-                            <label for="Autres">Autre</label>
-                        </div>
+                    <div class="form-pair">
+                        <label for="marital_status">Je vis ...</label>
+                        <select name="marital_status" id="marital_status">
+                            <?php
+                            foreach($SSistuation as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdSituation()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <div class="form-pair">
