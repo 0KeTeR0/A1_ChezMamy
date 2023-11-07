@@ -178,7 +178,7 @@
                     </div>
 
                     <div>
-                        <label for="housing">Type de logement rechercher :</label>
+                        <label for="housing">Type de logement à proposer :</label>
                         <select name="housing" id="housing">
                             <?php
                             foreach($type_logement as $objet){
