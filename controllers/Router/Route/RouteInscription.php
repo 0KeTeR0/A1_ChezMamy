@@ -102,22 +102,24 @@ class RouteInscription extends Route
                 $data["idLogement"]=$this->getParam($params,"is_house",false);
             }
 
-        }//Renvoi des erreurs si quelque chose n'est pas correct
+            //On vérifie les cas particuliers
+            if(($this->getParam($params,"email")==null and $this->getParam($params,"phone")==null)){
+                throw new \Exception("Email et numéro de téléphone sont vides, l'un des deux doit être complété afin de pouvoir vous contacter.");
+            }
+            else if($this->getParam($params,"date_of_arrival")!="" and strtotime($this->getParam($params,"date_of_arrival"))>time()){
+                throw new \Exception("La date d'arrivée n'est pas valide");
+            }
+            else if($this->getParam($params,"password")!=$this->getParam($params,"password_repeat")){
+                throw new \Exception("Le mot de passe ne correspond pas à la répétition");
+            }
+
+        }//Renvoi une erreur si quelque chose n'est pas correct
         catch (\Exception $e){
             $error=$e->getMessage();
         }
         if ($error!=null){
         $this->controller->displayInscription("Erreur : ".$error);
         }
-        else if(($this->getParam($params,"email")==null and $this->getParam($params,"phone")==null)){
-            $this->controller->displayInscription("Email et numéro de téléphone sont vides, l'un des deux doit être complété afin de pouvoir vous contacter.");
-        }
-        else if($this->getParam($params,"date_of_arrival")!="" and strtotime($this->getParam($params,"date_of_arrival"))>time()){
-            $this->controller->displayInscription("La date d'arrivée n'est pas valide");
-        }
-        else if($this->getParam($params,"password")!=$this->getParam($params,"password_repeat")){
-            $this->controller->displayInscription("Le mot de passe ne correspond pas à la répétition");
-        }//Sinon on procède à l'inscription
         else{
             $this->controller->Inscription($data);
         }
