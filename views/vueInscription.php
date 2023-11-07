@@ -7,7 +7,7 @@
         </div>
         <div>
             <div id="registerChoice">
-                <label>Je suis...</label><br>
+                <label>Je suis...</label>
                 <div id="jeSuisEtudiant" class="bouton">Étudiant•e à la recherche d’un logement</div>
                 <div id="jeSuisSenior" class="bouton">Senior avec un logement à partager</div>
             </div>
@@ -132,7 +132,6 @@
                             <input type="radio" id="fumeur_non" name="is_smoking" value="0" checked>
                             <label for="fumeur_non">Non</label>
                         </div>
-                        <br>
                         <div class="form-pair">
                             <label for="allergie">Avez-vous des allergies ?</label>
                             <input type="radio" id="allergie_oui" name="is_allergic" value="1">
@@ -141,7 +140,6 @@
                             <label for="allergie_non">Non</label>
                         </div>
                     </div>
-                    <br>
                     <div class="form-pair" id="allergies_champ">
                         <label for="allergique">Précisez</label>
                         <input type="search" name="allergies" id="allergique" placeholder="Aucune allergie">
@@ -399,7 +397,7 @@
                         <h2>Nature des services ou présence</h2>
                     </div>
                     <div class="form-pair">
-                        <label for="textBesoin">Votre besoin</label><br>
+                        <label for="textBesoin">Votre besoin</label>
                         <textarea class="textarea-1" id="textBesoin" name="needs"></textarea>
                     </div>
                     <div>
@@ -499,7 +497,6 @@
                             <input type="radio" id="non_enfants++" name="has_grandkids" value="0" checked>
                             <label for="non_enfants++">non</label>
                         </div>
-                        <br>
                         <div class="form-pair">
                             <label for="is_family_present">Présence de la famille</label>
                             <select name="is_family_present" id="is_family_present">
