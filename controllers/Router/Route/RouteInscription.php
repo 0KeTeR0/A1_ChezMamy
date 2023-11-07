@@ -49,6 +49,7 @@ class RouteInscription extends Route
     {
         $error=null;
         try {
+            //Vérification des données en rapport avec Utilisateur et InfoUtilisateur
             $data = [
                 "typeCompte"=>$this->getParam($params,"typeCompte",false),
                 "login"=>$this->getParam($params,"login",false),
@@ -67,6 +68,8 @@ class RouteInscription extends Route
                 "idTypeLogement"=>$this->getParam($params,"housing",false)
             ];
 
+            //Si le compte est un compte étudiant, vérification des données en rapport
+            //avec CompteEtudiant pour l'ajout dans la BDD
             if($this->getParam($params,"typeCompte")=="0"){
 
                 $data["niveauEtude"]=$this->getParam($params,"education_level",false);
@@ -80,7 +83,7 @@ class RouteInscription extends Route
                 $data["moyenLocomotion"]=$this->getParam($params,"means_of_locomation");
                 $data["f3BudgetMax"]=$this->getParam($params,"housing_3_budget");
                 $data["idDomaineEtude"]=$this->getParam($params,"idDomaineEtude");
-            }
+            }//Sinon même chose mais avec les données de CompteSenior
             else{
                 $data["animal"]=$this->getParam($params,"animal[]");
                 $data["transportPlusProche"]=$this->getParam($params,"public_transport_distance",false);
@@ -99,7 +102,7 @@ class RouteInscription extends Route
                 $data["idLogement"]=$this->getParam($params,"is_house",false);
             }
 
-        }
+        }//Renvoi des erreurs si quelque chose n'est pas correct
         catch (\Exception $e){
             $error=$e->getMessage();
         }
@@ -114,7 +117,7 @@ class RouteInscription extends Route
         }
         else if($this->getParam($params,"password")!=$this->getParam($params,"password_repeat")){
             $this->controller->displayInscription("Le mot de passe ne correspond pas à la répétition");
-        }
+        }//Sinon on procède à l'inscription
         else{
             $this->controller->Inscription($data);
         }
