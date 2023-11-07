@@ -22,7 +22,6 @@ Class ComptesEtudiantsManager extends Model{
     public function creationCompteEtudiant(array $params):bool{
         $result = false;
         if($this->getByIdUtilisateur($params['idUtilisateur'])==null){
-
             if($this->execRequest("INSERT INTO COMPTES_ETUDIANTS (niveauEtude,stages,etablissementEtude,dateFinEtude,dateArriveeRegion,motivations,permisDeConduire,allergique,allergies,moyenLocomotion,f3BudgetMax,idDomaineEtude,idUtilisateur) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
                     array($params["niveauEtude"],$params["stages"],$params["etablissementEtude"],$params["dateFinEtude"],$params["dateArriveeRegion"],$params["motivations"],$params["permisDeConduire"],$params["allergique"],$params["allergies"],$params["moyenLocomotion"],$params["f3BudgetMax"],$params["idDomaineEtude"],$params["idUtilisateur"]))!==false){
                 $result=true;
