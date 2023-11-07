@@ -101,7 +101,7 @@ class CompteSenior{
         $this->idUtilisateur = $idUtilisateur;
     }
 
-    public function getAnimal(): string
+    public function getAnimal(): ?string
     {
         return $this->animal;
     }
@@ -111,7 +111,7 @@ class CompteSenior{
         $this->animal = $animal;
     }
 
-    public function getTransportPlusProche(): int
+    public function getTransportPlusProche(): ?int
     {
         return $this->transportPlusProche;
     }
@@ -121,7 +121,7 @@ class CompteSenior{
         $this->transportPlusProche = $transportPlusProche;
     }
 
-    public function isResterEnEte(): bool
+    public function isResterEnEte(): ?bool
     {
         return $this->resterEnEte;
     }
@@ -131,7 +131,7 @@ class CompteSenior{
         $this->resterEnEte = $resterEnEte;
     }
 
-    public function getPassionAPartager(): string
+    public function getPassionAPartager(): ?string
     {
         return $this->passionAPartager;
     }
@@ -141,7 +141,7 @@ class CompteSenior{
         $this->passionAPartager = $passionAPartager;
     }
 
-    public function getProfessionExercee(): string
+    public function getProfessionExercee(): ?string
     {
         return $this->professionExercee;
     }
@@ -151,7 +151,7 @@ class CompteSenior{
         $this->professionExercee = $professionExercee;
     }
 
-    public function getAvantagesCohabitation(): string
+    public function getAvantagesCohabitation(): ?string
     {
         return $this->avantagesCohabitation;
     }
@@ -161,7 +161,7 @@ class CompteSenior{
         $this->avantagesCohabitation = $avantagesCohabitation;
     }
 
-    public function isAccordFamille(): bool
+    public function isAccordFamille(): ?bool
     {
         return $this->accordFamille;
     }
@@ -171,7 +171,7 @@ class CompteSenior{
         $this->accordFamille = $accordFamille;
     }
 
-    public function getSurfaceChambre(): int
+    public function getSurfaceChambre(): ?int
     {
         return $this->surfaceChambre;
     }
@@ -181,7 +181,7 @@ class CompteSenior{
         $this->surfaceChambre = $surfaceChambre;
     }
 
-    public function isMeublee(): bool
+    public function isMeublee(): ?bool
     {
         return $this->meublee;
     }
@@ -191,7 +191,7 @@ class CompteSenior{
         $this->meublee = $meublee;
     }
 
-    public function isAppareilsDeLavage(): bool
+    public function isAppareilsDeLavage(): ?bool
     {
         return $this->appareilsDeLavage;
     }
@@ -201,7 +201,7 @@ class CompteSenior{
         $this->appareilsDeLavage = $appareilsDeLavage;
     }
 
-    public function isInternet(): bool
+    public function isInternet(): ?bool
     {
         return $this->internet;
     }
@@ -211,7 +211,7 @@ class CompteSenior{
         $this->internet = $internet;
     }
 
-    public function getIdSituation(): int
+    public function getIdSituation(): ?int
     {
         return $this->idSituation;
     }
@@ -221,7 +221,7 @@ class CompteSenior{
         $this->idSituation = $idSituation;
     }
 
-    public function getIdFamillePresente(): int
+    public function getIdFamillePresente(): ?int
     {
         return $this->idFamillePresente;
     }
@@ -231,7 +231,7 @@ class CompteSenior{
         $this->idFamillePresente = $idFamillePresente;
     }
 
-    public function getIdPropriete(): int
+    public function getIdPropriete(): ?int
     {
         return $this->idPropriete;
     }
@@ -241,7 +241,7 @@ class CompteSenior{
         $this->idPropriete = $idPropriete;
     }
 
-    public function getIdLogement(): int
+    public function getIdLogement(): ?int
     {
         return $this->idLogement;
     }
