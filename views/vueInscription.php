@@ -42,7 +42,7 @@
                         <input type="tel" id="num_etudiant" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}">
                     </div>
                     <div class="form-pair">
-                        <label for="mail_etudiant">Adresse email <i>(identifiant de connexion)</i></label>
+                        <label for="mail_etudiant">Adresse email</label>
                         <input type="email" id="mail_etudiant" name="email" placeholder="exemple@gmail.com">
                     </div>
                     <div class="form-pair">
