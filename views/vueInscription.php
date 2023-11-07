@@ -74,8 +74,8 @@
                         <h2>Etudes / stages</h2>
                     </div>
                     <div class="form-pair">
-                        <label for="education_level">Collégiale et cycle supérieur</label>
-                        <input type="text" name="education_level" id="education_level" minlength="2" required>
+                        <label for="education_level">Niveau d'étude (années d'études ciblées)</label>
+                        <input type="number" name="education_level" id="education_level" min="2" max="100" required>
                     </div>
                     <div class="form-pair">
                         <label for="stages">Stages, préciser</label>
@@ -92,6 +92,11 @@
                     <div class="form-pair">
                         <label for="date_of_arrival">Si vous êtes nouveau•elle venu•e dans notre région, précisez votre date d'arrivée</label>
                         <input type="date" name="date_of_arrival" id="date_of_arrival" > <!-- mettre la date actuelle en PHP pour min-->
+                    </div>
+                    <div class="form-pair">
+                        <label for="idDomaineEtude"></label>
+                        <select name="idDomaineEtude" id="idDomaineEtude" >
+                        </select>
                     </div>
                     <div>
                         <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
