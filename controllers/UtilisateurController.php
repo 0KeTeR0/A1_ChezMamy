@@ -88,7 +88,7 @@ class UtilisateurController
 
             $IUManager->creationInfoUtilisateur($data);
             //Si c'est un compte étudiant, on crée aussi un CompteEtudiant à partir de data dans la BDD
-            if($this->$data["typeCompte"]=="0"){
+            if($this->$data["typeCompte"]=="etudiant"){
                 $CompteManager = new ComptesEtudiantsManager();
 
                 $CompteManager->creationCompteEtudiant($data);

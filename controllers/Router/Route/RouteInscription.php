@@ -70,7 +70,7 @@ class RouteInscription extends Route
 
             //Si le compte est un compte étudiant, vérification des données en rapport
             //avec CompteEtudiant pour l'ajout dans la BDD
-            if($this->getParam($params,"typeCompte")=="0"){
+            if($this->getParam($params,"typeCompte")=="etudiant"){
 
                 $data["niveauEtude"]=$this->getParam($params,"education_level",false);
                 $data["stages"]=$this->getParam($params,"internships");
