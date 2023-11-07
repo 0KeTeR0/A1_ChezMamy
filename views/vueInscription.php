@@ -359,7 +359,16 @@
                     <div class="form-pair">
                         <div>
                             <label for="notoriety">Comment avez-vous connu notre association ?</label>
-                            <input type="text" id="notoriety" name="know_association">
+                            <select id="notoriety" name="know_association">
+                                <?php
+                                    foreach($option_connaissances as $objet){
+                                        echo "<option value=\""
+                                            .$objet->getIdConnaissanceAssociation()
+                                            ."\">".$objet->getMoyen()
+                                            ."</option>";
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
 

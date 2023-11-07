@@ -1,8 +1,10 @@
 <?php
 
 namespace App\ChezMamy\models;
+
 /**
- * Un ensemble des manières de connaitre l'association
+ * Une manière spécifique de connaitre l'association de la table Connaissances_Association
+ * (une entrée de la table)
  * @author Louis Demeocq
  */
 class ConnaissancesAssociation
