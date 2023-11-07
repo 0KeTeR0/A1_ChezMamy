@@ -4,6 +4,7 @@ namespace App\ChezMamy\controllers\Router\Route;
 
 use App\ChezMamy\controllers\UtilisateurController;
 use App\ChezMamy\controllers\Router\Route;
+use App\ChezMamy\helpers\Message;
 
 /**
  * Classe RouteConnexion
@@ -51,7 +52,7 @@ class RouteConnexion extends Route
 
             $this->controller->Connexion($data);
         } catch (\Exception $e) {
-            $this->controller->displayConnexion($e->getMessage(), $params['login']);
+            $this->controller->displayConnexion(new Message($e->getMessage(), "Erreur de connexion"), $params['login']);
         }
     }
 }

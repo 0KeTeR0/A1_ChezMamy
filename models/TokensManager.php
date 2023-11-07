@@ -1,6 +1,8 @@
 <?php
 namespace App\ChezMamy\models;
 
+use DateTime;
+
 /**
  * Représentation de la table Tokens
  * de la BD
@@ -17,8 +19,14 @@ Class TokensManager extends Model{
     public function getByID(int $idToken):?Token{
         $result = $this->execRequest("SELECT * FROM TOKENS WHERE idToken=?",array($idToken))->fetch();
         if($result !== false){
+            $data = [
+                "idToken" => $result["idToken"],
+                "token" => $result["token"],
+                "expirationTime" => new DateTime(strtotime($result["expirationTime"])),
+                "idUtilisateur" => $result["idUtilisateur"]
+            ];
             $utilisateur = new Token();
-            $utilisateur->hydrate($result);
+            $utilisateur->hydrate($data);
         }
         else $utilisateur=null;
 
@@ -31,11 +39,18 @@ Class TokensManager extends Model{
      * @return Token|null renvoi le Token ou rien s'il n'existe pas dans la DB.
      * @author Valentin Colindre
      */
-    public function getByIdUtilisateur(int $idUtilisateur):?Token{
+    public function getByIdUtilisateur(int $idUtilisateur): ?Token{
         $result = $this->execRequest("SELECT * FROM TOKENS WHERE idUtilisateur=?",array($idUtilisateur))->fetch();
         if($result !== false){
+            $expirationTime = new DateTime();
+            $data = [
+                "idToken" => $result["idToken"],
+                "token" => $result["token"],
+                "expirationTime" => $expirationTime->setTimestamp(strtotime($result["expirationTime"])),
+                "idUtilisateur" => $result["idUtilisateur"]
+            ];
             $utilisateur = new Token();
-            $utilisateur->hydrate($result);
+            $utilisateur->hydrate($data);
         }
         else $utilisateur=null;
 
@@ -48,16 +63,24 @@ Class TokensManager extends Model{
      * @return Token Le nouveau token
      * @author Valentin Colindre
      */
-    public function createToken(int $idUtilisateur):Token{
+    public function createToken(int $idUtilisateur): ?Token
+    {
         $oldToken = $this->getByIdUtilisateur($idUtilisateur);
         $time = new \DateTime("now");
         $time->add(\DateInterval::createFromDateString("900 seconds"));
 
-        if($oldToken !== false){
-            $this->execRequest("UPDATE TOKENS SET token=?, expirationTime=? WHERE idUtilisateur=?",array(\OAuthProvider::generateToken(200),$time->format("hh:mm:ss"),$idUtilisateur));
+        $length=200;
+        $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $authToken = '';
+        for($i=0; $i<$length; $i++){
+            $authToken .= $chars[rand(0, strlen($chars)-1)];
+        }
+
+        if($oldToken !== null){
+            $this->execRequest("UPDATE TOKENS SET token=?, expirationTime=? WHERE idUtilisateur=?",array($authToken,$time->format("H:i:s"),$idUtilisateur));
         }
         else{
-            $this->execRequest("INSERT INTO TOKENS SET (token, expirationTime, idUtilisateur) VALUES (?,?,?)",array(\OAuthProvider::generateToken(200),$time->format("hh:mm:ss"),$idUtilisateur));
+            $this->execRequest("INSERT INTO TOKENS (token, expirationTime, idUtilisateur) VALUES (?,?,?)",array($authToken,$time->format("H:i:s"),$idUtilisateur));
         }
 
         return $this->getByIdUtilisateur($idUtilisateur);
@@ -76,7 +99,7 @@ Class TokensManager extends Model{
             $diff = date_diff($oldToken->getExpirationTime(),new \DateTime("now"));
             if($diff->format("s")>0){
                 $time=$oldToken->getExpirationTime()->add(\DateInterval::createFromDateString("900 seconds"));
-                $this->execRequest("UPDATE TOKENS SET expirationTime=? WHERE idUtilisateur=?",array($time->format("hh:mm:ss"),$idUtilisateur));
+                $this->execRequest("UPDATE TOKENS SET expirationTime=? WHERE idUtilisateur=?",array($time->format("H:i:s"),$idUtilisateur));
                 $result=true;
             }
         }

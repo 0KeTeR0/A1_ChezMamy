@@ -37,7 +37,7 @@ abstract class Route
     protected function getParam(array $array, string $paramName, bool $canBeEmpty = true)
     {
         if (isset($array[$paramName])) {
-            if(!$canBeEmpty && empty($array[$paramName]))
+            if(!$canBeEmpty && (empty($array[$paramName]) && $array[$paramName] !== "0"))
                 throw new Exception("Paramètre '$paramName' vide");
             return $array[$paramName];
         }
