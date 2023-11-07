@@ -8,6 +8,17 @@ namespace App\ChezMamy\models;
  */
 class TypeLogementManager extends Model
 {
+    public function getAll():array
+    {
+        $request = $this->execRequest("SELECT * FROM TYPES_LOGEMENT");
+        $typeLogement_array = array();
+        foreach ($request->fetchAll() as $logement)
+        {
+            $typeLogement_objet = new ConnaissancesAssociation();
+            $typeLogement_objet->hydrate($logement);
+            $typeLogement_array[] = $typeLogement_objet;
+        }
 
-
+        return $typeLogement_array;
+    }
 }
