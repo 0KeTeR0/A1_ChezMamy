@@ -2,6 +2,9 @@
 namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
+use App\ChezMamy\models\ComptesEtudiantsManager;
+use App\ChezMamy\models\ComptesSeniorsManager;
+use App\ChezMamy\models\InfoUtilisateursManager;
 use App\ChezMamy\models\TokensManager;
 use App\ChezMamy\models\UtilisateurManager;
 use App\ChezMamy\Views\View;
@@ -66,9 +69,37 @@ class UtilisateurController
     /**
      * Exécute l'inscription de l'utilisateur
      * @return void
+     * @author Valentin Colindre
      */
     public function Inscription(array $data): void
     {
+
+        $UManager = new UtilisateurManager();
+
+        if($UManager->creationUtilisateur($data["login"],$data["password"],1)){
+
+            $data["idUtilisateur"]= $UManager->getByLogin($data["login"])->getIdUtilisateur();
+
+            $IUManager = new InfoUtilisateursManager();
+
+            $IUManager->creationInfoUtilisateur($data);
+
+            if($this->$data["typeCompte"]=="0"){
+                $CompteManager = new ComptesEtudiantsManager();
+
+                $CompteManager->creationCompteEtudiant($data);
+            }
+            else{
+                $CompteManager = new ComptesSeniorsManager();
+
+                $CompteManager->creationCompteSenior($data);
+            }
+
+
+        }
+        else{
+            $this->displayInscription("Login déjà utilisé");
+        }
 
     }
 }

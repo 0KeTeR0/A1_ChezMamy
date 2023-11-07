@@ -10,6 +10,28 @@ namespace App\ChezMamy\models;
  */
 Class ComptesEtudiantsManager extends Model{
 
+
+    /**
+     * Créer un nouveau compte Etudiant à partir des champs
+     * nécessaires. Renvoi vrai si l'opération
+     * a été un succès. Faux sinon.
+     * @param array $params liste des paramètres pour le compte Etudiant.
+     * @return bool vrai si réussite, faux si échec.
+     * @author Valentin Colindre
+     */
+    public function creationCompteEtudiant(array $params):bool{
+        $result = false;
+        if($this->getByIdUtilisateur($params['idUtilisateur'])==null){
+
+            if($this->execRequest("INSERT INTO COMPTES_ETUDIANTS (niveauEtude,stages,etablissementEtude,dateFinEtude,dateArriveeRegion,motivations,permisDeConduire,allergique,allergies,moyenLocomotion,f3BudgetMax,idDomaineEtude,idUtilisateur) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                    array($params["niveauEtude"],$params["stages"],$params["etablissementEtude"],$params["dateFinEtude"],$params["dateArriveeRegion"],$params["motivations"],$params["permisDeConduire"],$params["allergique"],$params["allergies"],$params["moyenLocomotion"],$params["f3BudgetMax"],$params["idDomaineEtude"],$params["idUtilisateur"]))!==false){
+                $result=true;
+            }
+        }
+        return $result;
+    }
+
+
     /**
      * Récupère tout les CompteEtudiant de la DB
      * @return array array contenant tous les CompteEtudiant de la DB
@@ -34,7 +56,7 @@ Class ComptesEtudiantsManager extends Model{
      */
     public function getByID(int $idCompteEtudiant):?CompteEtudiant{
         $result = $this->execRequest("SELECT * FROM COMPTES_ETUDIANTS WHERE idCompteEtudiant=?",array($idCompteEtudiant))->fetch();
-        if($result!=null){
+        if($result!==false){
             $utilisateur = new CompteEtudiant();
             $utilisateur->hydrate($result);
         }
@@ -51,7 +73,7 @@ Class ComptesEtudiantsManager extends Model{
      */
     public function getByIdUtilisateur(int $idUtilisateur):?CompteEtudiant{
         $result = $this->execRequest("SELECT * FROM COMPTES_ETUDIANTS WHERE idUtilisateur=?",array($idUtilisateur))->fetch();
-        if($result!=null){
+        if($result!==false){
             $utilisateur = new CompteEtudiant();
             $utilisateur->hydrate($result);
         }

@@ -4,6 +4,10 @@ namespace App\ChezMamy\controllers\Router\Route;
 
 use App\ChezMamy\controllers\UtilisateurController;
 use App\ChezMamy\controllers\Router\Route;
+use App\ChezMamy\models\ComptesEtudiantsManager;
+use App\ChezMamy\models\ComptesSeniorsManager;
+use App\ChezMamy\models\InfoUtilisateursManager;
+use App\ChezMamy\models\UtilisateurManager;
 
 /**
  * Classe RouteInscription
@@ -43,6 +47,76 @@ class RouteInscription extends Route
      */
     protected function post(array $params = []): void
     {
-        $this->controller->Inscription();
+        $error=null;
+        try {
+            $data = [
+                "typeCompte"=>$this->getParam($params,"typeCompte",false),
+                "login"=>$this->getParam($params,"login",false),
+                "password"=>$this->getParam($params,"password",false),
+                "mail"=>$this->getParam($params,"email"),
+                "numero"=>$this->getParam($params,"phone"),
+                "nom"=>$this->getParam($params,"last_name",false),
+                "prenom"=>$this->getParam($params,"first_name",false),
+                "dateDeNaissance"=>date('Y-m-d',strtotime($this->getParam($params,"date_of_birth",false))),
+                "ville"=>$this->getParam($params,"city",false),
+                "codePostal"=>$this->getParam($params,"postal_code",false),
+                "fumeur"=>$this->getParam($params,"is_smoking",false),
+                "interets"=>$this->getParam($params,"interests",false),
+                "raison"=>$this->getParam($params,"why",false),
+                "idConnaissanceAssociation"=>$this->getParam($params,"know_association",false),
+                "idTypeLogement"=>$this->getParam($params,"housing",false)
+            ];
+
+            if($this->getParam($params,"typeCompte")=="0"){
+
+                $data["niveauEtude"]=$this->getParam($params,"education_level",false);
+                $data["stages"]=$this->getParam($params,"internships");
+                $data["etablissementEtude"]=$this->getParam($params,"end_of_studies",false);
+                $data["dateArriveeRegion"]=date('Y-m-d',strtotime($this->getParam($params,"date_of_arrival")));
+                $data["motivations"]=$this->getParam($params,"motivation");
+                $data["permisDeConduire"]=$this->getParam($params,"can_drive",false);
+                $data["allergique"]=$this->getParam($params,"is_allergic",false);
+                $data["allergies"]=$this->getParam($params,"allergies");
+                $data["moyenLocomotion"]=$this->getParam($params,"means_of_locomation");
+                $data["f3BudgetMax"]=$this->getParam($params,"housing_3_budget");
+                $data["idDomaineEtude"]=$this->getParam($params,"idDomaineEtude");
+            }
+            else{
+                $data["animal"]=$this->getParam($params,"animal[]");
+                $data["transportPlusProche"]=$this->getParam($params,"public_transport_distance",false);
+                $data["resterEnEte"]=$this->getParam($params,"can_stay_summer",false);
+                $data["passionAPartager"]=$this->getParam($params,"passion_to_share",false);
+                $data["professionExercee"]=$this->getParam($params,"profession",false);
+                $data["avantagesCohabitation"]=$this->getParam($params,"advantages_with_you");
+                $data["accordFamille"]=$this->getParam($params,"is_family_ok",false);
+                $data["surfaceChambre"]=$this->getParam($params,"room_surface",false);
+                $data["meublee"]=$this->getParam($params,"has_furniture",false);
+                $data["appareilsDeLavage"]=$this->getParam($params,"can_clean",false);
+                $data["internet"]=$this->getParam($params,"has_internet",false);
+                $data["idSituation"]=$this->getParam($params,"marital_status",false);
+                $data["idFamillePresente"]=$this->getParam($params,"is_family_present",false);
+                $data["idPropriete"]=$this->getParam($params,"is_landlord",false);
+                $data["idLogement"]=$this->getParam($params,"is_house",false);
+            }
+
+        }
+        catch (\Exception $e){
+            $error=$e->getMessage();
+        }
+        if ($error!=null){
+        $this->controller->displayInscription("Erreur : ".$error);
+        }
+        else if(($this->getParam($params,"email")==null and $this->getParam($params,"phone")==null)){
+            $this->controller->displayInscription("Email et numéro de téléphone sont vides, l'un des deux doit être complété afin de pouvoir vous contacter.");
+        }
+        else if($this->getParam($params,"date_of_arrival")!="" and strtotime($this->getParam($params,"date_of_arrival"))>time()){
+            $this->controller->displayInscription("La date d'arrivée n'est pas valide");
+        }
+        else if($this->getParam($params,"password")!=$this->getParam($params,"password_repeat")){
+            $this->controller->displayInscription("Le mot de passe ne correspond pas à la répétition");
+        }
+        else{
+            $this->controller->Inscription($data);
+        }
     }
 }
