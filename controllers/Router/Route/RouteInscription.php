@@ -117,7 +117,7 @@ class RouteInscription extends Route
                 $data["idLogement"]=$this->getParam($params,"is_house",false);
                 $data["enfants"]=$this->getParam($params,"has_kids",false);
                 $data["petitsEnfants"]=$this->getParam($params,"has_grandkids",false);
-                $data["besoins"]=$this->getParam($params,"needs",false);
+                $data["needs"]=$this->getParam($params,"needs",false);
             }
 
             if(($this->getParam($params,"email")==null and $this->getParam($params,"phone")==null)){
