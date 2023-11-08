@@ -78,7 +78,7 @@ class RouteInscription extends Route
                 $data["niveauEtude"]=$this->getParam($params,"education_level",false);
                 $data["stages"]=$this->getParam($params,"internships");
                 $data["etablissementEtude"]=$this->getParam($params,"establishment",false);
-                $data["dateFinEtude"]=(new DateTime())->setTimestamp(time() + ($this->getParam($params, "end_of_studies") ?? '0') * 365 * 24 * 60 * 60)->format("Y-m-d");
+                $data["dateFinEtude"]=(new DateTime())->setTimestamp(time() + ($this->getParam($params, "end_of_studies") ?? '0') * 365 * 24 * 60 * 60);
                 $data["dateArriveeRegion"]=date('Y-m-d',strtotime($this->getParam($params,"date_of_arrival")));
                 $data["motivations"]=$this->getParam($params,"motivation");
                 $data["permisDeConduire"]=$this->getParam($params,"can_drive",false);
@@ -95,7 +95,7 @@ class RouteInscription extends Route
                     throw new \Exception("La date d'arrivée n'est pas valide.");
                 }
 
-                if((!empty($this->getParam($params,"house2_start")) and empty($this->getParam($params,"house2_end")))or(!empty($this->getParam($params,"house2_end")) and empty($this->getParam($params,"house2_start")))){
+                if((!empty($this->getParam($params,"housing2_start")) and empty($this->getParam($params,"housing2_end")))or(!empty($this->getParam($params,"housing2_end")) and empty($this->getParam($params,"housing2_start")))){
                     throw new \Exception("L'heure de début et de fin de vos disponibilités doit être valide.");
                 }
             }//Sinon même chose mais avec les données de CompteSenior

@@ -136,9 +136,9 @@ class CompteEtudiant{
         return $this->dateFinEtude;
     }
 
-    public function setDateFinEtude(DateTime $dateFinEtude): void
+    public function setDateFinEtude(string $dateFinEtude): void
     {
-        $this->dateFinEtude = $dateFinEtude;
+        $this->dateFinEtude = (new DateTime())->setTimestamp(strtotime($dateFinEtude));
     }
 
     public function getDateArriveeRegion(): ?DateTime
@@ -146,9 +146,9 @@ class CompteEtudiant{
         return $this->dateArriveeRegion;
     }
 
-    public function setDateArriveeRegion(?DateTime $dateArriveeRegion): void
+    public function setDateArriveeRegion(?string $dateArriveeRegion): void
     {
-        $this->dateArriveeRegion = $dateArriveeRegion;
+        $this->dateArriveeRegion = (new DateTime())->setTimestamp(strtotime($dateArriveeRegion));
     }
 
     public function getMotivations(): ?string

@@ -164,11 +164,11 @@ class UtilisateurController
                 $CompteManager = new ComptesEtudiantsManager();
 
                 $res = $CompteManager->creationCompteEtudiant($data);
-                if(!empty($data["house2_start"])){
+                if(!empty($data["housing2_start"])){
                     $dispoManager = new EDisposManager();
                     $dispoArray = ["idCompteEtudiant"=>$CompteManager->getByIdUtilisateur($data["idUtilisateur"])->getIdCompteEtudiant(),
-                        "heureDebut"=>$data["house2_start"],
-                        "heureFin"=>$data["house2_end"]];
+                        "heureDebut"=>$data["housing2_start"],
+                        "heureFin"=>$data["housing2_end"]];
                     $dispoManager->creationEDispo($dispoArray);
                 }
             }//Sinon on crée un CompteSenior dans la BDD

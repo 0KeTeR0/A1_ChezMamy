@@ -36,7 +36,7 @@ class EDisposManager extends Model
      * @return EDispo|null renvoi l'EDispo ou rien s'il n'existe pas dans la DB.
      * @author Valentin Colindre
      */
-    public function getByIdCompteEtudiant(int $idCompteEtudiant):EDispo{
+    public function getByIdCompteEtudiant(int $idCompteEtudiant):?EDispo{
         $result = $this->execRequest("SELECT * FROM E_DISPOS WHERE idCompteEtudiant=?",array($idCompteEtudiant))->fetch();
         if($result!==false){
             $utilisateur = new EDispo();
