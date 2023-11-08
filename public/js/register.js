@@ -189,25 +189,6 @@ function hide_solid(){
     document.getElementById("housing3").classList.remove("show");
 }
 
-
-/**
- * show the complementary details
- * of the animal details in the senior
- * form
- */
-function show_animals(){
-    document.getElementsByClassName("Select-animal")[0].classList.add("show");
-}
-
-/**
- * hide the complementary details
- * of the animal details in the senior
- * form
- */
-function hide_animals(){
-    document.getElementsByClassName("Select-animal")[0].classList.remove("show");
-}
-
 /**
  * show the complementary details
  * of the kids field in the senior
@@ -279,9 +260,6 @@ document.getElementById("lgmtGratuit").addEventListener("click",hide_solid);
 document.getElementById("lgmtEco+").addEventListener("click",hide_solid);
 document.getElementById("lgmtSolid").addEventListener("click",hide_eco);
 document.getElementById("lgmtSolid").addEventListener("click",show_solid);
-
-document.getElementById("animal_oui").addEventListener("click",show_animals);
-document.getElementById("animal_non").addEventListener("click",hide_animals);
 
 document.getElementById("oui_enfants").addEventListener("click",show_grandkids);
 document.getElementById("non_enfants").addEventListener("click",hide_grandkids);

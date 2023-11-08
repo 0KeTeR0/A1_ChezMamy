@@ -320,20 +320,8 @@
                         </select>
                     </div>
 
-                    <div class="radio-group-4">
-                        <label>Avez-vous un ou plusieurs animaux ?</label>
-                        <div class="form-pair">
-                            <input type="radio" id="animal_oui" name="have_animal" value="1">
-                            <label for="animal_oui">Oui</label>
-                        </div>
-                        <div class="form-pair">
-                            <input type="radio" id="animal_non" name="have_animal" value="0" checked>
-                            <label for="animal_non">Non</label>
-                        </div>
-                    </div>
-
                     <div class="form-pair Select-animal">
-                        <label for="Animaux">Le(s)quel(s)</label>
+                        <label for="Animaux">Avez-vous un ou plusieurs animaux ?</label>
                         <select name="animal[]" id="Animaux" multiple>
                             <option value="null" selected>Aucun</option>
                             <option value="Chien">Chien</option>
