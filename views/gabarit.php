@@ -74,7 +74,6 @@
                     <li><a id="mentionFooter" href="#">Mentions légales</a></li>
                     <li><a id="cookiesFooter" href="#">Politique de cookies</a></li>
                     <li><a id="cguFooter" href="#">CGU</a></li>
-                    <li><a id="cgvFooter" href="#">CGV</a></li>
                 </ul>
             </li>
             <li><p>Nos réseaux</p>
