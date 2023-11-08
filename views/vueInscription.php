@@ -53,7 +53,6 @@
                     </div>
 
                     <div class="form-pair">
-                        <label for="knowAssociation">Comment avez-vous connu notre association ?</label>
                         <label for="notoriety">Comment avez-vous connu notre association ?</label>
                         <select id="notoriety" name="know_association">
                             <?php
