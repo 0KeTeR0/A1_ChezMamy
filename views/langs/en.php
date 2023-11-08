@@ -30,6 +30,11 @@ return [
     "footer_rights"=>"© 2023 All rights reserved.",
     "register_id"=>"Login",
     "register_password"=>"Password",
-    "register_connect"=>"Log in"
-    //["variable"] => ["texte"]
+    "register_connect"=>"Log in",
+    "titre1_formulaire" => "Profile creation",
+    "compteur_etape" => "Step ",
+    "label_chois_compte" => "I am ...",
+    "bouton_etudiant" => "Student looking for a housing",
+    "bouton_senior" => "Student with a housing to share",
+
 ];

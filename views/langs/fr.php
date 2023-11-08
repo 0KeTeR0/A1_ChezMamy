@@ -30,6 +30,35 @@ return [
     "footer_rights" => "© 2023 Tous droits réservés.",
     "register_id" => "Identifiant",
     "register_password" => "Mot de passe",
-    "register_connect" => "Se connecter"
-    //["variable"] => ["texte"]
+    "register_connect" => "Se connecter",
+    "titre1_formulaire" => "Création de profil",
+    "compteur_etape" => "Etape ",
+    "formulaire_chois_compte" => "Je suis ...",
+    "bouton_etudiant" => "Étudiant•e à la recherche d’un logement",
+    "bouton_senior" => "Senior avec un logement à partager",
+    "titre1_form_etudiant" => "Profil Eutdiant",
+    "titre2_identite_etudiant" => "Identité",
+    "formulaire_prenom_etudiant" => "Prénom",
+    "formulaire_nom_etudiant" => "Nom",
+    "formulaire_date_naissance_etudiant" => "Date de naissance",
+    "formulaire_nationalite_etudiant" => "Nationalité",
+    "formulaire_telephone_etudiant" => "Numéro de téléphone",
+    "formulaire_email_etudiant" => "Adresse email",
+    "formulaire_ville_etudiant" => "Ville",
+    "formulaire_code_postal" => "Code postal",
+    "title_input_postal_etudiant" => "Doit comporter 5 chiffres",
+    "formulaire_notorieter_association_etudiant" => "Comment avez-vous connu notre association ?",
+    "formulaire_motivation_etudiant" => "Vos motivations pour choisir ce mode de logement",
+
+    "formulaire_bouton_precedent" => "Étape précédente",
+    "formulaire_bouton_suivant" => "Étape suivante",
+
+    "titre2_Etudes_stages" => "Etudes / stages",
+    "formulaire_domaine_etude" => "Domaine d'étude",
+    "formulaire_niveau_etude" => "Niveau d'étude (années d'études ciblées)",
+    "formulaire_stage" => "Stages, préciser",
+    "forumlaire_stage_placeholder" => "Aucun stage",
+    "formulaire_etablissement" => "Etablissement d'enseignement",
+
+
 ];
