@@ -196,11 +196,11 @@
                             <label for="housing_2_availabilities">Vos disponibilités</label>
                             <div class="form-pair">
                                 <label for="housing2_start">Heure de début</label>
-                                <input type="time" id="housing2_start" name="housing2_start" required>
+                                <input type="time" id="housing2_start" name="housing2_start">
                             </div>
                             <div class="form-pair">
                                 <label for="housing2_end">Heure de fin</label>
-                                <input type="time" id="housing2_end" name="housing2_end" required>
+                                <input type="time" id="housing2_end" name="housing2_end">
                             </div>
                         </div>
                         <div class="form-pair" id="housing3">

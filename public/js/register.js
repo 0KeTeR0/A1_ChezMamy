@@ -163,6 +163,8 @@ function hide_allergies(){
  */
 function show_eco(){
     document.getElementById("housing2").classList.add("show");
+    document.getElementById("housing2_start").required=true;
+    document.getElementById("housing2_end").required=true;
 }
 
 /**
@@ -171,6 +173,8 @@ function show_eco(){
  */
 function hide_eco(){
     document.getElementById("housing2").classList.remove("show");
+    document.getElementById("housing2_start").required=false;
+    document.getElementById("housing2_end").required=false;
 }
 
 /**
