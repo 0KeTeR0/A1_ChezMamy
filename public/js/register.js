@@ -261,11 +261,11 @@ document.getElementById("allergie_non").addEventListener("click",hide_allergies)
 //document.getElementById("lgmtSolid").addEventListener("click",hide_eco);
 //document.getElementById("lgmtSolid").addEventListener("click",show_solid);
 function choixLogement() {
-    if(document.getElementById("housing").value === 2){
+    if(document.getElementById("housing").value == 2){
         show_eco();
-        hide_solid()
+        hide_solid();
     }
-    else if (document.getElementById("housing").value === 3){
+    else if (document.getElementById("housing").value == 3){
         show_solid();
         hide_eco();
     }
@@ -275,7 +275,7 @@ function choixLogement() {
     }
 }
 
-document.getElementById("housing").addEventListener("click", choixLogement)
+document.getElementById("housing").addEventListener("change", choixLogement)
 
 document.getElementById("oui_enfants").addEventListener("click",show_grandkids);
 document.getElementById("non_enfants").addEventListener("click",hide_grandkids);
