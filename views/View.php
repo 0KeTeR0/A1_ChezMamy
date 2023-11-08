@@ -26,6 +26,21 @@ class View
     }
 
     /**
+     * Récupère les traductions liées à la langue choisie
+     * @param string $lang  Langue choisie
+     * @return array
+     * @author Romain Card
+     */
+    private function getTraductions(string $lang): array
+    {
+        // Récupération des traductions liées à la langue choisie
+        if(file_exists("views/langs/{$lang}.php")) $res = require_once("langs/{$lang}.php");
+        else $res = require_once('langs/fr.php');
+
+        return $res;
+    }
+
+    /**
      * Génère et affiche la vue
      * @param array $donnees Données nécessaires à la vue
      * @return void
@@ -36,10 +51,11 @@ class View
         // Vérifie si l'utilisateur est connecté
         $userLogged = !empty($_SESSION['auth_token']) ? (new TokensManager())->checkToken($_SESSION['auth_token']) : false;
         $donnees['userLogged'] = $userLogged;
+        $donnees['traductions'] = $this->getTraductions($_GET['lang']);
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'userLogged' => $userLogged));
+        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'userLogged' => $userLogged, 'traductions' => $donnees['traductions']));
         // Renvoi de la vue au navigateur
         echo $vue;
     }
