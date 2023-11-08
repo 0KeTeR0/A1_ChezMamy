@@ -181,13 +181,13 @@ class UtilisateurController
 
                 $besoinsCompteManager = new CompteSeniorSBesoinManager();
 
+
+                $res = $CompteManager->creationCompteSenior($data);
                 foreach ($data["needs"] as $besoin){
                     $besoinParam = ["idCompteSenior"=>$CompteManager->getByIdUtilisateur($data["idUtilisateur"])->getIdCompteSenior(),
                         "idBesoin"=>$besoin];
                     $besoinsCompteManager->creationCompteSeniorSBesoin($besoinParam);
                 }
-
-                $res = $CompteManager->creationCompteSenior($data);
             }
 
             if ($res) {
