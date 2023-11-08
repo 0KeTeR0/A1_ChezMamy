@@ -385,8 +385,17 @@
                         <h2>Nature des services ou présence</h2>
                     </div>
                     <div class="form-pair">
-                        <label for="textBesoin">Votre besoin</label>
-                        <textarea class="textarea-1" id="textBesoin" name="needs"></textarea>
+                        <label for="needs">Votre besoin</label>
+                        <select name="needs" id="needs" multiple>
+                            <?php
+                            foreach($SBesoin as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdBesoin()
+                                    ."\">".$objet->getBesoin()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div>
                         <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
