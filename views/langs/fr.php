@@ -6,6 +6,7 @@ return [
     "nav_contact" => "Contact",
     "nav_connection" => "Connexion",
     "nav_register" => "Inscription",
+    "nav_disconnect"=>"Déconnexion",
     "nav_searchHolder" => "Rechercher une offre",
     "faq_q1" => "La cohabitation intergénérationnelle et solidaire peut-elle être réalisée à n'importe quel âge ?",
     "faq_a1" => "Le concept de cohabitation intergénérationnelle et solidaire est encadré par la Loi Elan et stipule que les jeunes de moins de 30 ans et les personnes de plus de 60 ans peuvent cohabiter de manière intergénérationnelle.<br><br>Si vous avez plus de 30 ans et moins de 60 ans, nous vous invitons à visiter 'La Carte des Colocs' ou 'Cooloc'. Ils proposent des logements partagés, des chambres chez l'habitant et des colocations pour tous les âges.",
