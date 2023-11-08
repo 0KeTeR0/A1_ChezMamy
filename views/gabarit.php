@@ -35,11 +35,11 @@
                     </div>
                 </li>
                 <li id="contact"><a href="#">Contact</a></li>
-                <?php if(!array_key_exists('id_user',$_SESSION)){ ?>
+                <?php if(!$userLogged){ ?>
                     <li id="connect"><a href="connexion">Connexion</a></li>
                     <li id="inscri"><a class="bouton" href="inscription">Inscription</a></li>
                 <?php } else { ?>
-                    <li><a href="index.php">Déconnexion</a></li>
+                    <li><a href="deco">Déconnexion</a></li>
                 <?php } ?>
             </ul>
         </nav>
