@@ -7,7 +7,7 @@
         </div>
         <div>
             <div id="registerChoice">
-                <label>Je suis...</label>
+                <label>Je suis...</label><br>
                 <div id="jeSuisEtudiant" class="bouton">Étudiant•e à la recherche d’un logement</div>
                 <div id="jeSuisSenior" class="bouton">Senior avec un logement à partager</div>
             </div>
@@ -199,7 +199,7 @@
                         </div>
                         <div class="form-pair" id="housing3">
                             <label for="housing_3_budget">Votre budget maximum pour le loyer</label>
-                            <input type="number" id="housing_3_budget" name="housing_3_budget" min="0">
+                            <input type="number" id="housing_3_budget" name="housing_3_budget" min="0" value="0" required>
                         </div>
                         <div class="form-pair">
                             <label for="preferencesQuartier">* Si vous avez des préférences de quartier d'habitation (pour Montréal), précisez</label>
@@ -501,11 +501,11 @@
                         <label for="textFamille">Votre famille est-elle en accord avec votre décision ?</label>
                         <div class="form-pair">
                             <input type="radio" id="non_accord" name="is_family_ok" value="1" checked>
-                            <label for="non_accord">oui</label>
+                            <label for="non_accord">Oui</label>
                         </div>
                         <div class="form-pair">
                             <input type="radio" id="oui_accord" name="is_family_ok" value="0">
-                            <label for="oui_accord">non</label>
+                            <label for="oui_accord">Non</label>
                         </div>
                     </div>
                     <div>

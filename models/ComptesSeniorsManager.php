@@ -20,9 +20,8 @@ Class ComptesSeniorsManager extends Model{
     public function creationCompteSenior(array $params):bool{
         $result = false;
         if($this->getByIdUtilisateur($params['idUtilisateur'])==null){
-
-            if($this->execRequest("INSERT INTO COMPTES_SENIORS (animal,transportPlusProche,resterEnEte,passionAPartager,professionExercee,avantagesCohabitation,accordFamille,surfaceChambre,meublee,appareilsDeLavage,internet,idSituation,idFamillePresente,idPropriete,idLogement,idUtilisateur) VALUES(????????????????)",
-                    array($params['animal'],$params['transportPlusProche'],$params['resterEnEte'],$params['passionAPartager'],$params["professionExercee"],$params["avantagesCohabitation"],$params["accordFamille"],$params["surfaceChambre"],$params["meublee"],$params["appareilsDeLavage"],$params["internet"],$params["idSituation"],$this["idFamillePresente"],$params["idPropriete"],$params["idLogement"],$params["idUtilisateur"]))!==false){
+            if($this->execRequest("INSERT INTO COMPTES_SENIORS (animal,transportPlusProche,resterEnEte,passionAPartager,professionExercee,avantagesCohabitation,accordFamille,surfaceChambre,meublee,appareilsDeLavage,internet,idSituation,idFamillePresente,idPropriete,idLogement,idUtilisateur,enfants, petitsEnfants) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    array($params['animal'],$params['transportPlusProche'],$params['resterEnEte'],$params['passionAPartager'],$params["professionExercee"],$params["avantagesCohabitation"],$params["accordFamille"],$params["surfaceChambre"],$params["meublee"],$params["appareilsDeLavage"],$params["internet"],$params["idSituation"],$params["idFamillePresente"],$params["idPropriete"],$params["idLogement"],$params["idUtilisateur"], $params["enfants"], $params["petitsEnfants"]))!==false){
                 $result=true;
             }
         }

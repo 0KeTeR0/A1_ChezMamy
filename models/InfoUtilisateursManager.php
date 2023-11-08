@@ -23,7 +23,7 @@ Class InfoUtilisateursManager extends Model{
         $result = false;
         if($this->getByIdUtilisateur($params['idUtilisateur'])==null){
 
-            if($this->execRequest("INSERT INTO INFOS_UTILISATEUR (mail,numero,nom,prenom,dateDeNaissance,ville,codePostal,adresse,fumeur,interets,raison,idUtilisateur,idTypeLogement,idConnaissanceAssociation) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",array($params['mail'],$params['numero'],$params['nom'],$params['prenom'],$params['dateDeNaissance'],$params['ville'],$params['codePostal'],$params['adresse'],$params['fumeur'],$params['interets'],$params['raison'],$params['idUtilisateur'],$params['idTypeLogement'],$params['idConnaissanceAssociation']))!==false){
+            if($this->execRequest("INSERT INTO INFO_UTILISATEUR (mail,numero,nom,prenom,dateDeNaissance,ville,codePostal,fumeur,interets,raison,idUtilisateur,idTypeLogement,idConnaissanceAssociation) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",array($params['mail'],$params['numero'],$params['nom'],$params['prenom'],$params['dateDeNaissance'],$params['ville'],$params['codePostal'],$params['fumeur'],$params['interets'],$params['raison'],$params['idUtilisateur'],$params['idTypeLogement'],$params['idConnaissanceAssociation']))!==false){
                 $result=true;
             }
         }

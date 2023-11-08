@@ -29,13 +29,11 @@ class UtilisateurController
      * @return void
      * @author Romain Card
      */
-    public function displayConnexion(?string $message = null, ?string $login = null): void
+    public function displayConnexion(?Message $message = null, ?string $login = null): void
     {
-        if ($message !== null) $message = new Message($message, "Erreur de connexion", "danger");
-
         // affichage de la vue
         $connexionView = new View('Connexion');
-        $connexionView->generer(["message" => $message ?? null, "login" => $login ?? null]);
+        $connexionView->generer(["message" => $message, "login" => $login ?? null]);
     }
 
     /**
@@ -55,6 +53,8 @@ class UtilisateurController
         $tokensManager = new TokensManager();
         $token = $tokensManager->createToken($res['utilisateur']->getIdUtilisateur());
 
+        if ($token === null) throw new \Exception("Une erreur est survenue lors de la connexion");
+        
         // Connexion
         $_SESSION['auth_token'] = $token;
 
@@ -67,9 +67,8 @@ class UtilisateurController
      * @return void
      * @author Valentin Colindre
      */
-    public function displayInscription(?string $message = null):void
-    {
-        if ($message !== null) $message = new Message($message, "Erreur d'inscription", "danger");
+    public function displayInscription(?Message $message = null):void
+    {;
         // ensembles des manières de connaitre l'association
         $connaissancesAssociation = new ConnaissancesAssociationManager();
         // ensembles des types de logement contre services proposé
@@ -87,7 +86,7 @@ class UtilisateurController
 
         // affichage de la vue
         $inscriptionView = new View('Inscription');
-        $inscriptionView->generer(["message" => $message ?? null,
+        $inscriptionView->generer(["message" => $message,
             "option_connaissances" => $connaissancesAssociation->getAll(),
             "type_logement" => $typeLogement->getAll(),
             "SLogement" => $slogement->getAll(),
@@ -117,22 +116,28 @@ class UtilisateurController
             $IUManager = new InfoUtilisateursManager();
 
             $IUManager->creationInfoUtilisateur($data);
+
             //Si c'est un compte étudiant, on crée aussi un CompteEtudiant à partir de data dans la BDD
-            if($this->$data["typeCompte"]=="etudiant"){
+            if($data["typeCompte"]=="etudiant"){
                 $CompteManager = new ComptesEtudiantsManager();
 
-                $CompteManager->creationCompteEtudiant($data);
+                $res = $CompteManager->creationCompteEtudiant($data);
             }//Sinon on crée un CompteSenior dans la BDD
             else{
                 $CompteManager = new ComptesSeniorsManager();
 
-                $CompteManager->creationCompteSenior($data);
+                $res = $CompteManager->creationCompteSenior($data);
             }
 
-
+            if ($res) {
+                $this->displayInscription(new Message("Votre compte a bien été créé, vous pouvez vous connecter !", "Inscription réussie", "success"));
+            }
+            else {
+                $this->displayInscription(new Message("Erreur lors de la création du compte", "Erreur d'inscription", "danger"));
+            }
         }//Sinon on affiche que le compte existe déjà
         else{
-            $this->displayInscription("Login déjà utilisé");
+            $this->displayInscription(new Message("Login déjà utilisé", "Erreur d'inscription", "danger"));
         }
 
     }
