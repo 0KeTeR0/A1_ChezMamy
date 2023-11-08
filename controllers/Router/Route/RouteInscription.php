@@ -94,7 +94,7 @@ class RouteInscription extends Route
                 }
             }//Sinon même chose mais avec les données de CompteSenior
             else{
-                $data["animal"]=$this->getParam($params,"animal");
+                $data["animal"]=implode(",",$this->getParam($params,"animal"));
                 $data["transportPlusProche"]=$this->getParam($params,"public_transport_distance",false);
                 $data["resterEnEte"]=$this->getParam($params,"can_stay_summer",false);
                 $data["passionAPartager"]=$this->getParam($params,"passion_to_share");
