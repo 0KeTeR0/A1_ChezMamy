@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.idea/.name
 /.idea/shelf/Uncommitted_changes_before_Checkout_at_03_10_2023_15_18_[Changes]/alice-joie.png
 /.idea/shelf/Uncommitted_changes_before_Checkout_at_03_10_2023_15_18_[Changes]1/alice-joie.png
@@ -21,3 +22,7 @@
 /.idea/shelf/Uncommitted_changes_before_Update_at_06_10_2023_11_58__Changes_by_louis_.xml
 /.idea/vcs.xml
 /.idea/workspace.xml
+=======
+# fichier de configuartion
+/config/dev.ini
+>>>>>>> origin/nouvelle_structure

@@ -1,0 +1,794 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* ----------------------- Variables CSS ----------------------- */
+:root {
+    --main-color: #460B4A;
+    --secondary-color: #EC4C4C;
+    --txt-color: #000;
+    --bg-color: #fff;
+    --success-color: #4BB543;
+    --danger-color: #ab1515;
+    --transition: .2s ease-in-out;
+}
+
+/* ----------------------- CSS Général CSS ----------------------- */
+* {
+    scroll-behavior: smooth;
+}
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    font-family: 'Roboto', "Arial", sans-serif;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+section {
+    margin: 0;
+    padding: 30px 20%;
+}
+
+.show {
+    display: inline!important;
+}
+
+section .section-title {
+    margin: 25px auto 10px;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--main-color);
+}
+
+.notif {
+    margin-bottom: 20px;
+    padding: 1px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: var(--transition);
+}
+.notif h2 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.notif p {
+    margin-top: 7px;
+    font-size: 14px;
+}
+.notif-success {
+    background-color: var(--success-color);
+    color: var(--bg-color);
+}
+.notif-danger {
+    background-color: var(--danger-color);
+    color: var(--bg-color);
+}
+
+.bouton-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.bouton {
+    display: inline-block;
+    margin: 5px 0;
+    padding: 7px 15px;
+    border-radius: 5px;
+    width: fit-content;
+    color: #fff;
+    text-align: center;
+    background: var(--main-color);
+    transition: var(--transition);
+    cursor: pointer;
+}
+.bouton:hover {
+    filter: brightness(80%);
+    color: white;
+}
+.bouton.btn-gray {
+    background: #e3e3e3;
+    color: #000;
+}
+
+label:has(+ input[required]):after {
+    content: ' *';
+    color: red;
+}
+textarea { resize: vertical; }
+.registerBox input:not([type="checkbox"]):not([type="radio"]),
+.loginBox input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+    display: block;
+    margin: 5px 0;
+    padding: 15px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Roboto', "Arial", sans-serif;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+.registerBox input:focus,
+.loginBox input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--main-color);
+}
+.registerBox input:not([type="submit"]):valid,
+.loginBox input:not([type="submit"]):valid,
+textarea:valid {
+    border-color: green!important;
+}
+.registerBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
+.loginBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
+textarea:not([type="checkbox"]):not([type="radio"]):not(:valid) {
+    border-color: red;
+}
+.form-pair { margin: 10px 0; }
+.form-pair:not(> input[type="checkbox"]):not(> input[type="radio"]) {
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    height: 75px;
+    padding-right: 35px;
+    padding-left: 35px;
+    border: None;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Segoe UI", "Arial", sans-serif;
+    background: var(--bg-color);
+    z-index: 1;
+}
+
+header img{
+    width: 190px;
+    height: 58px;
+}
+
+header nav ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+}
+
+
+header nav ul li a{
+    font-size: 18px;
+    text-decoration: None;
+    color: var(--txt-color);
+    padding: 28px;
+    transition: var(--transition);
+}
+
+header nav ul li a:hover{
+    color:var(--main-color);
+}
+
+header nav ul li form{
+    background: #EAEAEA;
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    width: 418px;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+header nav ul li form input{
+    background: transparent;
+    outline: None;
+    box-shadow: None;
+    border: None;
+    width: 350px;
+    font-size: 18px;
+}
+
+header nav ul li form input:focus{
+    background: transparent;
+    outline: None;
+    box-shadow: None;
+    border: None;
+}
+header nav ul li form input[placeholder]{
+    transition: var(--transition);
+    padding-left: 25px;
+    color: #2d2d2d;
+
+}
+header nav ul li form:hover input[placeholder] {
+    transition: var(--transition);
+}
+header nav ul li form button:hover svg{
+    fill: var(--main-color);
+    cursor: pointer;
+}
+header nav ul li form button{
+    background: transparent;
+    border: None;
+}
+header nav ul li form button svg{
+    fill: black;
+    width: 30px;
+    height: 28.89px;
+    transition: var(--transition);
+}
+
+header nav ul li > button{
+    width: 168px;
+    height: 44px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    font-family: "Segoe UI", "Arial", sans-serif;
+    background: var(--main-color);
+    transition: var(--transition);
+}
+
+#ac{
+    color: var(--main-color);
+}
+
+
+/* ----------------------- Page d'accueil ----------------------- */
+.page-accueil {
+    position: relative;
+    margin: 0;
+    padding: 20px;
+    padding-bottom: 100px;
+    max-width: 100%;
+    height: 90vh;
+    min-height: 500px;
+    background-image: url('../img/image-accueil.png');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.page-accueil .texte-accueil {
+    width: 100%;
+    padding: 140px 135px;
+    max-width: 620px;
+    color: #fff;
+    text-align: center;
+    background-image: url('../img/bulle-accueil.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.page-accueil .texte-accueil h1 {
+    font-family: "Segoe UI", "Arial", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+.page-accueil .texte-accueil p {
+    font-family: 'Roboto', "Arial", sans-serif;
+    font-size: 26px;
+}
+.page-accueil .bouton {
+    font-size: 25px;
+}
+.page-accueil svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* ----------------------- Présentation de l'association ----------------------- */
+.presentation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: fit-content;
+    position: relative;
+}
+.presentation-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.presentation span{
+    color: #460B4A;
+}
+
+.presentation h3{
+    color: #460B4A;
+}
+
+.imgPres{
+    margin-right: 4em;
+    margin-top: 2em;
+}
+
+.imgPres img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#img_right_Pres{
+    margin-bottom: 4em;
+}
+
+/* ----------------------- FAQ ----------------------- */
+.faq .list-questions .question {
+    padding: 10px 75px 10px 0;
+    position: relative;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: "Segoe UI", "Arial", sans-serif;
+    cursor: pointer;
+}
+.faq .list-questions .question span {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    transition: var(--transition);
+}
+.faq .list-questions .question.active span {
+    transform: rotate(180deg);
+}
+.faq .list-questions .answer {
+    font-size: 18px;
+    font-family: 'Roboto', "Arial", sans-serif;
+    margin: 0 auto;
+    overflow-y: hidden;
+    height: 0;
+    transition: var(--transition);
+}
+.faq .list-questions .question.active + .answer {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: fit-content;
+}
+
+
+/* ----------------------- Inscription ----------------------- */
+section.registerForm {
+
+}
+.registerBox {
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 60px 50px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(50, 50, 50, .15);
+}
+.registerBox .registerStep {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    margin: 0;
+    font-size: 16px;
+    color: #7d7d7d;
+}
+
+.registerBox label {
+    font-weight: bold;
+}
+.registerBox #registerChoice {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.registerBox #registerChoice .bouton {
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    color: #000;
+    background-color: #F4F4F4;
+    text-align: left;
+    filter: none!important;
+}
+.registerBox .form-group .bouton {
+    padding: 15px;
+}
+.registerBox #registerChoice .bouton:hover,
+.registerBox #registerChoice .bouton.btn-selected{
+    background: var(--main-color);
+    color: #fff;
+}
+
+.grand-kids,
+#housing2,
+#housing3,
+#allergies_champ,
+.registerBox #student_form,
+.registerBox #senior_form,
+.registerBox div.form-group {
+    display: none;
+
+}
+
+/* ----------------------- Connexion ----------------------- */
+.loginForm {
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    min-height: 500px;
+    height: calc(100vh - 75px);
+    transition: var(--transition);
+}
+.loginForm .image-connexion {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/photo-connexion.jpeg');
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    box-shadow: inset -5px 0 5px rgba(0, 0, 0, .2);
+    /*filter: brightness(0.8); */
+}
+.loginForm .loginBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px 150px 50px;
+}
+.loginForm .loginBox .logo {
+    margin-bottom: 10%;
+    max-width: 700px;
+    min-width: 300px;
+    width: 80%;
+}
+.loginForm .loginBox .logo img {
+    width: 100%;
+    height: auto;
+}
+.loginForm .loginBox > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.loginForm .loginBox .login_form,
+.loginForm .loginBox form {
+    width: 100%;
+}
+
+
+
+/* ----------------------- Footer ----------------------- */
+#penche {
+    position: relative;
+    margin-top: 100px;
+}
+#penche svg {
+    position: absolute;
+    bottom: -5px;
+}
+
+footer{
+    padding: 10px 30px;
+    background-color: var(--main-color);
+    color:white;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: 15px;
+}
+
+footer nav > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: None;
+    gap: 275px;
+    flex-wrap: wrap;
+}
+
+footer nav ul li {
+    font-size: 22px;
+    text-decoration: None;
+}
+
+footer nav ul ul{
+    display: flex;
+    flex-direction: column;
+    list-style : None;
+    padding: 0;
+}
+
+footer nav ul ul li a:link{
+    font-size:17px ;
+    padding: 5px;
+    text-decoration: None;
+    color: white;
+}
+
+footer nav ul ul li a:hover{
+    font-size:17px ;
+    padding: 5px;
+    text-decoration: underline;
+    color: white;
+}
+
+footer nav ul ul li a:visited{
+    color:white;
+    font-size:17px ;
+    padding: 5px;
+    text-decoration: None;
+}
+
+footer nav ul div ul {
+    display: flex;
+    flex-direction:row;
+}
+
+footer nav ul div ul img{
+    height: 50px;
+    width: 50px;
+}
+
+footer nav div p{
+    padding: 0;
+    display :block;
+    text-align: center;
+    color: white;
+    justify-self: center;
+
+}
+
+
+
+/*--------------------responsive (header/footer */
+
+
+.menuBurger {
+    visibility: hidden;
+    position: relative;
+    margin-top: 0;
+    height: 6px;
+    width: 40px;
+    background: #460B4A;
+    cursor: pointer;
+    border-radius: 50px;
+}
+.menuBurger:before,
+.menuBurger:after {
+    border-radius: 50px;
+    content: '';
+    position: absolute;
+    top: -10px;
+    height: 6px;
+    width: 40px;
+    background: #460B4A;
+}
+.menuBurger:after {
+    top: 10px;
+}
+
+.closeMenu {
+    visibility: hidden;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    cursor: pointer;
+}
+.closeMenu:before, .closeMenu:after {
+    top:20px;
+    content: '';
+    position: absolute;
+    right: 40px;
+    height: 6px;
+    width: 40px;
+    transform: rotateZ(45deg);
+    background: #460B4A;
+    border-radius: 50px;
+}
+.closeMenu:after {
+    transform: rotateZ(-45deg);
+}
+
+#logo_burger{
+    visibility: hidden;
+    display: None;
+}
+
+@media screen and (max-width: 1250px){
+    header nav ul li {
+    }
+    header nav ul li a,
+    header nav ul li form input[placeholder] {
+        font-size: 17px;
+        padding: 15px;
+    }
+    header nav form {
+        width: 300px!important;
+    }
+
+    .loginForm {
+        grid-template-columns: 40% 60%;
+    }
+
+}
+
+@media screen and (max-width:1000px) {
+    /* Menu burger */
+
+    #logo_burger{
+        visibility: visible;
+        display: inline-block;
+    }
+
+    header nav {
+        padding: 0;
+        z-index: 1;
+        transform: translateX(110%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background: #fff;
+        transition: .2s transform ease-out;
+    }
+    header nav.active {
+        transform: translateX(12px);
+    }
+    header nav .menu {
+        margin-top: -250px;
+        width: 100%;
+    }
+    header nav .menu .menuBtn {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    header nav .menu .menuBtn a {
+        color: #460B4A;
+    }
+    header nav .menu .menuBtn a:after {
+        background: #460B4A;
+    }
+
+    header nav ul li{
+        margin-bottom: 10px;
+    }
+
+    .closeMenu{
+        visibility: visible;
+    }
+
+    .menuBurger{
+        visibility: visible;
+    }
+
+    header nav ul{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+    }
+
+    #search_bar{
+        order:0;
+        margin-top:20px;
+        margin-bottom: 200px;
+        font-size: 30px;
+    }
+
+    header nav ul li form{
+        height: 45px;
+        width: 318px;
+    }
+    header nav ul li form input{
+        width: 247px;
+    }
+
+
+    #ac_li{
+        order:1;
+    }
+
+    #contact{
+        order:2;
+    }
+    #connect{
+        order:3;
+    }
+    #inscri{
+        order:4;
+    }
+
+    header nav ul li a{
+        font-size: 30px;
+    }
+
+    header nav ul li > button.bouton{
+        width: 160px;
+        padding:0;
+        font-size: 30px;
+    }
+
+    /*-------------*/
+}
+
+@media screen and (max-width:768px) {
+    section {
+        padding: 30px;
+    }
+    .page-accueil {
+        height: 75vh;
+    }
+    .page-accueil .texte-accueil {
+        padding: 25px 15px;
+    }
+    .page-accueil .texte-accueil h1 {
+        font-size: 25px;
+    }
+    .page-accueil .texte-accueil p {
+        font-size: 20px;
+    }
+    .presentation-list {
+        flex-direction: column;
+    }
+
+    .loginForm {
+        margin: 50px auto;
+        height: fit-content;
+        grid-template-columns: 1fr;
+    }
+    .loginForm .loginBox {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+    .loginForm .image-connexion { display: none; }
+
+    footer nav > ul {
+        flex-direction: row;
+        gap: 30px;
+        text-align: center;
+        align-items: flex-start;
+        margin-block-start: 0;
+        padding-inline-start: 0;
+    }
+
+    footer nav ul div ul{
+        flex-direction: row;
+    }
+
+    .page-accueil .texte-accueil {
+        width: 100%;
+        padding: 15px 10px;
+        max-width: 620px;
+        color: #fff;
+        text-align: center;
+        background-color: rgba(70,11,74,0.5) ;
+        background-image: none;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        border-radius: 5px;
+    }
+}

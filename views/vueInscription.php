@@ -1,0 +1,613 @@
+<section class="registerForm">
+    <?php include('message.php'); ?>
+    <div class="registerBox">
+        <div>
+            <h1 class="section-title">Création de profil</h1>
+            <small class="registerStep">Etape <span>1</span>/5</small>
+        </div>
+        <div>
+            <div id="registerChoice">
+                <label>Je suis...</label><br>
+                <div id="jeSuisEtudiant" class="bouton">Étudiant•e à la recherche d’un logement</div>
+                <div id="jeSuisSenior" class="bouton">Senior avec un logement à partager</div>
+            </div>
+            <!-- Formulaire de création de profil étudiant -->
+            <form id="student_form" action="" method="post">
+                <div>
+                    <h1>Profil Etudiant</h1>
+                </div>
+                <input type="hidden" name="typeCompte" value="etudiant">
+                <div id="Etudiant_etape1" class="form-group">
+                    <h2>Identité</h2>
+                    <div class="form-pair">
+                        <label for="fname">Prénom</label>
+                        <input type="text" id="fname" name="first_name" minlength="2" maxlength="40" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="lname">Nom</label>
+                        <input type="text" id="lname" name="last_name" minlength="2" maxlength="50" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="bdate">Date de naissance</label>
+                        <input type="date" id="bdate" name="date_of_birth" max="<?= ((new DateTime())->sub(new DateInterval('P18Y')))->format("Y/m/d") ?>" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="nationalité">Nationalité</label>
+                        <input type="text" name="nationality" id="nationalité" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="num_etudiant">Numéro de téléphone</label>
+                        <input type="tel" id="num_etudiant" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}">
+                    </div>
+                    <div class="form-pair">
+                        <label for="mail_etudiant">Adresse email</label>
+                        <input type="email" id="mail_etudiant" name="email" placeholder="exemple@gmail.com">
+                    </div>
+                    <div class="form-pair">
+                        <label for="residence">Ville</label>
+                        <input type="text" id="residence" name="city" minlength="2" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="postal_e">Code postal</label>
+                        <input type="text" id="postal_e" name="postal_code" title="Doit comporter 5 chiffres" pattern="[0-9]{5}" required>
+                    </div>
+
+                    <div class="form-pair">
+                        <label for="knowAssociation">Comment avez-vous connu notre association ?</label>
+                        <label for="notoriety">Comment avez-vous connu notre association ?</label>
+                        <select id="notoriety" name="know_association">
+                            <?php
+                            foreach($option_connaissances as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdConnaissanceAssociation()
+                                    ."\">".$objet->getMoyen()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="form-pair">
+                        <label for="motivation">Vos motivations pour choisir ce mode de logement</label>
+                        <textarea name="motivation" id="motivation"></textarea>
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+                <div id="Etudiant_etape2" class="form-group">
+                    <div>
+                        <h2>Etudes / stages</h2>
+                    </div>
+                    <div class="form-pair">
+                        <label for="idDomaineEtude">Domaine d'étude</label>
+                        <select name="idDomaineEtude" id="idDomaineEtude">
+                            <?php
+                            foreach($EdomaineEtudes as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdDomaineEtude()
+                                    ."\">".$objet->getDomaine()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-pair">
+                        <label for="education_level">Niveau d'étude (années d'études ciblées)</label>
+                        <input type="number" name="education_level" id="education_level" min="2" max="100" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="stages">Stages, préciser</label>
+                        <input type="text" name="internships" id="stages" placeholder="Aucun stage">
+                    </div>
+                    <div class="form-pair">
+                        <label for="etablissement">Etablissement d'enseignement</label>
+                        <input type="text" name="establishment" id="etablissement" minlength="2" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="end_of_studies">Années d'études restantes</label>
+                        <input type="number" name="end_of_studies" id="end_of_studies" value="0" min="0" max="12" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="date_of_arrival">Si vous êtes nouveau•elle venu•e dans notre région, précisez votre date d'arrivée</label>
+                        <input type="date" name="date_of_arrival" id="date_of_arrival" > <!-- mettre la date actuelle en PHP pour min-->
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+                <div id="Etudiant_etape3" class="form-group">
+                    <div>
+                        <h2>Mieux vous connaître</h2>
+                    </div>
+                    <div class="radio-group-1">
+                        <div class="form-pair">
+                            <label for="fumeur">Êtes-vous fumeur•se ?</label>
+                            <input type="radio" id="fumeur_oui" name="is_smoking" value="1">
+                            <label for="fumeur_oui">Oui</label>
+                            <input type="radio" id="fumeur_non" name="is_smoking" value="0" checked>
+                            <label for="fumeur_non">Non</label>
+                        </div>
+                        <div class="form-pair">
+                            <label for="allergie">Avez-vous des allergies ?</label>
+                            <input type="radio" id="allergie_oui" name="is_allergic" value="1">
+                            <label for="allergie_oui">Oui</label>
+                            <input type="radio" id="allergie_non" name="is_allergic" value="0" checked>
+                            <label for="allergie_non">Non</label>
+                        </div>
+                    </div>
+                    <div class="form-pair" id="allergies_champ">
+                        <label for="allergique">Précisez</label>
+                        <input type="search" name="allergies" id="allergique" placeholder="Aucune allergie">
+                    </div>
+                    <div class="form-pair">
+                        <label for="permis">Êtes-vous titulaire d'un permis de conduire ?</label>
+                        <input type="radio" id="oui" name="can_drive" value="1">
+                        <label for="oui">Oui</label>
+                        <input type="radio" id="non" name="can_drive" value="0" checked>
+                        <label for="non">Non</label>
+                    </div>
+
+                    <div class="form-pair">
+                        <label for="locomotion">Si vous avez un moyen de locomotion, précisez: </label>
+                        <input type="text" name="means_of_locomotion" id="locomotion">
+                    </div>
+                    <div class="form-pair">
+                        <label for="centresInteret">Vos centres d'intérêts majeurs</label>
+                        <input type="text" name="interests" id="centresInteret">
+                    </div>
+                    <div class="form-pair">
+                        <label for="but">Qu'est-ce qui vous pousse à rechercher la cohabitation avec une personne âgée ?</label>
+                        <input type="text" name="why" id="but">
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+                <div id="Etudiant_etape4" class="form-group">
+                    <div>
+                        <h2>Logement</h2>
+                    </div>
+
+                    <div>
+                        <label for="housing">Type de logement rechercher:</label>
+                        <select name="housing" id="housing">
+                            <?php
+                            foreach($type_logement as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdTypeLogement()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div>
+                        <div>
+                            <h3>Précision selon votre choix de logement</h3>
+                        </div>
+                        <div class="form-pair" id="housing2">
+                            <label for="housing_2_availabilities">Vos disponibilités</label>
+                            <div class="form-pair">
+                                <label for="housing2_start">Heure de début</label>
+                                <input type="time" id="housing2_start" name="housing2_start" required>
+                            </div>
+                            <div class="form-pair">
+                                <label for="housing2_end">Heure de fin</label>
+                                <input type="time" id="housing2_end" name="housing2_end" required>
+                            </div>
+                        </div>
+                        <div class="form-pair" id="housing3">
+                            <label for="housing_3_budget">Votre budget maximum pour le loyer (en €)</label>
+                            <input type="number" id="housing_3_budget" name="housing_3_budget" min="0" value="0" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+                <div id="Etudiant_etape5" class="form-group">
+                    <div>
+                        <h2>Mot de passe & Login</h2>
+                    </div>
+                    <div>
+                        <div class="form-pair">
+                            <label for="flogin">Login</label>
+                            <input type="text" id="flogin" name="login" minlength="2" maxlength="80" required>
+                        </div>
+                        <div class="form-pair">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" id="password" name="password" minlength="8" required>
+                        </div>
+                        <div class="form-pair">
+                            <label for="password_repeat">Répéter le mot de passe</label>
+                            <input type="password" id="password_repeat" name="password_repeat" minlength="8" required>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <input type="submit" class="bouton" name="registerStudent" value="Créer mon compte étudiant•e">
+                    </div>
+                </div>
+            </form>
+
+            <form id="senior_form" action="" method="post">
+                <div>
+                    <h1>Profil Senior</h1>
+                </div>
+
+                <input type="hidden" name="typeCompte" value="senior">
+                <div id="Senior_etape1" class="form-group" >
+                    <div>
+                        <h2>Identité</h2>
+                    </div>
+                    <div class="form-pair">
+                        <label for="first_name">Prénom</label>
+                        <input type="text" id="first_name" name="first_name" autofocus required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="last_name">Nom</label>
+                        <input type="text" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="date_of_brith">Date de naissance</label>
+                        <input type="date" id="date_of_brith" name="date_of_birth" max="2008-01-01" required>
+                    </div>
+
+                    <div class="form-pair">
+                        <label for="marital_status">Je vis ...</label>
+                        <select name="marital_status" id="marital_status">
+                            <?php
+                            foreach($SSistuation as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdSituation()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="form-pair">
+                        <label for="city">Ville</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="postal_s">Code postal</label>
+                        <input type="text" id="postal_s" name="postal_code" maxlength="5" minlength="5" title="doit comporter 5 chiffres" pattern="[0-9]{5}" required>
+                    </div>
+                    <div class="form-pair">
+                        <label for="num_senior">Numéro de téléphone</label>
+                        <input type="tel" id="num_senior" name="phone" placeholder="Au format 0601020304" pattern="[0-9]{10}">
+                    </div>
+                    <div class="form-pair">
+                        <label for="mail_senior">Adresse courriel</label>
+                        <input type="email" id="mail_senior" name="email" placeholder="exemple@gmail.com">
+                    </div>
+
+                    <div class="radio-group-2">
+                        <label for="is_house">Type de logement</label>
+                        <select name="is_house" id="is_house">
+                            <?php
+                            foreach($SLogement as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdLogement()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="form-pair">
+                        <label for="is_landlord">Je suis...</label>
+                        <select name="is_landlord" id="is_landlord">
+                            <?php
+                            foreach($SProprietes as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdPropriete()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="form-pair Select-animal">
+                        <label for="Animaux">Avez-vous un ou plusieurs animaux ?</label>
+                        <select name="animal[]" id="Animaux" multiple>
+                            <option value="Chien">Chien</option>
+                            <option value="Chat">Chat</option>
+                            <option value="Furet">Furet</option>
+                            <option value="Equins">Equins (cheval, âne)</option>
+                            <option value="Rongeurs">Rongeurs (gerbille, chinchilla, cochon d’inde, hamster, octodon, rat, lapin, souris, …)</option>
+                            <option value="Mouton">Mouton</option>
+                            <option value="Chévre">Chévre</option>
+                            <option value="Oiseaux">Oiseaux (pinsons, perruche, perroquet, poule, caille, canard, tétras, kiwi, ...)</option>
+                            <option value="Reptiles">Reptiles (serpent, lézard, tortue, crocodilien, ...)</option>
+                            <option value="Poissons">Poissons (poissons rouges, guppy, danio, carpe koï, ...)</option>
+                            <option value="Insectes">insectes</option>
+                            <option value="autres">Autres</option>
+                        </select>
+                    </div>
+
+                    <div class="form-pair radio-group-5">
+                        <label>Êtes-vous fumeur•se ?</label>
+                        <div>
+                            <input type="radio" id="fumeur_senior_oui" name="is_smoking" value="1">
+                            <label for="fumeur_senior_oui">Oui</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="fumeur_senior_non" name="is_smoking" value="0" checked>
+                            <label for="fumeur_senior_non">Non</label>
+                        </div>
+                    </div>
+
+                    <div class="form-pair">
+                        <label for="distanceTransport">Transports en commun les plus proches (distance en m)</label>
+                        <input type="number" id="distanceTransport" name="public_transport_distance" min="0" value="0" >
+                    </div>
+
+                    <div class="form-pair">
+                        <div>
+                            <label for="notoriety">Comment avez-vous connu notre association ?</label>
+                            <select id="notoriety" name="know_association">
+                                <?php
+                                foreach($option_connaissances as $objet){
+                                    echo "<option value=\""
+                                        .$objet->getIdConnaissanceAssociation()
+                                        ."\">".$objet->getMoyen()
+                                        ."</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+                <div id="Senior_etape2" class="form-group">
+                    <div>
+                        <h2>Nature des services ou présence</h2>
+                    </div>
+                    <div class="form-pair">
+                        <label for="needs">Votre besoin</label>
+                        <select name="needs[]" id="needs" multiple>
+                            <?php
+                            foreach($SBesoin as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdBesoin()
+                                    ."\">".$objet->getBesoin()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+                <div id="Senior_etape3" class="form-group">
+                    <div>
+                        <h2>Logement</h2>
+                    </div>
+                    <div class="form-pair radio-group-6">
+                        <label for="housing">Type de logement à proposer</label>
+                        <select name="housing" id="housing">
+                            <?php
+                            foreach($type_logement as $objet){
+                                echo "<option value=\""
+                                    .$objet->getIdTypeLogement()
+                                    ."\">".$objet->getType()
+                                    ."</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-pair radio-group-7">
+                        <label >L'étudiant•e peut-il•elle demeurer pendant la session d'été ?</label>
+                        <div>
+                            <input type="radio" id="oui_ete" name="can_stay_summer" value="1">
+                            <label for="oui_ete">Oui</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="non_ete" name="can_stay_summer" value="0" checked>
+                            <label for="non_ete">Non</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+
+                <div id="Senior_etape4" class="form-group">
+                    <div>
+                        <h2>Mieux vous connaître</h2>
+                    </div>
+
+                    <div class="textarea-group-1">
+                        <div class="form-pair">
+                            <label for="textInteret">Vos centres d'intérêts</label>
+                            <textarea id="textInteret" name="interests"></textarea>
+                        </div>
+                        <div class="form-pair">
+                            <label for="textPassion">Votre passion à partager</label>
+                            <textarea id="textPassion" name="passion_to_share"></textarea>
+                        </div>
+                        <div class="form-pair">
+                            <label for="textProfession">Avez-vous exercé une profession ? Si oui, laquelle ?</label>
+                            <textarea id="textProfession" name="profession"></textarea>
+                        </div>
+                        <div class="form-pair">
+                            <label for="textCohabitation">Qu'est-ce qui vous pousse à rechercher la cohabitation avec un étudiant ?</label>
+                            <textarea id="textCohabitation" name="why"></textarea>
+                        </div>
+                        <div class="form-pair">
+                            <label for="textAvantage">Quel avantage aurait un étudiant à cohabiter avec vous ?</label>
+                            <textarea id="textAvantage" name="advantages_with_you"></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+                <div id="Senior_etape5" class="form-group">
+                    <div>
+                        <h2>Votre entourage</h2>
+                    </div>
+                    <div class="form-pair radio-group-8">
+                        <label for="enfants">Avez-vous des enfants ?</label>
+                        <div class="form-pair">
+                            <input type="radio" id="oui_enfants" name="has_kids" value="1">
+                            <label for="oui_enfants">Oui</label>
+                        </div>
+                        <div class="form-pair">
+                            <input type="radio" id="non_enfants" name="has_kids" value="0" checked>
+                            <label for="non_enfants">Non</label>
+                        </div>
+                        <label class="grand-kids">Des petits enfants</label>
+                        <div class="form-pair grand-kids">
+                            <input type="radio" id="oui_enfants++" name="has_grandkids" value="1">
+                            <label for="oui_enfants++">oui</label>
+                        </div>
+                        <div class="form-pair grand-kids">
+                            <input type="radio" id="non_enfants++" name="has_grandkids" value="0" checked>
+                            <label for="non_enfants++">non</label>
+                        </div>
+                        <div class="form-pair">
+                            <label for="is_family_present">Présence de la famille</label>
+                            <select name="is_family_present" id="is_family_present">
+                                <?php
+                                foreach($SPresenceFamilles as $objet){
+                                    echo "<option value=\""
+                                        .$objet->getIdFamillePresente()
+                                        ."\">".$objet->getType()
+                                        ."</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-pair">
+                        <label for="textFamille">Votre famille est-elle en accord avec votre décision ?</label>
+                        <div class="form-pair">
+                            <input type="radio" id="non_accord" name="is_family_ok" value="1" checked>
+                            <label for="non_accord">Oui</label>
+                        </div>
+                        <div class="form-pair">
+                            <input type="radio" id="oui_accord" name="is_family_ok" value="0">
+                            <label for="oui_accord">Non</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+                <div id="Senior_etape6" class="form-group">
+                    <div>
+                        <h2>Caractéristiques de la chambre</h2>
+                    </div>
+
+                    <div class="form-pair">
+                        <label for="Surface">Surface</label>
+                        <div class="form-pair">
+                            <input type="number" name="room_surface" id="Surface" value="9" min="9" max="99">
+                            <p>m²</p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-pair radio-group-9">
+                        <div>
+                            <label for="Meubles">Meublée</label>
+                        </div>
+                        <div class="form-pair">
+                            <label for="oui_Meubles">oui</label>
+                            <input type="radio" id="oui_Meubles" name="has_furniture" value="1" checked>
+                        </div>
+                        <div class="form-pair">
+                            <label for="non_Meubles">non</label>
+                            <input type="radio" id="non_Meubles" name="has_furniture" value="0">
+                        </div>
+                        <div>
+                            <label for="lavage">Appareils pour lavage disponibles ?</label>
+                        </div>
+                        <div class="form-pair">
+                            <label for="oui_lavage">Oui</label>
+                            <input type="radio" id="oui_lavage" name="can_clean" value="1">
+                        </div>
+                        <div class="form-pair">
+                            <label for="non_lavage">Non</label>
+                            <input type="radio" id="non_lavage" name="can_clean" value="0" checked>
+                        </div>
+                        <div>
+                            <label for="internet">Internet disponible ?</label>
+                        </div>
+                        <div class="form-pair">
+                            <label for="oui_internet">Oui</label>
+                            <input type="radio" id="oui_internet" name="has_internet" value="1" checked>
+                        </div>
+                        <div class="form-pair">
+                            <label for="non_internet">Non</label>
+                            <input type="radio" id="non_internet" name="has_internet" value="0">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <div class="bouton registerNextStep">Étape suivante</div>
+                    </div>
+                </div>
+
+
+                <div id="Senior_etape7" class="form-group">
+                    <div>
+                        <h2>Mot de passe & Login</h2>
+                    </div>
+                    <div>
+                        <div class="form-pair">
+                            <label for="flogin">Login</label>
+                            <input type="text" id="flogin" name="login" minlength="2" maxlength="80" required>
+                        </div>
+                        <div class="form-pair">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" id="password" name="password" minlength="8" required>
+                        </div>
+                        <div class="form-pair">
+                            <label for="password_repeat">Répéter le mot de passe</label>
+                            <input type="password" id="password_repeat" name="password_repeat" minlength="8" required>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bouton btn-gray registerPreviousStep">Étape précédente</div>
+                        <input type="submit" class="bouton" value="Créer mon compte Senior">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="public/js/register.js"></script>
