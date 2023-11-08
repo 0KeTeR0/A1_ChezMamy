@@ -2,12 +2,15 @@
 namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
+use App\ChezMamy\models\CompteSeniorSBesoinManager;
 use App\ChezMamy\models\ComptesEtudiantsManager;
 use App\ChezMamy\models\ComptesSeniorsManager;
 use App\ChezMamy\models\ConnaissancesAssociationManager;
+use App\ChezMamy\models\EDisposManager;
 use App\ChezMamy\models\EDomaineEtude;
 use App\ChezMamy\models\EDomainesEtudeManager;
 use App\ChezMamy\models\InfoUtilisateursManager;
+use App\ChezMamy\models\SBesoinsManager;
 use App\ChezMamy\models\SLogementsManager;
 use App\ChezMamy\models\SPresenceFamillesManager;
 use App\ChezMamy\models\SProprietesManager;
@@ -122,9 +125,24 @@ class UtilisateurController
                 $CompteManager = new ComptesEtudiantsManager();
 
                 $res = $CompteManager->creationCompteEtudiant($data);
+                if(!empty($data["house2_start"])){
+                    $dispoManager = new EDisposManager();
+                    $dispoArray = ["idCompteEtudiant"=>$CompteManager->getByIdUtilisateur($data["idUtilisateur"])->getIdCompteEtudiant(),
+                        "heureDebut"=>$data["house2_start"],
+                        "heureFin"=>$data["house2_end"]];
+                    $dispoManager->creationEDispo($dispoArray);
+                }
             }//Sinon on crée un CompteSenior dans la BDD
             else{
                 $CompteManager = new ComptesSeniorsManager();
+
+                $besoinsCompteManager = new CompteSeniorSBesoinManager();
+
+                foreach ($data["needs"] as $besoin){
+                    $besoinParam = ["idCompteSenior"=>$CompteManager->getByIdUtilisateur($data["idUtilisateur"])->getIdCompteSenior(),
+                        "idBesoin"=>$besoin];
+                    $besoinsCompteManager->creationCompteSeniorSBesoin($besoinParam);
+                }
 
                 $res = $CompteManager->creationCompteSenior($data);
             }

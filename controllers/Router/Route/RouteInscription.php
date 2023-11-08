@@ -85,12 +85,18 @@ class RouteInscription extends Route
                 $data["allergique"]=$this->getParam($params,"is_allergic",false);
                 $data["allergies"]=$this->getParam($params,"allergies");
                 $data["moyenLocomotion"]=$this->getParam($params,"means_of_locomotion");
-                $data["f3BudgetMax"]=$this->getParam($params,"housing_3_budget", false);
+                $data["f3BudgetMax"]=$this->getParam($params,"housing_3_budget");
+                $data["housing2_start"]= $this->getParam($params,"housing2_start");
+                $data["housing2_end"]=$this->getParam($params,"housing2_end");
                 $data["idDomaineEtude"]=$this->getParam($params,"idDomaineEtude");
 
                 //On vérifie les cas particuliers
                 if($this->getParam($params,"date_of_arrival")!="" and strtotime($this->getParam($params,"date_of_arrival"))>time()){
                     throw new \Exception("La date d'arrivée n'est pas valide.");
+                }
+
+                if((!empty($this->getParam($params,"house2_start")) and empty($this->getParam($params,"house2_end")))or(!empty($this->getParam($params,"house2_end")) and empty($this->getParam($params,"house2_start")))){
+                    throw new \Exception("L'heure de début et de fin de vos disponibilités doit être valide.");
                 }
             }//Sinon même chose mais avec les données de CompteSenior
             else{
@@ -111,6 +117,7 @@ class RouteInscription extends Route
                 $data["idLogement"]=$this->getParam($params,"is_house",false);
                 $data["enfants"]=$this->getParam($params,"has_kids",false);
                 $data["petitsEnfants"]=$this->getParam($params,"has_grandkids",false);
+                $data["besoins"]=$this->getParam($params,"needs",false);
             }
 
             if(($this->getParam($params,"email")==null and $this->getParam($params,"phone")==null)){
@@ -119,7 +126,6 @@ class RouteInscription extends Route
             else if($this->getParam($params,"password")!=$this->getParam($params,"password_repeat")){
                 throw new \Exception("Les deux mots de passe ne correspondent pas.");
             }
-
         }//Renvoi une erreur si quelque chose n'est pas correct
         catch (\Exception $e){
             $error=$e->getMessage();
