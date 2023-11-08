@@ -10,6 +10,7 @@ use App\ChezMamy\models\EDisposManager;
 use App\ChezMamy\models\EDomaineEtude;
 use App\ChezMamy\models\EDomainesEtudeManager;
 use App\ChezMamy\models\InfoUtilisateursManager;
+use App\ChezMamy\models\SBesoin;
 use App\ChezMamy\models\SBesoinsManager;
 use App\ChezMamy\models\SLogementsManager;
 use App\ChezMamy\models\SPresenceFamillesManager;
@@ -121,6 +122,8 @@ class UtilisateurController
         $spresenceFamilles = new SPresenceFamillesManager();
         // si tes locataires ou si propriétaires
         $spropriete = new SProprietesManager();
+        // ensembles des besoins des Seniors
+        $sbesoins = new SBesoinsManager();
 
         // affichage de la vue
         $inscriptionView = new View('Inscription');
@@ -131,7 +134,8 @@ class UtilisateurController
             "EdomaineEtudes" => $edomaineEtude->getAll(),
             "SSistuation" => $ssituations->getAll(),
             "SPresenceFamilles" => $spresenceFamilles->getAll(),
-            "SProprietes" => $spropriete->getAll()
+            "SProprietes" => $spropriete->getAll(),
+            "SBesoin" => $sbesoins->getAll()
         ]);
     }
 
