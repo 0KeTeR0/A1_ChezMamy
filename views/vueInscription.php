@@ -386,7 +386,7 @@
                     </div>
                     <div class="form-pair">
                         <label for="needs">Votre besoin</label>
-                        <select name="needs" id="needs" multiple>
+                        <select name="needs[]" id="needs" multiple>
                             <?php
                             foreach($SBesoin as $objet){
                                 echo "<option value=\""
