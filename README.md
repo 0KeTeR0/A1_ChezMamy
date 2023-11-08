@@ -1,6 +1,6 @@
 # A1_ChezMamy
 
-![logo.png](assets%2Fimg%2Flogo.png)
+![logo.png](public%2Fimg%2Flogo.png)
 
 ---
 
