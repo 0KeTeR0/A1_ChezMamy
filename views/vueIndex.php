@@ -22,7 +22,7 @@
     <div class="presentation-list">
         <div>
             <div class="imgPres"  id="img_right_Pres">
-                <img src="public/img/bob-joie.png" alt="">
+                <img src="<?= SCRIPTS ?>img/bob-joie.png" alt="">
             </div>
             <div>
                 <h3>Quelques chiffres</h3>
@@ -47,7 +47,7 @@
                 </ul>
             </div>
             <div class="imgPres">
-                <img src="public/img/alice-joie.png" alt="">
+                <img src="<?= SCRIPTS ?>img/alice-joie.png" alt="">
             </div>
         </div>
     </div>

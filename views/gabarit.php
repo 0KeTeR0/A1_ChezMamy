@@ -6,21 +6,21 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $titre ?> - ChezMamy</title>
-    <link rel="icon" href="public/img/logo.ico">
-    <link rel="stylesheet" href="public/css/main.css">
-    <script src="public/js/script.js"></script>
+    <link rel="icon" href="<?= SCRIPTS ?>img/logo.ico">
+    <link rel="stylesheet" href="<?= SCRIPTS ?>css/main.css">
+    <script src="<?= SCRIPTS ?>js/script.js"></script>
 </head>
 <body>
 <header>
     <a href="accueil">
-        <img alt="" src="public/img/logo.png">
+        <img alt="" src="<?= SCRIPTS ?>img/logo.png">
     </a>
     <div>
         <div class="menuBurger" ></div>
         <nav id="menu">
             <div class="closeMenu" ></div>
             <ul id="menu_list">
-                <li id="logo_burger"><img alt="" src="public/img/logo.png"></li>
+                <li id="logo_burger"><img alt="" src="<?= SCRIPTS ?>img/logo.png"></li>
                 <li id="ac_li"><a id="ac" href="accueil">Accueil</a></li>
                 <li id="search_bar">
                     <div>
@@ -79,9 +79,9 @@
             <li><p>Nos réseaux</p>
                 <div>
                     <ul>
-                        <li><a id="twitterFooter" href="#"><img src="public/img/twitter.png"></a></li>
-                        <li><a id="facebookFooter" href="#"><img src="public/img/facebook.png"></a></li>
-                        <li><a id="snapchatFooter" href="#"><img src="public/img/snapchat.png"> </a></li>
+                        <li><a id="twitterFooter" href="#"><img src="<?= SCRIPTS ?>img/twitter.png" alt="Twitter"></a></li>
+                        <li><a id="facebookFooter" href="#"><img src="<?= SCRIPTS ?>img/facebook.png" alt="Facebook"></a></li>
+                        <li><a id="snapchatFooter" href="#"><img src="<?= SCRIPTS ?>img/snapchat.png" alt="Snapchat"></a></li>
                     </ul>
                 </div>
             </li>
@@ -89,6 +89,6 @@
         <div><p>&copy; 2023 Tous droits réservés</p></div>
     </nav>
 </footer>
-<script src="public/js/burger.js"></script>
+<script src="<?= SCRIPTS ?>js/burger.js"></script>
 </body>
 </html>
