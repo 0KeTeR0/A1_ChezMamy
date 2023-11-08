@@ -323,7 +323,6 @@
                     <div class="form-pair Select-animal">
                         <label for="Animaux">Avez-vous un ou plusieurs animaux ?</label>
                         <select name="animal[]" id="Animaux" multiple>
-                            <option value="null" selected>Aucun</option>
                             <option value="Chien">Chien</option>
                             <option value="Chat">Chat</option>
                             <option value="Furet">Furet</option>
