@@ -6,6 +6,7 @@ return [
     "nav_contact"=>"Contact",
     "nav_connection"=>"Connection",
     "nav_register"=>"Register",
+    "nav_disconnect"=>"Disconnect",
     "nav_searchHolder"=>"Search an offer",
     "faq_q1"=>"Can intergenerational, supportive cohabitation be achieved at any age?",
     "faq_a1"=>"The concept of intergenerational and supportive cohabitation is framed by the Loi Elan and stipulates that young people under 30 and people over 60, can do intergenerational cohabitation.<br><br>If you're over 30 and under 60, we invite you to visit 'La Carte des Colocs' or 'Cooloc'. They offer shared accommodation, rooms in private homes and room-sharing for all ages.",

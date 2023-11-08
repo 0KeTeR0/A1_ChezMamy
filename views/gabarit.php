@@ -21,7 +21,7 @@
             <div class="closeMenu" ></div>
             <ul id="menu_list">
                 <li id="logo_burger"><img alt="" src="<?= SCRIPTS ?>img/logo.png"></li>
-                <li id="ac_li"><a id="ac" href="accueil">Accueil</a></li>
+                <li id="ac_li"><a id="ac" href="accueil"><?=$traductions["nav_home"]?></a></li>
                 <li id="search_bar">
                     <div>
                         <form>
@@ -34,12 +34,12 @@
                         </form>
                     </div>
                 </li>
-                <li id="contact"><a href="#">Contact</a></li>
+                <li id="contact"><a href="#"><?=$traductions["nav_contact"]?></a></li>
                 <?php if(!$userLogged){ ?>
-                    <li id="connect"><a href="connexion">Connexion</a></li>
-                    <li id="inscri"><a class="bouton" href="inscription">Inscription</a></li>
+                    <li id="connect"><a href="connexion"><?=$traductions["nav_connection"]?></a></li>
+                    <li id="inscri"><a class="bouton" href="inscription"><?=$traductions["nav_register"]?></a></li>
                 <?php } else { ?>
-                    <li><a href="deco">Déconnexion</a></li>
+                    <li><a href="deco"><?=$traductions["nav_disconnect"]?></a></li>
                 <?php } ?>
             </ul>
         </nav>
@@ -60,23 +60,23 @@
 <footer>
     <nav>
         <ul>
-            <li><p>Naviguer </p>
+            <li><p><?=$traductions["footer_nav"]?></p>
                 <ul>
-                    <li><a id="accueilFooter" href="accueil">Accueil</a></li>
-                    <li><a id="rechercherFooter" href="#">Rechercher une offre</a></li>
-                    <li><a id="contactFooter" href="#">Contact</a></li>
-                    <li><a id="connexionFooter" href="connexion">Connexion</a></li>
-                    <li><a id="inscriptionFooter" href="inscription">Inscription</a></li>
+                    <li><a id="accueilFooter" href="accueil"><?=$traductions["footer_home"]?></a></li>
+                    <li><a id="rechercherFooter" href="#"><?=$traductions["footer_search"]?></a></li>
+                    <li><a id="contactFooter" href="#"><?=$traductions["footer_contact"]?></a></li>
+                    <li><a id="connexionFooter" href="connexion"><?=$traductions["footer_connection"]?></a></li>
+                    <li><a id="inscriptionFooter" href="inscription"><?=$traductions["footer_register"]?></a></li>
                 </ul>
             </li>
-            <li><p>Légalité</p>
+            <li><p><?=$traductions["footer_legality"]?></p>
                 <ul>
-                    <li><a id="mentionFooter" href="#">Mentions légales</a></li>
-                    <li><a id="cookiesFooter" href="#">Politique de cookies</a></li>
-                    <li><a id="cguFooter" href="#">CGU</a></li>
+                    <li><a id="mentionFooter" href="#"><?=$traductions["footer_legal"]?></a></li>
+                    <li><a id="cookiesFooter" href="#"><?=$traductions["footer_cookies"]?></a></li>
+                    <li><a id="cguFooter" href="#"><?=$traductions["footer_terms"]?></a></li>
                 </ul>
             </li>
-            <li><p>Nos réseaux</p>
+            <li><p><?=$traductions["footer_socials"]?></p>
                 <div>
                     <ul>
                         <li><a id="twitterFooter" href="#"><img src="<?= SCRIPTS ?>img/twitter.png" alt="Twitter"></a></li>
@@ -86,7 +86,7 @@
                 </div>
             </li>
         </ul>
-        <div><p>&copy; 2023 Tous droits réservés</p></div>
+        <div><p><?=$traductions["footer_rights"]?></p></div>
     </nav>
 </footer>
 <script src="<?= SCRIPTS ?>js/burger.js"></script>
