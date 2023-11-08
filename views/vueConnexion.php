@@ -2,7 +2,7 @@
     <div class="image-connexion"></div>
     <div class="loginBox">
         <div class="logo">
-            <img src="public/img/logo.png" alt="">
+            <img src="<?= SCRIPTS ?>img/logo.png" alt="">
         </div>
         <div>
             <form id="login_form" action="" method="post">

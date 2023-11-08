@@ -609,4 +609,4 @@
     </div>
 </section>
 
-<script src="public/js/register.js"></script>
+<script src="<?= SCRIPTS ?>js/register.js"></script>
