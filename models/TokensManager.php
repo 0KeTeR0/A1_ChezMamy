@@ -11,18 +11,18 @@ use DateTime;
 Class TokensManager extends Model{
 
     /**
-     * récupère le token d'id $idToken
-     * @param int $idToken l'ID du token recherché
+     * récupère le token complet
+     * @param string $token le token recherché
      * @return Token|null renvoi le Token ou rien s'il n'existe pas dans la DB.
      * @author Valentin Colindre
      */
-    public function getByID(int $idToken):?Token{
-        $result = $this->execRequest("SELECT * FROM TOKENS WHERE idToken=?",array($idToken))->fetch();
+    public function getByToken(string $token):?Token{
+        $result = $this->execRequest("SELECT * FROM TOKENS WHERE token = ?",array($token))->fetch();
         if($result !== false){
             $data = [
                 "idToken" => $result["idToken"],
                 "token" => $result["token"],
-                "expirationTime" => new DateTime(strtotime($result["expirationTime"])),
+                "expirationTime" => (new DateTime())->setTimestamp(strtotime($result["expirationTime"])),
                 "idUtilisateur" => $result["idUtilisateur"]
             ];
             $utilisateur = new Token();
@@ -88,18 +88,19 @@ Class TokensManager extends Model{
 
     /**
      * Vérifie si le token de l'utilisateur est encore valide, si oui le prolonge de 15minutes.
-     * @param int $idUtilisateur idUtilisateur de l'utilisateur
+     * @param string $token token de l'utilisateur
      * @return bool vrai si le token est actif (et prolongé) faux sinon
-     * @author Valentin Colindre
+     * @authors Valentin Colindre, Romain Card
      */
-    public function checkToken(int $idUtilisateur):bool{
-        $oldToken = $this->getByIdUtilisateur($idUtilisateur);
+    public function checkToken(string $token):bool{
+        $oldToken = $this->getByToken($token);
         $result = false;
-        if($oldToken!==false){
-            $diff = date_diff($oldToken->getExpirationTime(),new \DateTime("now"));
-            if($diff->format("s")>0){
-                $time=$oldToken->getExpirationTime()->add(\DateInterval::createFromDateString("900 seconds"));
-                $this->execRequest("UPDATE TOKENS SET expirationTime=? WHERE idUtilisateur=?",array($time->format("H:i:s"),$idUtilisateur));
+        $currentTime = new DateTime();
+        if($oldToken!==null){
+            $diff = $oldToken->getExpirationTime()->getTimestamp() - $currentTime->getTimestamp();
+            if($diff > 0){
+                $time= ($currentTime)->add(\DateInterval::createFromDateString("900 seconds"));
+                $this->execRequest("UPDATE TOKENS SET expirationTime=? WHERE token=?",array($time->format("H:i:s"),$token));
                 $result=true;
             }
         }

@@ -1,6 +1,7 @@
 <?php
 namespace App\ChezMamy\views;
 
+use App\ChezMamy\models\TokensManager;
 use Exception;
 
 /**
@@ -32,10 +33,13 @@ class View
      */
     public function generer(array $donnees): void
     {
+        // Vérifie si l'utilisateur est connecté
+        $userLogged = !empty($_SESSION['auth_token']) ? (new TokensManager())->checkToken($_SESSION['auth_token']) : false;
+        $donnees['userLogged'] = $userLogged;
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'userLogged' => $userLogged));
         // Renvoi de la vue au navigateur
         echo $vue;
     }

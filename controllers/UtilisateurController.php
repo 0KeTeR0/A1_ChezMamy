@@ -15,6 +15,7 @@ use App\ChezMamy\models\SLogementsManager;
 use App\ChezMamy\models\SPresenceFamillesManager;
 use App\ChezMamy\models\SProprietesManager;
 use App\ChezMamy\models\SSituationsManager;
+use App\ChezMamy\models\Token;
 use App\ChezMamy\models\TokensManager;
 use App\ChezMamy\models\TypeLogement;
 use App\ChezMamy\models\TypeLogementManager;
@@ -28,12 +29,38 @@ use App\ChezMamy\Views\View;
 class UtilisateurController
 {
     /**
+     * Vérifie que l'utilisateur ne soit pas connecté pour accéder aux inscription et connexion
+     * Renvoie sur la page d'accueil si l'utilisateur est déjà connecté
+     * @return void
+     */
+    private function userNotLogged(): void
+    {
+        //On vérifie que l'utilisateur n'est pas déjà connecté
+        if (!empty($_SESSION['auth_token'])) {
+            $token = new TokensManager();
+            $res = $token->checkToken($_SESSION['auth_token']);
+
+            // Si le token est valide, on redirige vers l'accueil
+            if($res) {
+                header('Location: accueil');
+                return;
+            }
+            else unset ($_SESSION['auth_token']);
+        }
+    }
+
+    /**
      * Affiche la page de connexion
+     * @param Message|null $message Message éventuel à afficher
+     * @param string|null $login Login éventuel à afficher
      * @return void
      * @author Romain Card
      */
     public function displayConnexion(?Message $message = null, ?string $login = null): void
     {
+        //On vérifie que l'utilisateur n'est pas déjà connecté
+        $this->userNotLogged();
+
         // affichage de la vue
         $connexionView = new View('Connexion');
         $connexionView->generer(["message" => $message, "login" => $login ?? null]);
@@ -41,11 +68,15 @@ class UtilisateurController
 
     /**
      * Exécute la connexion de l'utilisateur
+     * @param array $data Données du formulaire
      * @return void
      * @author Romain Card
      */
     public function Connexion(array $data): void
     {
+        //On vérifie que l'utilisateur n'est pas déjà connecté
+        $this->userNotLogged();
+
         // Manager de l'utilisateur
         $utilisateurManager = new UtilisateurManager();
         $res = $utilisateurManager->checkLogin($data["login"], $data["password"]);
@@ -59,7 +90,7 @@ class UtilisateurController
         if ($token === null) throw new \Exception("Une erreur est survenue lors de la connexion");
         
         // Connexion
-        $_SESSION['auth_token'] = $token;
+        $_SESSION['auth_token'] = $token->getToken();
 
         // Redirection
         header('Location: accueil');
@@ -67,11 +98,15 @@ class UtilisateurController
 
     /**
      * Affiche la page d'inscription
+     * @param Message|null $message Message éventuel à afficher
      * @return void
      * @author Valentin Colindre
      */
     public function displayInscription(?Message $message = null):void
-    {;
+    {
+        //On vérifie que l'utilisateur n'est pas déjà connecté
+        $this->userNotLogged();
+
         // ensembles des manières de connaitre l'association
         $connaissancesAssociation = new ConnaissancesAssociationManager();
         // ensembles des types de logement contre services proposé
@@ -102,11 +137,15 @@ class UtilisateurController
 
     /**
      * Exécute l'inscription de l'utilisateur
+     * @param array $data Données du formulaire
      * @return void
      * @author Valentin Colindre
      */
     public function Inscription(array $data): void
     {
+        //On vérifie que l'utilisateur n'est pas déjà connecté
+        $this->userNotLogged();
+
         //On crée un nouvel Utilisateur
         $UManager = new UtilisateurManager();
 
@@ -157,6 +196,16 @@ class UtilisateurController
         else{
             $this->displayInscription(new Message("Login déjà utilisé", "Erreur d'inscription", "danger"));
         }
+    }
 
+    public function Deco(): void
+    {
+        //On supprime le token de la session si l'utilisateur est connecté
+        if (!empty($_SESSION['auth_token'])) unset ($_SESSION['auth_token']);
+
+        session_destroy();
+
+        // Redirection
+        header('Location: connexion');
     }
 }
