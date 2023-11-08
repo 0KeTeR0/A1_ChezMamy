@@ -176,7 +176,7 @@
                     </div>
 
                     <div>
-                        <label for="housing">Type de logement à proposer :</label>
+                        <label for="housing">Type de logement rechercher:</label>
                         <select name="housing" id="housing">
                             <?php
                             foreach($type_logement as $objet){
@@ -195,15 +195,18 @@
                         </div>
                         <div class="form-pair" id="housing2">
                             <label for="housing_2_availabilities">Vos disponibilités</label>
-                            <input type="text" id="housing_2_availabilities" name="housing_2_availabilities">
+                            <div class="form-pair">
+                                <label for="housing2_start">Heure de début</label>
+                                <input type="time" id="housing2_start" name="housing2_start" required>
+                            </div>
+                            <div class="form-pair">
+                                <label for="housing2_end">Heure de fin</label>
+                                <input type="time" id="housing2_end" name="housing2_end" required>
+                            </div>
                         </div>
                         <div class="form-pair" id="housing3">
-                            <label for="housing_3_budget">Votre budget maximum pour le loyer</label>
+                            <label for="housing_3_budget">Votre budget maximum pour le loyer (en €)</label>
                             <input type="number" id="housing_3_budget" name="housing_3_budget" min="0" value="0" required>
-                        </div>
-                        <div class="form-pair">
-                            <label for="preferencesQuartier">* Si vous avez des préférences de quartier d'habitation (pour Montréal), précisez</label>
-                            <input type="text" id="preferencesQuartier" name="preferences">
                         </div>
                     </div>
 
@@ -396,7 +399,7 @@
                         <h2>Logement</h2>
                     </div>
                     <div class="form-pair radio-group-6">
-                        <label for="housing">Type de logement rechercher :</label>
+                        <label for="housing">Type de logement à proposer</label>
                         <select name="housing" id="housing">
                             <?php
                             foreach($type_logement as $objet){
