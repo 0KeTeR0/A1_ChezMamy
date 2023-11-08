@@ -254,12 +254,12 @@ for(i=0;i<elems.length;i++){
 document.getElementById("allergie_oui").addEventListener("click",show_allergies);
 document.getElementById("allergie_non").addEventListener("click",hide_allergies);
 
-document.getElementById("lgmtEco+").addEventListener("click",show_eco);
-document.getElementById("lgmtGratuit").addEventListener("click",hide_eco);
-document.getElementById("lgmtGratuit").addEventListener("click",hide_solid);
-document.getElementById("lgmtEco+").addEventListener("click",hide_solid);
-document.getElementById("lgmtSolid").addEventListener("click",hide_eco);
-document.getElementById("lgmtSolid").addEventListener("click",show_solid);
+//document.getElementById("lgmtEco+").addEventListener("click",show_eco);
+//document.getElementById("lgmtGratuit").addEventListener("click",hide_eco);
+//document.getElementById("lgmtGratuit").addEventListener("click",hide_solid);
+//document.getElementById("lgmtEco+").addEventListener("click",hide_solid);
+//document.getElementById("lgmtSolid").addEventListener("click",hide_eco);
+//document.getElementById("lgmtSolid").addEventListener("click",show_solid);
 
 document.getElementById("oui_enfants").addEventListener("click",show_grandkids);
 document.getElementById("non_enfants").addEventListener("click",hide_grandkids);
