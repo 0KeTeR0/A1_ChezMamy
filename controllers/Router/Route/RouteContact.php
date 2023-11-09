@@ -57,6 +57,14 @@ class RouteContact extends Route
             $error=$e->getMessage();
         }
         if($error!=null) $this->controller->Contact(new Message($error));
-        else $this->controller->SendMails($data);
+        else {
+            try{
+                $this->controller->SendMails($data);
+            }
+            catch (\Exception $e){
+                $error=$e->getMessage();
+            }
+            if($error!=null) $this->controller->Contact(new Message($error));
+        }
     }
 }

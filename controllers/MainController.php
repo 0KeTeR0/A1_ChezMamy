@@ -4,6 +4,7 @@ namespace App\ChezMamy\controllers;
 use App\ChezMamy\helpers\Message;
 use App\ChezMamy\models\Mail;
 use App\ChezMamy\Views\View;
+use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * Classe MainController
@@ -44,9 +45,27 @@ class MainController
      */
     public function SendMails(array $data):void{
         $destinataires=array("romain.card9@gmail.com");
-        $content = "[Mail envoyé depuis la page Contact de ChezMamy]\n Prenom:".$data["prenom"]."\nNom:".$data["nom"]."\nMail:".$data["mail"]."\nContenu:\n".$data["message"];
-        $mail = new Mail($destinataires,"<ChezMamy> Mail Contact",$content);
-        $mail->Envoyer();
+        $content = "[Mail envoyé depuis la page Contact de ChezMamy]<br> Prenom:".$data["prenom"]."<br>Nom:".$data["nom"]."<br>Mail:".$data["mail"]."<br>Contenu:<br>".$data["message"];
+
+        $mail = new PHPMailer(); $mail->IsSMTP(); $mail->Mailer = "smtp";
+        $mail->SMTPDebug  = 0;
+        $mail->SMTPAuth   = TRUE;
+        $mail->SMTPSecure = "tls";
+        $mail->Port       = 587;
+        $mail->Host       = "smtp.gmail.com";
+        $mail->Username   = "noreplychezmamy@gmail.com";
+        $mail->Password   = "qkic swzr aqre xqwf";
+
+        $mail->IsHTML(true);
+        foreach ($destinataires as $dest){
+            $mail->AddAddress($dest);
+        }
+        $mail->SetFrom("noreplychezmamy@gmail.com", "ChezMamyContact");
+
+        $mail->MsgHTML($content);
+        if(!$mail->Send()) {
+            throw new \Exception("Email failed");
+        }
     }
 
 

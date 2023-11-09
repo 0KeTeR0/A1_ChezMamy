@@ -15,5 +15,8 @@
         {
             "name": "A1 Drop Table"
         }
-    ]
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
 }
