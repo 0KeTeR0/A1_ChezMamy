@@ -22,6 +22,19 @@ class MainController
     }
 
     /**
+     * Affiche la page contact
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function Contact(): void
+    {
+        // affichage de la vue
+        $contactView = new View('Contact');
+        $contactView->generer([]);
+    }
+
+
+    /**
      * Affiche la page d'exception
      * @param array|null $params Paramètres à passer à la page
      * @return void

@@ -34,7 +34,7 @@
                         </form>
                     </div>
                 </li>
-                <li id="contact"><a href="#">Contact</a></li>
+                <li id="contact"><a href="contact">Contact</a></li>
                 <?php if(!$userLogged){ ?>
                     <li id="connect"><a href="connexion">Connexion</a></li>
                     <li id="inscri"><a class="bouton" href="inscription">Inscription</a></li>
