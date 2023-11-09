@@ -31,7 +31,7 @@ class View
      * @return array
      * @author Romain Card
      */
-    private function getTraductions(string $lang): array
+    private function getTraductions(string $lang = "fr"): array
     {
         // Récupération des traductions liées à la langue choisie
         if(file_exists("views/langs/{$lang}.php")) $res = require_once("langs/{$lang}.php");
@@ -51,7 +51,7 @@ class View
         // Vérifie si l'utilisateur est connecté
         $userLogged = !empty($_SESSION['auth_token']) ? (new TokensManager())->checkToken($_SESSION['auth_token']) : false;
         $donnees['userLogged'] = $userLogged;
-        $donnees['traductions'] = $this->getTraductions($_GET['lang']);
+        $donnees['traductions'] = $this->getTraductions($_GET['lang'] ?? "fr");
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique

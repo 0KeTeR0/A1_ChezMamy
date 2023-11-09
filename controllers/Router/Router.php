@@ -3,6 +3,7 @@
 namespace App\ChezMamy\controllers\Router;
 
 use App\ChezMamy\controllers\MainController;
+use App\ChezMamy\controllers\Router\Route\RouteChangeLanguage;
 use App\ChezMamy\controllers\Router\Route\RouteConnexion;
 use App\ChezMamy\controllers\Router\Route\RouteDeco;
 use App\ChezMamy\controllers\Router\Route\RouteException;
@@ -52,6 +53,7 @@ class Router
             "index" => new RouteIndex($this->ctrlList["main"]),
             "connexion" => new RouteConnexion($this->ctrlList["utilisateur"]),
             "inscription" => new RouteInscription($this->ctrlList["utilisateur"]),
+            "changeLanguage" => new RouteChangeLanguage($this->ctrlList["main"]),
             "deco" => new RouteDeco($this->ctrlList["utilisateur"]),
             "exception" => new RouteException($this->ctrlList["main"])
         ];
