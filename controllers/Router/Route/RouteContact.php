@@ -40,31 +40,23 @@ class RouteContact extends Route
      * Exécute une action
      * @param array $params Paramètres à passer à l'exécution
      * @return void
-     * @author Valentin Colindre
+     * @author Valentin Colindre, Romain Card
      */
     protected function post(array $params = []): void
     {
-        $error=null;
         try{
             $data=[
-                "prenom"=>$this->getParam($params,"prenom"),
-                "nom"=>$this->getParam($params,"nom"),
-                "mail"=>$this->getParam($params,"mail"),
-                "message"=>$this->getParam($params,"message")
+                "prenom"=>$this->getParam($params,"prenom", false),
+                "nom"=>$this->getParam($params,"nom", false),
+                "mail"=>$this->getParam($params,"mail", false),
+                "sujet"=>$this->getParam($params,"sujet", false),
+                "message"=>$this->getParam($params,"message", false)
             ];
+
+            $this->controller->SendMails($data);
         }
         catch (\Exception $e){
-            $error=$e->getMessage();
-        }
-        if($error!=null) $this->controller->Contact(new Message($error));
-        else {
-            try{
-                $this->controller->SendMails($data);
-            }
-            catch (\Exception $e){
-                $error=$e->getMessage();
-            }
-            if($error!=null) $this->controller->Contact(new Message($error));
+            $this->controller->Contact(new Message($e->getMessage()));
         }
     }
 }

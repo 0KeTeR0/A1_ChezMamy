@@ -99,7 +99,7 @@ section .section-title {
     color: #000;
 }
 
-label:has(+ input[required]):after {
+label:has(~ [required]):after {
     content: ' *';
     color: red;
 }

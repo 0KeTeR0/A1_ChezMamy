@@ -15,8 +15,12 @@
                         <input type="text" name="nom" id="nom" required>
                     </div>
                     <div>
-                        <label for="mail">Mail</label>
+                        <label for="mail">Adresse email</label>
                         <input type="email" name="mail" id="mail"  placeholder="exemple@gmail.com" required>
+                    </div>
+                    <div>
+                        <label for="sujet">Sujet</label>
+                        <input type="text" name="sujet" id="sujet"  placeholder="Sujet du message" maxlength="50" required>
                     </div>
                     <div>
                         <label for="message">Message</label>
