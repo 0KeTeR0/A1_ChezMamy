@@ -8,19 +8,19 @@
                 <div class="form-group">
                     <div class="form-pair">
                         <label for="prenom">Prénom</label>
-                        <input type="text" name="prenom" id="prenom">
+                        <input type="text" name="prenom" id="prenom" required>
                     </div>
                     <div>
                         <label for="nom">Nom</label>
-                        <input type="text" name="nom" id="nom">
+                        <input type="text" name="nom" id="nom" required>
                     </div>
                     <div>
                         <label for="mail">Mail</label>
-                        <input type="email" name="mail" id="mail"  placeholder="exemple@gmail.com">
+                        <input type="email" name="mail" id="mail"  placeholder="exemple@gmail.com" required>
                     </div>
                     <div>
                         <label for="message">Message</label>
-                        <textarea name="message" id="message" ></textarea>
+                        <textarea name="message" id="message" required></textarea>
                     </div>
                 </div>
                 <div class="form-group">
