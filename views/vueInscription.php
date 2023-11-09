@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-pair">
                         <label for="bdate"><?= $traductions['register_student_birthdate'] ?></label>
-                        <input type="date" id="bdate" name="date_of_birth" max="<?= ((new DateTime())->sub(new DateInterval('P18Y')))->format("Y/m/d") ?>" required>
+                        <input type="date" id="bdate" name="date_of_birth" max="<?= ((new DateTime())->sub(new DateInterval('P18Y')))->format("Y-m-d") ?>" required>
                     </div>
                     <div class="form-pair">
                         <label for="nationalité"><?= $traductions['register_student_nationality'] ?></label>
