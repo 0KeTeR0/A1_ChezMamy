@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         <label for="mail">Mail</label>
-                        <input type="text" name="mail" id="mail">
+                        <input type="email" name="mail" id="mail"  placeholder="exemple@gmail.com">
                     </div>
                     <div>
                         <label for="message">Message</label>

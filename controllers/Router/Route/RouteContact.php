@@ -4,6 +4,7 @@ namespace App\ChezMamy\controllers\Router\Route;
 
 use App\ChezMamy\controllers\MainController;
 use App\ChezMamy\controllers\Router\Route;
+use App\ChezMamy\helpers\Message;
 
 /**
  * Classe RouteContact
@@ -43,6 +44,19 @@ class RouteContact extends Route
      */
     protected function post(array $params = []): void
     {
-
+        $error=null;
+        try{
+            $data=[
+                "prenom"=>$this->getParam($params,"prenom"),
+                "nom"=>$this->getParam($params,"nom"),
+                "mail"=>$this->getParam($params,"mail"),
+                "message"=>$this->getParam($params,"message")
+            ];
+        }
+        catch (\Exception $e){
+            $error=$e->getMessage();
+        }
+        if($error!=null) $this->controller->Contact(new Message($error));
+        else $this->controller->SendMails($data);
     }
 }
