@@ -21,7 +21,7 @@ class OffresManager extends model
         $nbrOffres = $this->execRequest("SELECT COUNT(*) FROM OFFRES WHERE idutilisateur=?", array($idUser))->fetch();
         if($nbrOffres < 5)
         {
-            if ($this->execRequest("INSERT INTO OFFRES (titreOffre, idUser) VALUES(?,?)", array($titreOffre, $idUser)) !== false){
+            if ($this->execRequest("INSERT INTO OFFRES (TitreDeLoffre, idUtilisateur) VALUES(?,?)", array($titreOffre, $idUser)) !== false){
                 $result = true;
             }
         }
