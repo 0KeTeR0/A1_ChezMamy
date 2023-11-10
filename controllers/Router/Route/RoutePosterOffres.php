@@ -54,7 +54,8 @@ class RoutePosterOffres extends Route
                 "date_fin_offre"=>date('Y-m-d',strtotime($this->getParam($params,"date_fin_offre",false))),
                 "adresseLogement"=>$this->getParam($params,"adresseLogement"),
                 "surfaceChambre"=>$this->getParam($params,"room_surface",false),
-                "descriptionOffre"=>$this->getParam($params,"descriptionOffre")
+                "descriptionOffre"=>$this->getParam($params,"descriptionOffre"),
+                "imagesOffre"=>$this->getParam($params, "imagesOffre")
             ];
             if(strtotime($this->getParam($params,"date_fin_offre")) <= strtotime($this->getParam($params,"date_debut_offre"))){
                 throw new \Exception("La date de fin de l'offre doit être après celle de début");
