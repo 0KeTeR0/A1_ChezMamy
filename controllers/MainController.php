@@ -21,6 +21,17 @@ class MainController
         $indexView->generer([]);
     }
 
+    public function changeLanguage(array $params = []): void
+    {
+        $availableLanguages = ['fr', 'en'];
+
+        if (isset($params['language']) && in_array($params['language'], $availableLanguages)) {
+            $_SESSION['lang'] = $params['language'];
+        }
+
+        header("Location: {$params['action']}");
+    }
+
     /**
      * Affiche la page d'exception
      * @param array|null $params Paramètres à passer à la page

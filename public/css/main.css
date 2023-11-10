@@ -158,6 +158,9 @@ header{
     background: var(--bg-color);
     z-index: 1;
 }
+header select {
+    margin-left: 15px;
+}
 
 header img{
     width: 190px;

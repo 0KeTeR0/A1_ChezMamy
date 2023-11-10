@@ -59,7 +59,7 @@ function switch_form_sen(){
     clear_shown();
     selected="senior";
     cstep=1;
-    document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/5";
+    document.getElementsByClassName("registerStep")[0].innerHTML="Etape <span>"+cstep.toString()+"</span>/7";
     document.getElementById("senior_form").classList.add("show");
     document.getElementById("Senior_etape"+cstep.toString()).classList.add("show");
 }
@@ -163,6 +163,8 @@ function hide_allergies(){
  */
 function show_eco(){
     document.getElementById("housing2").classList.add("show");
+    document.getElementById("housing2_start").required=true;
+    document.getElementById("housing2_end").required=true;
 }
 
 /**
@@ -171,6 +173,8 @@ function show_eco(){
  */
 function hide_eco(){
     document.getElementById("housing2").classList.remove("show");
+    document.getElementById("housing2_start").required=false;
+    document.getElementById("housing2_end").required=false;
 }
 
 /**
@@ -179,6 +183,7 @@ function hide_eco(){
  */
 function show_solid(){
     document.getElementById("housing3").classList.add("show");
+    document.getElementById("housing_3_budget").required=true;
 }
 
 /**
@@ -187,6 +192,7 @@ function show_solid(){
  */
 function hide_solid(){
     document.getElementById("housing3").classList.remove("show");
+    document.getElementById("housing_3_budget").required=false;
 }
 
 /**
@@ -254,12 +260,6 @@ for(i=0;i<elems.length;i++){
 document.getElementById("allergie_oui").addEventListener("click",show_allergies);
 document.getElementById("allergie_non").addEventListener("click",hide_allergies);
 
-//document.getElementById("lgmtEco+").addEventListener("click",show_eco);
-//document.getElementById("lgmtGratuit").addEventListener("click",hide_eco);
-//document.getElementById("lgmtGratuit").addEventListener("click",hide_solid);
-//document.getElementById("lgmtEco+").addEventListener("click",hide_solid);
-//document.getElementById("lgmtSolid").addEventListener("click",hide_eco);
-//document.getElementById("lgmtSolid").addEventListener("click",show_solid);
 function choixLogement() {
     if(document.getElementById("housing").value == 2){
         show_eco();
