@@ -111,7 +111,7 @@ Class UtilisateurManager extends Model{
      * @author Romain Card
      */
     public function isSenior(int $idUtilisateur):bool {
-        return $this->execRequest("SELECT * FROM COMPTES_SENIORS WHERE idCompteSenior=?",array($idUtilisateur))->fetch();
+        return ($this->execRequest("SELECT * FROM COMPTES_SENIORS WHERE idUtilisateur=?",array($idUtilisateur))->rowCount() == 1);
     }
 
     /**
@@ -121,6 +121,6 @@ Class UtilisateurManager extends Model{
      * @author Romain Card
      */
     public function isEtudiant(int $idUtilisateur):bool {
-        return $this->execRequest("SELECT * FROM COMPTES_ETUDIANTS WHERE idCompteEtudiant=?", array($idUtilisateur))->fetch();
+        return ($this->execRequest("SELECT * FROM COMPTES_ETUDIANTS WHERE idUtilisateur=?", array($idUtilisateur))->rowCount() == 1);
     }
 }
