@@ -12,14 +12,15 @@ class InfosOffresManager extends model
      * Crée une nouvelle infosOffre
      * @param int $idOffre l'id de l'offre qui contient les infos
      * @param int $superficie la valeur de la superficie (chambre)
+     * @param int $idLogement l'id du logement
      * @return bool vraie si réussie, faux si échec
      * @author Louis Demeocq
      */
-    public function creationInfosOffres(int $idOffre, int $superficie): bool
+    public function creationInfosOffres(int $idOffre, int $superficie,int $idLogement): bool
     {
         $result = false;
         if ($this->getByIdOffres($idOffre) == null){
-            if ($this->execRequest("INSERT INTO INFOS_OFFRES (idOffre, superficie) VALUES(?,?)", array($idOffre, $superficie)) !== false){
+            if ($this->execRequest("INSERT INTO INFOS_OFFRES (idOffre, SuperficieDeLaChambre,idLogement ) VALUES(?,?)", array($idOffre, $superficie,$idLogement)) !== false){
                 $result = true;
             }
         }
