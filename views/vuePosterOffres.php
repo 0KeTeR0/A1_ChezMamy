@@ -1,11 +1,10 @@
 <section class="posterOffres">
     <div class="contactBox">
-
-        <h2 class="section-title">Faire une offre de logement</h2>
         <div>
             <form id="offres_form" action="" method="post" enctype="multipart/form-data">
                 <?php include('message.php'); ?>
                 <div class="form-group registerBox">
+                    <h2 class="section-title">Faire une offre de logement</h2>
                     <div class="form-pair">
                         <label for="TitreDeLoffre">Titre de l'offre</label>
                         <input type="text" name="TitreDeLoffre" id="TitreDeLoffre" required>
@@ -68,7 +67,7 @@
                             <label for="file-input" class="drop-container">
                                 <span class="drop-title">Déposer votre fichier ici</span>
                                 ou
-                                <input type="file" accept="image/*" id="file-input" required>
+                                <input type="file" id="file-input" name="imagesOffre[]" accept="image/png, image/jpeg, image/jpg" required>
                             </label>
                         </div>
                         <div class="input_file_titre">

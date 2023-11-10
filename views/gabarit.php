@@ -35,11 +35,22 @@
                     </div>
                 </li>
                 <li id="contact"><a href="#">Contact</a></li>
-                <?php if(!$userLogged){ ?>
+                <?php if($infoUtilisateur === null){ ?>
                     <li id="connect"><a href="connexion">Connexion</a></li>
                     <li id="inscri"><a class="bouton" href="inscription">Inscription</a></li>
                 <?php } else { ?>
-                    <li><a href="deco">Déconnexion</a></li>
+                    <li class="submenu">
+                        <a href="#">
+                            <?= "{$infoUtilisateur->getPrenom()} {$infoUtilisateur->getNom()}" ?>
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.67822 5.96658L8.1792 10.4676L12.6802 5.96658" stroke="black" stroke-width="1.00189" stroke-miterlimit="10" stroke-linecap="square"/>
+                            </svg>
+                        </a>
+                        <ul>
+                            <?php if($isSenior) { ?><li><a href="posterOffres">Poster une offre</a></li><?php } ?>
+                            <li><a href="deco">Déconnexion</a></li>
+                        </ul>
+                    </li>
                 <?php } ?>
             </ul>
         </nav>

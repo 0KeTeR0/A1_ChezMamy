@@ -19,7 +19,9 @@
                 </div>
                 <div class="form-group">
                     <input type="submit" id="login" class="bouton" value="Me connecter">
-                    <!--<p>Mot de passe oublié</p> -->
+                </div>
+                <div class="form-group">
+                    <small>Je n'ai pas encore de compte, <a href="inscription">j'en crée un.</a></small>
                 </div>
             </form>
         </div>
