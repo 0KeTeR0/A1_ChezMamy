@@ -96,12 +96,16 @@ Class TokensManager extends Model{
         $oldToken = $this->getByToken($token);
         $result = false;
         $currentTime = new DateTime();
-        if($oldToken!==null){
+        if($oldToken!==null && isset($_SESSION['auth_token']) && $_SESSION['auth_token'] === $oldToken->getToken()){
             $diff = $oldToken->getExpirationTime()->getTimestamp() - $currentTime->getTimestamp();
             if($diff > 0){
                 $time= ($currentTime)->add(\DateInterval::createFromDateString("900 seconds"));
                 $this->execRequest("UPDATE TOKENS SET expirationTime=? WHERE token=?",array($time->format("H:i:s"),$token));
                 $result=true;
+            }
+            else if (!empty($_SESSION['auth_token'])) {
+                unset($_SESSION);
+                session_destroy();
             }
         }
 
