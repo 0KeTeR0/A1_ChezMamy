@@ -3,11 +3,17 @@
 namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
+use App\ChezMamy\models\DatesOffreManager;
+use App\ChezMamy\models\InfosComplementairesManager;
+use App\ChezMamy\models\infosOffre;
+use App\ChezMamy\models\InfosOffresManager;
+use App\ChezMamy\models\OffresManager;
 use App\ChezMamy\models\SBesoinsManager;
 use App\ChezMamy\models\TokensManager;
 use App\ChezMamy\models\TypeLogementManager;
 use App\ChezMamy\models\UtilisateurManager;
 use App\ChezMamy\Views\View;
+use DateTime;
 
 /**
  * Class contrôleur des offres
@@ -79,5 +85,41 @@ class OffresController
     {
         // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
         $this->userIsSenior();
+        $error=null;
+
+        try{
+            $tokenManager = new TokensManager();
+            if($tokenManager->checkToken($_SESSION["auth_token"])) {
+                $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
+                $offresManager = new OffresManager();
+                $offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"]);
+                $idOffre = $offresManager->getLast()->getIdOffre();
+                //ajouter stockage image
+                $infosManager = new InfosOffresManager();
+                $infosManager->creationInfosOffres($idOffre,$data["surfaceChambre"]);
+                $idInfo=$infosManager->getByIdOffres($idOffre)->getIdInfosOffre();
+                $infosComplManager = new InfosComplementairesManager();
+                $infosComplManager->creationInfosComplementaires($data["adresseLogement"],$idInfo,$data["descriptionOffre"]);
+                $datesOffreManager = new DatesOffreManager();
+                $dateDeb= DateTime::createFromFormat('Y-m-d', $data["date_debut_offre"]);
+                $dateFin = DateTime::createFromFormat('Y-m-d', $data["date_fin_offre"]);
+                $datesOffreManager->creationDatesOffre($dateDeb,$idInfo,$dateFin);
+            }
+            else{
+                $error="Sesssion invalide";
+            }
+
+        }
+        catch (\Exception $e){
+            $error=$e->getMessage();
+        }
+
+        if ($error!=null){
+            $this->displayPosterOffres(new Message("Erreur : ".$error, "Erreur d'envoie", "danger"));
+        }
+        else{
+            $this->displayPosterOffres(new Message("succès de la publication de l'offre. Elle sera approuvée ou non ultérieurement.", "succès", "success"));
+        }
+
     }
 }

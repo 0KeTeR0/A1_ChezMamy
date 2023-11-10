@@ -44,4 +44,20 @@ class OffresManager extends model
         return $offres_array;
     }
 
+    /**
+     * Renvoi la dernière offre insérée par ce manager
+     * @return Offre la dernière offre
+     * @author Valentin Colindre
+     */
+    public function getLast():Offre{
+        $result = $this->execRequest("SELECT * FROM OFFRES WHERE idOffre=?",array($this->getLastId()))->fetch();
+        if($result!==false){
+            $val = new Offre();
+            $val->hydrate($result);
+        }
+        else $val=null;
+
+        return $val;
+    }
+
 }

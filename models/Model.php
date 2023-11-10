@@ -38,6 +38,16 @@ abstract class Model
     }
 
     /**
+     * Retourne le dernier ID de la dernière insertion fait avec
+     * le PDO de la classe.
+     * @author Valentin Colindre
+     * @return false|string faux ou l'id
+     */
+    protected function getLastId():false|string{
+        return $this->getDB()->lastInsertId();
+    }
+
+    /**
      * Crée et/ou retourne la connexion à la base de données
      * @return PDO
      * @author Romain Card

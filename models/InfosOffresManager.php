@@ -27,16 +27,16 @@ class InfosOffresManager extends model
     }
 
     /**
-     * Récupère l'offre d'id idOffres
+     * Récupère l'offreInfo d'id idOffres
      * @param int $idOffres l'ID de l'offre recherchée
-     * @return Offre|null renvoi l'offre ou rien si elle n'existe pas dans la DB.
+     * @return infosOffre|null renvoi l'InfoOffre ou rien si elle n'existe pas dans la DB.
      * @author Louis Demeocq
      */
-    public function getByIdOffres(int $idOffres):?Offre
+    public function getByIdOffres(int $idOffres):?infosOffre
     {
-        $result = $this->execRequest("SELECT * FROM OFFRES WHERE idOffre=?", array($idOffres))->fetch();
+        $result = $this->execRequest("SELECT * FROM INFOS_OFFRES WHERE idOffre=?", array($idOffres))->fetch();
         if ($result != false){
-            $offre = new Offre();
+            $offre = new infosOffre();
             $offre->hydrate($result);
         }
         else $offre = null;
