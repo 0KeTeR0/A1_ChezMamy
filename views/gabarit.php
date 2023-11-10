@@ -34,7 +34,7 @@
                         </form>
                     </div>
                 </li>
-                <li id="contact"><a href="#"><?=$traductions["nav_contact"]?></a></li>
+                <li id="contact"><a href="contact"><?=$traductions["nav_contact"]?></a></li>
                 <?php if(!$userLogged){ ?>
                     <li id="connect"><a href="connexion"><?=$traductions["nav_connection"]?></a></li>
                     <li id="inscri"><a class="bouton" href="inscription"><?=$traductions["nav_register"]?></a></li>

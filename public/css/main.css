@@ -99,13 +99,14 @@ section .section-title {
     color: #000;
 }
 
-label:has(+ input[required]):after {
+label:has(~ [required]):after {
     content: ' *';
     color: red;
 }
 textarea { resize: vertical; }
 .registerBox input:not([type="checkbox"]):not([type="radio"]),
 .loginBox input:not([type="checkbox"]):not([type="radio"]),
+.contactBox input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
     display: block;
@@ -121,6 +122,7 @@ select {
 }
 .registerBox input:focus,
 .loginBox input:focus,
+.contactBox input:focus,
 textarea:focus,
 select:focus {
     outline: none;
@@ -128,11 +130,13 @@ select:focus {
 }
 .registerBox input:not([type="submit"]):valid,
 .loginBox input:not([type="submit"]):valid,
+.contactBox input:not([type="submit"]):valid,
 textarea:valid {
     border-color: green!important;
 }
 .registerBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
 .loginBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
+.contactBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
 textarea:not([type="checkbox"]):not([type="radio"]):not(:valid) {
     border-color: red;
 }
@@ -481,6 +485,58 @@ section.registerForm {
     width: 100%;
 }
 
+/* ----------------------- Contact ----------------------- */
+.contactForm {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.contactForm .contactBox {
+    margin-top: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45vw;
+    padding: 30px 150px 30px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+}
+
+.contactForm .contactBox .logo {
+    margin-bottom: 10%;
+    max-width: 700px;
+    min-width: 300px;
+    width: 80%;
+}
+.contactForm .contactBox .logo img {
+    width: 100%;
+    height: auto;
+}
+.contactForm .contactBox > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.contactForm .contactBox .contact_form,
+.contactForm .contactBox form {
+    width: 100%;
+}
+
+#contact_form .form-group #message{
+    resize: none;
+    margin-bottom: 5%;
+}
+
+#contact_form .form-group #envoyer{
+    margin-left: auto;
+    width: 10vw;
+}
 
 
 /* ----------------------- Footer ----------------------- */
@@ -768,6 +824,26 @@ footer nav div p{
         box-sizing: border-box;
     }
     .loginForm .image-connexion { display: none; }
+
+    .contactForm {
+        margin: 50px auto;
+        height: fit-content;
+        grid-template-columns: 1fr;
+    }
+    .contactForm .contactBox {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+
+    #contact_form .form-group #envoyer{
+        margin-left: auto;
+        width: 30%;
+        margin-bottom: 5%;
+    }
+
+
 
     footer nav > ul {
         flex-direction: row;
