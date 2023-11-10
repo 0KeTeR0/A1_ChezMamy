@@ -19,6 +19,10 @@
                         <input type="email" name="mail" id="mail"  placeholder="exemple@gmail.com" required>
                     </div>
                     <div>
+                        <label for="tel">Numéro de téléphone <i>(facultatif)</i></label>
+                        <input type="tel" name="tel" id="tel"  placeholder="Au format 0601020304"pattern="[0-9]{10}">
+                    </div>
+                    <div>
                         <label for="sujet">Sujet</label>
                         <input type="text" name="sujet" id="sujet"  placeholder="Sujet du message" maxlength="50" required>
                     </div>

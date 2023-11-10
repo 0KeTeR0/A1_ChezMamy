@@ -48,6 +48,7 @@ class RouteContact extends Route
             $data=[
                 "prenom"=>$this->getParam($params,"prenom", false),
                 "nom"=>$this->getParam($params,"nom", false),
+                "telephone"=>$this->getParam($params,"tel"),
                 "mail"=>$this->getParam($params,"mail", false),
                 "sujet"=>$this->getParam($params,"sujet", false),
                 "message"=>$this->getParam($params,"message", false)

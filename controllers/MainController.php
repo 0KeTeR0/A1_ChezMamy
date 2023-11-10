@@ -45,6 +45,7 @@ class MainController
     public function SendMails(array $data):void{
         $annee = date("Y");
         $destinataires=array("romain.card9@gmail.com");
+        $telephone = !empty($data['telephone']) ? "<a href='tel:{$data['telephone']}'>{$data["telephone"]}</a>" : "Non renseigné";
         $sujet = "Contact de ChezMamy - ".$data["sujet"];
         $contenu = nl2br(trim(htmlspecialchars($data["message"])));
         $contenu = "
@@ -192,7 +193,8 @@ class MainController
                                                                         <td class='pad' style='padding-bottom:20px;padding-left:40px;padding-right:40px;padding-top:20px;'>
                                                                             <div style='color:#444a5b;direction:ltr;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:19.2px;'>
                                                                                 <p style='margin: 0; margin-bottom: 16px;'><strong>Envoyé par :</strong> {$data['prenom']} {$data['nom']}, {$data['mail']}</p>
-                                                                                <p style='margin: 0;'><strong>Sujet :</strong> {$data['sujet']}</p>
+                                                                                <p style='margin: 0; margin-bottom: 16px;'><strong>Numéro de téléphone :</strong> {$telephone}</p>
+                                                                                <p style='margin: 0; margin-bottom: 16px;'><strong>Sujet :</strong> {$data['sujet']}</p>
                                                                                 <p style='margin: 0;'><strong>Message :</strong> $contenu</p>
                                                                             </div>
                                                                         </td>
@@ -250,6 +252,8 @@ class MainController
         ";
 
         $mail = new Mail($destinataires, $sujet, $contenu);
+
+        unset($_POST);
 
         if(!$mail->Envoyer()) $this->Contact(new Message("Une erreur est survenue lors de l'envoi du mail", "Erreur d'envoi"));
         else $this->Contact(new Message("Votre message a bien été envoyé", "Message envoyé", "success"));
