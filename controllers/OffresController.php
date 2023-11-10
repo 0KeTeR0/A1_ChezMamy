@@ -80,7 +80,7 @@ class OffresController
      * Execute l'envoie de l'offre
      * @param array $data Données du formulaire
      * @return void
-     * @author Louis Demeocq
+     * @author Valentin Colindre
      */
     public function posterOffres(array $data): void
     {
@@ -91,20 +91,24 @@ class OffresController
         try{
             $tokenManager = new TokensManager();
             if($tokenManager->checkToken($_SESSION["auth_token"])) {
+                //On créer l'offre en récupérant l'IdUtilisateur de l'utilisateur connecté
                 $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
                 $offresManager = new OffresManager();
                 $offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"]);
+                //On créer ensuite les images dans la base de donnée
                 $idOffre = $offresManager->getLast()->getIdOffre();
                 $imgManager = new ImagesOffresManager();
                 foreach($data["imagesOffre"] as $image){
                     $imgManager->creationImagesOffres($image,$idOffre);
                 }
-                //ajouter stockage image
+                //Puis les informations principales
                 $infosManager = new InfosOffresManager();
                 $infosManager->creationInfosOffres($idOffre,$data["surfaceChambre"]);
                 $idInfo=$infosManager->getByIdOffres($idOffre)->getIdInfosOffre();
+                //Puis les informations complémentaires
                 $infosComplManager = new InfosComplementairesManager();
                 $infosComplManager->creationInfosComplementaires($data["adresseLogement"],$idInfo,$data["descriptionOffre"]);
+                //Puis les dates
                 $datesOffreManager = new DatesOffreManager();
                 $dateDeb= DateTime::createFromFormat('Y-m-d', $data["date_debut_offre"]);
                 $dateFin = DateTime::createFromFormat('Y-m-d', $data["date_fin_offre"]);
