@@ -99,10 +99,11 @@ section .section-title {
     color: #000;
 }
 
-label:has(+ input[required]):after {
+label:has(~ [required]):after {
     content: ' *';
     color: red;
 }
+
 textarea { resize: vertical; }
 .registerBox input:not([type="checkbox"]):not([type="radio"]),
 .loginBox input:not([type="checkbox"]):not([type="radio"]),
@@ -477,8 +478,89 @@ section.registerForm {
 .loginForm .loginBox form {
     width: 100%;
 }
+/* ---------------------- PosterOffres ------------------ */
 
+.img_file_article{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    transition: all .2s ease-in-out;
+}
 
+.img_file_article:hover{
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23);
+}
+
+.drop-container {
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 10px;
+    border: 2px dashed #460B4A;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+    background: rgba(236, 76, 76, 0.164);
+    border-color: rgba(17, 17, 17, 0.616);
+}
+
+.drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+#file-input {
+    width: 350px;
+    max-width: 100%;
+    color: #444;
+    padding: 2px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(8, 8, 8, 0.288);
+}
+
+#file-input::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #460B4A;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+#file-input{
+    cursor: pointer;
+}
+
+#file-input::file-selector-button:hover {
+    background: #38093b;
+}
+
+.input_file_titre span{
+    color: rgb(171, 171, 171);
+}
 
 /* ----------------------- Footer ----------------------- */
 #penche {
