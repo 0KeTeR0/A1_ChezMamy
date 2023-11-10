@@ -3,6 +3,7 @@
 namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
+use App\ChezMamy\models\BesoinsOffresManager;
 use App\ChezMamy\models\DatesOffreManager;
 use App\ChezMamy\models\ImagesOffresManager;
 use App\ChezMamy\models\InfosComplementairesManager;
@@ -103,8 +104,13 @@ class OffresController
                 }
                 //Puis les informations principales
                 $infosManager = new InfosOffresManager();
-                $infosManager->creationInfosOffres($idOffre,$data["surfaceChambre"]);
+                $infosManager->creationInfosOffres($idOffre,$data["surfaceChambre"],$data["housing"]);
                 $idInfo=$infosManager->getByIdOffres($idOffre)->getIdInfosOffre();
+                //Puis les besoins
+                $besoinManager = new BesoinsOffresManager();
+                foreach ($data["needs"] as $need){
+                    $besoinManager->creationBesoinsOffre($need,$idInfo);
+                }
                 //Puis les informations complémentaires
                 $infosComplManager = new InfosComplementairesManager();
                 $infosComplManager->creationInfosComplementaires($data["adresseLogement"],$idInfo,$data["descriptionOffre"]);
