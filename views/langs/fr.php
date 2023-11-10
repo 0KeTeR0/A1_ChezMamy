@@ -30,6 +30,18 @@ return [
     "footer_socials" => "Réseaux sociaux",
     "footer_rights" => "© 2023 Tous droits réservés.",
 
+    //vueContact.php
+    "contact_title"=>"Nous Contacter",
+    "contact_firstname"=>"Prénom",
+    "contact_lastname"=>"Nom",
+    "contact_mail"=>"Adresse email",
+    "contact_numHolder"=>"Au format 0601020304",
+    "contact_num"=>"Numéro de téléphone <i>(facultatif)</i>",
+    "contact_subjectHolder"=>"Sujet du message",
+    "contact_subject"=>"Sujet",
+    "contact_message"=>"Message",
+    "contact_send"=>"Envoyer",
+
     // vueIndex.php
     "index_title" => "Bienvenue sur chezMamy, la première plateforme éthique de services entre générations.",
     "index_presentation" => "Nous connectons les seniors et les étudiants pour favoriser le partage de compétences, d'expériences et d'entraide. Rejoignez-nous pour faire partie de cette belle initiative !",

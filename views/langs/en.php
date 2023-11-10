@@ -30,6 +30,18 @@ return [
     "footer_socials"=>"Socials",
     "footer_rights"=>"© 2023 All rights reserved.",
 
+    //vueContact.php
+    "contact_title"=>"Contacting Us",
+    "contact_firstname"=>"Firstname",
+    "contact_lastname"=>"Lastname",
+    "contact_mail"=>"Email address",
+    "contact_numHolder"=>"Format 0601020304",
+    "contact_num"=>"Phone number <i>(optional)</i>",
+    "contact_subjectHolder"=>"Subject of the message",
+    "contact_subject"=>"Subject",
+    "contact_message"=>"Message",
+    "contact_send"=>"Send",
+
     // vueIndex.php
     "index_title"=>"Welcome to chezMamy, the first ethical platform for services between generations.",
     "index_presentation"=>"We connect seniors and students to promote the sharing of skills, experiences and mutual aid. Join us to be part of this great initiative!",
