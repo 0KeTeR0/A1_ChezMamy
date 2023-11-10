@@ -104,7 +104,7 @@ class View
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'isSenior' => $isSenior, 'infoUtilisateur' => $donnees['infoUtilisateur']));
+        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'traductions' => $donnees['traductions'], 'isSenior' => $isSenior, 'infoUtilisateur' => $donnees['infoUtilisateur']));
         // Renvoi de la vue au navigateur
         echo $vue;
     }

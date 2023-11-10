@@ -7,9 +7,9 @@
         <div class="bouton">
             <p><?= $traductions['index_button1'] ?></p>
         </div>
-        <div class="bouton">
+        <a href="<?= $isSenior ? 'posterOffres' : 'inscription' ?>" class="bouton">
             <p><?= $traductions['index_button2'] ?></p>
-        </div>
+        </a>
     </div>
 
     <svg viewBox="0 0 1920 89" fill="none" xmlns="http://www.w3.org/2000/svg">

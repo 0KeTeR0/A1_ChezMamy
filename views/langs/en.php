@@ -3,12 +3,15 @@
 // Fichier de langue anglaise
 return [
     // gabarit.php
+    // navigation
     "nav_home"=>"Home",
     "nav_contact"=>"Contact",
     "nav_connection"=>"Connection",
     "nav_register"=>"Register",
     "nav_disconnect"=>"Disconnect",
     "nav_searchHolder"=>"Search an offer",
+    "nav_post_offers"=>"Post an offer",
+    // faq
     "faq_q1"=>"Can intergenerational, supportive cohabitation be achieved at any age?",
     "faq_a1"=>"The concept of intergenerational and supportive cohabitation is framed by the Loi Elan and stipulates that young people under 30 and people over 60, can do intergenerational cohabitation.<br><br>If you're over 30 and under 60, we invite you to visit 'La Carte des Colocs' or 'Cooloc'. They offer shared accommodation, rooms in private homes and room-sharing for all ages.",
     "faq_q2"=>"Can I register throughout the year?",
@@ -17,6 +20,7 @@ return [
     "faq_a3"=>"We draw up an intergenerational cohabitation contract, which is not a lease contract, but a charter for living well together, setting out all the organizational, relational and financial conditions established between each party. This contract entitles you to APL benefits as a student/young worker, and to tax exemption on the amounts received for the accommodation if you are over 60.",
     "faq_q4"=>"Can I host a young person if I'm a tenant?",
     "faq_a4"=>"Yes, we'll provide you with a letter to give to your landlord informing him or her that you're living with a young person, but your landlord can't object (unlike a sublet or shared flat).<br><br> Whether you are a tenant in a private, public or social housing scheme, the concept of intergenerational cohabitation is available to you.<br><br> Cf article L. 631-17 of the 2018 law on the evolution of housing, development and digital.",
+    //foter
     "footer_nav"=>"Navigate",
     "footer_home"=>"Home",
     "footer_search"=>"Search an offer",
@@ -31,7 +35,7 @@ return [
     "footer_rights"=>"© 2023 All rights reserved.",
 
     //vueContact.php
-    "contact_title"=>"Contacting Us",
+    "contact_title"=>"Contact Us",
     "contact_firstname"=>"Firstname",
     "contact_lastname"=>"Lastname",
     "contact_mail"=>"Email address",
@@ -64,6 +68,7 @@ return [
     "login_id"=>"Username",
     "login_password"=>"Password",
     "login_connect"=>"Log in",
+    "login_no_account" => "I don't have an account, <a href='inscription'>create one</a>",
 
     // vueInscription.php
     "register_title" => "Profile Creation",
@@ -188,5 +193,20 @@ return [
     "register_senior_login" => "Username",
     "register_senior_password" => "Password",
     "register_senior_password_repeat" => "Repeat password",
-    "register_senior_create" => "Create my senior profile"
+    "register_senior_create" => "Create my senior profile",
+
+    // vuePosterOffres.php
+    "offer_main_title" => "Post an offer",
+    "offer_title" => "Offer title",
+    "offer_housing" => "Type of housing",
+    "offer_needs" => "What are your needs?",
+    "offer_availability_dates" => "Housing availability dates",
+    "offer_begin" => "Start date",
+    "offer_end" => "End date",
+    "offer_address" => "Address",
+    "offer_surface" => "Room size (in m²)",
+    "offer_description" => "Description",
+    "offer_drop_files" => "Drop your files here",
+    "offer_images" => "Images",
+    "offer_submit" => "Submit offer"
 ];
