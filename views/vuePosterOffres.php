@@ -75,7 +75,7 @@
                             <span>Images de l'offre</span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div>
                         <input type="submit" id="envoyer" class="bouton" value="Poster l'offre">
                     </div>
                 </div>
