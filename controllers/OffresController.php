@@ -77,27 +77,6 @@ class OffresController
      */
     public function posterOffres(array $data): void
     {
-        $nbrFiles = count($_FILES['upload']['name']);
-        $chemins = array();
-        for( $i=0 ; $i < $nbrFiles ; $i++ )
-        {
-            // recupère le path temp
-            $tmpFilePath = $_FILES['imagesOffre']['tmp_name'][$i];
-
-            // check si on a un path
-            if ($tmpFilePath != "") {
-                // crée le nouveau path
-                $newFilePath = "public/img/offres/".date('d-m-Y_H:i:s', time())."_{$i}_{$_FILES['imagesOffre']['name'][$i]}";
-
-                // copie le fichier dans le dossier
-                if (copy($_FILES['imagesOffre']['tmp_name'], $newFilePath))
-                {
-                    $chemins[] = $newFilePath;
-                }
-
-            }
-        }
-
         // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
         $this->userIsSenior();
 
