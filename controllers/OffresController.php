@@ -4,6 +4,7 @@ namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
 use App\ChezMamy\models\DatesOffreManager;
+use App\ChezMamy\models\ImagesOffresManager;
 use App\ChezMamy\models\InfosComplementairesManager;
 use App\ChezMamy\models\infosOffre;
 use App\ChezMamy\models\InfosOffresManager;
@@ -94,6 +95,10 @@ class OffresController
                 $offresManager = new OffresManager();
                 $offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"]);
                 $idOffre = $offresManager->getLast()->getIdOffre();
+                $imgManager = new ImagesOffresManager();
+                foreach($data["imagesOffre"] as $image){
+                    $imgManager->creationImagesOffres($image,$idOffre);
+                }
                 //ajouter stockage image
                 $infosManager = new InfosOffresManager();
                 $infosManager->creationInfosOffres($idOffre,$data["surfaceChambre"]);
