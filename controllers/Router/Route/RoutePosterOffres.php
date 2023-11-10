@@ -45,7 +45,7 @@ class RoutePosterOffres extends Route
     {
         $error = null;
         try{
-            $nbrFiles = count($_FILES['upload']['name']);
+            $nbrFiles = count($_FILES['imagesOffre']['name']);
             $chemins = array();
             for( $i=0 ; $i < $nbrFiles ; $i++ )
             {
