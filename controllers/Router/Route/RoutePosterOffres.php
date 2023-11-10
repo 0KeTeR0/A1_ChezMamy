@@ -86,7 +86,7 @@ class RoutePosterOffres extends Route
             $error=$e->getMessage();
         }
         if ($error!=null){
-            $this->controller->displayPosterOffres(new Message("Erreur : ".$error, "Erreur d'envoie", "danger"));
+            $this->controller->displayPosterOffres(new Message("Erreur : ".$error, "Erreur d'envoi", "danger"));
         }
 
         else{
