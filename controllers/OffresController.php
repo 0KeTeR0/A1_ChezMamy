@@ -80,7 +80,7 @@ class OffresController
      * Execute l'envoie de l'offre
      * @param array $data Données du formulaire
      * @return void
-     * @author Louis Demeocq
+     * @author Valentin Colindre
      */
     public function posterOffres(array $data): void
     {
