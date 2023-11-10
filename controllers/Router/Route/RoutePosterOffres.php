@@ -53,7 +53,7 @@ class RoutePosterOffres extends Route
                 $tmpFilePath = $_FILES['imagesOffre']['tmp_name'][$i];
 
                 // check si on a un path
-                if ($tmpFilePath != "") {
+                if ($tmpFilePath !== null) {
                     // crée le nouveau path
                     $newFilePath = "public/img/offres/".date('d-m-Y_H:i:s', time())."_{$i}_{$_FILES['imagesOffre']['name'][$i]}";
 
@@ -62,7 +62,10 @@ class RoutePosterOffres extends Route
                     {
                         $chemins[] = $newFilePath;
                     }
-
+                    /*
+                     else{
+                        throw new \Exception("Erreur lors de l'upload de l'image");
+                    }*/
                 }
             }
             // vérification des données passée dans le formulaire
