@@ -1,6 +1,8 @@
 <?php
 namespace App\ChezMamy\controllers;
 
+use App\ChezMamy\models\TokensManager;
+use App\ChezMamy\models\UtilisateurManager;
 use App\ChezMamy\Views\View;
 
 /**
@@ -16,9 +18,21 @@ class MainController
      */
     public function Index(): void
     {
+        $isSenior = false;
+
+        if (!empty($_SESSION['auth_token'])) {
+            $tokenManager = new TokensManager();
+            $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+
+            if($tokenOk) {
+                $idUtilisateur = (new TokensManager())->getByToken($_SESSION['auth_token'])->getIdUtilisateur();
+                $isSenior = (new UtilisateurManager())->isSenior($idUtilisateur);
+            }
+        }
+
         // affichage de la vue
         $indexView = new View('Index');
-        $indexView->generer([]);
+        $indexView->generer(['isSenior' => $isSenior]);
     }
 
     /**

@@ -81,7 +81,7 @@ class View
         $donnees['infoUtilisateur'] = $this->getInfoUtilisateur();
 
         // Vérifie si l'utilisateur est un senior
-        $isSenior = !empty($_SESSION['auth_token']) ? (new UtilisateurManager())->isSenior($this->getUtilisateur()->getIdUtilisateur()) : false;
+        $isSenior = (!empty($_SESSION['auth_token']) && $this->getUtilisateur() !== null)  ? (new UtilisateurManager())->isSenior(($this->getUtilisateur())->getIdUtilisateur()) : false;
 
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
