@@ -4,12 +4,14 @@ namespace App\ChezMamy\controllers\Router;
 
 use App\ChezMamy\controllers\MainController;
 use App\ChezMamy\controllers\Router\Route\RouteChangeLanguage;
+use App\ChezMamy\controllers\OffresController;
 use App\ChezMamy\controllers\Router\Route\RouteConnexion;
 use App\ChezMamy\controllers\Router\Route\RouteContact;
 use App\ChezMamy\controllers\Router\Route\RouteDeco;
 use App\ChezMamy\controllers\Router\Route\RouteException;
 use App\ChezMamy\controllers\Router\Route\RouteIndex;
 use App\ChezMamy\controllers\Router\Route\RouteInscription;
+use App\ChezMamy\controllers\Router\Route\RoutePosterOffres;
 use App\ChezMamy\controllers\UtilisateurController;
 
 /**
@@ -41,7 +43,8 @@ class Router
     {
         $this->ctrlList = [
             "main" => new MainController(),
-            "utilisateur" => new UtilisateurController()
+            "utilisateur" => new UtilisateurController(),
+            "offres" => new OffresController()
         ];
     }
 
@@ -57,7 +60,8 @@ class Router
             "inscription" => new RouteInscription($this->ctrlList["utilisateur"]),
             "changeLanguage" => new RouteChangeLanguage($this->ctrlList["main"]),
             "deco" => new RouteDeco($this->ctrlList["utilisateur"]),
-            "exception" => new RouteException($this->ctrlList["main"])
+            "exception" => new RouteException($this->ctrlList["main"]),
+            "posterOffres" => new RoutePosterOffres($this->ctrlList["offres"])
         ];
     }
 

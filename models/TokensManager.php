@@ -103,10 +103,7 @@ Class TokensManager extends Model{
                 $this->execRequest("UPDATE TOKENS SET expirationTime=? WHERE token=?",array($time->format("H:i:s"),$token));
                 $result=true;
             }
-            else if (!empty($_SESSION['auth_token'])) {
-                unset($_SESSION);
-                session_destroy();
-            }
+            else unset($_SESSION['auth_token']);
         }
 
         return $result;

@@ -49,22 +49,22 @@ class EDispo{
         $this->idDispos = $idDispos;
     }
 
-    public function getHeureDebut(): DateTime
+    public function getHeureDebut(): string
     {
         return $this->heureDebut;
     }
 
-    public function setHeureDebut(DateTime $heureDebut): void
+    public function setHeureDebut(string $heureDebut): void
     {
         $this->heureDebut = $heureDebut;
     }
 
-    public function getHeureFin(): DateTime
+    public function getHeureFin(): string
     {
         return $this->heureFin;
     }
 
-    public function setHeureFin(DateTime $heureFin): void
+    public function setHeureFin(string $heureFin): void
     {
         $this->heureFin = $heureFin;
     }

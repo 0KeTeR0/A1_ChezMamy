@@ -19,7 +19,9 @@
                 </div>
                 <div class="form-group">
                     <input type="submit" id="login" class="bouton" value="<?=$traductions["login_connect"]?>">
-                    <!--<p>Mot de passe oublié</p> -->
+                </div>
+                <div class="form-group">
+                    <small><?= $traductions["login_no_account"] ?></small>
                 </div>
             </form>
         </div>

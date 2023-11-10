@@ -39,7 +39,18 @@
                     <li id="connect"><a href="connexion"><?=$traductions["nav_connection"]?></a></li>
                     <li id="inscri"><a class="bouton" href="inscription"><?=$traductions["nav_register"]?></a></li>
                 <?php } else { ?>
-                    <li><a href="deco"><?=$traductions["nav_disconnect"]?></a></li>
+                    <li class="submenu">
+                        <a href="#">
+                            <?= "{$infoUtilisateur->getPrenom()} {$infoUtilisateur->getNom()}" ?>
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.67822 5.96658L8.1792 10.4676L12.6802 5.96658" stroke="black" stroke-width="1.00189" stroke-miterlimit="10" stroke-linecap="square"/>
+                            </svg>
+                        </a>
+                        <ul>
+                            <?php if($isSenior) { ?><li><a href="posterOffres"><?= $traductions["nav_post_offers"] ?></a></li><?php } ?>
+                            <li><a href="deco"><?=$traductions["nav_disconnect"]?></a></li>
+                        </ul>
+                    </li>
                 <?php } ?>
                 <form action="changeLanguage" method="POST" id="languageSelectionForm">
                     <select name="language" id="languageSelection">

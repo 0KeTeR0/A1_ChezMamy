@@ -103,4 +103,24 @@ Class UtilisateurManager extends Model{
 
         return ["success" => $success, "message" => $message ?? "La connexion est impossible", "utilisateur" => $utilisateur];
     }
+
+    /**
+     * Vérifie si l'utilisateur est un senior
+     * @param int $idUtilisateur l'id de l'utilisateur à vérifier
+     * @return bool true si l'utilisateur est un senior, false sinon
+     * @author Romain Card
+     */
+    public function isSenior(int $idUtilisateur):bool {
+        return ($this->execRequest("SELECT * FROM COMPTES_SENIORS WHERE idUtilisateur=?",array($idUtilisateur))->rowCount() == 1);
+    }
+
+    /**
+     * Vérifie si l'utilisateur est un étudiant
+     * @param int $idUtilisateur l'id de l'utilisateur à vérifier
+     * @return bool true si l'utilisateur est un étudiant, false sinon
+     * @author Romain Card
+     */
+    public function isEtudiant(int $idUtilisateur):bool {
+        return ($this->execRequest("SELECT * FROM COMPTES_ETUDIANTS WHERE idUtilisateur=?", array($idUtilisateur))->rowCount() == 1);
+    }
 }
