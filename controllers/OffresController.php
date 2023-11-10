@@ -104,7 +104,7 @@ class OffresController
                 }
                 //Puis les informations principales
                 $infosManager = new InfosOffresManager();
-                $infosManager->creationInfosOffres($idOffre,$data["surfaceChambre"],$data["housing"]);
+                $infosManager->creationInfosOffres($idOffre,$data["surfaceChambre"],$data["Housing"]);
                 $idInfo=$infosManager->getByIdOffres($idOffre)->getIdInfosOffre();
                 //Puis les besoins
                 $besoinManager = new BesoinsOffresManager();
@@ -133,7 +133,7 @@ class OffresController
             $this->displayPosterOffres(new Message("Erreur : ".$error, "Erreur d'envoie", "danger"));
         }
         else{
-            $this->displayPosterOffres(new Message("succès de la publication de l'offre. Elle sera approuvée ou non ultérieurement.", "succès", "success"));
+            $this->displayPosterOffres(new Message("Succès de la publication de l'offre. Elle sera approuvée ou non ultérieurement.", "succès", "success"));
         }
 
     }

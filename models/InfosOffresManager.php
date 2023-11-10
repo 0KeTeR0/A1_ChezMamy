@@ -20,7 +20,7 @@ class InfosOffresManager extends model
     {
         $result = false;
         if ($this->getByIdOffres($idOffre) == null){
-            if ($this->execRequest("INSERT INTO INFOS_OFFRES (idOffre, SuperficieDeLaChambre,idLogement ) VALUES(?,?)", array($idOffre, $superficie,$idLogement)) !== false){
+            if ($this->execRequest("INSERT INTO INFOS_OFFRES (idOffre, SuperficieDeLaChambre,idLogement ) VALUES(?, ?, ?)", array($idOffre, $superficie,$idLogement)) !== false){
                 $result = true;
             }
         }

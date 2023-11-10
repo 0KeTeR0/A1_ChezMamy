@@ -18,8 +18,8 @@ class OffresManager extends model
     public function creationOffres(int $idUser, string $titreOffre): bool
     {
         $result = false;
-        $nbrOffres = $this->execRequest("SELECT COUNT(*) FROM OFFRES WHERE idUtilisateur=?", array($idUser))->fetch();
-        if($nbrOffres < 5)
+        $nbrOffres = $this->execRequest("SELECT COUNT(*) as nbOffres FROM OFFRES WHERE idUtilisateur=?", array($idUser))->fetch();
+        if($nbrOffres['nbOffres'] < 5)
         {
             if ($this->execRequest("INSERT INTO OFFRES (TitreDeLoffre, idUtilisateur) VALUES(?,?)", array($titreOffre, $idUser)) !== false){
                 $result = true;
