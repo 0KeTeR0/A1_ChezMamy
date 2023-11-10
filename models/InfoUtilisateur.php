@@ -127,8 +127,9 @@ class InfoUtilisateur{
         return $this->dateDeNaissance;
     }
 
-    public function setDateDeNaissance(DateTime $dateDeNaissance): void
+    public function setDateDeNaissance(string $dateDeNaissance): void
     {
+        $dateDeNaissance = new DateTime($dateDeNaissance);
         $this->dateDeNaissance = $dateDeNaissance;
     }
 

@@ -1,4 +1,3 @@
-
 <section class="page-accueil">
     <div class="texte-accueil">
         <h1>Bienvenue sur chezMamy, la première plateforme éthique de services entre générations.</h1>
@@ -8,9 +7,9 @@
         <div class="bouton">
             <p>Je cherche un logement</p>
         </div>
-        <div class="bouton">
+        <a href="<?= $isSenior ? 'posterOffres' : 'inscription' ?>" class="bouton">
             <p>J'ai un logement à proposer</p>
-        </div>
+        </a>
     </div>
 
     <svg viewBox="0 0 1920 89" fill="none" xmlns="http://www.w3.org/2000/svg">
