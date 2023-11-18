@@ -1,7 +1,11 @@
 <?php
 namespace App\ChezMamy\views;
 
-use App\ChezMamy\models\TokensManager;
+use App\ChezMamy\models\Utilisateurs\InfoUtilisateur;
+use App\ChezMamy\models\Utilisateurs\InfoUtilisateursManager;
+use App\ChezMamy\models\Utilisateurs\TokensManager;
+use App\ChezMamy\models\Utilisateurs\Utilisateur;
+use App\ChezMamy\models\Utilisateurs\UtilisateurManager;
 use Exception;
 
 /**
@@ -26,6 +30,61 @@ class View
     }
 
     /**
+     * Récupère les traductions liées à la langue choisie
+     * @param string $lang  Langue choisie
+     * @return array
+     * @author Romain Card
+     */
+    private function getTraductions(string $lang = "fr"): array
+    {
+        // Récupération des traductions liées à la langue choisie
+        if(file_exists("views/langs/{$lang}.php")) $res = require_once("langs/{$lang}.php");
+        else $res = require_once('langs/fr.php');
+
+        return $res;
+    }
+
+    /**
+     * @return Utilisateur|null Renvoi l'utilisateur connecté ou null si l'utilisateur n'est pas connecté
+     * @author Romain Card
+     */
+    private function getUtilisateur(): ?Utilisateur
+    {
+        $tokenManager = new TokensManager();
+        $userLogged = !empty($_SESSION['auth_token']) ? $tokenManager->checkToken($_SESSION['auth_token']) : false;
+        $token = !empty($_SESSION['auth_token']) ? $tokenManager->getByToken($_SESSION['auth_token']) : null;
+
+        if ($userLogged && $token !== null) {
+            $idUtilisateur = $token->getIdUtilisateur();
+            $utilisateurManager = new UtilisateurManager();
+            $utilisateur = $utilisateurManager->getById($idUtilisateur);
+        }
+        else $utilisateur = null;
+
+        return $utilisateur;
+    }
+
+    /**
+     * @return \App\ChezMamy\models\Utilisateurs\InfoUtilisateur|null Renvoi les informations de l'utilisateur connecté ou null si l'utilisateur n'est pas connecté
+     * @author Romain Card
+     */
+    private function getInfoUtilisateur(): ?InfoUtilisateur
+    {
+        $tokenManager = new TokensManager();
+        $userLogged = !empty($_SESSION['auth_token']) ? $tokenManager->checkToken($_SESSION['auth_token']) : false;
+        $token = !empty($_SESSION['auth_token']) ? $tokenManager->getByToken($_SESSION['auth_token']) : null;
+
+        if ($userLogged && $token !== null) {
+            $idUtilisateur = $token->getIdUtilisateur();
+            $infosManager = new InfoUtilisateursManager();
+            $infoUtilisateur = $infosManager->getByIdUtilisateur($idUtilisateur);
+        }
+        else $infoUtilisateur = null;
+
+        return $infoUtilisateur;
+    }
+
+    /**
      * Génère et affiche la vue
      * @param array $donnees Données nécessaires à la vue
      * @return void
@@ -33,13 +92,19 @@ class View
      */
     public function generer(array $donnees): void
     {
-        // Vérifie si l'utilisateur est connecté
-        $userLogged = !empty($_SESSION['auth_token']) ? (new TokensManager())->checkToken($_SESSION['auth_token']) : false;
-        $donnees['userLogged'] = $userLogged;
+        // Vérifie si l'utilisateur est connecté et récupère les informations
+        $donnees['infoUtilisateur'] = $this->getInfoUtilisateur();
+
+        // Vérifie si l'utilisateur est un senior
+        $isSenior = (!empty($_SESSION['auth_token']) && $this->getUtilisateur() !== null)  ? (new UtilisateurManager())->isSenior(($this->getUtilisateur())->getIdUtilisateur()) : false;
+
+        // On récupère les traductions
+        $donnees['traductions'] = $this->getTraductions($_GET['lang'] ?? "fr");
+
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'userLogged' => $userLogged));
+        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'traductions' => $donnees['traductions'], 'isSenior' => $isSenior, 'infoUtilisateur' => $donnees['infoUtilisateur']));
         // Renvoi de la vue au navigateur
         echo $vue;
     }

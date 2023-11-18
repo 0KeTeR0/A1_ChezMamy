@@ -2,6 +2,8 @@
 
 namespace App\ChezMamy\models;
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 /**
  * Classe permettant d'envoyer un mail
  */
@@ -32,12 +34,37 @@ class Mail
      */
     public function Envoyer(): bool
     {
-        $headers = "From: ChezMamy <noreply@chezmamy.fr>";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+        // Configuration du mail
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->Mailer = "smtp";
+        $mail->SMTPDebug  = 0;
+        $mail->SMTPAuth   = TRUE;
+        $mail->SMTPSecure = "tls";
+        $mail->Port       = 587;
+        $mail->Host       = "smtp.gmail.com";
+        $mail->Username   = "noreplychezmamy@gmail.com";
+        $mail->Password   = "qkic swzr aqre xqwf";
+        $mail->IsHTML(true);
 
-        $destinataires = implode(',', $this->destinataires);
+        // Ajout des destinataires
+        foreach ($this->destinataires as $dest){
+            $mail->AddAddress($dest);
+        }
 
-        return mail($destinataires, $this->sujet, $this->contenu, $headers);
+        // Ajout de l'objet
+        $mail->Subject = $this->sujet;
+
+        // Définition de l'encodage
+        $mail->CharSet = 'UTF-8';
+
+        // Envoyeur
+        $mail->SetFrom("noreplychezmamy@gmail.com", "ChezMamy");
+
+        // Ajout du contenu
+        $mail->MsgHTML($this->contenu);
+
+        // Envoi du mail
+        return $mail->Send();
     }
 }

@@ -2,25 +2,21 @@
 namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
-use App\ChezMamy\models\CompteSeniorSBesoinManager;
-use App\ChezMamy\models\ComptesEtudiantsManager;
-use App\ChezMamy\models\ComptesSeniorsManager;
-use App\ChezMamy\models\ConnaissancesAssociationManager;
-use App\ChezMamy\models\EDisposManager;
-use App\ChezMamy\models\EDomaineEtude;
-use App\ChezMamy\models\EDomainesEtudeManager;
-use App\ChezMamy\models\InfoUtilisateursManager;
-use App\ChezMamy\models\SBesoin;
-use App\ChezMamy\models\SBesoinsManager;
-use App\ChezMamy\models\SLogementsManager;
-use App\ChezMamy\models\SPresenceFamillesManager;
-use App\ChezMamy\models\SProprietesManager;
-use App\ChezMamy\models\SSituationsManager;
-use App\ChezMamy\models\Token;
-use App\ChezMamy\models\TokensManager;
-use App\ChezMamy\models\TypeLogement;
-use App\ChezMamy\models\TypeLogementManager;
-use App\ChezMamy\models\UtilisateurManager;
+use App\ChezMamy\models\Offres\TypeLogementManager;
+use App\ChezMamy\models\Utilisateurs\ConnaissancesAssociationManager;
+use App\ChezMamy\models\Utilisateurs\Etudiants\ComptesEtudiantsManager;
+use App\ChezMamy\models\Utilisateurs\Etudiants\EDisposManager;
+use App\ChezMamy\models\Utilisateurs\Etudiants\EDomainesEtudeManager;
+use App\ChezMamy\models\Utilisateurs\InfoUtilisateursManager;
+use App\ChezMamy\models\Utilisateurs\Seniors\CompteSeniorSBesoinManager;
+use App\ChezMamy\models\Utilisateurs\Seniors\ComptesSeniorsManager;
+use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
+use App\ChezMamy\models\Utilisateurs\Seniors\SLogementsManager;
+use App\ChezMamy\models\Utilisateurs\Seniors\SPresenceFamillesManager;
+use App\ChezMamy\models\Utilisateurs\Seniors\SProprietesManager;
+use App\ChezMamy\models\Utilisateurs\Seniors\SSituationsManager;
+use App\ChezMamy\models\Utilisateurs\TokensManager;
+use App\ChezMamy\models\Utilisateurs\UtilisateurManager;
 use App\ChezMamy\Views\View;
 
 /**

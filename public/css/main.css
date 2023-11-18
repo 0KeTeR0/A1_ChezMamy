@@ -6,7 +6,7 @@
     --secondary-color: #EC4C4C;
     --txt-color: #000;
     --bg-color: #fff;
-    --success-color: #4BB543;
+    --success-color: #32812c;
     --danger-color: #ab1515;
     --transition: .2s ease-in-out;
 }
@@ -89,6 +89,7 @@ section .section-title {
     background: var(--main-color);
     transition: var(--transition);
     cursor: pointer;
+    text-decoration: none;
 }
 .bouton:hover {
     filter: brightness(80%);
@@ -99,13 +100,15 @@ section .section-title {
     color: #000;
 }
 
-label:has(+ input[required]):after {
+label:has(~ [required]):after {
     content: ' *';
     color: red;
 }
+
 textarea { resize: vertical; }
 .registerBox input:not([type="checkbox"]):not([type="radio"]),
 .loginBox input:not([type="checkbox"]):not([type="radio"]),
+.contactBox input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select {
     display: block;
@@ -121,6 +124,7 @@ select {
 }
 .registerBox input:focus,
 .loginBox input:focus,
+.contactBox input:focus,
 textarea:focus,
 select:focus {
     outline: none;
@@ -128,11 +132,14 @@ select:focus {
 }
 .registerBox input:not([type="submit"]):valid,
 .loginBox input:not([type="submit"]):valid,
+.contactBox input:not([type="submit"]):valid,
 textarea:valid {
     border-color: green!important;
 }
 .registerBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
+.registerBox select:not(:valid),
 .loginBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
+.contactBox input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not(:valid),
 textarea:not([type="checkbox"]):not([type="radio"]):not(:valid) {
     border-color: red;
 }
@@ -158,6 +165,9 @@ header{
     background: var(--bg-color);
     z-index: 1;
 }
+header select {
+    margin-left: 15px;
+}
 
 header img{
     width: 190px;
@@ -171,6 +181,51 @@ header nav ul{
     list-style: none;
 }
 
+/* sous-menus */
+header nav ul li.submenu {
+    position: relative;
+}
+header nav ul li.submenu ul {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    display: none;
+}
+header nav ul li.submenu a svg {
+    transition: var(--transition);
+
+}
+header nav ul li.submenu:hover a svg {
+    transform: rotate(180deg);
+}
+header nav ul li.submenu:hover ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    min-width: 200px;
+    max-width: 300px;
+    overflow: hidden;
+}
+header nav ul li.submenu ul li {
+    display: block;
+    padding: 15px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    transition: var(--transition);
+}
+header nav ul li.submenu ul li:hover {
+    background: #f4f4f4;
+}
+header nav ul li.submenu ul li a {
+    color: #000;
+    font-size: 17px;
+    font-weight: 400;
+}
+/*-------------------------*/
 
 header nav ul li a{
     font-size: 18px;
@@ -477,8 +532,139 @@ section.registerForm {
 .loginForm .loginBox form {
     width: 100%;
 }
+/* ---------------------- PosterOffres ------------------ */
 
+.img_file_article{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    transition: all .2s ease-in-out;
+}
 
+.img_file_article:hover{
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23);
+}
+
+.drop-container {
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 10px;
+    border: 2px dashed #460B4A;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+    background: rgba(236, 76, 76, 0.164);
+    border-color: rgba(17, 17, 17, 0.616);
+}
+
+.drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+
+#file-input {
+    width: 350px;
+    max-width: 100%;
+    color: #444;
+    padding: 2px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(8, 8, 8, 0.288);
+    cursor: pointer;
+}
+
+#file-input::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #460B4A;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+#file-input::file-selector-button:hover {
+    background: #38093b;
+}
+
+.input_file_titre span{
+    color: rgb(171, 171, 171);
+}
+
+/* ----------------------- Contact ----------------------- */
+.contactForm {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.contactForm .contactBox {
+    margin-top: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45vw;
+    padding: 30px 150px 30px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .2);
+    border-radius: 10px;
+}
+
+.contactForm .contactBox .logo {
+    margin-bottom: 10%;
+    max-width: 700px;
+    min-width: 300px;
+    width: 80%;
+}
+.contactForm .contactBox .logo img {
+    width: 100%;
+    height: auto;
+}
+.contactForm .contactBox > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.contactForm .contactBox .contact_form,
+.contactForm .contactBox form {
+    width: 100%;
+}
+
+#contact_form .form-group #message{
+    resize: none;
+    margin-bottom: 5%;
+}
+
+#contact_form .form-group #envoyer{
+    margin-left: auto;
+    width: 10vw;
+}
 
 /* ----------------------- Footer ----------------------- */
 #penche {
@@ -765,6 +951,26 @@ footer nav div p{
         box-sizing: border-box;
     }
     .loginForm .image-connexion { display: none; }
+
+    .contactForm {
+        margin: 50px auto;
+        height: fit-content;
+        grid-template-columns: 1fr;
+    }
+    .contactForm .contactBox {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+
+    #contact_form .form-group #envoyer{
+        margin-left: auto;
+        width: 30%;
+        margin-bottom: 5%;
+    }
+
+
 
     footer nav > ul {
         flex-direction: row;

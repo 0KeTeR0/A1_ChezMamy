@@ -2,14 +2,9 @@
 
 namespace App\ChezMamy\controllers\Router\Route;
 
-use App\ChezMamy\controllers\UtilisateurController;
 use App\ChezMamy\controllers\Router\Route;
+use App\ChezMamy\controllers\UtilisateurController;
 use App\ChezMamy\helpers\Message;
-use App\ChezMamy\models\ComptesEtudiantsManager;
-use App\ChezMamy\models\ComptesSeniorsManager;
-use App\ChezMamy\models\InfoUtilisateursManager;
-use App\ChezMamy\models\UtilisateurManager;
-use DateInterval;
 use DateTime;
 
 /**
