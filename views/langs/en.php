@@ -206,7 +206,7 @@ return [
     "offer_address" => "Address",
     "offer_surface" => "Room size (in m²)",
     "offer_description" => "Description",
-    "offer_drop_files" => "Drop your files here",
+    "offer_drop_files" => "Drop your pictures here",
     "offer_images" => "Images",
     "offer_submit" => "Submit offer"
 ];

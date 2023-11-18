@@ -206,7 +206,7 @@ return [
     "offer_address" => "Adresse",
     "offer_surface" => "Superficie de la chambre (en m²)",
     "offer_description" => "Description",
-    "offer_drop_files" => "Déposer vos fichiers ici",
+    "offer_drop_files" => "Déposer vos photos ici",
     "offer_images" => "Images de l'offre",
     "offer_submit" => "Poster l'offre"
 ];

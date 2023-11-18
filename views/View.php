@@ -1,11 +1,11 @@
 <?php
 namespace App\ChezMamy\views;
 
-use App\ChezMamy\models\InfoUtilisateur;
-use App\ChezMamy\models\InfoUtilisateursManager;
-use App\ChezMamy\models\TokensManager;
-use App\ChezMamy\models\Utilisateur;
-use App\ChezMamy\models\UtilisateurManager;
+use App\ChezMamy\models\Utilisateurs\InfoUtilisateur;
+use App\ChezMamy\models\Utilisateurs\InfoUtilisateursManager;
+use App\ChezMamy\models\Utilisateurs\TokensManager;
+use App\ChezMamy\models\Utilisateurs\Utilisateur;
+use App\ChezMamy\models\Utilisateurs\UtilisateurManager;
 use Exception;
 
 /**
@@ -65,7 +65,7 @@ class View
     }
 
     /**
-     * @return InfoUtilisateur|null Renvoi les informations de l'utilisateur connecté ou null si l'utilisateur n'est pas connecté
+     * @return \App\ChezMamy\models\Utilisateurs\InfoUtilisateur|null Renvoi les informations de l'utilisateur connecté ou null si l'utilisateur n'est pas connecté
      * @author Romain Card
      */
     private function getInfoUtilisateur(): ?InfoUtilisateur

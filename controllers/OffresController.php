@@ -3,17 +3,16 @@
 namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
-use App\ChezMamy\models\BesoinsOffresManager;
-use App\ChezMamy\models\DatesOffreManager;
-use App\ChezMamy\models\ImagesOffresManager;
-use App\ChezMamy\models\InfosComplementairesManager;
-use App\ChezMamy\models\infosOffre;
-use App\ChezMamy\models\InfosOffresManager;
-use App\ChezMamy\models\OffresManager;
-use App\ChezMamy\models\SBesoinsManager;
-use App\ChezMamy\models\TokensManager;
-use App\ChezMamy\models\TypeLogementManager;
-use App\ChezMamy\models\UtilisateurManager;
+use App\ChezMamy\models\Offres\BesoinsOffresManager;
+use App\ChezMamy\models\Offres\DatesOffreManager;
+use App\ChezMamy\models\Offres\ImagesOffresManager;
+use App\ChezMamy\models\Offres\InfosComplementairesManager;
+use App\ChezMamy\models\Offres\InfosOffresManager;
+use App\ChezMamy\models\Offres\OffresManager;
+use App\ChezMamy\models\Offres\TypeLogementManager;
+use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
+use App\ChezMamy\models\Utilisateurs\TokensManager;
+use App\ChezMamy\models\Utilisateurs\UtilisateurManager;
 use App\ChezMamy\Views\View;
 use DateTime;
 
@@ -95,33 +94,35 @@ class OffresController
                 //On créer l'offre en récupérant l'IdUtilisateur de l'utilisateur connecté
                 $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
                 $offresManager = new OffresManager();
-                $offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"]);
-                //On créer ensuite les images dans la base de donnée
-                $idOffre = $offresManager->getLast()->getIdOffre();
-                $imgManager = new ImagesOffresManager();
-                foreach($data["imagesOffre"] as $image){
-                    $imgManager->creationImagesOffres($image,$idOffre);
+                if($offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"])) {
+                    //On créer ensuite les images dans la base de donnée
+                    $idOffre = $offresManager->getLast()->getIdOffre();
+                    $imgManager = new ImagesOffresManager();
+                    foreach ($data["imagesOffre"] as $image) {
+                        $imgManager->creationImagesOffres($image, $idOffre);
+                    }
+                    //Puis les informations principales
+                    $infosManager = new InfosOffresManager();
+                    $infosManager->creationInfosOffres($idOffre, $data["surfaceChambre"], $data["Housing"]);
+                    $idInfo = $infosManager->getByIdOffres($idOffre)->getIdInfosOffre();
+                    //Puis les besoins
+                    $besoinManager = new BesoinsOffresManager();
+                    foreach ($data["needs"] as $need) {
+                        $besoinManager->creationBesoinsOffre($need, $idInfo);
+                    }
+                    //Puis les informations complémentaires
+                    $infosComplManager = new InfosComplementairesManager();
+                    $infosComplManager->creationInfosComplementaires($data["adresseLogement"], $idInfo, $data["descriptionOffre"]);
+                    //Puis les dates
+                    $datesOffreManager = new DatesOffreManager();
+                    $dateDeb = DateTime::createFromFormat('Y-m-d', $data["date_debut_offre"]);
+                    $dateFin = DateTime::createFromFormat('Y-m-d', $data["date_fin_offre"]);
+                    $datesOffreManager->creationDatesOffre($dateDeb, $idInfo, $dateFin);
                 }
-                //Puis les informations principales
-                $infosManager = new InfosOffresManager();
-                $infosManager->creationInfosOffres($idOffre,$data["surfaceChambre"],$data["Housing"]);
-                $idInfo=$infosManager->getByIdOffres($idOffre)->getIdInfosOffre();
-                //Puis les besoins
-                $besoinManager = new BesoinsOffresManager();
-                foreach ($data["needs"] as $need){
-                    $besoinManager->creationBesoinsOffre($need,$idInfo);
-                }
-                //Puis les informations complémentaires
-                $infosComplManager = new InfosComplementairesManager();
-                $infosComplManager->creationInfosComplementaires($data["adresseLogement"],$idInfo,$data["descriptionOffre"]);
-                //Puis les dates
-                $datesOffreManager = new DatesOffreManager();
-                $dateDeb= DateTime::createFromFormat('Y-m-d', $data["date_debut_offre"]);
-                $dateFin = DateTime::createFromFormat('Y-m-d', $data["date_fin_offre"]);
-                $datesOffreManager->creationDatesOffre($dateDeb,$idInfo,$dateFin);
+                else $error = "Vous avez déjà 5 offres en cours, veuillez en retirer une pour en ajouter une nouvelle.";
             }
             else{
-                $error="Sesssion invalide";
+                $error="Session invalide";
             }
 
         }

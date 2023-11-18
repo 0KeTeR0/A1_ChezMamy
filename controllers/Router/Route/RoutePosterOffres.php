@@ -55,17 +55,14 @@ class RoutePosterOffres extends Route
                 // check si on a un path
                 if ($tmpFilePath !== null) {
                     // crée le nouveau path
-                    $newFilePath = "public/img/offres/".date('d-m-Y_H:i:s', time())."_{$i}_{$_FILES['imagesOffre']['name'][$i]}";
-
+                    $destination_path = 'public'.DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.'offres'.DIRECTORY_SEPARATOR;
+                    $target_path = $destination_path . date('d-m-Y_H-i-s', time())."_{$i}_".str_replace(" ", "_", substr(basename($_FILES['imagesOffre']['name'][$i]), -30));
                     // copie le fichier dans le dossier
-                    if (move_uploaded_file($_FILES['imagesOffre']['tmp_name'][$i], $newFilePath))
+                    if (move_uploaded_file($_FILES['imagesOffre']['tmp_name'][$i], $target_path))
                     {
-                        $chemins[] = $newFilePath;
+                        $chemins[] = $target_path;
                     }
-                    /*
-                     else{
-                        throw new \Exception("Erreur lors de l'upload de l'image");
-                    }*/
+                    else throw new \Exception("Erreur lors du téléchargement des images");
                 }
             }
             // vérification des données passée dans le formulaire

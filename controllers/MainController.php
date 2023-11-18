@@ -3,8 +3,8 @@ namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
 use App\ChezMamy\models\Mail;
-use App\ChezMamy\models\TokensManager;
-use App\ChezMamy\models\UtilisateurManager;
+use App\ChezMamy\models\Utilisateurs\TokensManager;
+use App\ChezMamy\models\Utilisateurs\UtilisateurManager;
 use App\ChezMamy\Views\View;
 
 /**

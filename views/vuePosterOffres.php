@@ -67,7 +67,7 @@
                             <label for="file-input" class="drop-container">
                                 <span class="drop-title"><?= $traductions['offer_drop_files'] ?></span>
                                 ou
-                                <input type="file" id="file-input" name="imagesOffre[]" accept="image/png, image/jpeg, image/jpg" required>
+                                <input type="file" id="file-input" name="imagesOffre[]" accept="image/png, image/jpeg, image/jpg" multiple>
                             </label>
                         </div>
                         <div class="input_file_titre">
