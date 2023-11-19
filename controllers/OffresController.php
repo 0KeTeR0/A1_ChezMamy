@@ -134,7 +134,7 @@ class OffresController
             $this->displayPosterOffres(new Message("Erreur : ".$error, "Erreur d'envoi", "danger"));
         }
         else{
-            $this->displayPosterOffres(new Message("L'offre a été envoyé avec succès. Elle sera vérifiée ultérieurement pour être validée.", "Offre envoyée", "success"));
+            $this->displayPosterOffres(new Message("L'offre a été envoyée avec succès. Elle sera vérifiée ultérieurement pour être validée.", "Offre envoyée", "success"));
         }
 
     }
