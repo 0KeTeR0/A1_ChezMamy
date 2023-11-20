@@ -25,6 +25,11 @@ class infosOffre
     private int $idOffre;
 
     /**
+     * @var int l'ID du type de logement
+     */
+    private int $idTypeLogement;
+
+    /**
      * @return int
      */
     public function getIdInfosOffre(): int
@@ -86,5 +91,15 @@ class infosOffre
                 $this->$method($value);
             }
         }
+    }
+
+    public function getIdTypeLogement(): int
+    {
+        return $this->idTypeLogement;
+    }
+
+    public function setIdTypeLogement(int $idTypeLogement): void
+    {
+        $this->idTypeLogement = $idTypeLogement;
     }
 }
