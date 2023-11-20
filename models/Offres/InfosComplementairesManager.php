@@ -13,7 +13,6 @@ use App\ChezMamy\models\Model;
 class InfosComplementairesManager extends Model
 {
 
-
     /**
      * Créer un nouvel InfosComplementaires à partir des champs
      * nécessaires. Renvoi vrai si l'opération
@@ -52,4 +51,16 @@ class InfosComplementairesManager extends Model
 
         return $val;
     }
+
+    /**
+     * Supprime l'infosComplémentaire d'id $idInfosOffre dans la BDD
+     * @param int $idInfosOffre l'id de l'infosComplémentaire que l'on veut supprimer
+     * @return bool renvoie True si la requête est bien exécuté
+     * @author Louis Dememocq
+     */
+    public function deleteByIdOffre(int $idInfosOffre): bool
+    {
+        return $this->execRequest("DElETE FROM INFOS_COMPLEMENTAIRES WHERE $idInfosOffre=?", array($idInfosOffre));
+    }
+
 }

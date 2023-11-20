@@ -62,4 +62,15 @@ class InfosOffresManager extends model
         }
         return $infos_array;
     }
+
+    /**
+     * Supprime l'InfosOffre d'id $idOffre dans la BDD
+     * @param int $idOffre l'id de l'InfosOffre que l'on veut supprimer
+     * @return bool renvoie True si la requête est bien exécuté
+     * @author Louis Dememocq
+     */
+    public function deleteByIdOffre(int $idOffre): bool
+    {
+        return $this->execRequest("DElETE FROM INFOS_OFFRES WHERE idOffres=?", array($idOffre));
+    }
 }
