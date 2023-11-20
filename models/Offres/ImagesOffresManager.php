@@ -28,16 +28,16 @@ class ImagesOffresManager extends model
     }
 
     /**
-     * Récupère l'offre d'id idOffres
-     * @param int $idOffres l'ID de l'offre recherchée
-     * @return Offre|null renvoi l'offre ou rien si elle n'existe pas dans la DB.
-     * @author Louis Demeocq
+     * Récupère une image offre d'id idOffres
+     * @param int $idOffres l'ID de l'image offre recherchée
+     * @return ImagesOffre|null renvoi l'imageOffre ou rien si elle n'existe pas dans la DB.
+     * @authors Louis Demeocq, Valentin Colindre
      */
-    public function getByIdOffres(int $idOffres):?Offre
+    public function getOneByIdOffres(int $idOffres):?ImagesOffre
     {
-        $result = $this->execRequest("SELECT * FROM OFFRES WHERE idOffre=?", array($idOffres))->fetch();
+        $result = $this->execRequest("SELECT * FROM IMAGES_OFFRE WHERE idOffre=?", array($idOffres))->fetch();
         if ($result != false){
-            $offre = new Offre();
+            $offre = new ImagesOffre();
             $offre->hydrate($result);
         }
         else $offre = null;

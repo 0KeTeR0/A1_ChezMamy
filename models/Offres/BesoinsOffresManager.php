@@ -32,4 +32,25 @@ class BesoinsOffresManager extends Model
     }
 
 
+    /**
+     * Renvoi la liste des besoins liés à une offre
+     * @param int $idInfosOffre Id de l'infoOffre lié aux besoins
+     * @return array Liste des besoins
+     * @author Valentin Colindre
+     */
+    public function GetAllByIdInfosOffre(int $idInfosOffre):array{
+        $result = $this->execRequest("SELECT * FROM BESOINS_OFFRES WHERE idInfosOffre=?", array($idInfosOffre))->fetchAll();
+        if ($result != false){
+            $besoins = array();
+            foreach ($result as $besoin){
+                $besoinInstance = new BesoinOffres();
+                $besoinInstance->hydrate($besoin);
+                $besoins[] = $besoinInstance;
+            }
+        }
+        else $besoins = null;
+
+        return $besoins;
+    }
+
 }

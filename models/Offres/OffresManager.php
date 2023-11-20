@@ -47,6 +47,27 @@ class OffresManager extends model
     }
 
     /**
+     * Recherche les offres comportant nom dans leur titre
+     * @param string $name nom servant de base de recherche
+     * @return array|null Array de vingt offre maximum ou null
+     * @author Valentin Colindre
+     */
+    public function getByName(string $name):?array{
+        $result = $this->execRequest("SELECT * FROM OFFRES WHERE TitreDeLoffre LIKE '%?%' ORDER BY idOffre DESC LIMIT 20",array($name))->fetchAll();
+        if($result!==false){
+            $val = array();
+            foreach ($result as $offre){
+                $nOffre = new Offre();
+                $nOffre->hydrate($offre);
+                $val[] = $nOffre;
+            }
+        }
+        else $val=null;
+
+        return $val;
+    }
+
+    /**
      * Renvoi la dernière offre insérée par ce manager
      * @return Offre|null la dernière offre
      * @author Valentin Colindre
