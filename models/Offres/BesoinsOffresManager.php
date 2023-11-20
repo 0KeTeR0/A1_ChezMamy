@@ -53,4 +53,14 @@ class BesoinsOffresManager extends Model
         return $besoins;
     }
 
+    /**
+     * Supprimes les besoinsOffres d'id $idInfosOffre dans la BDD
+     * @param int $idInfosOffre l'id des besoinsOffres que l'on veut supprimer
+     * @return bool renvoie True si la requête est bien exécuté
+     * @author Louis Dememocq
+     */
+    public function deleteByIdOffre(int $idInfosOffre): bool
+    {
+        return $this->execRequest("DElETE FROM BESOINS_OFFRES WHERE $idInfosOffre=?", array($idInfosOffre));
+    }
 }
