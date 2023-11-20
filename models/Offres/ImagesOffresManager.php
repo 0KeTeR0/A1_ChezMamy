@@ -51,7 +51,7 @@ class ImagesOffresManager extends model
      * @author Louis Demeocq
      */
     public function getAll():array{
-        $result = $this->execRequest("SELECT * FROM INFOS_OFFRES");
+        $result = $this->execRequest("SELECT * FROM IMAGES_OFFRE");
         $images_array = array();
         foreach($result->fetchAll() as $image){
             $image_object = new ImagesOffre();
@@ -60,4 +60,16 @@ class ImagesOffresManager extends model
         }
         return $images_array;
     }
+
+    /**
+     * Supprime les images offres d'id $idOffre dans la BDD
+     * @param int $idOffre l'id des images offre que l'on veut supprimer
+     * @return bool renvoie True si la requête est bien exécuté
+     * @author Louis Dememocq
+     */
+    public function deleteByIdOffre(int $idOffre): bool
+    {
+        return $this->execRequest("DElETE FROM IMAGES_OFFRE WHERE idOffres=?", array($idOffre));
+    }
+
 }

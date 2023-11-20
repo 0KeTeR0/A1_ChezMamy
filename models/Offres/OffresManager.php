@@ -16,6 +16,7 @@ class OffresManager extends model
      * @param int $idUser l'id d'utilisateur qui ajoute l'offre
      * @param string $titreOffre le titre de l'offre
      * @return bool vraie si réussie, faux si échec
+     * @author Louis Demeocq
      */
     public function creationOffres(int $idUser, string $titreOffre): bool
     {
@@ -81,6 +82,18 @@ class OffresManager extends model
         else $val=null;
 
         return $val;
+    }
+
+
+    /**
+     * Supprime l'offre d'id $idOffre dans la BDD
+     * @param int $idOffre l'id de l'offre que l'on veut supprimer
+     * @return bool renvoie True si la requête est bien exécuté
+     * @author Louis Dememocq
+     */
+    public function deleteByIdOffre(int $idOffre): bool
+    {
+        return $this->execRequest("DElETE FROM OFFRES WHERE idOffres=?", array($idOffre));
     }
 
 }
