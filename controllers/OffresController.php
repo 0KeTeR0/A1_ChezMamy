@@ -136,6 +136,11 @@ class OffresController
         else{
             $this->displayPosterOffres(new Message("L'offre a été envoyée avec succès. Elle sera vérifiée ultérieurement pour être validée.", "Offre envoyée", "success"));
         }
+    }
 
+    public function chercherOffres(): void
+    {
+        $view = new View("ChercherOffres");
+        $view->generer([]);
     }
 }

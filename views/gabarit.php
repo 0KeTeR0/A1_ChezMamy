@@ -24,7 +24,7 @@
                 <li id="ac_li"><a id="ac" href="accueil"><?=$traductions["nav_home"]?></a></li>
                 <li id="search_bar">
                     <div>
-                        <form action="#" method="GET">
+                        <form action="recherche" method="GET">
                             <input placeholder="<?=$traductions["nav_searchHolder"]?>" type="text" name="searchPost">
                             <button>
                                 <svg viewBox="0 0 30 29" xmlns="http://www.w3.org/2000/svg">

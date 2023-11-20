@@ -208,5 +208,8 @@ return [
     "offer_description" => "Description",
     "offer_drop_files" => "Drop your pictures here",
     "offer_images" => "Images",
-    "offer_submit" => "Submit offer"
+    "offer_submit" => "Submit offer",
+
+    // vueChercherOffres.php
+    "search_title" => "Search an offer",
 ];

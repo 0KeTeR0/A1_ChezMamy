@@ -208,5 +208,8 @@ return [
     "offer_description" => "Description",
     "offer_drop_files" => "Déposer vos photos ici",
     "offer_images" => "Images de l'offre",
-    "offer_submit" => "Poster l'offre"
+    "offer_submit" => "Poster l'offre",
+
+    // vueRechercherOffres.php
+    "search_title" => "Rechercher une offre de logement",
 ];
