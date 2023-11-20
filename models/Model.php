@@ -3,6 +3,7 @@
 namespace App\ChezMamy\models;
 
 use App\ChezMamy\config\Config;
+use App\ChezMamy\models\DAO\DAO;
 use PDO;
 use PDOException;
 use PDOStatement;
@@ -14,7 +15,16 @@ use PDOStatement;
  */
 abstract class Model
 {
-    private ?PDO $db = null;
+
+    /**
+     * Définit le DAO utilisé par le model
+     * @return PDO le PDO utilisé par le DAO
+     * @author Valentin Colindre
+     */
+    private function getDAO():PDO
+    {
+        return DAO::getDB();
+    }
 
     /**
      * @param string $sql Requête SQL à exécuter
@@ -27,10 +37,10 @@ abstract class Model
         $res = false;
 
         if ($params === null) {
-            $res = $this->getDB()->query($sql); // requête sans paramètre
+            $res = $this->getDAO()->query($sql); // requête sans paramètre
         }
         else {
-            $res = $this->getDB()->prepare($sql); // requête préparée avec des paramètres
+            $res = $this->getDAO()->prepare($sql); // requête préparée avec des paramètres
             $res->execute($params);
         }
 
@@ -44,28 +54,7 @@ abstract class Model
      * @return false|string faux ou l'id
      */
     protected function getLastId():false|string{
-        return $this->getDB()->lastInsertId();
+        return $this->getDAO()->lastInsertId();
     }
 
-    /**
-     * Crée et/ou retourne la connexion à la base de données
-     * @return PDO
-     * @author Romain Card
-     */
-    private function getDB(): PDO
-    {
-        if ($this->db === null) {
-            try {
-                // récupération des paramètres de configuration BD
-                $config = Config::getInstance();
-                $this->db = new PDO($config->getDsn(), $config->getUser(), $config->getPass()); // connexion locale
-                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            }
-            catch (PDOException $e) {
-                die('Erreur : ' . $e->getMessage());
-            }
-        }
-
-        return $this->db;
-    }
 }
