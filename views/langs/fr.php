@@ -212,5 +212,6 @@ return [
 
     // vueRechercherOffres.php
     "search_title" => "Rechercher une offre de logement",
+    "offer_apply" => "Postuler pour l'offre",
     "no_offer" => "Aucune offre ne correspond à votre recherche.",
 ];

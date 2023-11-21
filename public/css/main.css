@@ -628,6 +628,7 @@ section.registerForm {
     padding: 15px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
     border-radius: 10px;
     background: #fff;
@@ -675,6 +676,17 @@ section.registerForm {
     max-width: 250px;
     border-left: 1px solid #ccc;
 }
+.offres .offre-actions {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+.offres .offre-actions .offre-postuler {
+    position: absolute;
+    right: 0;
+    justify-self: flex-end;
+}
+.offres .no-offre { text-align: center; }
 
 /* ----------------------- Contact ----------------------- */
 .contactForm {
