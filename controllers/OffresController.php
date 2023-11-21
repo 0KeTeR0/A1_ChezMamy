@@ -9,6 +9,7 @@ use App\ChezMamy\models\Offres\ImagesOffresManager;
 use App\ChezMamy\models\Offres\InfosComplementairesManager;
 use App\ChezMamy\models\Offres\InfosOffresManager;
 use App\ChezMamy\models\Offres\OffresManager;
+use App\ChezMamy\models\Offres\OffresPostulerManager;
 use App\ChezMamy\models\Offres\OffresSignaleesManager;
 use App\ChezMamy\models\Offres\TypeLogementManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
@@ -232,6 +233,8 @@ class OffresController
         $offreSignalees->deleteByIdOffre($idOffre);
 
         //On supprime les entrées de la table OFFRES_POSTULEES en rapport avec l'offre
+        $offrePostulee = new OffresPostulerManager();
+        $offrePostulee->getAllByIdOffre($idOffre);
 
         //On récupère l'idInfoOffre
         $infoOffresManager = new InfosOffresManager();
