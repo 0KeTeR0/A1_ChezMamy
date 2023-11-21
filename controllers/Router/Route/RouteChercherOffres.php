@@ -33,13 +33,15 @@ class RouteChercherOffres extends Route
      */
     protected function get(array $params = []): void
     {
+        $message = null;
         if(!isset($params["searchPost"])) $params["searchPost"] = "";
 
-        $data = [
-            "searchPost" => $this->getParam($params, "searchPost")
-        ];
+        $data['searchPost'] = $this->getParam($params, "searchPost");
 
-        $this->controller->chercherOffres($data);
+        if (!empty($params['idPostulerOffre'])) $message = $this->controller->postulerOffres(["idPostulerOffre" => $this->getParam($params, "idPostulerOffre")]);
+
+        $this->controller->chercherOffres($data, $message);
+
     }
 
     /**
