@@ -5,6 +5,12 @@ namespace App\ChezMamy\controllers\Router\Route;
 use App\ChezMamy\controllers\OffresController;
 use App\ChezMamy\controllers\Router\Route;
 use App\ChezMamy\helpers\Message;
+use App\ChezMamy\models\Offres\BesoinsOffresManager;
+use App\ChezMamy\models\Offres\DatesOffreManager;
+use App\ChezMamy\models\Offres\ImagesOffresManager;
+use App\ChezMamy\models\Offres\InfosComplementairesManager;
+use App\ChezMamy\models\Offres\InfosOffresManager;
+use App\ChezMamy\models\Offres\OffresManager;
 
 /**
  * Route pour la page pour gérer les offres posté
@@ -34,7 +40,6 @@ class RouteGererDemandesSenior extends Route
      */
     protected function get(array $params = []): void
     {
-
         $this->controller->gererDemandesSenior();
     }
 
@@ -46,6 +51,8 @@ class RouteGererDemandesSenior extends Route
      */
     protected function post(array $params = []): void
     {
-
+        if(isset($params['idOffreToDelete'])){
+            $this->controller->supprimerDemandeSenior($this->getParam($params,'idOffreToDelete'));
+        }
     }
 }
