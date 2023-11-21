@@ -323,7 +323,13 @@ class OffresController
 
                     //On récupère l'image
                     $imagesOffresManager = new ImagesOffresManager();
-                    $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
+                    $image=$imagesOffresManager->getOneByIdOffres($idOffre);
+                    if($image!=null){
+                        $image = $image->getLienImage();
+                    }
+                    else{
+                        $image="public/img/offres/defaut.png";
+                    }
 
                     $offresPostuleesManager = new OffresPostulerManager();
                     $postules = $offresPostuleesManager->getAllByIdOffre($idOffre);
