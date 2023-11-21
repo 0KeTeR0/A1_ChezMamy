@@ -53,7 +53,11 @@ class OffresSignaleesManager extends model
      */
     public function deleteByIdOffre(int $idOffre): bool
     {
-        return $this->execRequest("DElETE FROM OFFRES_SIGNALEES WHERE idOffres=?", array($idOffre));
+        $result = false;
+        if ($this->execRequest("DElETE FROM OFFRES_SIGNALEES WHERE idOffre=?", array($idOffre)) !== false) {
+            $result = true;
+        }
+        return $result;
     }
 
 }

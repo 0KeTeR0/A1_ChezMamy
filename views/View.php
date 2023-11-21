@@ -101,6 +101,7 @@ class View
 
         // On récupère les traductions
         $donnees['traductions'] = $this->getTraductions($_GET['lang'] ?? "fr");
+        $donnees['isEtudiant'] = $isEtudiant;
 
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);

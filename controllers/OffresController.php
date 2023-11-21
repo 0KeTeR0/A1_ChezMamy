@@ -12,6 +12,7 @@ use App\ChezMamy\models\Offres\OffresManager;
 use App\ChezMamy\models\Offres\OffresPostulerManager;
 use App\ChezMamy\models\Offres\OffresSignaleesManager;
 use App\ChezMamy\models\Offres\TypeLogementManager;
+use App\ChezMamy\models\Utilisateurs\InfoUtilisateursManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
 use App\ChezMamy\models\Utilisateurs\TokensManager;
 use App\ChezMamy\models\Utilisateurs\UtilisateurManager;
@@ -230,9 +231,11 @@ class OffresController
 
             //On créer la liste des besoins
             $besoins = array();
-            foreach ($listeBesoins as $bs)
-                foreach ($besoinsOffres as $besoinsOffre)
-                    if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+            if($listeBesoins!=null&&$besoinsOffres!=null) {
+                foreach ($listeBesoins as $bs)
+                    foreach ($besoinsOffres as $besoinsOffre)
+                        if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+            }
             
 
             //On récupère les infos complémentaires
@@ -279,9 +282,11 @@ class OffresController
         //On supprime les images de l'offre
         $imageOffreManager = new ImagesOffresManager();
         while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
-            unlink($image->getLienImage());
+            $link = $image->getLienImage();
+            $imageOffreManager->deleteByLink($link);
+            unlink($link);
         }
-        $imageOffreManager->deleteByIdOffre($idOffre);
+
 
         //On supprime les signalements de l'offre
         $offreSignalees = new OffresSignaleesManager();
@@ -289,7 +294,7 @@ class OffresController
 
         //On supprime les entrées de la table OFFRES_POSTULEES en rapport avec l'offre
         $offrePostulee = new OffresPostulerManager();
-        $offrePostulee->getAllByIdOffre($idOffre);
+        $offrePostulee->deleteByIdOffre($idOffre);
 
         //On récupère l'idInfoOffre
         $infoOffresManager = new InfosOffresManager();
@@ -313,6 +318,7 @@ class OffresController
         //On supprime l'offre
         (new OffresManager())->deleteByIdOffre($idOffre);
 
+        $this->gererDemandesSenior();
     }
 
     /**
@@ -358,9 +364,11 @@ class OffresController
 
                     //On créer la liste des besoins
                     $besoins = array();
-                    foreach ($listeBesoins as $bs)
-                        foreach ($besoinsOffres as $besoinsOffre)
-                            if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+                    if($listeBesoins!=null&&$besoinsOffres!=null) {
+                        foreach ($listeBesoins as $bs)
+                            foreach ($besoinsOffres as $besoinsOffre)
+                                if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+                    }
 
 
                     //On récupère les infos complémentaires
@@ -375,7 +383,23 @@ class OffresController
 
                     //On récupère l'image
                     $imagesOffresManager = new ImagesOffresManager();
-                    $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
+                    $image=$imagesOffresManager->getOneByIdOffres($idOffre);
+                    if($image!=null){
+                        $image = $image->getLienImage();
+                    }
+                    else{
+                        $image="public/img/offres/defaut.png";
+                    }
+
+                    $offresPostuleesManager = new OffresPostulerManager();
+                    $postules = $offresPostuleesManager->getAllByIdOffre($idOffre);
+                    $demandes = array();
+                    if($postules!=null){
+                        $infoUtilisateurManager = new InfoUtilisateursManager();
+                        foreach ($postules as $postule){
+                            $demandes[] = $infoUtilisateurManager->getByIdUtilisateur($postule->getIdUtilisateur());
+                        }
+                    }
 
 
                     //On ajoute tout ça à une entrée de la liste de retour.
@@ -386,7 +410,8 @@ class OffresController
                         "besoins" => $besoins,
                         "infosComplementaires" => $infoComp,
                         "datesOffre" => $datesOffre,
-                        "imageOffre" => $image
+                        "imageOffre" => $image,
+                        "demandes"=> $demandes
                     ];
                 }
             }

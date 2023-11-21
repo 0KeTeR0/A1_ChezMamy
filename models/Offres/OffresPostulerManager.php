@@ -40,7 +40,7 @@ class OffresPostulerManager extends Model
      * @return array Liste des utilisateurs
      * @author Louis Demeocq
      */
-    public function getAllByIdOffre(int $idOffre):array
+    public function getAllByIdOffre(int $idOffre):?array
     {
         $result = $this->execRequest("SELECT * FROM OFFRES_POSTULEES WHERE $idOffre=?", array($idOffre))->fetchAll();
         if ($result != false) {
@@ -64,7 +64,11 @@ class OffresPostulerManager extends Model
      */
     public function deleteByIdOffre(int $idOffre): bool
     {
-        return $this->execRequest("DELETE FROM OFFRES_POSTULEES WHERE $idOffre=?", array($idOffre));
+        $result = false;
+        if ($this->execRequest("DELETE FROM OFFRES_POSTULEES WHERE $idOffre=?", array($idOffre)) !== false) {
+            $result = true;
+        }
+        return $result;
     }
 
 

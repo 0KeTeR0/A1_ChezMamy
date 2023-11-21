@@ -1,7 +1,7 @@
 <section class="gerer-offres">
-    <h2 class="section-title"><?=$traductions['managing_title']?></h2>
-    <div class="offre">
-        <!-- CODE PHP INTEGRE
+    <h2 class="section-title"><?= $traductions['management_title']?></h2>
+    <div class="offres">
+
         <?php foreach ($offres as $offre): ?>
         <article class="offre">
             <div class="offre-image">
@@ -11,6 +11,10 @@
                 <h3 class="offre-titre"><?= $offre['offre']->getTitreDeLoffre() ?></h3>
                 <p class="offre-dates">Du <?= $offre['datesOffre']->getDateDebut()->format("d/m/Y") ?> au <?= $offre['datesOffre']->getDateFin()->format("d/m/Y") ?></p>
                 <p class="offre-description"><?= $offre['infosComplementaires']->getDescription() ?></p>
+                <form action="" method="post">
+                    <button class="bouton-supprimer">Supprimer</button>
+                    <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
+                </form>
             </div>
             <div class="offre-besoins">
                 <ul>
@@ -22,18 +26,20 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <div>
+                <ul>
+                    <li>Nom Prénom</li>
+                    <li>Adresse@cnul.com</li>
+                    <li>06 06 06 06 06</li>
+                </ul>
+            </div>
         </article>
-        <div>
-            <ul>
-                <?php foreach($offre as $demande): ?>
-                <li><?= $demande ?></li>
-                <?php endforeach;?>
-            </ul>
-        </div>
-        <?php endforeach;?>
-        -->
 
-        <!-- CODE HTML DUR-->
+
+        <?php endforeach;?>
+
+
+        <!-- CODE HTML DUR
         <article class="offre">
             <div class="offre-image">
                 <img src="" alt="">
@@ -68,5 +74,6 @@
                 <li>07 07 07 07 07</li>
             </ul>
         </div>
+        -->
     </div>
 </section>

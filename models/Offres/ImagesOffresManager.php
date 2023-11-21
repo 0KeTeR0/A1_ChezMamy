@@ -63,13 +63,17 @@ class ImagesOffresManager extends model
 
     /**
      * Supprime les images offres d'id $idOffre dans la BDD
-     * @param int $idOffre l'id des images offre que l'on veut supprimer
+     * @param string $link le lien des images
      * @return bool renvoie True si la requête est bien exécuté
-     * @author Louis Dememocq
+     * @authors Louis Dememocq, Valentin Colindre
      */
-    public function deleteByIdOffre(int $idOffre): bool
+    public function deleteByLink(string $link): bool
     {
-        return $this->execRequest("DElETE FROM IMAGES_OFFRE WHERE idOffres=?", array($idOffre));
+        $result = false;
+        if ($this->execRequest("DElETE FROM IMAGES_OFFRE WHERE LienImage=?", array($link)) !== false) {
+            $result = true;
+        }
+        return $result;
     }
 
 }

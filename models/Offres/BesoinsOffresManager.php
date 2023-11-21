@@ -38,7 +38,7 @@ class BesoinsOffresManager extends Model
      * @return array Liste des besoins
      * @author Valentin Colindre
      */
-    public function GetAllByIdInfosOffre(int $idInfosOffre):array{
+    public function GetAllByIdInfosOffre(int $idInfosOffre):?array{
         $result = $this->execRequest("SELECT * FROM BESOINS_OFFRES WHERE idInfosOffre=?", array($idInfosOffre))->fetchAll();
         if ($result != false){
             $besoins = array();
@@ -61,6 +61,10 @@ class BesoinsOffresManager extends Model
      */
     public function deleteByIdOffre(int $idInfosOffre): bool
     {
-        return $this->execRequest("DElETE FROM BESOINS_OFFRES WHERE $idInfosOffre=?", array($idInfosOffre));
+        $result = false;
+        if ($this->execRequest("DElETE FROM BESOINS_OFFRES WHERE $idInfosOffre=?", array($idInfosOffre)) !== false) {
+            $result = true;
+        }
+        return $result;
     }
 }

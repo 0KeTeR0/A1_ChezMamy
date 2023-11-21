@@ -47,7 +47,10 @@
                             </svg>
                         </a>
                         <ul>
-                            <?php if($isSenior) { ?><li><a href="posterOffres"><?= $traductions["nav_post_offers"] ?></a></li><?php } ?>
+                            <?php if($isSenior) { ?>
+                                <li><a href="posterOffres"><?= $traductions["nav_post_offers"] ?></a></li>
+                                <li><a href="gererDemandes"><?= $traductions["nav_my_offers"] ?></a></li>
+                            <?php } ?>
                             <li><a href="deco"><?=$traductions["nav_disconnect"]?></a></li>
                         </ul>
                     </li>
@@ -89,9 +92,8 @@
             </li>
             <li><p><?=$traductions["footer_legality"]?></p>
                 <ul>
-                    <li><a id="mentionFooter" href="#"><?=$traductions["footer_legal"]?></a></li>
-                    <li><a id="cookiesFooter" href="#"><?=$traductions["footer_cookies"]?></a></li>
-                    <li><a id="cguFooter" href="#"><?=$traductions["footer_terms"]?></a></li>
+                    <li><a id="mentionFooter" href="../public/ressources/mentions-legales.pdf"><?=$traductions["footer_legal"]?></a></li>
+                    <li><a id="cguFooter" href="../public/ressources/cgu.pdf"><?=$traductions["footer_terms"]?></a></li>
                 </ul>
             </li>
             <li><p><?=$traductions["footer_socials"]?></p>
