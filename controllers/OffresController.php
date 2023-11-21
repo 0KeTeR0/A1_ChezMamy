@@ -12,6 +12,7 @@ use App\ChezMamy\models\Offres\OffresManager;
 use App\ChezMamy\models\Offres\OffresPostulerManager;
 use App\ChezMamy\models\Offres\OffresSignaleesManager;
 use App\ChezMamy\models\Offres\TypeLogementManager;
+use App\ChezMamy\models\Utilisateurs\InfoUtilisateursManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
 use App\ChezMamy\models\Utilisateurs\TokensManager;
 use App\ChezMamy\models\Utilisateurs\UtilisateurManager;
@@ -224,9 +225,10 @@ class OffresController
         //On supprime les images de l'offre
         $imageOffreManager = new ImagesOffresManager();
         while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
+            $imageOffreManager->deleteByLink($image->getLienImage());
             unlink($image->getLienImage());
         }
-        $imageOffreManager->deleteByIdOffre($idOffre);
+
 
         //On supprime les signalements de l'offre
         $offreSignalees = new OffresSignaleesManager();
@@ -258,6 +260,7 @@ class OffresController
         //On supprime l'offre
         (new OffresManager())->deleteByIdOffre($idOffre);
 
+        $this->gererDemandesSenior();
     }
 
     /**
@@ -322,6 +325,14 @@ class OffresController
                     $imagesOffresManager = new ImagesOffresManager();
                     $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
 
+                    $offresPostuleesManager = new OffresPostulerManager();
+                    $postules = $offresPostuleesManager->getAllByIdOffre($idOffre);
+                    $demandes = array();
+
+                    $infoUtilisateurManager = new InfoUtilisateursManager();
+                    foreach ($postules as $postule){
+                        $demandes[] = $infoUtilisateurManager->getByIdUtilisateur($postule->getIdUtilisateur());
+                    }
 
                     //On ajoute tout ça à une entrée de la liste de retour.
                     $offres[] = [
@@ -331,7 +342,8 @@ class OffresController
                         "besoins" => $besoins,
                         "infosComplementaires" => $infoComp,
                         "datesOffre" => $datesOffre,
-                        "imageOffre" => $image
+                        "imageOffre" => $image,
+                        "demandes"=> $demandes
                     ];
                 }
             }
