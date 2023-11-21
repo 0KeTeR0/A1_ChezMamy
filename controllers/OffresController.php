@@ -138,6 +138,13 @@ class OffresController
         }
     }
 
+    /**
+     * Génère la vueChercherOffres en affichant les offres correspondant
+     * à la recherche
+     * @param array $data données de la recherche
+     * @return void
+     * @author Valentin Colindre
+     */
     public function chercherOffres(array $data): void
     {
         $data2 = array();
