@@ -29,13 +29,15 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-                <div class="offre-actions">
-                    <form action="postulerOffre">
-                        <input type="hidden" name="searchPost" value="<?= $_GET['searchPost'] ?? '' ?>">
-                        <input type="hidden" name="idPostulerOffre" value="<?= $offre['offre']->getIdOffre() ?>">
-                        <button class="bouton offre-postuler"><?= $traductions['offer_apply'] ?></button>
-                    </form>
-                </div>
+                <?php if($isEtudiant): ?>
+                    <div class="offre-actions">
+                        <form action="" method="GET">
+                            <input type="hidden" name="searchPost" value="<?= $_GET['searchPost'] ?? '' ?>">
+                            <input type="hidden" name="idPostulerOffre" value="<?= $offre['offre']->getIdOffre() ?>">
+                            <button class="bouton offre-postuler"><?= $traductions['offer_apply'] ?></button>
+                        </form>
+                    </div>
+                <?php endif; ?>
             </article>
         <?php endforeach; ?>
         <?php if(count($offres) == 0): ?>
