@@ -68,6 +68,17 @@ class OffresManager extends model
         return $val;
     }
 
+    public function getByIdOffre(int $idOffre):?Offre{
+        $result = $this->execRequest("SELECT * FROM OFFRES WHERE idOffre=?",array($idOffre))->fetch();
+        if($result!==false){
+            $val = new Offre();
+            $val->hydrate($result);
+        }
+        else $val=null;
+
+        return $val;
+    }
+
     /**
      * Renvoi toutes les offres postées par un utilisateur
      * @param int $idUtilisateur id de l'utilisateur

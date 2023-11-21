@@ -9,6 +9,7 @@ use App\ChezMamy\models\Offres\ImagesOffresManager;
 use App\ChezMamy\models\Offres\InfosComplementairesManager;
 use App\ChezMamy\models\Offres\InfosOffresManager;
 use App\ChezMamy\models\Offres\OffresManager;
+use App\ChezMamy\models\Offres\OffresSignaleesManager;
 use App\ChezMamy\models\Offres\TypeLogementManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
 use App\ChezMamy\models\Utilisateurs\TokensManager;
@@ -211,6 +212,52 @@ class OffresController
 
 
     /**
+     * Supprime la demande de logement d'un senior à partir
+     * de l'id offre.
+     * @param int $idOffre id de l'offre
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function supprimerDemandeSenior(int $idOffre):void{
+
+        //On supprime les images de l'offre
+        $imageOffreManager = new ImagesOffresManager();
+        while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
+            unlink($image->getLienImage());
+        }
+        $imageOffreManager->deleteByIdOffre($idOffre);
+
+        //On supprime les signalements de l'offre
+        $offreSignalees = new OffresSignaleesManager();
+        $offreSignalees->deleteByIdOffre($idOffre);
+
+        //On supprime les entrées de la table OFFRES_POSTULEES en rapport avec l'offre
+
+        //On récupère l'idInfoOffre
+        $infoOffresManager = new InfosOffresManager();
+        $idInfoOffre = $infoOffresManager->getByIdOffres($idOffre)->getIdInfosOffre();
+
+        //On supprime les infos complémentaires de l'offre
+        $infoComplementaireManager = new InfosComplementairesManager();
+        $infoComplementaireManager->deleteByIdOffre($idInfoOffre);
+
+        //On supprime les dates de l'offre
+        $dateOffreManager = new DatesOffreManager();
+        $dateOffreManager->deleteByIdOffre($idInfoOffre);
+
+        //On supprime les besoins liés à l'offre
+        $besoinOffreManager = new BesoinsOffresManager();
+        $besoinOffreManager->deleteByIdOffre($idInfoOffre);
+
+        //On supprime l'infoOffre de l'offre
+        $infoOffresManager->deleteByIdOffre($idOffre);
+
+        //On supprime l'offre
+        (new OffresManager())->deleteByIdOffre($idOffre);
+
+    }
+
+    /**
      * Génère la vueGérerDemandesSenior en affichant les offres correspondant
      * au senior
      * @return void
@@ -297,4 +344,5 @@ class OffresController
         if($error!=null) $view->generer(["offres" => $offres,"message" => $error]);
         else $view->generer(["offres" => $offres]);
     }
+
 }
