@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8f857d3-5fad-45fd-bf77-01841c139f03" name="Changes" comment="[TestOffresController.php] Ajout du premier test">
+    <list default="true" id="c8f857d3-5fad-45fd-bf77-01841c139f03" name="Changes" comment="[TestOffresController.php] Ajout de testoneIdOffre et testgetAllByIdInfosOffre">
+      <change afterPath="$PROJECT_DIR$/views/vueGererDemandesSenior.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/A1_ChezMamy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/A1_ChezMamy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/TestOffresController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/TestOffresController.php" afterDir="false" />
     </list>
@@ -51,7 +54,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="E:\Applications\XamppServer\php\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
@@ -153,7 +156,7 @@
       <workItem from="1700333068642" duration="83000" />
       <workItem from="1700333177456" duration="37000" />
       <workItem from="1700484237227" duration="6822000" />
-      <workItem from="1700554577782" duration="1499000" />
+      <workItem from="1700554577782" duration="7062000" />
     </task>
     <task id="LOCAL-00001" summary="top homepage (image and button)">
       <option name="closed" value="true" />
@@ -467,7 +470,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700498497284</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="[TestOffresController.php] Ajout de testoneIdOffre et testgetAllByIdInfosOffre">
+      <option name="closed" value="true" />
+      <created>1700556212639</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1700556212639</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix responsive of burger menu" />
     <MESSAGE value="fix images" />
     <MESSAGE value="register router" />
     <MESSAGE value="register choice buttons" />
@@ -511,7 +521,8 @@
     <MESSAGE value="adding disconnection" />
     <MESSAGE value="nouvelle structure de projet" />
     <MESSAGE value="[TestOffresController.php] Ajout du premier test" />
-    <option name="LAST_COMMIT_MESSAGE" value="[TestOffresController.php] Ajout du premier test" />
+    <MESSAGE value="[TestOffresController.php] Ajout de testoneIdOffre et testgetAllByIdInfosOffre" />
+    <option name="LAST_COMMIT_MESSAGE" value="[TestOffresController.php] Ajout de testoneIdOffre et testgetAllByIdInfosOffre" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
