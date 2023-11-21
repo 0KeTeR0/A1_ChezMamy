@@ -5,7 +5,7 @@ namespace App\ChezMamy\models\Offres;
 /**
  * Une Offre de la table Offre
  * (une entrée de la table)
- * @author Louis Demeocq
+ * @authors Louis Demeocq, Valentin Colindre
  */
 class Offre
 {
@@ -17,6 +17,9 @@ class Offre
 
     //l'ID de l'offre
     private int $idOffre;
+
+    //Si l'offre est approuvée ou non
+    private bool $approbation;
 
     /**
      * @return int
@@ -80,5 +83,26 @@ class Offre
                 $this->$method($value);
             }
         }
+    }
+
+    /**
+     * get approbation
+     * @return bool
+     * @author Valentin Colindre
+     */
+    public function isApprobation(): bool
+    {
+        return $this->approbation;
+    }
+
+    /**
+     * set approbation
+     * @param bool $approbation
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function setApprobation(bool $approbation): void
+    {
+        $this->approbation = $approbation;
     }
 }

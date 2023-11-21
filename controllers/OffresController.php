@@ -18,7 +18,7 @@ use DateTime;
 
 /**
  * Class contrôleur des offres
- * @author Louis Demeocq
+ * @authors Louis Demeocq, Romain Card, Valentin Colindre
  */
 class OffresController
 {
@@ -207,5 +207,95 @@ class OffresController
 
         $view = new View("ChercherOffres");
         $view->generer(["offres" => $offres]);
+    }
+
+
+    /**
+     * Génère la vueGérerDemandesSenior en affichant les offres correspondant
+     * au senior
+     * @param array $data id du senior
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function gererDemandesSenior(array $data):void{
+
+
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        $this->userIsSenior();
+        $error=null;
+        $offres = array();
+
+        try{
+            $tokenManager = new TokensManager();
+            if($tokenManager->checkToken($_SESSION["auth_token"])) {
+
+                $offreManager = new OffresManager();
+                //On récupère les infos des différentes offres
+                foreach ($offreManager->getAllByIdUtilisateur($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur()) as $offre) {
+                    $idOffre = $offre->getIdOffre();
+
+                    $infoManager = new InfosOffresManager();
+                    $infoOffre = $infoManager->getByIdOffres($idOffre);
+                    $typesLogement = (new TypeLogementManager())->getAll();
+                    $typeLogement = "None";
+
+                    foreach ($typesLogement as $tl)
+                        if ($tl->getIdTypeLogement() == $infoOffre->getIdTypeLogement()) $typeLogement = $tl;
+
+                    //On récupère les besoins en lien avec l'offre
+                    $besoinManager = new BesoinsOffresManager();
+                    $besoinsOffres = $besoinManager->GetAllByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+                    //On compare ça avec les besoins de la table SBesoin
+                    $SBesoinsManager = new SBesoinsManager();
+                    $listeBesoins = $SBesoinsManager->getAll();
+
+
+                    //On créer la liste des besoins
+                    $besoins = array();
+                    foreach ($listeBesoins as $bs)
+                        foreach ($besoinsOffres as $besoinsOffre)
+                            if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+
+
+                    //On récupère les infos complémentaires
+                    $infosComplementairesManager = new InfosComplementairesManager();
+                    $infoComp = $infosComplementairesManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+                    //On récupère les dates des offres
+                    $datesOffresManager = new DatesOffreManager();
+                    $datesOffre = $datesOffresManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+                    //On récupère l'image
+                    $imagesOffresManager = new ImagesOffresManager();
+                    $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
+
+
+                    //On ajoute tout ça à une entrée de la liste de retour.
+                    $offres[] = [
+                        "offre" => $offre,
+                        "infoOffre" => $infoOffre,
+                        "typeLogement" => $typeLogement,
+                        "besoins" => $besoins,
+                        "infosComplementaires" => $infoComp,
+                        "datesOffre" => $datesOffre,
+                        "imageOffre" => $image
+                    ];
+                }
+            }
+        }
+        catch (\Exception $e){
+            $error=$e->getMessage();
+        }
+        if ($error!=null){
+            $error= new Message("Erreur : ".$error, "Erreur d'envoi", "danger");
+        }
+
+        $view = new View("GererDemandesSenior");
+        if($error!=null) $view->generer(["offres" => $offres,"message" => $error]);
+        else $view->generer(["offres" => $offres]);
     }
 }

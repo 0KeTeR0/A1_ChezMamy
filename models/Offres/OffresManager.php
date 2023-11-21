@@ -69,6 +69,27 @@ class OffresManager extends model
     }
 
     /**
+     * Renvoi toutes les offres postées par un utilisateur
+     * @param int $idUtilisateur id de l'utilisateur
+     * @return array|null liste des utilisateur ou null
+     * @author Valentin Colindre
+     */
+    public function getAllByIdUtilisateur(int $idUtilisateur):?array{
+        $result = $this->execRequest("SELECT * FROM OFFRES WHERE idUtilisateur=?",array($idUtilisateur))->fetchAll();
+        if($result!==false){
+            $val = array();
+            foreach ($result as $offre){
+                $nOffre = new Offre();
+                $nOffre->hydrate($offre);
+                $val[] = $nOffre;
+            }
+        }
+        else $val=null;
+
+        return $val;
+    }
+
+    /**
      * Renvoi la dernière offre insérée par ce manager
      * @return Offre|null la dernière offre
      * @author Valentin Colindre
@@ -95,5 +116,6 @@ class OffresManager extends model
     {
         return $this->execRequest("DElETE FROM OFFRES WHERE idOffres=?", array($idOffre));
     }
+
 
 }
