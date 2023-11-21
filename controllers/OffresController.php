@@ -171,7 +171,6 @@ class OffresController
             //On compare ça avec les besoins de la table SBesoin
             $SBesoinsManager = new SBesoinsManager();
             $listeBesoins = $SBesoinsManager->getAll();
-            
 
             //On créer la liste des besoins
             $besoins = array();
@@ -219,8 +218,8 @@ class OffresController
      * @return void
      * @author Valentin Colindre
      */
-    public function supprimerDemandeSenior(int $idOffre):void{
-
+    public function supprimerDemandeSenior(int $idOffre):void
+    {
         //On supprime les images de l'offre
         $imageOffreManager = new ImagesOffresManager();
         while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
