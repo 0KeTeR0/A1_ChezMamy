@@ -80,6 +80,9 @@ class RoutePosterOffres extends Route
             if(strtotime($this->getParam($params,"date_fin_offre")) <= strtotime($this->getParam($params,"date_debut_offre"))){
                 throw new \Exception("La date de fin de l'offre doit être après celle de début");
             }
+            if(strtotime($this->getParam($params,"date_fin_offre")) < time()){
+                throw new \Exception("La date de fin ne peut être après la date actuelle");
+            }
         }
         //Renvoi une erreur si quelque chose n'est pas correct
         catch (\Exception $e){
