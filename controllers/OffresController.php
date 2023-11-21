@@ -147,60 +147,65 @@ class OffresController
      */
     public function chercherOffres(array $data): void
     {
-        $data2 = array();
         $offreManager = new OffresManager();
-        $offres=array();
+        $offres = array();
         //On récupère les infos des différentes offres
-        foreach($offreManager->getByName($data["searchPost"]) as $offre){
+        foreach ($offreManager->getByName($data['searchPost']) as $offre) {
             $idOffre = $offre->getIdOffre();
+            
             $infoManager = new InfosOffresManager();
             $infoOffre = $infoManager->getByIdOffres($idOffre);
             $typesLogement = (new TypeLogementManager())->getAll();
-            $typeLogement="None";
+            $typeLogement = "None";
+            
             foreach ($typesLogement as $tl)
-                if($tl->getIdTypeLogement()==$infoOffre->getIdTypeLogement()) $typeLogement=$tl;
+                if ($tl->getIdTypeLogement() == $infoOffre->getIdTypeLogement()) $typeLogement = $tl;
 
             //On récupère les besoins en lien avec l'offre
             $besoinManager = new BesoinsOffresManager();
             $besoinsOffres = $besoinManager->GetAllByIdInfosOffre($infoOffre->getIdInfosOffre());
+            
 
             //On compare ça avec les besoins de la table SBesoin
             $SBesoinsManager = new SBesoinsManager();
             $listeBesoins = $SBesoinsManager->getAll();
+            
 
             //On créer la liste des besoins
             $besoins = array();
             foreach ($listeBesoins as $bs)
                 foreach ($besoinsOffres as $besoinsOffre)
-                    if($bs->getIdBesoin()==$besoinsOffre->getIdBesoin()) $besoins[]=$bs;
+                    if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+            
 
             //On récupère les infos complémentaires
             $infosComplementairesManager = new InfosComplementairesManager();
             $infoComp = $infosComplementairesManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+            
 
             //On récupère les dates des offres
             $datesOffresManager = new DatesOffreManager();
             $datesOffre = $datesOffresManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+            
 
             //On récupère l'image
             $imagesOffresManager = new ImagesOffresManager();
-            $image = $imagesOffresManager->getOneByIdOffres($idOffre);
-            if($image==null)$image = "public/img/offres/defaut.png";
+            $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
+            
 
             //On ajoute tout ça à une entrée de la liste de retour.
-            $offres[]= [
-                "offre"=>$offre,
-                "infoOffre"=>$infoOffre,
-                "typeLogement"=>$typesLogement,
-                "besoins"=>$besoins,
-                "infosComplementaires"=>$infoComp,
-                "datesOffre"=>$datesOffre,
-                "imageOffre"=>$image
+            $offres[] = [
+                "offre" => $offre,
+                "infoOffre" => $infoOffre,
+                "typeLogement" => $typeLogement,
+                "besoins" => $besoins,
+                "infosComplementaires" => $infoComp,
+                "datesOffre" => $datesOffre,
+                "imageOffre" => $image
             ];
         }
 
-
         $view = new View("ChercherOffres");
-        $view->generer(["offres"=>$offres]);
+        $view->generer(["offres" => $offres]);
     }
 }

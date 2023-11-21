@@ -54,7 +54,7 @@ class OffresManager extends model
      * @author Valentin Colindre
      */
     public function getByName(string $name):?array{
-        $result = $this->execRequest("SELECT * FROM OFFRES WHERE TitreDeLoffre LIKE '%?%' ORDER BY idOffre DESC LIMIT 20",array($name))->fetchAll();
+        $result = $this->execRequest("SELECT * FROM OFFRES WHERE approbation = 1 AND TitreDeLoffre LIKE ? ORDER BY idOffre DESC LIMIT 20",array("%".$name."%"))->fetchAll();
         if($result!==false){
             $val = array();
             foreach ($result as $offre){
