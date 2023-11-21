@@ -61,6 +61,10 @@ class BesoinsOffresManager extends Model
      */
     public function deleteByIdOffre(int $idInfosOffre): bool
     {
-        return $this->execRequest("DElETE FROM BESOINS_OFFRES WHERE $idInfosOffre=?", array($idInfosOffre));
+        $result = false;
+        if ($this->execRequest("DElETE FROM BESOINS_OFFRES WHERE $idInfosOffre=?", array($idInfosOffre)) !== false) {
+            $result = true;
+        }
+        return $result;
     }
 }

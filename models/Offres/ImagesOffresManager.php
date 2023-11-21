@@ -69,7 +69,11 @@ class ImagesOffresManager extends model
      */
     public function deleteByLink(string $link): bool
     {
-        return $this->execRequest("DElETE FROM IMAGES_OFFRE WHERE LienImage=?", array($link));
+        $result = false;
+        if ($this->execRequest("DElETE FROM IMAGES_OFFRE WHERE LienImage=?", array($link)) !== false) {
+            $result = true;
+        }
+        return $result;
     }
 
 }
