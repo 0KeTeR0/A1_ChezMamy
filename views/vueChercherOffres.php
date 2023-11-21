@@ -1,4 +1,5 @@
 <section class="chercher-offres">
+    <?php include('message.php'); ?>
     <h2 class="section-title"><?= $traductions['search_title'] ?></h2>
     <div class="filtres-offres">
         <form action="#" method="GET">
