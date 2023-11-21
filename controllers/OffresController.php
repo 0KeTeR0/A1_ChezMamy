@@ -306,10 +306,11 @@ class OffresController
 
                     //On créer la liste des besoins
                     $besoins = array();
-                    if($listeBesoins!=null)
+                    if($listeBesoins!=null&&$besoinsOffres!=null) {
                         foreach ($listeBesoins as $bs)
                             foreach ($besoinsOffres as $besoinsOffre)
                                 if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+                    }
 
 
                     //On récupère les infos complémentaires
