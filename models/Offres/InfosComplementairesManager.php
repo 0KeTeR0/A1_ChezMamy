@@ -61,7 +61,7 @@ class InfosComplementairesManager extends Model
     public function deleteByIdOffre(int $idInfosOffre): bool
     {
         $result = false;
-        if ($this->execRequest("DElETE FROM INFOS_COMPLEMENTAIRES WHERE $idInfosOffre=?", array($idInfosOffre)) !== false) {
+        if ($this->execRequest("DElETE FROM INFOS_COMPLEMENTAIRES WHERE idInfosOffre=?", array($idInfosOffre)) !== false) {
             $result = true;
         }
         return $result;

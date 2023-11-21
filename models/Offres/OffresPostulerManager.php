@@ -65,7 +65,7 @@ class OffresPostulerManager extends Model
     public function deleteByIdOffre(int $idOffre): bool
     {
         $result = false;
-        if ($this->execRequest("DELETE FROM OFFRES_POSTULEES WHERE $idOffre=?", array($idOffre)) !== false) {
+        if ($this->execRequest("DELETE FROM OFFRES_POSTULEES WHERE idOffre=?", array($idOffre)) !== false) {
             $result = true;
         }
         return $result;
