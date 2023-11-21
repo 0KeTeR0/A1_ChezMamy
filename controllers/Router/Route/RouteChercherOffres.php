@@ -4,6 +4,7 @@ namespace App\ChezMamy\controllers\Router\Route;
 
 use App\ChezMamy\controllers\OffresController;
 use App\ChezMamy\controllers\Router\Route;
+use App\ChezMamy\helpers\Message;
 
 /*
  * Route pour la page poster des offres
@@ -32,15 +33,11 @@ class RouteChercherOffres extends Route
      */
     protected function get(array $params = []): void
     {
-        try {
-            $data = [
-                "searchPost" => $this->getParam($params, "searchPost")
-            ];
+        $data = [
+            "searchPost" => $this->getParam($params, "searchPost")
+        ];
 
-            $this->controller->chercherOffres($data);
-        } catch (\Exception $e) {
-            $this->controller->chercherOffres(new Message("Erreur : " . $e->getMessage(), "Erreur"));
-        }
+        $this->controller->chercherOffres($data);
     }
 
     /**

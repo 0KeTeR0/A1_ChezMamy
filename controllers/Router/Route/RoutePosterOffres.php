@@ -55,10 +55,10 @@ class RoutePosterOffres extends Route
                 // check si on a un path
                 if ($tmpFilePath !== null) {
                     // crée le nouveau path
-                    $destination_path = 'public'.DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.'offres'.DIRECTORY_SEPARATOR;
+                    $destination_path = 'img'.DIRECTORY_SEPARATOR.'offres'.DIRECTORY_SEPARATOR;
                     $target_path = $destination_path . date('d-m-Y_H-i-s', time())."_{$i}_".str_replace(" ", "_", substr(basename($_FILES['imagesOffre']['name'][$i]), -30));
                     // copie le fichier dans le dossier
-                    if (move_uploaded_file($_FILES['imagesOffre']['tmp_name'][$i], $target_path))
+                    if (move_uploaded_file($_FILES['imagesOffre']['tmp_name'][$i], 'public'.DIRECTORY_SEPARATOR.$target_path))
                     {
                         $chemins[] = $target_path;
                     }
