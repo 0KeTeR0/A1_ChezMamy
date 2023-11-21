@@ -238,7 +238,7 @@ class OffresController
 
         //On supprime les entrées de la table OFFRES_POSTULEES en rapport avec l'offre
         $offrePostulee = new OffresPostulerManager();
-        $offrePostulee->getAllByIdOffre($idOffre);
+        $offrePostulee->deleteByIdOffre($idOffre);
 
         //On récupère l'idInfoOffre
         $infoOffresManager = new InfosOffresManager();
