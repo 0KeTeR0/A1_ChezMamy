@@ -36,7 +36,7 @@ class OffresPostulerManager extends Model
      * @return array Liste des utilisateurs
      * @author Louis Demeocq
      */
-    public function getAllByIdOffre(int $idOffre):array
+    public function getAllByIdOffre(int $idOffre):?array
     {
         $result = $this->execRequest("SELECT * FROM OFFRES_POSTULEES WHERE $idOffre=?", array($idOffre))->fetchAll();
         if ($result != false) {
