@@ -21,7 +21,7 @@ class OffresPostulerManager extends Model
     public function creationPostulerOffres(int $idUtilisateur, int $idOffre) : bool
     {
         $result = false;
-        $resultTest = $this->execRequest("SELECT * FROM OFFRES_POSTULEES WHERE $idUtilisateur=? AND $idOffre=?", array($idUtilisateur, $idOffre));
+        $resultTest = $this->execRequest("SELECT * FROM OFFRES_POSTULEES WHERE idUtilisateur=? AND idOffre=?", array($idUtilisateur, $idOffre));
         if($resultTest != false){
             if($resultTest->rowCount() == 0)
             {
@@ -42,7 +42,7 @@ class OffresPostulerManager extends Model
      */
     public function getAllByIdOffre(int $idOffre):?array
     {
-        $result = $this->execRequest("SELECT * FROM OFFRES_POSTULEES WHERE $idOffre=?", array($idOffre))->fetchAll();
+        $result = $this->execRequest("SELECT * FROM OFFRES_POSTULEES WHERE idOffre=?", array($idOffre))->fetchAll();
         if ($result != false) {
             $utilisateurs = array();
             foreach ($result as $utilisateur){
@@ -65,7 +65,7 @@ class OffresPostulerManager extends Model
     public function deleteByIdOffre(int $idOffre): bool
     {
         $result = false;
-        if ($this->execRequest("DELETE FROM OFFRES_POSTULEES WHERE $idOffre=?", array($idOffre)) !== false) {
+        if ($this->execRequest("DELETE FROM OFFRES_POSTULEES WHERE idOffre=?", array($idOffre)) !== false) {
             $result = true;
         }
         return $result;

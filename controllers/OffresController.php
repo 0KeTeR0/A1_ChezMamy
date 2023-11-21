@@ -328,8 +328,6 @@ class OffresController
      * @author Valentin Colindre
      */
     public function gererDemandesSenior():void{
-
-
         // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
         $this->userIsSenior();
         $error=null;

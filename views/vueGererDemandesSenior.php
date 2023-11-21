@@ -26,20 +26,14 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
-
-        </article>
-            <div >
-                <ul class="offre-demande-liste">
-                    <?php foreach($offre['demandes'] as $demandes): ?>
-                        <li class="offre-demande-etudiant">
-                            <p> <?= $demandes->getPrenom()." ". $demandes->getNom() ?></p>
-                            <p><?= $demandes->getMail()?></p>
-                            <p><?= $demandes->getNumero()?></p>
-                        </li>
-                    <?php endforeach; ?>
+            <div>
+                <ul>
+                    <li>Nom Prénom</li>
+                    <li>Adresse@cnul.com</li>
+                    <li>06 06 06 06 06</li>
                 </ul>
             </div>
-
+        </article>
 
 
         <?php endforeach;?>
