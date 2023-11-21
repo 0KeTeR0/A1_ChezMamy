@@ -18,9 +18,12 @@
                 </div>
                 <div class="offre-besoins">
                     <ul>
-                        <li><?= $offre['infosComplementaires']->getAdresse() ?></li>
+                        <li>Adresse : <?php if(!empty($offre['infosComplementaires']->getAdresse())) echo $offre['infosComplementaires']->getAdresse(); else echo 'Non renseignée'; ?></li>
                         <li><?= $offre['typeLogement']->getType() ?></li>
                         <li><?= $offre['infoOffre']->getSuperficieDeLaChambre() ?>m²</li>
+                    </ul>
+                    <p>Besoins :</p>
+                    <ul>
                         <?php foreach($offre['besoins'] as $besoin): ?>
                             <li><?= $besoin->getBesoin() ?></li>
                         <?php endforeach; ?>
@@ -29,7 +32,7 @@
                 <div class="offre-actions">
                     <form action="postulerOffre">
                         <input type="hidden" name="searchPost" value="<?= $_GET['searchPost'] ?? '' ?>">
-                        <input type="hidden" name="idOffre" value="<?= $offre['offre']->getIdOffre() ?>">
+                        <input type="hidden" name="idPostulerOffre" value="<?= $offre['offre']->getIdOffre() ?>">
                         <button class="bouton offre-postuler"><?= $traductions['offer_apply'] ?></button>
                     </form>
                 </div>

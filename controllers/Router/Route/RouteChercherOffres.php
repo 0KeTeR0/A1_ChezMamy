@@ -33,6 +33,8 @@ class RouteChercherOffres extends Route
      */
     protected function get(array $params = []): void
     {
+        if(!isset($params["searchPost"])) $params["searchPost"] = "";
+
         $data = [
             "searchPost" => $this->getParam($params, "searchPost")
         ];
