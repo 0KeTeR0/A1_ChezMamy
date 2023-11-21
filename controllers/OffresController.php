@@ -224,8 +224,9 @@ class OffresController
         //On supprime les images de l'offre
         $imageOffreManager = new ImagesOffresManager();
         while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
-            $imageOffreManager->deleteByLink($image->getLienImage());
-            unlink($image->getLienImage());
+            $link = $image->getLienImage();
+            $imageOffreManager->deleteByLink($link);
+            unlink($link);
         }
 
 
