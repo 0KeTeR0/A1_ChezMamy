@@ -34,10 +34,10 @@
                 </ul>
             </div>
         </article>
-
-
         <?php endforeach;?>
-
+        <?php if (count($offres) == 0): ?>
+            <p class="no-offre"><?= $traductions['no_offer']?></p>
+        <?php endif; ?>
 
         <!-- CODE HTML DUR
         <article class="offre">
