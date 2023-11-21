@@ -213,11 +213,10 @@ class OffresController
     /**
      * Génère la vueGérerDemandesSenior en affichant les offres correspondant
      * au senior
-     * @param array $data id du senior
      * @return void
      * @author Valentin Colindre
      */
-    public function gererDemandesSenior(array $data):void{
+    public function gererDemandesSenior():void{
 
 
         // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
