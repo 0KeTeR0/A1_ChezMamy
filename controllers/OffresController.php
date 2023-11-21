@@ -327,11 +327,13 @@ class OffresController
                     $offresPostuleesManager = new OffresPostulerManager();
                     $postules = $offresPostuleesManager->getAllByIdOffre($idOffre);
                     $demandes = array();
-
-                    $infoUtilisateurManager = new InfoUtilisateursManager();
-                    foreach ($postules as $postule){
-                        $demandes[] = $infoUtilisateurManager->getByIdUtilisateur($postule->getIdUtilisateur());
+                    if($postules!=null){
+                        $infoUtilisateurManager = new InfoUtilisateursManager();
+                        foreach ($postules as $postule){
+                            $demandes[] = $infoUtilisateurManager->getByIdUtilisateur($postule->getIdUtilisateur());
+                        }
                     }
+
 
                     //On ajoute tout ça à une entrée de la liste de retour.
                     $offres[] = [
