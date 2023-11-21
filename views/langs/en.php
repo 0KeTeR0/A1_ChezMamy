@@ -212,5 +212,6 @@ return [
 
     // vueChercherOffres.php
     "search_title" => "Search an offer",
+    "offer_apply" => "Apply to offer",
     "no_offer" => "No offer found for your search.",
 ];

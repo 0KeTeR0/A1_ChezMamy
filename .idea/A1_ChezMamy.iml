@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/controllers" isTestSource="false" packagePrefix="App\ChezMamy\controllers\" />
       <sourceFolder url="file://$MODULE_DIR$/helpers" isTestSource="false" packagePrefix="App\ChezMamy\helpers\" />
       <sourceFolder url="file://$MODULE_DIR$/models" isTestSource="false" packagePrefix="App\ChezMamy\models\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="false" packagePrefix="App\ChezMamy\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/views" isTestSource="false" packagePrefix="App\ChezMamy\Views\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />

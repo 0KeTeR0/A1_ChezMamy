@@ -26,10 +26,17 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
+                <div class="offre-actions">
+                    <form action="postulerOffre">
+                        <input type="hidden" name="searchPost" value="<?= $_GET['searchPost'] ?? '' ?>">
+                        <input type="hidden" name="idOffre" value="<?= $offre['offre']->getIdOffre() ?>">
+                        <button class="bouton offre-postuler"><?= $traductions['offer_apply'] ?></button>
+                    </form>
+                </div>
             </article>
         <?php endforeach; ?>
         <?php if(count($offres) == 0): ?>
-            <center><p class="no-offre"><?= $traductions['no_offer'] ?></p></center>
+            <p class="no-offre"><?= $traductions['no_offer'] ?></p>
         <?php endif; ?>
     </div>
 </section>

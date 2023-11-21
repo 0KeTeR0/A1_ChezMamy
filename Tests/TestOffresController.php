@@ -28,7 +28,7 @@ class TestOffresController extends TestCase
         $test1 = $name->getByName('Cimetierre');
 
         $this->assertNull($testnull);
-        $this->assertCount(1,count($test1));
+        $this->assertCount(1,$test1);
     }
 
     /**
@@ -48,7 +48,7 @@ class TestOffresController extends TestCase
 
 
     /**
-     * @author
+     * @author Alice Carre
      */
     public function testgetAllByIdInfosOffre(): void
     {
@@ -59,7 +59,7 @@ class TestOffresController extends TestCase
         $test1 = $offres->GetAllByIdInfosOffre(1);
 
         $this->assertNull($testnull);
-        $this->assertCount(1,count($test1));
+        $this->assertCount(1,$test1);
     }
 
 }
