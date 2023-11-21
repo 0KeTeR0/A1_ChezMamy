@@ -126,7 +126,7 @@ class OffresManager extends model
     public function deleteByIdOffre(int $idOffre): bool
     {
         $result = false;
-        if ($this->execRequest("DElETE FROM OFFRES WHERE idOffres=?", array($idOffre)) !== false) {
+        if ($this->execRequest("DElETE FROM OFFRES WHERE idOffre=?", array($idOffre)) !== false) {
             $result = true;
         }
         return $result;
