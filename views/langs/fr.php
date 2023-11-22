@@ -11,6 +11,7 @@ return [
     "nav_disconnect"=>"Déconnexion",
     "nav_searchHolder" => "Rechercher une offre",
     "nav_post_offers" => "Poster une offre",
+    "nav_my_offers" => "Gérer mes offres",
     // faq
     "faq_q1" => "La cohabitation intergénérationnelle et solidaire peut-elle être réalisée à n'importe quel âge ?",
     "faq_a1" => "Le concept de cohabitation intergénérationnelle et solidaire est encadré par la Loi Elan et stipule que les jeunes de moins de 30 ans et les personnes de plus de 60 ans peuvent cohabiter de manière intergénérationnelle.<br><br>Si vous avez plus de 30 ans et moins de 60 ans, nous vous invitons à visiter 'La Carte des Colocs' ou 'Cooloc'. Ils proposent des logements partagés, des chambres chez l'habitant et des colocations pour tous les âges.",
@@ -208,5 +209,16 @@ return [
     "offer_description" => "Description",
     "offer_drop_files" => "Déposer vos photos ici",
     "offer_images" => "Images de l'offre",
-    "offer_submit" => "Poster l'offre"
+    "offer_submit" => "Poster l'offre",
+
+    // vueRechercherOffres.php
+    "search_title" => "Rechercher une offre de logement",
+    "offer_apply" => "Postuler pour l'offre",
+    "no_offer" => "Aucune offre ne correspond à votre recherche.",
+
+    // vueGererDemandesSenior.php
+    "management_title" => "Gérer vos offres",
+    "Name-and-surname" => "Prénom et nom : ",
+    "Email-address" => "Adresse email : ",
+    "Phone-number" => "Numéro de téléphone : ",
 ];

@@ -11,6 +11,7 @@ return [
     "nav_disconnect"=>"Disconnect",
     "nav_searchHolder"=>"Search an offer",
     "nav_post_offers"=>"Post an offer",
+    "nav_my_offers"=>"Manage my offers",
     // faq
     "faq_q1"=>"Can intergenerational, supportive cohabitation be achieved at any age?",
     "faq_a1"=>"The concept of intergenerational and supportive cohabitation is framed by the Loi Elan and stipulates that young people under 30 and people over 60, can do intergenerational cohabitation.<br><br>If you're over 30 and under 60, we invite you to visit 'La Carte des Colocs' or 'Cooloc'. They offer shared accommodation, rooms in private homes and room-sharing for all ages.",
@@ -208,5 +209,16 @@ return [
     "offer_description" => "Description",
     "offer_drop_files" => "Drop your pictures here",
     "offer_images" => "Images",
-    "offer_submit" => "Submit offer"
+    "offer_submit" => "Submit offer",
+
+    // vueChercherOffres.php
+    "search_title" => "Search an offer",
+    "offer_apply" => "Apply to offer",
+    "no_offer" => "No offer found for your search.",
+
+    // vueGererDemandesSenior.php
+    "management_title" => "Manage your offers",
+    "Name-and-surname" => "Name and surname : ",
+    "Email-address" => "Email address : ",
+    "Phone-number" => "Phone number : ",
 ];

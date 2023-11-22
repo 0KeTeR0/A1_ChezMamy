@@ -3,23 +3,18 @@
 namespace App\ChezMamy\models\Offres;
 
 /**
- * Une Offre de la table Offre
+ * Un signalement d'offre de la table OFFRES_SIGNALEES
  * (une entrée de la table)
- * @authors Louis Demeocq, Valentin Colindre
+ * @authors Valentin Colindre
  */
-class Offre
+class OffreSignalee
 {
     //l'ID de l'utilisateur dans la table
     private int $idUtilisateur;
 
-    //le Titre de l'offre
-    private string $TitreDeLoffre;
-
     //l'ID de l'offre
     private int $idOffre;
 
-    //Si l'offre est approuvée ou non
-    private bool $approbation;
 
     /**
      * @return int
@@ -37,21 +32,6 @@ class Offre
         $this->idUtilisateur = $idUtilisateur;
     }
 
-    /**
-     * @return string
-     */
-    public function getTitreDeLoffre(): string
-    {
-        return $this->TitreDeLoffre;
-    }
-
-    /**
-     * @param string $TitreDeLoffre
-     */
-    public function setTitreDeLoffre(string $TitreDeLoffre): void
-    {
-        $this->TitreDeLoffre = $TitreDeLoffre;
-    }
 
     /**
      * @return int
@@ -73,7 +53,7 @@ class Offre
      * Remplace les valeurs de la classe par celles des données
      * @param array $donnees données
      * @return void
-     * @author Louis Demeocq
+     * @author Valentin Colindre
      */
     public function hydrate(array $donnees): void
     {
@@ -85,24 +65,4 @@ class Offre
         }
     }
 
-    /**
-     * get approbation
-     * @return bool
-     * @author Valentin Colindre
-     */
-    public function isApprobation(): bool
-    {
-        return $this->approbation;
-    }
-
-    /**
-     * set approbation
-     * @param bool $approbation
-     * @return void
-     * @author Valentin Colindre
-     */
-    public function setApprobation(bool $approbation): void
-    {
-        $this->approbation = $approbation;
-    }
 }

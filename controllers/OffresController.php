@@ -9,7 +9,10 @@ use App\ChezMamy\models\Offres\ImagesOffresManager;
 use App\ChezMamy\models\Offres\InfosComplementairesManager;
 use App\ChezMamy\models\Offres\InfosOffresManager;
 use App\ChezMamy\models\Offres\OffresManager;
+use App\ChezMamy\models\Offres\OffresPostulerManager;
+use App\ChezMamy\models\Offres\OffresSignaleesManager;
 use App\ChezMamy\models\Offres\TypeLogementManager;
+use App\ChezMamy\models\Utilisateurs\InfoUtilisateursManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
 use App\ChezMamy\models\Utilisateurs\TokensManager;
 use App\ChezMamy\models\Utilisateurs\UtilisateurManager;
@@ -18,7 +21,7 @@ use DateTime;
 
 /**
  * Class contrôleur des offres
- * @author Louis Demeocq
+ * @authors Louis Demeocq, Romain Card, Valentin Colindre
  */
 class OffresController
 {
@@ -49,6 +52,62 @@ class OffresController
             header('Location: accueil');
             return;
         }
+    }
+
+    /**
+     * Vérifie que l'utilisateur soit connecté et est un étudiant pour pouvoir postuler aux offres
+     * Redirige sur l'accueil si l'utilisateur n'est pas connecté ou n'est pas un étudiant
+     * @return void
+     * @author Louis Demeocq
+     */
+    private function userIsEtudiant(): void
+    {
+        $res = false;
+
+        if (!empty($_SESSION['auth_token'])) {
+            $tokenManager = new TokensManager();
+            $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+
+            if($tokenOk) {
+                $token = $tokenManager->getByToken($_SESSION['auth_token']);
+                $idUtilisateur = $token->getIdUtilisateur();
+
+                $utilisateurManager = new UtilisateurManager();
+                $res = $utilisateurManager->isEtudiant($idUtilisateur);
+            }
+        }
+
+        if(!$res) {
+            header('Location: accueil');
+            return;
+        }
+    }
+
+
+    /**
+     * Inscrit dans la bdd
+     * @param array $data
+     * @return void
+     */
+    public function postulerOffres(array $data): Message
+    {
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        $this->userIsEtudiant();
+        $error = null;
+        $res = new Message("");
+
+        $tokenManager = new TokensManager();
+        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+            //On crée l'offrePostuler en récupérant l'IdUtilisateur de l'utilisateur connecté
+            $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
+            $offresPostulerManager = new OffresPostulerManager();
+            if($offresPostulerManager->creationPostulerOffres($idUtilisateur, $data["idPostulerOffre"]))
+            {
+                $res = new Message("Vous avez postulé à l'annonce", "Succès", "success");
+            }
+            else $res = new Message("Vous avez déjà postulé à cette annonce", "Erreur");
+        }
+        return $res;
     }
 
     /**
@@ -91,11 +150,11 @@ class OffresController
         try{
             $tokenManager = new TokensManager();
             if($tokenManager->checkToken($_SESSION["auth_token"])) {
-                //On créer l'offre en récupérant l'IdUtilisateur de l'utilisateur connecté
+                //On crée l'offre en récupérant l'IdUtilisateur de l'utilisateur connecté
                 $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
                 $offresManager = new OffresManager();
                 if($offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"])) {
-                    //On créer ensuite les images dans la base de donnée
+                    //On crée ensuite les images dans la base de donnée
                     $idOffre = $offresManager->getLast()->getIdOffre();
                     $imgManager = new ImagesOffresManager();
                     foreach ($data["imagesOffre"] as $image) {
@@ -136,6 +195,206 @@ class OffresController
         else{
             $this->displayPosterOffres(new Message("L'offre a été envoyée avec succès. Elle sera vérifiée ultérieurement pour être validée.", "Offre envoyée", "success"));
         }
+    }
 
+    /**
+     * Génère la vueChercherOffres en affichant les offres correspondant
+     * à la recherche
+     * @param array $data données de la recherche
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function chercherOffres(array $data, ?Message $message = null): void
+    {
+        $offreManager = new OffresManager();
+        $offres = array();
+        //On récupère les infos des différentes offres
+        foreach ($offreManager->getByName($data['searchPost']) as $offre) {
+            $idOffre = $offre->getIdOffre();
+            
+            $infoManager = new InfosOffresManager();
+            $infoOffre = $infoManager->getByIdOffres($idOffre);
+            $typesLogement = (new TypeLogementManager())->getAll();
+            $typeLogement = "None";
+            
+            foreach ($typesLogement as $tl)
+                if ($tl->getIdTypeLogement() == $infoOffre->getIdTypeLogement()) $typeLogement = $tl;
+
+            //On récupère les besoins en lien avec l'offre
+            $besoinManager = new BesoinsOffresManager();
+            $besoinsOffres = $besoinManager->GetAllByIdInfosOffre($infoOffre->getIdInfosOffre());
+            
+
+            //On compare ça avec les besoins de la table SBesoin
+            $SBesoinsManager = new SBesoinsManager();
+            $listeBesoins = $SBesoinsManager->getAll();
+
+            //On créer la liste des besoins
+            $besoins = array();
+            if($listeBesoins!=null&&$besoinsOffres!=null) {
+                foreach ($listeBesoins as $bs)
+                    foreach ($besoinsOffres as $besoinsOffre)
+                        if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+            }
+            
+
+            //On récupère les infos complémentaires
+            $infosComplementairesManager = new InfosComplementairesManager();
+            $infoComp = $infosComplementairesManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+            
+
+            //On récupère les dates des offres
+            $datesOffresManager = new DatesOffreManager();
+            $datesOffre = $datesOffresManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+            
+
+            //On récupère l'image
+            $imagesOffresManager = new ImagesOffresManager();
+            $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
+            
+
+            //On ajoute tout ça à une entrée de la liste de retour.
+            $offres[] = [
+                "offre" => $offre,
+                "infoOffre" => $infoOffre,
+                "typeLogement" => $typeLogement,
+                "besoins" => $besoins,
+                "infosComplementaires" => $infoComp,
+                "datesOffre" => $datesOffre,
+                "imageOffre" => $image
+            ];
+        }
+
+        $view = new View("ChercherOffres");
+        $view->generer(["offres" => $offres, "message" => $message]);
+    }
+
+
+    /**
+     * Supprime la demande de logement d'un senior à partir
+     * de l'id offre.
+     * @param int $idOffre id de l'offre
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function supprimerDemandeSenior(int $idOffre):void
+    {
+        //On supprime les images de l'offre
+        $imageOffreManager = new ImagesOffresManager();
+        while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
+            $link = $image->getLienImage();
+            $imageOffreManager->deleteByLink($link);
+            unlink($link);
+        }
+
+        //On supprime l'offre (cascade)
+        (new OffresManager())->deleteByIdOffre($idOffre);
+
+        $this->gererDemandesSenior();
+    }
+
+    /**
+     * Génère la vueGérerDemandesSenior en affichant les offres correspondant
+     * au senior
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function gererDemandesSenior():void{
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        $this->userIsSenior();
+        $error=null;
+        $offres = array();
+
+        try{
+            $tokenManager = new TokensManager();
+            if($tokenManager->checkToken($_SESSION["auth_token"])) {
+
+                $offreManager = new OffresManager();
+                //On récupère les infos des différentes offres
+                foreach ($offreManager->getAllByIdUtilisateur($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur()) as $offre) {
+                    $idOffre = $offre->getIdOffre();
+
+                    $infoManager = new InfosOffresManager();
+                    $infoOffre = $infoManager->getByIdOffres($idOffre);
+                    $typesLogement = (new TypeLogementManager())->getAll();
+                    $typeLogement = "None";
+
+                    foreach ($typesLogement as $tl)
+                        if ($tl->getIdTypeLogement() == $infoOffre->getIdTypeLogement()) $typeLogement = $tl;
+
+                    //On récupère les besoins en lien avec l'offre
+                    $besoinManager = new BesoinsOffresManager();
+                    $besoinsOffres = $besoinManager->GetAllByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+                    //On compare ça avec les besoins de la table SBesoin
+                    $SBesoinsManager = new SBesoinsManager();
+                    $listeBesoins = $SBesoinsManager->getAll();
+
+
+                    //On créer la liste des besoins
+                    $besoins = array();
+                    if($listeBesoins!=null&&$besoinsOffres!=null) {
+                        foreach ($listeBesoins as $bs)
+                            foreach ($besoinsOffres as $besoinsOffre)
+                                if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+                    }
+
+
+                    //On récupère les infos complémentaires
+                    $infosComplementairesManager = new InfosComplementairesManager();
+                    $infoComp = $infosComplementairesManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+                    //On récupère les dates des offres
+                    $datesOffresManager = new DatesOffreManager();
+                    $datesOffre = $datesOffresManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+                    //On récupère l'image
+                    $imagesOffresManager = new ImagesOffresManager();
+                    $image=$imagesOffresManager->getOneByIdOffres($idOffre);
+                    if($image!=null){
+                        $image = $image->getLienImage();
+                    }
+                    else{
+                        $image="public/img/offres/defaut.png";
+                    }
+
+                    $offresPostuleesManager = new OffresPostulerManager();
+                    $postules = $offresPostuleesManager->getAllByIdOffre($idOffre);
+                    $demandes = array();
+                    if($postules!=null){
+                        $infoUtilisateurManager = new InfoUtilisateursManager();
+                        foreach ($postules as $postule){
+                            $demandes[] = $infoUtilisateurManager->getByIdUtilisateur($postule->getIdUtilisateur());
+                        }
+                    }
+
+
+                    //On ajoute tout ça à une entrée de la liste de retour.
+                    $offres[] = [
+                        "offre" => $offre,
+                        "infoOffre" => $infoOffre,
+                        "typeLogement" => $typeLogement,
+                        "besoins" => $besoins,
+                        "infosComplementaires" => $infoComp,
+                        "datesOffre" => $datesOffre,
+                        "imageOffre" => $image,
+                        "demandes"=> $demandes
+                    ];
+                }
+            }
+        }
+        catch (\Exception $e){
+            $error=$e->getMessage();
+        }
+        if ($error!=null){
+            $error= new Message("Erreur : ".$error, "Erreur d'envoi", "danger");
+        }
+
+        $view = new View("GererDemandesSenior");
+        if($error!=null) $view->generer(["offres" => $offres,"message" => $error]);
+        else $view->generer(["offres" => $offres]);
     }
 }
