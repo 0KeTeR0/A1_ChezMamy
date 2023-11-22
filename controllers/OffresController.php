@@ -196,7 +196,7 @@ class OffresController
             //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
             $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
             $OffresSignaleesManager = new OffresSignaleesManager();
-            if($OffresSignaleesManager->deleteByIdOffre($data["idOffreToDelete"]))
+            if($OffresSignaleesManager->deleteByIdOffre($data["idReportToDelete"]))
             {
                 $res = new Message("Le signalement à bien été supprimer", "Succès", "success");
             }
