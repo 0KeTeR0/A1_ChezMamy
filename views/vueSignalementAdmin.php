@@ -19,6 +19,7 @@
                 </div>
                 <div class="offre-besoins">
                     <ul>
+                        <li>Signalé par : <?= $offre['signalerPar']?></li>
                         <li>Adresse : <?php if(!empty($offre['infosComplementaires']->getAdresse())) echo $offre['infosComplementaires']->getAdresse(); else echo 'Non renseignée'; ?></li>
                         <li><?= $offre['typeLogement']->getType() ?></li>
                         <li><?= $offre['infoOffre']->getSuperficieDeLaChambre() ?>m²</li>
