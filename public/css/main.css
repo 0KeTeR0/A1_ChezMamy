@@ -688,32 +688,40 @@ section.registerForm {
 }
 .offres .no-offre { text-align: center;
 }
+
+.offre-demande-block{
+    background: #460b4a;
+    margin-top: -23px;
+    border-radius: 10px;
+    z-index: -1;
+}
 .offre-demande-liste{
     margin: 0;
-    padding: 15px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    background: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, .2);
     transition: var(--transition);
+    padding: 10px;
+
 }
 .offre-demande-liste li{
     font-size: 16px;
-    color: #000;
+    color: #fff;
     display: block;
     text-align: left;
     padding: 10px;
 }
+
 .offre-demande-etudiant{
     display: flex;
     flex-direction: row;
-
-
+    border-bottom: 1px solid #fff;
 }
 .offre-demande-etudiant p{
     display: inline-block;
     margin-left: 20px;
+    font-weight: bold;
 
 }
 /* ----------------------- Contact ----------------------- */

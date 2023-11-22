@@ -218,4 +218,7 @@ return [
 
     // vueGererDemandesSenior.php
     "management_title" => "Gérer vos offres",
+    "Name-and-surname" => "Prénom et nom : ",
+    "Email-address" => "Adresse email : ",
+    "Phone-number" => "Numéro de téléphone : ",
 ];

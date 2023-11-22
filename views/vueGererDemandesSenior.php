@@ -11,12 +11,13 @@
                 <h3 class="offre-titre"><?= $offre['offre']->getTitreDeLoffre() ?></h3>
                 <p class="offre-dates">Du <?= $offre['datesOffre']->getDateDebut()->format("d/m/Y") ?> au <?= $offre['datesOffre']->getDateFin()->format("d/m/Y") ?></p>
                 <p class="offre-description"><?= $offre['infosComplementaires']->getDescription() ?></p>
+
+            </div>
+            <div class="offre-besoins">
                 <form action="" method="post">
                     <button class="bouton-supprimer">Supprimer</button>
                     <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
                 </form>
-            </div>
-            <div class="offre-besoins">
                 <ul>
                     <li><?= $offre['infosComplementaires']->getAdresse() ?></li>
                     <li><?= $offre['typeLogement']->getType() ?></li>
@@ -26,14 +27,18 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
-            <div>
-                <ul>
-                    <li>Nom Prénom</li>
-                    <li>Adresse@cnul.com</li>
-                    <li>06 06 06 06 06</li>
+        </article>
+            <div class="offre-demande-block">
+                <ul class="offre-demande-liste">
+                    <?php if(isset($offre['demandes']))foreach($offre['demandes'] as $demande):?>
+                    <li class="offre-demande-etudiant">
+                        <p><?= $traductions['Name-and-surname'].$demande->getPrenom()." ".$demande->getNom()?> </p>
+                        <p><?= $traductions['Email-address'].$demande->getMail() ?></p>
+                        <p><?= $traductions['Phone-number'].$demande->getNumero()?></p>
+                    </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
-        </article>
 
 
         <?php endforeach;?>
