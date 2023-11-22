@@ -20,9 +20,14 @@ class OffresSignaleesManager extends model
      */
     public function creationSignalement(int $idUtilisateur, int $idOffre): bool
     {
-        $result = false;
-        if ($this->execRequest("INSERT INTO OFFRES_SIGNALEES (idOffre, idUtilisateur) VALUES(?,?)", array($idOffre, $idUtilisateur)) !== false) {
-            $result = true;
+        // si l'utilisateur n'a pas déjà signalé l'offre alors true sinon false
+        try {
+            if ($this->execRequest("INSERT INTO OFFRES_SIGNALEES (idOffre, idUtilisateur) VALUES(?,?)", array($idOffre, $idUtilisateur)) !== false) {
+                $result = true;
+            }
+        }
+        catch (\Exception $e){
+            $result = false;
         }
         return $result;
     }

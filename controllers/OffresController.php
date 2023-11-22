@@ -26,12 +26,11 @@ use DateTime;
 class OffresController
 {
     /**
-     * Vérifie que l'utilisateur soit connecté et est un senior pour accéder au formulaire de poste d'offres
-     * Redirige sur l'accueil si l'utilisateur n'est pas connecté ou n'est pas un senior
+     * Vérifie qu'un utilisateur est connecté
      * @return void
      * @author Romain Card
      */
-    private function userIsSenior(): void
+    private function userIsLogged(): bool
     {
         $res = false;
 
@@ -40,15 +39,35 @@ class OffresController
             $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
 
             if($tokenOk) {
-                $token = $tokenManager->getByToken($_SESSION['auth_token']);
-                $idUtilisateur = $token->getIdUtilisateur();
-
-                $utilisateurManager = new UtilisateurManager();
-                $res = $utilisateurManager->isSenior($idUtilisateur);
+                $res = true;
             }
         }
 
-        if(!$res) {
+        return $res;
+    }
+
+    /**
+     * Vérifie que l'utilisateur soit connecté et est un senior pour accéder au formulaire de poste d'offres
+     * Redirige sur l'accueil si l'utilisateur n'est pas connecté ou n'est pas un senior
+     * @return void
+     * @author Romain Card
+     */
+    private function userIsSenior(): void
+    {
+        if($this->userIsLogged()) {
+            $tokenManager = new TokensManager();
+            $token = $tokenManager->getByToken($_SESSION['auth_token']);
+            $idUtilisateur = $token->getIdUtilisateur();
+
+            $utilisateurManager = new UtilisateurManager();
+            $res = $utilisateurManager->isSenior($idUtilisateur);
+
+            if (!$res) {
+                header('Location: accueil');
+                return;
+            }
+        }
+        else {
             header('Location: accueil');
             return;
         }
@@ -62,22 +81,20 @@ class OffresController
      */
     private function userIsEtudiant(): void
     {
-        $res = false;
-
-        if (!empty($_SESSION['auth_token'])) {
+        if($this->userIsLogged()) {
             $tokenManager = new TokensManager();
-            $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+            $token = $tokenManager->getByToken($_SESSION['auth_token']);
+            $idUtilisateur = $token->getIdUtilisateur();
 
-            if($tokenOk) {
-                $token = $tokenManager->getByToken($_SESSION['auth_token']);
-                $idUtilisateur = $token->getIdUtilisateur();
+            $utilisateurManager = new UtilisateurManager();
+            $res = $utilisateurManager->isEtudiant($idUtilisateur);
 
-                $utilisateurManager = new UtilisateurManager();
-                $res = $utilisateurManager->isEtudiant($idUtilisateur);
+            if (!$res) {
+                header('Location: accueil');
+                return;
             }
         }
-
-        if(!$res) {
+        else {
             header('Location: accueil');
             return;
         }
@@ -88,6 +105,7 @@ class OffresController
      * Inscrit dans la bdd
      * @param array $data
      * @return void
+     * @author Louis Demeocq
      */
     public function postulerOffres(array $data): Message
     {
@@ -108,6 +126,34 @@ class OffresController
             else $res = new Message("Vous avez déjà postulé à cette annonce", "Erreur");
         }
         return $res;
+    }
+
+    /**
+     * Signale une annonce
+     * @param array $data ID de l'annonce à signaler
+     * @return Message message de retour de l'opération
+     * @author Romain Card
+     */
+    public function signalerOffres(array $data): void
+    {
+        $message = null;
+
+        // l'utilisateur est connecté > il peut signaler une annonce
+        if($this->userIsLogged()) {
+            $tokenManager = new TokensManager();
+            if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+                $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
+                $offresSignaleesManager = new OffresSignaleesManager();
+
+                // on ajoute le signalement s'il n'a pas déjà signalé l'annonce
+                if ($offresSignaleesManager->creationSignalement($idUtilisateur, $data["idOffreToSignal"])) {
+                    $message = new Message("Merci, l'offre a été signalée avec succès.", "Offre signalée", "success");
+                } else $message = new Message("Vous avez déjà signalé cette offre ou bien elle n'existe plus.", "Erreur");
+            }
+        }
+        else $message = new Message("Vous devez être connecté•e pour signaler une offre.", "Erreur");
+
+        $this->chercherOffres(["searchPost" => $_GET['searchPost'] ?? ''], $message);
     }
 
     /**

@@ -52,6 +52,7 @@ class RouteChercherOffres extends Route
      */
     protected function post(array $params = []): void
     {
-
+        if (!empty($params['idOffreToSignal'])) $this->controller->signalerOffres(["idOffreToSignal" => $this->getParam($params, "idOffreToSignal", false)]);
+        else $this->controller->chercherOffres($params);
     }
 }
