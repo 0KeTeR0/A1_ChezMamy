@@ -1026,7 +1026,20 @@ footer nav div p{
         padding:0;
         font-size: 30px;
     }
+    /* ----------------------- Admin ----------------------- */
 
+    .bouton-faux-report{
+        background: var(--success-color);
+        color: white;
+        border: none;
+        padding: 5px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+    .bouton-faux-report:hover{
+        background: #30e022;
+        cursor: pointer;
+    }
     /*-------------*/
 }
 
