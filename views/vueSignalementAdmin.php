@@ -29,14 +29,16 @@
                             <li><?= $besoin->getBesoin() ?></li>
                         <?php endforeach; ?>
                     </ul>
-                    <form action="" method="post">
-                        <button class="bouton-faux-report"><?= $traductions['false_report']?></button>
-                        <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
-                    </form>
-                    <form action="" method="post">
-                        <button class="bouton-supprimer"><?= $traductions['delete_offer'] ?></button>
-                        <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
-                    </form>
+                    <div class="boutons-signalement-supprimer">
+                        <form action="" method="post">
+                            <button class="bouton-faux-report"><?= $traductions['false_report']?></button>
+                            <input type="hidden" name="idReportToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
+                        </form>
+                        <form action="" method="post">
+                            <button class="bouton-supprimer"><?= $traductions['delete_offer'] ?></button>
+                            <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
+                        </form>
+                    </div>
                 </div>
             </article>
         <?php endforeach; ?>
