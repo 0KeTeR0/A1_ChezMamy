@@ -1101,6 +1101,11 @@ footer nav div p{
         background: #30e022;
         cursor: pointer;
     }
+
+    .boutons-signalement-supprimer{
+        display: flex;
+        flex-direction: row;
+    }
     /*-------------*/
 }
 

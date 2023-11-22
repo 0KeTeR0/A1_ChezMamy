@@ -224,7 +224,9 @@ return [
     "Name-and-surname" => "Prénom et nom : ",
     "Email-address" => "Adresse email : ",
     "Phone-number" => "Numéro de téléphone : ",
+    "delete_offer" => "Supprimer",
 
     //vueSignalementAdmin.php
     "report_title" => "Liste des signalements",
+    "false_report" => "Faux signalement",
 ];
