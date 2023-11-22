@@ -83,6 +83,34 @@ class OffresController
         }
     }
 
+    /**
+     * Vérifie que l'utilisateur soit connecté et est un admin pour pouvoir supprimer les offres
+     * Redirige sur l'accueil si l'utilisateur n'est pas connecté ou n'est pas un admin
+     * @return bool
+     * @author Louis Demeocq
+     */
+    private function userIsStaff(): bool
+    {
+        $res = false;
+
+        if (!empty($_SESSION['auth_token'])) {
+            $tokenManager = new TokensManager();
+            $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+
+            if($tokenOk) {
+                $token = $tokenManager->getByToken($_SESSION['auth_token']);
+                $idUtilisateur = $token->getIdUtilisateur();
+
+                $utilisateurManager = new UtilisateurManager();
+                $res = $utilisateurManager->isStaff($idUtilisateur);
+            }
+        }
+
+        if(!$res) {
+            header('Location: accueil');
+        }
+        return $res;
+    }
 
     /**
      * Inscrit dans la bdd
@@ -134,6 +162,122 @@ class OffresController
         ]);
     }
 
+    public function supprimerOffres(array $data): Message
+    {
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        $this->userIsStaff();
+        $error = null;
+        $res = new Message("");
+
+        $tokenManager = new TokensManager();
+        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+            //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
+            $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
+            $OffresSignaleesManager = new OffresManager();
+            if($OffresSignaleesManager->deleteByIdOffre($data["idOffreToDelete"]))
+            {
+                $res = new Message("L'Offre à bien été supprimer", "Succès", "success");
+            }
+            else $res = new Message("L'Offre n'a pas pu être supprimer", "Erreur");
+        }
+
+        return $res;
+    }
+
+    public function supprimerSignalement(array $data): Message
+    {
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        $this->userIsStaff();
+        $error = null;
+        $res = new Message("");
+
+        $tokenManager = new TokensManager();
+        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+            //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
+            $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
+            $OffresSignaleesManager = new OffresSignaleesManager();
+            if($OffresSignaleesManager->deleteByIdOffre($data["idOffreToDelete"]))
+            {
+                $res = new Message("Le signalement à bien été supprimer", "Succès", "success");
+            }
+            else $res = new Message("Le signalement n'a pas pu être supprimer", "Erreur");
+        }
+
+        return $res;
+    }
+
+
+    public function displaySignalement(): void
+    {
+        $this->userIsStaff();
+        $sigView = new View('SignalementAdmin');
+        $offreManager = new OffresManager();
+        $offreSignaler = new OffresSignaleesManager();
+        $offresSignaler = array();
+        $offres = array();
+        foreach ($offreSignaler->getAll() as $signalement)
+            $offresSignaler[] = $offreManager->getByIdOffre($signalement->getIdOffre());
+        //On récupère les infos des différentes offres
+        foreach ($offresSignaler as $offre) {
+            $idOffre = $offre->getIdOffre();
+
+            $infoManager = new InfosOffresManager();
+            $infoOffre = $infoManager->getByIdOffres($idOffre);
+            $typesLogement = (new TypeLogementManager())->getAll();
+            $typeLogement = "None";
+
+            foreach ($typesLogement as $tl)
+                if ($tl->getIdTypeLogement() == $infoOffre->getIdTypeLogement()) $typeLogement = $tl;
+
+            //On récupère les besoins en lien avec l'offre
+            $besoinManager = new BesoinsOffresManager();
+            $besoinsOffres = $besoinManager->GetAllByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On compare ça avec les besoins de la table SBesoin
+            $SBesoinsManager = new SBesoinsManager();
+            $listeBesoins = $SBesoinsManager->getAll();
+
+            //On créer la liste des besoins
+            $besoins = array();
+            if($listeBesoins!=null&&$besoinsOffres!=null) {
+                foreach ($listeBesoins as $bs)
+                    foreach ($besoinsOffres as $besoinsOffre)
+                        if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+            }
+
+
+            //On récupère les infos complémentaires
+            $infosComplementairesManager = new InfosComplementairesManager();
+            $infoComp = $infosComplementairesManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On récupère les dates des offres
+            $datesOffresManager = new DatesOffreManager();
+            $datesOffre = $datesOffresManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On récupère l'image
+            $imagesOffresManager = new ImagesOffresManager();
+            $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
+
+            $utilisateurMangager = new UtilisateurManager();
+            $signalerPar = $utilisateurMangager->getByID($offre->getIdUtilisateur())->getLogin();
+
+            //On ajoute tout ça à une entrée de la liste de retour.
+            $offres[] = [
+                "offre" => $offre,
+                "infoOffre" => $infoOffre,
+                "typeLogement" => $typeLogement,
+                "besoins" => $besoins,
+                "infosComplementaires" => $infoComp,
+                "datesOffre" => $datesOffre,
+                "imageOffre" => $image,
+                "signalerPar" => $signalerPar
+            ];
+        }
+        $sigView->generer(["offres" => $offres]);
+    }
 
     /**
      * Execute l'envoie de l'offre
