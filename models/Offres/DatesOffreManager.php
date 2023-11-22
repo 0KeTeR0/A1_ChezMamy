@@ -62,7 +62,7 @@ class DatesOffreManager extends Model
     public function deleteByIdOffre(int $idInfosOffre): bool
     {
         $result = false;
-        if ($this->execRequest("DElETE FROM DATES_OFFRE WHERE $idInfosOffre=?", array($idInfosOffre)) !== false) {
+        if ($this->execRequest("DElETE FROM DATES_OFFRE WHERE idInfosOffre=?", array($idInfosOffre)) !== false) {
             $result = true;
         }
         return $result;

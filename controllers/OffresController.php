@@ -55,6 +55,62 @@ class OffresController
     }
 
     /**
+     * Vérifie que l'utilisateur soit connecté et est un étudiant pour pouvoir postuler aux offres
+     * Redirige sur l'accueil si l'utilisateur n'est pas connecté ou n'est pas un étudiant
+     * @return void
+     * @author Louis Demeocq
+     */
+    private function userIsEtudiant(): void
+    {
+        $res = false;
+
+        if (!empty($_SESSION['auth_token'])) {
+            $tokenManager = new TokensManager();
+            $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+
+            if($tokenOk) {
+                $token = $tokenManager->getByToken($_SESSION['auth_token']);
+                $idUtilisateur = $token->getIdUtilisateur();
+
+                $utilisateurManager = new UtilisateurManager();
+                $res = $utilisateurManager->isEtudiant($idUtilisateur);
+            }
+        }
+
+        if(!$res) {
+            header('Location: accueil');
+            return;
+        }
+    }
+
+
+    /**
+     * Inscrit dans la bdd
+     * @param array $data
+     * @return void
+     */
+    public function postulerOffres(array $data): Message
+    {
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        $this->userIsEtudiant();
+        $error = null;
+        $res = new Message("");
+
+        $tokenManager = new TokensManager();
+        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+            //On crée l'offrePostuler en récupérant l'IdUtilisateur de l'utilisateur connecté
+            $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
+            $offresPostulerManager = new OffresPostulerManager();
+            if($offresPostulerManager->creationPostulerOffres($idUtilisateur, $data["idPostulerOffre"]))
+            {
+                $res = new Message("Vous avez postulé à l'annonce", "Succès", "success");
+            }
+            else $res = new Message("Vous avez déjà postulé à cette annonce", "Erreur");
+        }
+        return $res;
+    }
+
+    /**
      * Affiche la page des offres
      * @param Message|null $message Message éventuel à afficher
      * @return void
@@ -94,11 +150,11 @@ class OffresController
         try{
             $tokenManager = new TokensManager();
             if($tokenManager->checkToken($_SESSION["auth_token"])) {
-                //On créer l'offre en récupérant l'IdUtilisateur de l'utilisateur connecté
+                //On crée l'offre en récupérant l'IdUtilisateur de l'utilisateur connecté
                 $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
                 $offresManager = new OffresManager();
                 if($offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"])) {
-                    //On créer ensuite les images dans la base de donnée
+                    //On crée ensuite les images dans la base de donnée
                     $idOffre = $offresManager->getLast()->getIdOffre();
                     $imgManager = new ImagesOffresManager();
                     foreach ($data["imagesOffre"] as $image) {
@@ -148,7 +204,7 @@ class OffresController
      * @return void
      * @author Valentin Colindre
      */
-    public function chercherOffres(array $data): void
+    public function chercherOffres(array $data, ?Message $message = null): void
     {
         $offreManager = new OffresManager();
         $offres = array();
@@ -210,7 +266,7 @@ class OffresController
         }
 
         $view = new View("ChercherOffres");
-        $view->generer(["offres" => $offres]);
+        $view->generer(["offres" => $offres, "message" => $message]);
     }
 
 
@@ -244,8 +300,6 @@ class OffresController
      * @author Valentin Colindre
      */
     public function gererDemandesSenior():void{
-
-
         // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
         $this->userIsSenior();
         $error=null;
@@ -343,5 +397,4 @@ class OffresController
         if($error!=null) $view->generer(["offres" => $offres,"message" => $error]);
         else $view->generer(["offres" => $offres]);
     }
-
 }
