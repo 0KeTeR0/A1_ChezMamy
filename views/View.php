@@ -98,15 +98,18 @@ class View
         // Vérifie si l'utilisateur est un senior
         $isSenior = (!empty($_SESSION['auth_token']) && $this->getUtilisateur() !== null)  ? (new UtilisateurManager())->isSenior(($this->getUtilisateur())->getIdUtilisateur()) : false;
         $isEtudiant = (!empty($_SESSION['auth_token']) && $this->getUtilisateur() !== null)  ? (new UtilisateurManager())->isEtudiant(($this->getUtilisateur())->getIdUtilisateur()) : false;
+        $isStaff = (!empty($_SESSION['auth_token']) && $this->getUtilisateur() !== null)  ? (new UtilisateurManager())->isStaff(($this->getUtilisateur())->getIdUtilisateur()) : false;
+
 
         // On récupère les traductions
         $donnees['traductions'] = $this->getTraductions($_GET['lang'] ?? "fr");
         $donnees['isEtudiant'] = $isEtudiant;
+        $donnees['isStaff']=$isStaff;
 
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'traductions' => $donnees['traductions'], 'isSenior' => $isSenior, 'isEtudiant' => $isEtudiant, 'infoUtilisateur' => $donnees['infoUtilisateur']));
+        $vue = $this->genererFichier('views/gabarit.php', array('titre' => $this->titre, 'contenu' => $contenu, 'traductions' => $donnees['traductions'], 'isSenior' => $isSenior, 'isEtudiant' => $isEtudiant, 'infoUtilisateur' => $donnees['infoUtilisateur'],"isStaff"=>$donnees['isStaff']));
         // Renvoi de la vue au navigateur
         echo $vue;
     }

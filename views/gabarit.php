@@ -52,6 +52,9 @@
                                 <li><a href="posterOffres"><?= $traductions["nav_post_offers"] ?></a></li>
                                 <li><a href="gererDemandes"><?= $traductions["nav_my_offers"] ?></a></li>
                             <?php } ?>
+                            <?php if($isStaff) {?>
+                                <li><a href="backofficeIndex"><?= $traductions["nav_admin"] ?></a></li>
+                            <?php } ?>
                             <li><a href="deco"><?=$traductions["nav_disconnect"]?></a></li>
                         </ul>
                     </li>
