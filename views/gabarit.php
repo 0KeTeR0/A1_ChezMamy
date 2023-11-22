@@ -9,6 +9,7 @@
     <link rel="icon" href="<?= SCRIPTS ?>img/logo.ico">
     <link rel="stylesheet" href="<?= SCRIPTS ?>css/main.css">
     <script src="<?= SCRIPTS ?>js/script.js"></script>
+    <script src="https://kit.fontawesome.com/25f155e170.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>

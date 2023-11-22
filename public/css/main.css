@@ -420,6 +420,64 @@ header nav ul li > button{
     height: fit-content;
 }
 
+/* ----------------------- menuBackoffice ----------------------- */
+
+aside{
+    z-index: 1;
+    position: fixed;
+    height: 30vw;
+    margin: 0;
+    padding: 0;
+}
+
+.backoffice-sidebar{
+    margin: 0;
+    padding: 0;
+    width: 170px;
+    height: 100%;
+}
+.backoffice-sidebar ul{
+    margin: 0;
+    padding-top: 20px;
+    padding-left: 15px;
+}
+
+.backoffice-sidebarEntry{
+    color: white;
+    list-style: none;
+    background: #460b4a;
+    border-radius:12px;
+    margin-right: 35px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.backoffice-sidebarEntry a{
+    color: white;
+    text-decoration: none;
+}
+.backoffice-sidebarEntry:hover{
+    background: #efefef;
+    cursor: pointer;
+    & a {
+        color: #460b4a;
+    }
+    & i{
+        border-right: #460b4a solid 2px;
+    }
+}
+
+.backoffice-sidebarEntry i{
+    padding-right: 3px;
+    text-align: left;
+    margin-right: 5px;
+    background: white;
+    color: #460b4a;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    border:solid white 2px;
+    border-radius: 10px;
+}
 
 /* ----------------------- Inscription ----------------------- */
 section.registerForm {
