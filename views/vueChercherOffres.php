@@ -39,6 +39,10 @@
                         </form>
                     </div>
                 <?php endif; ?>
+                <form action="" method="post">
+                    <button class="bouton-signaler">Signaler</button>
+                    <input type="hidden" name="idOffreToSignal" value="<?=$offre['offre']->getIdOffre() ?>">
+                </form>
             </article>
         <?php endforeach; ?>
         <?php if(count($offres) == 0): ?>

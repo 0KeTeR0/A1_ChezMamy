@@ -722,7 +722,31 @@ section.registerForm {
     display: inline-block;
     margin-left: 20px;
     font-weight: bold;
+}
 
+.bouton-signaler{
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.bouton-signaler:hover{
+    background: red;
+    cursor: pointer;
+}
+.bouton-supprimer{
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.bouton-supprimer:hover{
+    background: red;
+    cursor: pointer;
 }
 /* ----------------------- Contact ----------------------- */
 .contactForm {
