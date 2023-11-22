@@ -1,3 +1,4 @@
+<?php include('menuBackoffice.php')?>
 <section class="chercher-offres">
     <?php include('message.php'); ?>
     <h2 class="section-title"><?= $traductions['report_title'] ?></h2>
