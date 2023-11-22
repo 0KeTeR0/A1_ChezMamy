@@ -15,7 +15,7 @@
             </div>
             <div class="offre-besoins">
                 <form action="" method="post">
-                    <button class="bouton-supprimer">Supprimer</button>
+                    <button class="bouton-supprimer"><?= $traductions['delete_offer'] ?></button>
                     <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
                 </form>
                 <ul>
