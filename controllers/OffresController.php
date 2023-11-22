@@ -231,35 +231,7 @@ class OffresController
             unlink($link);
         }
 
-
-        //On supprime les signalements de l'offre
-        $offreSignalees = new OffresSignaleesManager();
-        $offreSignalees->deleteByIdOffre($idOffre);
-
-        //On supprime les entrées de la table OFFRES_POSTULEES en rapport avec l'offre
-        $offrePostulee = new OffresPostulerManager();
-        $offrePostulee->deleteByIdOffre($idOffre);
-
-        //On récupère l'idInfoOffre
-        $infoOffresManager = new InfosOffresManager();
-        $idInfoOffre = $infoOffresManager->getByIdOffres($idOffre)->getIdInfosOffre();
-
-        //On supprime les infos complémentaires de l'offre
-        $infoComplementaireManager = new InfosComplementairesManager();
-        $infoComplementaireManager->deleteByIdOffre($idInfoOffre);
-
-        //On supprime les dates de l'offre
-        $dateOffreManager = new DatesOffreManager();
-        $dateOffreManager->deleteByIdOffre($idInfoOffre);
-
-        //On supprime les besoins liés à l'offre
-        $besoinOffreManager = new BesoinsOffresManager();
-        $besoinOffreManager->deleteByIdOffre($idInfoOffre);
-
-        //On supprime l'infoOffre de l'offre
-        $infoOffresManager->deleteByIdOffre($idOffre);
-
-        //On supprime l'offre
+        //On supprime l'offre (cascade)
         (new OffresManager())->deleteByIdOffre($idOffre);
 
         $this->gererDemandesSenior();
