@@ -237,10 +237,10 @@ class OffresController
         $offresSignaler = array();
         $offres = array();
         foreach ($offreSignaler->getAll() as $signalement)
-            $offresSignaler[] = $offreManager->getByIdOffre($signalement->getIdOffre());
+            $offresSignaler[] = array($offreManager->getByIdOffre($signalement->getIdOffre()),$signalement->getIdUtilisateur());
         //On récupère les infos des différentes offres
         foreach ($offresSignaler as $offre) {
-            $idOffre = $offre->getIdOffre();
+            $idOffre = $offre[0]->getIdOffre();
 
             $infoManager = new InfosOffresManager();
             $infoOffre = $infoManager->getByIdOffres($idOffre);
@@ -283,18 +283,21 @@ class OffresController
             $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
 
             $utilisateurMangager = new UtilisateurManager();
-            $signalerPar = $utilisateurMangager->getByID($offre->getIdUtilisateur())->getLogin();
+            $auteur = $utilisateurMangager->getByID($offre[0]->getIdUtilisateur())->getLogin();
+
+            $signalerPar = $utilisateurMangager->getByID($offre[1]->getIdUtilisateur())->getLogin();
 
             //On ajoute tout ça à une entrée de la liste de retour.
             $offres[] = [
-                "offre" => $offre,
+                "offre" => $offre[0],
                 "infoOffre" => $infoOffre,
                 "typeLogement" => $typeLogement,
                 "besoins" => $besoins,
                 "infosComplementaires" => $infoComp,
                 "datesOffre" => $datesOffre,
                 "imageOffre" => $image,
-                "signalerPar" => $signalerPar
+                "signalerPar" => $signalerPar,
+                "auteur"=> $auteur
             ];
         }
         $sigView->generer(["offres" => $offres]);
