@@ -11,6 +11,7 @@ use Exception;
 /**
  * Classe View
  * Représente une vue
+ * @author Romain Card
  */
 class View
 {

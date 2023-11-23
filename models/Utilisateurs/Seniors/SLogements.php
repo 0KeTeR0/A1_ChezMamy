@@ -12,16 +12,19 @@ class SLogements
 
     /**
      * @var int l'id du type de logement
+     * @author Louis Demeocq
      */
     private int $idLogement;
 
     /**
      * @var string le type de logement
+     * @author Louis Demeocq
      */
     private string $type;
 
     /**
      * @return int l'id du logement
+     * @author Louis Demeocq
      */
     public function getIdLogement(): int
     {
@@ -30,6 +33,7 @@ class SLogements
 
     /**
      * @param int $idLogement l'id à mettre
+     * @author Louis Demeocq
      */
     public function setIdLogement(int $idLogement): void
     {
@@ -38,6 +42,7 @@ class SLogements
 
     /**
      * @return string le nom du type de logement
+     * @author Louis Demeocq
      */
     public function getType(): string
     {
@@ -46,6 +51,7 @@ class SLogements
 
     /**
      * @param string $type le type de logement à mettre
+     * @author Louis Demeocq
      */
     public function setType(string $type): void
     {
