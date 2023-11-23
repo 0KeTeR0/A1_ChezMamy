@@ -182,7 +182,7 @@ class OffresController
             while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
                 $link = $image->getLienImage();
                 $imageOffreManager->deleteByLink($link);
-                unlink($link);
+                unlink("public" . DIRECTORY_SEPARATOR . $link);
             }
             if($OffresSignaleesManager->deleteByIdOffre($idOffre))
             {
