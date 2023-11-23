@@ -930,18 +930,36 @@ footer nav div p{
     color: white;
     border: none;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 7px;
     font-weight: bold;
+    margin-left: 10px;
+    margin-right: 2px;
 }
 .bouton-faux-report:hover{
-    background: #30e022;
+    background: #2ed221;
     cursor: pointer;
 }
 
 .boutons-signalement-supprimer{
     display: flex;
     flex-direction: row;
+
 }
+
+.boutons-supprimer{
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.boutons-supprimer:hover{
+    background: #e80000;
+    cursor: pointer;
+}
+
 
 /*--------------------responsive (header/footer */
 
