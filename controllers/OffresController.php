@@ -472,9 +472,7 @@ class OffresController
                 foreach ($offreManager->getAllByIdUtilisateur($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur()) as $offre) {
                     $idOffre = $offre->getIdOffre();
 
-                    if($offre->isApprobation())
-                        $approbation="Approuvée";
-                    else $approbation="En cours d'approbation";
+                    $approbation=$offre->isApprobation();
 
                     $infoManager = new InfosOffresManager();
                     $infoOffre = $infoManager->getByIdOffres($idOffre);
