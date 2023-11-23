@@ -19,7 +19,12 @@
                     <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
                 </form>
                 <ul>
-                    <li><?= $offre['infosComplementaires']->getAdresse() ?></li>
+                    <?php if($offre['approbation']):?>
+                    <li class="approbation_green"><?= $traductions['yes_approbation'] ?></li>
+                    <?php else:?>
+                    <li class="approbation_red"><?= $traductions['no_approbation'] ?></li>
+                    <?php endif; ?>
+                    <li><?= $traductions['address'] ?><?= $offre['infosComplementaires']->getAdresse() ?></li>
                     <li><?= $offre['typeLogement']->getType() ?></li>
                     <li><?= $offre['infoOffre']->getSuperficieDeLaChambre() ?>m²</li>
                     <?php foreach($offre['besoins'] as $besoin): ?>

@@ -675,6 +675,13 @@ section.registerForm {
 }
 
 /* ----------------------- Recherche d'offres ----------------------- */
+
+.approbation_red{
+    color: #c00000;
+}
+.approbation_green{
+    color:green;
+}
 .filtres-offres {
     margin: 0 10px;
 }

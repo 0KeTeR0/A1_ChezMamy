@@ -225,9 +225,15 @@ return [
     "Email-address" => "Adresse email : ",
     "Phone-number" => "Numéro de téléphone : ",
     "delete_offer" => "Supprimer",
+    "no_approbation"=>"Demande en cours d'approbation",
+    "yes_approbation"=>"Demande approuvée !",
 
     //vueSignalementAdmin.php
     "report_title" => "Liste des signalements",
     "false_report" => "Faux signalement",
     "no_report" => "Aucun signalement à traiter.",
+    "needs"=>"Besoins :",
+    "sigBy"=>"Signalée par :",
+    "author"=>"Autheur/ice de l'offre :",
+    "address"=>"Adresse :"
 ];

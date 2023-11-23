@@ -20,13 +20,13 @@
                 </div>
                 <div class="offre-besoins">
                     <ul>
-                        <li>Signalé par : <?= $offre['signalerPar']?></li>
-                        <li>Auteur de l'offre : <?= $offre['auteur']?></li>
-                        <li>Adresse : <?php if(!empty($offre['infosComplementaires']->getAdresse())) echo $offre['infosComplementaires']->getAdresse(); else echo 'Non renseignée'; ?></li>
+                        <li><?= $traductions['sigBy'] ?><?= $offre['signalerPar']?></li>
+                        <li><?= $traductions['author'] ?><?= $offre['auteur']?></li>
+                        <li><?= $traductions['address'] ?><?php if(!empty($offre['infosComplementaires']->getAdresse())) echo $offre['infosComplementaires']->getAdresse(); else echo 'Non renseignée'; ?></li>
                         <li><?= $offre['typeLogement']->getType() ?></li>
                         <li><?= $offre['infoOffre']->getSuperficieDeLaChambre() ?>m²</li>
                     </ul>
-                    <p>Besoins :</p>
+                    <p><?= $traductions['needs'] ?></p>
                     <ul>
                         <?php foreach($offre['besoins'] as $besoin): ?>
                             <li><?= $besoin->getBesoin() ?></li>

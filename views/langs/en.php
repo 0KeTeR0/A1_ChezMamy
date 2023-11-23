@@ -225,9 +225,15 @@ return [
     "Email-address" => "Email address : ",
     "Phone-number" => "Phone number : ",
     "delete_offer" => "Delete",
+    "no_approbation"=>"Offer not approved yet",
+    "yes_approbation"=>"Offer approved!",
 
     //vueSignalementAdmin.php
     "report_title" => "Reports list",
     "false_report" => "False report",
     "no_report" => "No report to handle.",
+    "needs"=>"Needs :",
+    "sigBy"=>"Reported by :",
+    "author"=>"Author :",
+    "address"=>"Address :"
 ];
