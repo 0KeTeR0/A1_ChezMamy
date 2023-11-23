@@ -236,5 +236,21 @@ return [
     "needs"=>"Besoins :",
     "sigBy"=>"Signalée par :",
     "author"=>"Auteur•rice de l'offre :",
-    "address"=>"Adresse :"
+    "address"=>"Adresse :",
+
+    //vueGestionCompte.php
+    "titre_page_gerer_compte" => "",
+    "gérer_compte_tab_header_identité" => "",
+    "gérer_compte_tab_header_type" => "",
+    "gérer_compte_tab_header_role" => "",
+    "gérer_compte_tab_header_etat" => "",
+    "gérer_compte_tab_header_action" => "",
+    "juste_Senior" => "",
+    "juste_Etudiant" => "",
+    "juste_role_utilisateur" => "",
+    "juste_role_moderateur" => "",
+    "gérer_compte_tab_bloqué" => "",
+    "gérer_compte_tab_form_bloquer" => "",
+    "gérer_compte_tab_pas_bloqué" => "",
+    "gérer_compte_tab_form_debloquer" => ""
 ];
