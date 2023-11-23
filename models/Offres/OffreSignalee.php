@@ -5,7 +5,7 @@ namespace App\ChezMamy\models\Offres;
 /**
  * Un signalement d'offre de la table OFFRES_SIGNALEES
  * (une entrée de la table)
- * @authors Valentin Colindre
+ * @author Valentin Colindre
  */
 class OffreSignalee
 {
@@ -18,6 +18,7 @@ class OffreSignalee
 
     /**
      * @return int
+     * @author Valentin Colindre
      */
     public function getIdUtilisateur(): int
     {
@@ -26,6 +27,7 @@ class OffreSignalee
 
     /**
      * @param int $idUtilisateur
+     * @author Valentin Colindre
      */
     public function setIdUtilisateur(int $idUtilisateur): void
     {
@@ -35,6 +37,7 @@ class OffreSignalee
 
     /**
      * @return int
+     * @author Valentin Colindre
      */
     public function getIdOffre(): int
     {
@@ -43,6 +46,7 @@ class OffreSignalee
 
     /**
      * @param int $idOffre
+     * @author Valentin Colindre
      */
     public function setIdOffre(int $idOffre): void
     {

@@ -23,6 +23,7 @@ class Offre
 
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getIdUtilisateur(): int
     {
@@ -31,6 +32,7 @@ class Offre
 
     /**
      * @param int $idUtilisateur
+     * @author Louis Demeocq
      */
     public function setIdUtilisateur(int $idUtilisateur): void
     {
@@ -39,6 +41,7 @@ class Offre
 
     /**
      * @return string
+     * @author Louis Demeocq
      */
     public function getTitreDeLoffre(): string
     {
@@ -47,6 +50,7 @@ class Offre
 
     /**
      * @param string $TitreDeLoffre
+     * @author Louis Demeocq
      */
     public function setTitreDeLoffre(string $TitreDeLoffre): void
     {
@@ -55,6 +59,7 @@ class Offre
 
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getIdOffre(): int
     {
@@ -63,6 +68,7 @@ class Offre
 
     /**
      * @param int $idOffre
+     * @author Louis Demeocq
      */
     public function setIdOffre(int $idOffre): void
     {

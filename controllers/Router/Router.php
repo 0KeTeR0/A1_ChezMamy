@@ -3,6 +3,8 @@
 namespace App\ChezMamy\controllers\Router;
 
 use App\ChezMamy\controllers\MainController;
+use App\ChezMamy\controllers\Router\Route\RouteBackofficeIndex;
+use App\ChezMamy\controllers\Router\Route\RouteBackofficeSignalement;
 use App\ChezMamy\controllers\Router\Route\RouteChangeLanguage;
 use App\ChezMamy\controllers\OffresController;
 use App\ChezMamy\controllers\Router\Route\RouteChercherOffres;
@@ -65,7 +67,9 @@ class Router
             "exception" => new RouteException($this->ctrlList["main"]),
             "posterOffres" => new RoutePosterOffres($this->ctrlList["offres"]),
             "recherche" => new RouteChercherOffres($this->ctrlList["offres"]),
-            "gererDemandes" => new RouteGererDemandesSenior($this->ctrlList["offres"])
+            "gererDemandes" => new RouteGererDemandesSenior($this->ctrlList["offres"]),
+            "backofficeIndex"=> new RouteBackofficeIndex($this->ctrlList["main"]),
+            "backofficeSignalement" => new RouteBackofficeSignalement($this->ctrlList["offres"])
         ];
     }
 

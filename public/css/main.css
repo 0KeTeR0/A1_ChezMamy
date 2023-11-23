@@ -420,6 +420,67 @@ header nav ul li > button{
     height: fit-content;
 }
 
+/* ----------------------- menuBackoffice ----------------------- */
+
+aside{
+    z-index: 1;
+    position: fixed;
+    height: 30vw;
+    margin: 0;
+    padding: 0;
+}
+
+.backoffice-sidebar{
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 100%;
+}
+.backoffice-sidebar ul{
+    margin: 0;
+    padding-top: 20px;
+    padding-left: 15px;
+    width: fit-content;
+}
+
+.backoffice-sidebarEntry{
+    color: white;
+    list-style: none;
+    background: #460b4a;
+    padding-right: 10px;
+    border-radius:12px;
+    margin-right: 35px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    margin-bottom: 10px;
+}
+.backoffice-sidebarEntry a{
+    color: white;
+    text-decoration: none;
+}
+.backoffice-sidebarEntry:hover{
+    background: #efefef;
+    cursor: pointer;
+    & a {
+        color: #460b4a;
+    }
+    & i{
+        border-right: #460b4a solid 2px;
+    }
+}
+
+.backoffice-sidebarEntry i{
+    padding-right: 3px;
+    text-align: left;
+    margin-right: 5px;
+    background: white;
+    color: #460b4a;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    border:solid white 2px;
+    border-radius: 10px;
+}
 
 /* ----------------------- Inscription ----------------------- */
 section.registerForm {
@@ -614,6 +675,13 @@ section.registerForm {
 }
 
 /* ----------------------- Recherche d'offres ----------------------- */
+
+.approbation_red{
+    color: #c00000;
+}
+.approbation_green{
+    color:green;
+}
 .filtres-offres {
     margin: 0 10px;
 }
@@ -879,6 +947,42 @@ footer nav div p{
     justify-self: center;
 }
 
+/* ----------------------- Admin ----------------------- */
+
+.bouton-faux-report{
+    background: var(--success-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 2px;
+}
+.bouton-faux-report:hover{
+    background: #2ed221;
+    cursor: pointer;
+}
+
+.boutons-signalement-supprimer{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.boutons-supprimer{
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.boutons-supprimer:hover{
+    background: #e80000;
+    cursor: pointer;
+}
 
 
 /*--------------------responsive (header/footer */

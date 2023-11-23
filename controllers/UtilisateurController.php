@@ -22,6 +22,7 @@ use App\ChezMamy\Views\View;
 /**
  * Classe UtilisateurController
  * Contrôleur des utilisateurs
+ * @author Romain Card
  */
 class UtilisateurController
 {
@@ -29,6 +30,7 @@ class UtilisateurController
      * Vérifie que l'utilisateur ne soit pas connecté pour accéder aux inscription et connexion
      * Renvoie sur la page d'accueil si l'utilisateur est déjà connecté
      * @return void
+     * @author Romain Card
      */
     private function userNotLogged(): void
     {

@@ -9,6 +9,7 @@
     <link rel="icon" href="<?= SCRIPTS ?>img/logo.ico">
     <link rel="stylesheet" href="<?= SCRIPTS ?>css/main.css">
     <script src="<?= SCRIPTS ?>js/script.js"></script>
+    <script src="https://kit.fontawesome.com/25f155e170.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -50,6 +51,9 @@
                             <?php if($isSenior) { ?>
                                 <li><a href="posterOffres"><?= $traductions["nav_post_offers"] ?></a></li>
                                 <li><a href="gererDemandes"><?= $traductions["nav_my_offers"] ?></a></li>
+                            <?php } ?>
+                            <?php if($isStaff) {?>
+                                <li><a href="backofficeIndex"><?= $traductions["nav_admin"] ?></a></li>
                             <?php } ?>
                             <li><a href="deco"><?=$traductions["nav_disconnect"]?></a></li>
                         </ul>

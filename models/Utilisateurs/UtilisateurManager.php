@@ -125,4 +125,14 @@ Class UtilisateurManager extends Model{
     public function isEtudiant(int $idUtilisateur):bool {
         return ($this->execRequest("SELECT * FROM COMPTES_ETUDIANTS WHERE idUtilisateur=?", array($idUtilisateur))->rowCount() == 1);
     }
+
+    /**
+     * Vérifie si l'utilisateur est du staff (modérateur, administrateur)
+     * @param int $idUtilisateur l'id de l'utilisateur à vérifier
+     * @return bool true si l'utilisateur est du staff, false sinon
+     * @author Valentin Colindre
+     */
+    public function isStaff(int $idUtilisateur):bool{
+        return ($this->execRequest("SELECT idRole FROM UTILISATEURS WHERE idUtilisateur=?", array($idUtilisateur))->fetch()["idRole"] > 1);
+    }
 }
