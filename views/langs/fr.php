@@ -235,6 +235,6 @@ return [
     "no_report" => "Aucun signalement à traiter.",
     "needs"=>"Besoins :",
     "sigBy"=>"Signalée par :",
-    "author"=>"Autheur/ice de l'offre :",
+    "author"=>"Auteur•rice de l'offre :",
     "address"=>"Adresse :"
 ];

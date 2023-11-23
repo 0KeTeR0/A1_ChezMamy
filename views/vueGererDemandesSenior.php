@@ -1,7 +1,7 @@
 <section class="gerer-offres">
+    <?php include("message.php"); ?>
     <h2 class="section-title"><?= $traductions['management_title']?></h2>
     <div class="offres">
-
         <?php foreach ($offres as $offre): ?>
         <article class="offre">
             <div class="offre-image">
@@ -15,7 +15,7 @@
             </div>
             <div class="offre-besoins">
                 <form action="" method="post">
-                    <button class="bouton-supprimer"><?= $traductions['delete_offer'] ?></button>
+                    <button class="boutons-supprimer"><?= $traductions['delete_offer'] ?></button>
                     <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
                 </form>
                 <ul>
