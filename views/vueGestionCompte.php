@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach($Utilisateurs as $objet): ?>
+                <?php foreach($utilisateurs as $objet): ?>
                     <tr>
                         <td class="idUserTab"><?= $objet['utilisateur']->getIdUtilisateur() ?></td>
                         <td class="nomPrenomUserTab"><?= $objet['infosUtilisateur']->getPrenom()." ".$objet['infosUtilisateur']->getNom() ?></td>
