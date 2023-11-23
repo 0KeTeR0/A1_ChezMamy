@@ -32,6 +32,10 @@
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <form action="" method="post">
+                <button class="bouton-supprimer">Supprimer</button>
+                <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
+            </form>
         </article>
             <div class="offre-demande-block">
                 <ul class="offre-demande-liste">
