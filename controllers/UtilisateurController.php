@@ -3,11 +3,13 @@ namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
 use App\ChezMamy\models\Offres\TypeLogementManager;
+use App\ChezMamy\models\Utilisateurs\ComptesBloquesManager;
 use App\ChezMamy\models\Utilisateurs\ConnaissancesAssociationManager;
 use App\ChezMamy\models\Utilisateurs\Etudiants\ComptesEtudiantsManager;
 use App\ChezMamy\models\Utilisateurs\Etudiants\EDisposManager;
 use App\ChezMamy\models\Utilisateurs\Etudiants\EDomainesEtudeManager;
 use App\ChezMamy\models\Utilisateurs\InfoUtilisateursManager;
+use App\ChezMamy\models\Utilisateurs\RolesManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\CompteSeniorSBesoinManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\ComptesSeniorsManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
@@ -26,6 +28,8 @@ use App\ChezMamy\Views\View;
  */
 class UtilisateurController
 {
+
+
     /**
      * Vérifie que l'utilisateur ne soit pas connecté pour accéder aux inscription et connexion
      * Renvoie sur la page d'accueil si l'utilisateur est déjà connecté
@@ -197,6 +201,74 @@ class UtilisateurController
         }//Sinon on affiche que le compte existe déjà
         else{
             $this->displayInscription(new Message("Login déjà utilisé", "Erreur d'inscription", "danger"));
+        }
+    }
+
+
+    /**
+     * Affiche la page de gestion de compte du backoffice
+     * @param Message|null $message le message à passer ou null
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function BackofficeGestionCompte(Message $message=null):void{
+        $res = false;
+
+        if (!empty($_SESSION['auth_token'])) {
+            $tokenManager = new TokensManager();
+            $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+
+            if ($tokenOk) {
+                $token = $tokenManager->getByToken($_SESSION['auth_token']);
+                $idUtilisateur = $token->getIdUtilisateur();
+
+                $utilisateurManager = new UtilisateurManager();
+                $res = $utilisateurManager->isStaff($idUtilisateur);
+            }
+        }
+        if(!$res) header('Location: accueil');
+        else{
+
+            $utilisateurs=array();
+
+            $UtilisateurManager = new UtilisateurManager();
+            foreach($utilisateurManager->getAll() as $utilisateur){
+
+                //On récupère les infos du compte
+                $infosManager = new InfoUtilisateursManager();
+                $infosUtilisateur = $infosManager->getByIdUtilisateur($utilisateur->getIdUtilisateur());
+
+                //On vérifie si l'utilisateur est un senior ou non
+                $seniorManager = new ComptesSeniorsManager();
+                $isSenior = $seniorManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())!=null;
+
+                $etudiantManager = new ComptesEtudiantsManager();
+                $isEtudiant = $etudiantManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())!=null;
+
+                //On récupère le role de l'utilisateur
+                $role="";
+                $rolesManager = new RolesManager();
+                foreach ($rolesManager->getAll() as $r){
+                    if($r->getIdRole()==$utilisateur->getIdRole()) $role=$r->getType();
+                }
+
+                $bloqueManager = new ComptesBloquesManager();
+                $bloque=$bloqueManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())!=null;
+
+
+                $utilisateurs[]=[
+                    "utilisateur"=>$utilisateur,
+                    "infosUtilisateur"=>$infosUtilisateur,
+                    "isSenior"=>$isSenior,
+                    "isEtudiant"=>$isEtudiant,
+                    "role"=>$role,
+                    "bloque"=>$bloque
+                ];
+            }
+
+            // affichage de la vue
+            $connexionView = new View('GestionCompte');
+            $connexionView->generer(["message" => $message,"utilisateurs"=>$utilisateurs]);
         }
     }
 
