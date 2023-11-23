@@ -224,7 +224,7 @@ return [
     "Name-and-surname" => "Name and surname : ",
     "Email-address" => "Email address : ",
     "Phone-number" => "Phone number : ",
-    "delete_offer" => "Delete",
+    "delete_offer" => "Delete the offer",
 
     //vueSignalementAdmin.php
     "report_title" => "Reports list",
