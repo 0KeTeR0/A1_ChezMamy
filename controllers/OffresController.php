@@ -554,7 +554,7 @@ class OffresController
         catch (\Exception $e){
             $error=$e->getMessage();
         }
-        if ($error!=null){
+        if ($error!=null and gettype($error)=="string"){
             $error= new Message("Erreur : ".$error, "Erreur d'envoi", "danger");
         }
 
