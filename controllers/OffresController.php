@@ -86,7 +86,7 @@ class OffresController
     /**
      * Vérifie que l'utilisateur soit connecté et est un admin pour pouvoir supprimer les offres
      * Redirige sur l'accueil si l'utilisateur n'est pas connecté ou n'est pas un admin
-     * @return bool
+     * @return bool vrai si admin ou modérateur faux sinon
      * @author Louis Demeocq
      */
     private function userIsStaff(): bool
@@ -113,9 +113,10 @@ class OffresController
     }
 
     /**
-     * Inscrit dans la bdd
-     * @param array $data
+     * Inscrit dans la bdd un étudiant à une offre
+     * @param array $data données de l'offre
      * @return void
+     * @author Louis Demeocq
      */
     public function postulerOffres(array $data): Message
     {
@@ -162,51 +163,69 @@ class OffresController
         ]);
     }
 
+    /**
+     * Supprime l'offre de la bdd
+     * @param array $data données de l'offre
+     * @return Message message affiché en cas d'échec ou de réussite
+     * @author Louis Demeocq
+     */
     public function supprimerOffres(array $data): Message
     {
-        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
-        $this->userIsStaff();
-        $error = null;
         $res = new Message("");
-
-        $tokenManager = new TokensManager();
-        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
-            //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
-            $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
-            $OffresSignaleesManager = new OffresManager();
-            if($OffresSignaleesManager->deleteByIdOffre($data["idOffreToDelete"]))
-            {
-                $res = new Message("L'Offre à bien été supprimer", "Succès", "success");
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        if($this->userIsStaff())
+        {
+            $tokenManager = new TokensManager();
+            if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+                //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
+                $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
+                $OffresSignaleesManager = new OffresManager();
+                if($OffresSignaleesManager->deleteByIdOffre($data["idOffreToDelete"]))
+                {
+                    $res = new Message("L'Offre a bien été supprimé", "Succès", "success");
+                }
+                else $res = new Message("L'Offre n'a pas pu être supprimé", "Erreur");
             }
-            else $res = new Message("L'Offre n'a pas pu être supprimer", "Erreur");
         }
+
 
         return $res;
     }
 
+    /**
+     * Supprime un signalement de la bdd
+     * @param array $data données de l'offre
+     * @return Message message affiché en cas d'échec ou de réussite
+     * @author Louis Demeocq
+     */
     public function supprimerSignalement(array $data): Message
     {
-        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
-        $this->userIsStaff();
-        $error = null;
         $res = new Message("");
-
-        $tokenManager = new TokensManager();
-        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
-            //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
-            $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
-            $OffresSignaleesManager = new OffresSignaleesManager();
-            if($OffresSignaleesManager->deleteByIdOffre($data["idReportToDelete"]))
-            {
-                $res = new Message("Le signalement à bien été supprimer", "Succès", "success");
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        if($this->userIsStaff())
+        {
+            $tokenManager = new TokensManager();
+            if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+                //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
+                $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
+                $OffresSignaleesManager = new OffresSignaleesManager();
+                if($OffresSignaleesManager->deleteByIdOffre($data["idReportToDelete"]))
+                {
+                    $res = new Message("Le signalement a bien été supprimé", "Succès", "success");
+                }
+                else $res = new Message("Le signalement n'a pas pu être supprimé", "Erreur");
             }
-            else $res = new Message("Le signalement n'a pas pu être supprimer", "Erreur");
         }
 
         return $res;
     }
 
 
+    /**
+     * Génére la vue SignalementAdmin et affiche les offres correspondantes
+     * @return void
+     * @authors Louis Demeocq, Valentin Colindre
+     */
     public function displaySignalement(): void
     {
         $this->userIsStaff();
