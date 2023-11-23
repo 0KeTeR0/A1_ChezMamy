@@ -176,19 +176,24 @@ class OffresController
 
         $tokenManager = new TokensManager();
         if ($tokenManager->checkToken($_SESSION["auth_token"])) {
-            $OffresSignaleesManager = new OffresManager();
-            //On supprime les images de l'offre
-            $imageOffreManager = new ImagesOffresManager();
-            while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
-                $link = $image->getLienImage();
-                $imageOffreManager->deleteByLink($link);
-                unlink("public" . DIRECTORY_SEPARATOR . $link);
+            $OffresManager = new OffresManager();
+            //On vérifie que l'offre appartient bien à l'utilisateur
+            if($OffresManager->getByIdOffre($idOffre)->getIdUtilisateur()==$tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur()){
+                //On supprime les images de l'offre
+                $imageOffreManager = new ImagesOffresManager();
+                while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
+                    $link = $image->getLienImage();
+                    $imageOffreManager->deleteByLink($link);
+                    unlink("public" . DIRECTORY_SEPARATOR . $link);
+                }
+                if($OffresManager->deleteByIdOffre($idOffre))
+                {
+                    $res = new Message("L'Offre a bien été supprimé", "Succès", "success");
+                }
+                else $res = new Message("L'Offre n'a pas pu être supprimé", "Erreur");
             }
-            if($OffresSignaleesManager->deleteByIdOffre($idOffre))
-            {
-                $res = new Message("L'Offre a bien été supprimé", "Succès", "success");
-            }
-            else $res = new Message("L'Offre n'a pas pu être supprimé", "Erreur");
+            else $res = new Message("L'Offre ne vous appartient pas","Erreur");
+
         }
 
 
@@ -466,7 +471,6 @@ class OffresController
         try{
             $tokenManager = new TokensManager();
             if($tokenManager->checkToken($_SESSION["auth_token"])) {
-
                 $offreManager = new OffresManager();
                 //On récupère les infos des différentes offres
                 foreach ($offreManager->getAllByIdUtilisateur($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur()) as $offre) {
