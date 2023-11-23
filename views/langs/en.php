@@ -229,4 +229,5 @@ return [
     //vueSignalementAdmin.php
     "report_title" => "Reports list",
     "false_report" => "False report",
+    "no_report" => "No report to handle.",
 ];

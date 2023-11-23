@@ -229,4 +229,5 @@ return [
     //vueSignalementAdmin.php
     "report_title" => "Liste des signalements",
     "false_report" => "Faux signalement",
+    "no_report" => "Aucun signalement à traiter.",
 ];
