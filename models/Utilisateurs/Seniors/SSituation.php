@@ -11,16 +11,19 @@ class SSituation
 {
     /**
      * @var int l'id des valeurs de la table
+     * @author Valentin Colindre
      */
     private int $idSituation;
 
     /**
      * @var string le type de situation
+     * @author Valentin Colindre
      */
     private string $type;
 
     /**
      * @return int renvoi l'id de la table
+     * @author Valentin Colindre
      */
     public function getIdSituation(): int
     {
@@ -30,6 +33,7 @@ class SSituation
     /**
      * @param int $idSituation l'id à mettre
      * @return void
+     * @author Valentin Colindre
      */
     public function setIdSituation(int $idSituation): void
     {
@@ -38,6 +42,7 @@ class SSituation
 
     /**
      * @return string une manière de connaitre le type
+     * @author Valentin Colindre
      */
     public function getType(): string
     {
@@ -48,6 +53,7 @@ class SSituation
      * set le type de situation familial
      * @param string $type type de situation familial
      * @return void
+     * @author Valentin Colindre
      */
     public function setType(string $type): void
     {

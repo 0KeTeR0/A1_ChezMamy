@@ -38,7 +38,7 @@
                             <input type="hidden" name="idReportToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
                         </form>
                         <form action="" method="post">
-                            <button class="bouton-supprimer"><?= $traductions['delete_offer'] ?></button>
+                            <button class="boutons-supprimer"><?= $traductions['delete_offer'] ?></button>
                             <input type="hidden" name="idOffreToDelete" value="<?=$offre['offre']->getIdOffre() ?>">
                         </form>
                     </div>

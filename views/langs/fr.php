@@ -227,6 +227,7 @@ return [
     "delete_offer" => "Supprimer",
     "no_approbation"=>"Demande en cours d'approbation",
     "yes_approbation"=>"Demande approuvée !",
+    "delete_offer" => "Supprimer l'annonce",
 
     //vueSignalementAdmin.php
     "report_title" => "Liste des signalements",

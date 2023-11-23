@@ -224,6 +224,7 @@ return [
     "Name-and-surname" => "Name and surname : ",
     "Email-address" => "Email address : ",
     "Phone-number" => "Phone number : ",
+    "delete_offer" => "Delete the offer",
     "delete_offer" => "Delete",
     "no_approbation"=>"Offer not approved yet",
     "yes_approbation"=>"Offer approved!",

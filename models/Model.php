@@ -12,6 +12,7 @@ use PDOStatement;
 /**
  * Classe abstraite Model
  * Model général
+ * @authors Romain Card, Valentin Colindre
  */
 abstract class Model
 {
@@ -50,8 +51,8 @@ abstract class Model
     /**
      * Retourne le dernier ID de la dernière insertion fait avec
      * le PDO de la classe.
-     * @author Valentin Colindre
      * @return false|string faux ou l'id
+     * @author Valentin Colindre
      */
     protected function getLastId():false|string{
         return $this->getDAO()->lastInsertId();

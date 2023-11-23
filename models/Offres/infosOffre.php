@@ -11,26 +11,31 @@ class infosOffre
 {
     /**
      * @var int l'id d'infosOffre
+     * @author Louis Demeocq
      */
     private int $idInfosOffre;
 
     /**
      * @var int superficie de la chambre en m²
+     * @author Louis Demeocq
      */
     private int $SuperficieDeLaChambre;
 
     /**
      * @var int l'ID de l'offre
+     * @author Louis Demeocq
      */
     private int $idOffre;
 
     /**
      * @var int l'ID du type de logement
+     * @author Louis Demeocq
      */
     private int $idTypeLogement;
 
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getIdInfosOffre(): int
     {
@@ -39,6 +44,7 @@ class infosOffre
 
     /**
      * @param int $idInfosOffre
+     * @author Louis Demeocq
      */
     public function setIdInfosOffre(int $idInfosOffre): void
     {
@@ -47,6 +53,7 @@ class infosOffre
 
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getSuperficieDeLaChambre(): int
     {
@@ -55,6 +62,7 @@ class infosOffre
 
     /**
      * @param int $SuperficieDeLaChambre
+     * @author Louis Demeocq
      */
     public function setSuperficieDeLaChambre(int $SuperficieDeLaChambre): void
     {
@@ -63,6 +71,7 @@ class infosOffre
 
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getIdOffre(): int
     {
@@ -71,6 +80,7 @@ class infosOffre
 
     /**
      * @param int $idOffre
+     * @author Louis Demeocq
      */
     public function setIdOffre(int $idOffre): void
     {
@@ -93,11 +103,20 @@ class infosOffre
         }
     }
 
+    /**
+     * @return int l'ID du type de logement
+     * @author Valentin Colindre
+     */
     public function getIdTypeLogement(): int
     {
         return $this->idTypeLogement;
     }
 
+    /**
+     * @param int $idTypeLogement l'ID du type de logement
+     * @return void
+     * @author Valentin Colindre
+     */
     public function setIdTypeLogement(int $idTypeLogement): void
     {
         $this->idTypeLogement = $idTypeLogement;
