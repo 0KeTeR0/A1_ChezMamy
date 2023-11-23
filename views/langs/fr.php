@@ -15,6 +15,7 @@ return [
     //menuBackoffice
     "nav_admin"=>"Administration",
     "nav_sig"=>"Signalements",
+    "nav_users"=>"Utilisateurs",
     // faq
     "faq_q1" => "La cohabitation intergénérationnelle et solidaire peut-elle être réalisée à n'importe quel âge ?",
     "faq_a1" => "Le concept de cohabitation intergénérationnelle et solidaire est encadré par la Loi Elan et stipule que les jeunes de moins de 30 ans et les personnes de plus de 60 ans peuvent cohabiter de manière intergénérationnelle.<br><br>Si vous avez plus de 30 ans et moins de 60 ans, nous vous invitons à visiter 'La Carte des Colocs' ou 'Cooloc'. Ils proposent des logements partagés, des chambres chez l'habitant et des colocations pour tous les âges.",
@@ -224,7 +225,6 @@ return [
     "Name-and-surname" => "Prénom et nom : ",
     "Email-address" => "Adresse email : ",
     "Phone-number" => "Numéro de téléphone : ",
-    "delete_offer" => "Supprimer",
     "no_approbation"=>"Demande en cours d'approbation",
     "yes_approbation"=>"Demande approuvée !",
     "delete_offer" => "Supprimer l'annonce",
@@ -239,18 +239,19 @@ return [
     "address"=>"Adresse :",
 
     //vueGestionCompte.php
-    "titre_page_gerer_compte" => "",
-    "gérer_compte_tab_header_identité" => "",
-    "gérer_compte_tab_header_type" => "",
-    "gérer_compte_tab_header_role" => "",
-    "gérer_compte_tab_header_etat" => "",
-    "gérer_compte_tab_header_action" => "",
-    "juste_Senior" => "",
-    "juste_Etudiant" => "",
-    "juste_role_utilisateur" => "",
-    "juste_role_moderateur" => "",
-    "gérer_compte_tab_bloqué" => "",
-    "gérer_compte_tab_form_bloquer" => "",
-    "gérer_compte_tab_pas_bloqué" => "",
-    "gérer_compte_tab_form_debloquer" => ""
+    "titre_page_gerer_compte" => "Gérer les comptes",
+    "gérer_compte_tab_header_identité" => "Identité",
+    "gérer_compte_tab_header_type" => "Type",
+    "gérer_compte_tab_header_role" => "Rôle",
+    "gérer_compte_tab_header_etat" => "Etat",
+    "gérer_compte_tab_header_action" => "Actions rapides",
+    "juste_Senior" => "Senior",
+    "juste_Etudiant" => "Etudiant",
+    "juste_role_utilisateur" => "Utilisateur",
+    "juste_role_moderateur" => "Modérateur",
+    "juste_role_administrateur" => "Administrateur",
+    "gérer_compte_tab_bloqué" => "Bloqué",
+    "gérer_compte_tab_form_bloquer" => "Bloquer",
+    "gérer_compte_tab_pas_bloqué" => "Actif",
+    "gérer_compte_tab_form_debloquer" => "Debloquer"
 ];

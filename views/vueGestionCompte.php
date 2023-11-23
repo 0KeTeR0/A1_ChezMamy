@@ -1,3 +1,4 @@
+<?php include('menuBackoffice.php'); ?>
 <section class="">
     <?php include('message.php'); ?>
     <div class="contactBox">
@@ -22,12 +23,12 @@
                         <td class="typeUserTab">
                             <?php if($objet['isSenior']) echo $traductions['juste_Senior'];
                                 else if($objet['isEtudiant']) echo $traductions['juste_Etudiant'];
-                                else echo "none";
                             ?>
                         </td>
                         <td class="roleUserTab">
                             <?php if($objet['role'] == "utilisateur") echo $traductions['juste_role_utilisateur'];
                             else if($objet['role'] == "moderateur") echo $traductions['juste_role_moderateur'];
+                            else if($objet['role'] == "admin") echo $traductions['juste_role_administrateur'];
                             else echo $objet['role'];
                             ?>
                         </td>

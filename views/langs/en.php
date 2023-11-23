@@ -15,6 +15,7 @@ return [
     //menuBackoffice
     "nav_admin"=>"Administration",
     "nav_sig"=>"Reports",
+    "nav_users"=>"Users",
     // faq
     "faq_q1"=>"Can intergenerational, supportive cohabitation be achieved at any age?",
     "faq_a1"=>"The concept of intergenerational and supportive cohabitation is framed by the Loi Elan and stipulates that young people under 30 and people over 60, can do intergenerational cohabitation.<br><br>If you're over 30 and under 60, we invite you to visit 'La Carte des Colocs' or 'Cooloc'. They offer shared accommodation, rooms in private homes and room-sharing for all ages.",
@@ -236,5 +237,21 @@ return [
     "needs"=>"Needs :",
     "sigBy"=>"Reported by :",
     "author"=>"Author :",
-    "address"=>"Address :"
+    "address"=>"Address :",
+
+    //vueGestionCompte.php
+    "titre_page_gerer_compte" => "Manage accounts",
+    "gérer_compte_tab_header_identité" => "Identity",
+    "gérer_compte_tab_header_type" => "Type",
+    "gérer_compte_tab_header_role" => "Role",
+    "gérer_compte_tab_header_etat" => "State",
+    "gérer_compte_tab_header_action" => "Quick actions",
+    "juste_Senior" => "Senior",
+    "juste_Etudiant" => "Student",
+    "juste_role_utilisateur" => "User",
+    "juste_role_moderateur" => "Moderator",
+    "gérer_compte_tab_bloqué" => "Blocked",
+    "gérer_compte_tab_form_bloquer" => "Block",
+    "gérer_compte_tab_pas_bloqué" => "Active",
+    "gérer_compte_tab_form_debloquer" => "Unblock",
 ];
