@@ -285,7 +285,7 @@ class OffresController
             $utilisateurMangager = new UtilisateurManager();
             $auteur = $utilisateurMangager->getByID($offre[0]->getIdUtilisateur())->getLogin();
 
-            $signalerPar = $utilisateurMangager->getByID($offre[1]->getIdUtilisateur())->getLogin();
+            $signalerPar = $utilisateurMangager->getByID($offre[1])->getLogin();
 
             //On ajoute tout ça à une entrée de la liste de retour.
             $offres[] = [
@@ -472,6 +472,10 @@ class OffresController
                 foreach ($offreManager->getAllByIdUtilisateur($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur()) as $offre) {
                     $idOffre = $offre->getIdOffre();
 
+                    if($offre->isApprobation())
+                        $approbation="Approuvée";
+                    else $approbation="En cours d'approbation";
+
                     $infoManager = new InfosOffresManager();
                     $infoOffre = $infoManager->getByIdOffres($idOffre);
                     $typesLogement = (new TypeLogementManager())->getAll();
@@ -539,7 +543,8 @@ class OffresController
                         "infosComplementaires" => $infoComp,
                         "datesOffre" => $datesOffre,
                         "imageOffre" => $image,
-                        "demandes"=> $demandes
+                        "demandes"=> $demandes,
+                        "approbation"=> $approbation
                     ];
                 }
             }
