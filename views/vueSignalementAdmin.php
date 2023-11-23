@@ -45,7 +45,7 @@
             </article>
         <?php endforeach; ?>
         <?php if(count($offres) == 0): ?>
-            <p class="no-offre"><?= $traductions['no_offer'] ?></p>
+            <p class="no-offre"><?= $traductions['no_report'] ?></p>
         <?php endif; ?>
     </div>
 </section>

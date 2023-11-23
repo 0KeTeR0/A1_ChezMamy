@@ -301,6 +301,46 @@ class OffresController
     }
 
     /**
+     * Ajoute l'offre à la base de donnée
+     * @param array $data tableau des données de l'offre
+     * @param int $idUtilisateur id de l'utilisateur qui poste l'offre
+     * @return ?string null si aucun problème, string si erreur
+     * @author valentin Colindre
+     */
+    public function ajoutOffre(array $data, int $idUtilisateur):?string
+    {
+        $error = null;
+        $offresManager = new OffresManager();
+        if ($offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"])) {
+            //On crée les images dans la base de donnée
+            $idOffre = $offresManager->getLast()->getIdOffre();
+            $imgManager = new ImagesOffresManager();
+            foreach ($data["imagesOffre"] as $image) {
+                $imgManager->creationImagesOffres($image, $idOffre);
+            }
+            //Puis les informations principales
+            $infosManager = new InfosOffresManager();
+            $infosManager->creationInfosOffres($idOffre, $data["surfaceChambre"], $data["Housing"]);
+            $idInfo = $infosManager->getByIdOffres($idOffre)->getIdInfosOffre();
+            //Puis les besoins
+            $besoinManager = new BesoinsOffresManager();
+            foreach ($data["needs"] as $need) {
+                $besoinManager->creationBesoinsOffre($need, $idInfo);
+            }
+            //Puis les informations complémentaires
+            $infosComplManager = new InfosComplementairesManager();
+            $infosComplManager->creationInfosComplementaires($data["adresseLogement"], $idInfo, $data["descriptionOffre"]);
+            //Puis les dates
+            $datesOffreManager = new DatesOffreManager();
+            $dateDeb = DateTime::createFromFormat('Y-m-d', $data["date_debut_offre"]);
+            $dateFin = DateTime::createFromFormat('Y-m-d', $data["date_fin_offre"]);
+            $datesOffreManager->creationDatesOffre($dateDeb, $idInfo, $dateFin);
+        }
+        else $error = "Vous avez déjà 5 offres en cours, veuillez en retirer une pour en ajouter une nouvelle.";
+        return $error;
+    }
+
+    /**
      * Execute l'envoie de l'offre
      * @param array $data Données du formulaire
      * @return void
@@ -317,33 +357,7 @@ class OffresController
             if($tokenManager->checkToken($_SESSION["auth_token"])) {
                 //On crée l'offre en récupérant l'IdUtilisateur de l'utilisateur connecté
                 $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
-                $offresManager = new OffresManager();
-                if($offresManager->creationOffres($idUtilisateur, $data["TitreDeLoffre"])) {
-                    //On crée ensuite les images dans la base de donnée
-                    $idOffre = $offresManager->getLast()->getIdOffre();
-                    $imgManager = new ImagesOffresManager();
-                    foreach ($data["imagesOffre"] as $image) {
-                        $imgManager->creationImagesOffres($image, $idOffre);
-                    }
-                    //Puis les informations principales
-                    $infosManager = new InfosOffresManager();
-                    $infosManager->creationInfosOffres($idOffre, $data["surfaceChambre"], $data["Housing"]);
-                    $idInfo = $infosManager->getByIdOffres($idOffre)->getIdInfosOffre();
-                    //Puis les besoins
-                    $besoinManager = new BesoinsOffresManager();
-                    foreach ($data["needs"] as $need) {
-                        $besoinManager->creationBesoinsOffre($need, $idInfo);
-                    }
-                    //Puis les informations complémentaires
-                    $infosComplManager = new InfosComplementairesManager();
-                    $infosComplManager->creationInfosComplementaires($data["adresseLogement"], $idInfo, $data["descriptionOffre"]);
-                    //Puis les dates
-                    $datesOffreManager = new DatesOffreManager();
-                    $dateDeb = DateTime::createFromFormat('Y-m-d', $data["date_debut_offre"]);
-                    $dateFin = DateTime::createFromFormat('Y-m-d', $data["date_fin_offre"]);
-                    $datesOffreManager->creationDatesOffre($dateDeb, $idInfo, $dateFin);
-                }
-                else $error = "Vous avez déjà 5 offres en cours, veuillez en retirer une pour en ajouter une nouvelle.";
+                $error = $this->ajoutOffre($data,$idUtilisateur);
             }
             else{
                 $error="Session invalide";
