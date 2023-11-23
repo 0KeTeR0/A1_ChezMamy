@@ -31,7 +31,7 @@
                             else echo $objet['role'];
                             ?>
                         </td>
-                        <?php if($objet['estBloque']): ?>
+                        <?php if($objet['bloque']): ?>
                             <td class="estBloquerUserTab"><?= $traductions['gérer_compte_tab_bloqué'] ?></td>
                             <td class="estBloquerUserTabAction">
                                 <form action="" method="post">
