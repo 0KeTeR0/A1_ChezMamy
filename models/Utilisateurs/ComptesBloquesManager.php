@@ -69,6 +69,18 @@ class ComptesBloquesManager extends Model
         return $result;
     }
 
-
+    /**
+     * Débloque un compte
+     * @param int $idUtilisateur id du compte à débloquer
+     * @return bool vrai si succès faux si échec
+     */
+    public function deleteByIdUtilisateur(int $idUtilisateur):bool
+    {
+        $result = false;
+        if ($this->execRequest("DElETE FROM COMPTES_BLOQUES WHERE idUtilisateur=?", array($idUtilisateur)) !== false) {
+            $result = true;
+        }
+        return $result;
+    }
 
 }
