@@ -52,8 +52,8 @@ class RouteGererDemandesSenior extends Route
     protected function post(array $params = []): void
     {
         if(isset($params['idOffreToDelete'])){
-            $this->controller->supprimerOffres($this->getParam($params,'idOffreToDelete'));
-            $this->controller->gererDemandesSenior();
+            $message = $this->controller->supprimerOffres($this->getParam($params,'idOffreToDelete'));
+            $this->controller->gererDemandesSenior($message);
         }
     }
 }

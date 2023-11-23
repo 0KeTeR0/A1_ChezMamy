@@ -462,10 +462,10 @@ class OffresController
      * @return void
      * @author Valentin Colindre
      */
-    public function gererDemandesSenior():void{
+    public function gererDemandesSenior(Message $message=null):void{
         // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
         $this->userIsSenior();
-        $error=null;
+        $error=$message;
         $offres = array();
 
         try{
