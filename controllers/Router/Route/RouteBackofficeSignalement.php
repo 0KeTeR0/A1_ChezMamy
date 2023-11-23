@@ -44,10 +44,13 @@ class RouteBackofficeSignalement extends Route
         if(!isset($params["searchPost"])) $params["searchPost"] = "";
 
         $data['searchPost'] = $this->getParam($params, "searchPost");
+        if($this->controller->userIsStaff())
+        {
+            if(!empty($params['idReportToDelete'])) $message = $this->controller->supprimerSignalement(["idReportToDelete" => $this->getParam($params, "idReportToDelete")]);
+            if(!empty($params['idOffreToDelete'])) $message = $this->controller->supprimerOffres($this->getParam($params, "idOffreToDelete"));
+            $this->controller->displaySignalement();
+        }
 
-        if(!empty($params['idReportToDelete'])) $message = $this->controller->supprimerSignalement(["idReportToDelete" => $this->getParam($params, "idReportToDelete")]);
-        if(!empty($params['idOffreToDelete'])) $message = $this->controller->supprimerOffres(["idOffreToDelete" => $this->getParam($params, "idOffreToDelete")]);
-        $this->controller->displaySignalement();
     }
 
 }

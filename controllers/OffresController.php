@@ -89,7 +89,7 @@ class OffresController
      * @return bool vrai si admin ou modérateur faux sinon
      * @author Louis Demeocq
      */
-    private function userIsStaff(): bool
+    public function userIsStaff(): bool
     {
         $res = false;
 
@@ -169,24 +169,28 @@ class OffresController
      * @return Message message affiché en cas d'échec ou de réussite
      * @author Louis Demeocq
      */
-    public function supprimerOffres(array $data): Message
+    public function supprimerOffres(int $idOffre): Message
     {
         $res = new Message("");
         // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
-        if($this->userIsStaff())
-        {
-            $tokenManager = new TokensManager();
-            if ($tokenManager->checkToken($_SESSION["auth_token"])) {
-                //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
-                $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
-                $OffresSignaleesManager = new OffresManager();
-                if($OffresSignaleesManager->deleteByIdOffre($data["idOffreToDelete"]))
-                {
-                    $res = new Message("L'Offre a bien été supprimé", "Succès", "success");
-                }
-                else $res = new Message("L'Offre n'a pas pu être supprimé", "Erreur");
+
+        $tokenManager = new TokensManager();
+        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+            $OffresSignaleesManager = new OffresManager();
+            //On supprime les images de l'offre
+            $imageOffreManager = new ImagesOffresManager();
+            while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
+                $link = $image->getLienImage();
+                $imageOffreManager->deleteByLink($link);
+                unlink($link);
             }
+            if($OffresSignaleesManager->deleteByIdOffre($idOffre))
+            {
+                $res = new Message("L'Offre a bien été supprimé", "Succès", "success");
+            }
+            else $res = new Message("L'Offre n'a pas pu être supprimé", "Erreur");
         }
+
 
 
         return $res;
@@ -206,8 +210,6 @@ class OffresController
         {
             $tokenManager = new TokensManager();
             if ($tokenManager->checkToken($_SESSION["auth_token"])) {
-                //On crée l'OffresSignaleesManager en récupérant l'IdUtilisateur de l'utilisateur connecté
-                $idUtilisateur = $tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur();
                 $OffresSignaleesManager = new OffresSignaleesManager();
                 if($OffresSignaleesManager->deleteByIdOffre($data["idReportToDelete"]))
                 {
@@ -235,10 +237,10 @@ class OffresController
         $offresSignaler = array();
         $offres = array();
         foreach ($offreSignaler->getAll() as $signalement)
-            $offresSignaler[] = $offreManager->getByIdOffre($signalement->getIdOffre());
+            $offresSignaler[] = array($offreManager->getByIdOffre($signalement->getIdOffre()),$signalement->getIdUtilisateur());
         //On récupère les infos des différentes offres
         foreach ($offresSignaler as $offre) {
-            $idOffre = $offre->getIdOffre();
+            $idOffre = $offre[0]->getIdOffre();
 
             $infoManager = new InfosOffresManager();
             $infoOffre = $infoManager->getByIdOffres($idOffre);
@@ -281,18 +283,21 @@ class OffresController
             $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
 
             $utilisateurMangager = new UtilisateurManager();
-            $signalerPar = $utilisateurMangager->getByID($offre->getIdUtilisateur())->getLogin();
+            $auteur = $utilisateurMangager->getByID($offre[0]->getIdUtilisateur())->getLogin();
+
+            $signalerPar = $utilisateurMangager->getByID($offre[1]->getIdUtilisateur())->getLogin();
 
             //On ajoute tout ça à une entrée de la liste de retour.
             $offres[] = [
-                "offre" => $offre,
+                "offre" => $offre[0],
                 "infoOffre" => $infoOffre,
                 "typeLogement" => $typeLogement,
                 "besoins" => $besoins,
                 "infosComplementaires" => $infoComp,
                 "datesOffre" => $datesOffre,
                 "imageOffre" => $image,
-                "signalerPar" => $signalerPar
+                "signalerPar" => $signalerPar,
+                "auteur"=> $auteur
             ];
         }
         $sigView->generer(["offres" => $offres]);
@@ -444,30 +449,6 @@ class OffresController
 
         $view = new View("ChercherOffres");
         $view->generer(["offres" => $offres, "message" => $message]);
-    }
-
-
-    /**
-     * Supprime la demande de logement d'un senior à partir
-     * de l'id offre.
-     * @param int $idOffre id de l'offre
-     * @return void
-     * @author Valentin Colindre
-     */
-    public function supprimerDemandeSenior(int $idOffre):void
-    {
-        //On supprime les images de l'offre
-        $imageOffreManager = new ImagesOffresManager();
-        while(($image = $imageOffreManager->getOneByIdOffres($idOffre))!=null){
-            $link = $image->getLienImage();
-            $imageOffreManager->deleteByLink($link);
-            unlink($link);
-        }
-
-        //On supprime l'offre (cascade)
-        (new OffresManager())->deleteByIdOffre($idOffre);
-
-        $this->gererDemandesSenior();
     }
 
     /**
