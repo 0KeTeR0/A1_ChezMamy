@@ -16,7 +16,7 @@
                 <div class="offre-besoins">
                     <ul>
                         <li><?= $traductions['author'] ?><?= $offre['auteur']?></li>
-                        <li><?= $traductions['address'] ?><?php if(!empty($offre['infosComplementaires']->getAdresse())) echo $offre['infosComplementaires']->getAdresse(); else echo 'Non renseignée'; ?></li>
+                        <li><?= $traductions['address'] ?><?php if(!empty($offre['infosComplementaires']->getAdresse())) echo $offre['infosComplementaires']->getAdresse(); else echo ' Non renseignée'; ?></li>
                         <li><?= $offre['typeLogement']->getType() ?></li>
                         <li><?= $offre['infoOffre']->getSuperficieDeLaChambre() ?>m²</li>
                     </ul>
@@ -26,7 +26,7 @@
                             <li><?= $besoin->getBesoin() ?></li>
                         <?php endforeach; ?>
                     </ul>
-                    <div class="boutons-signalement-supprimer">
+                    <div class="boutonsApprouverSuppriemer">
                         <form action="" method="post">
                             <button class="approveOfferButton"><?= $traductions['approve_offer'] ?></button>
                             <input type="hidden" name="idOffreToApprove" value="<?=$offre['offre']->getIdOffre() ?>">
