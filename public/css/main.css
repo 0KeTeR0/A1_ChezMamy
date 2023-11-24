@@ -993,6 +993,14 @@ footer nav div p{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+.styled-tab tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.styled-tab tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
 .styled-tab thead tr{
     margin-bottom: 5px;
     background-color: var(--main-color);
@@ -1047,8 +1055,9 @@ footer nav div p{
     color: var(--bg-color);
     border-radius: 3px;
     border: none;
-    background: var(--danger-color);
+    background: #4d5054;
     transition: var(--transition);
+    cursor: pointer;
 }
 
 .tabFormPasserModoButton:hover{
@@ -1061,6 +1070,7 @@ footer nav div p{
     border: none;
     background: var(--warning-color);
     transition: var(--transition);
+    cursor: pointer;
 }
 
 .tabFormPasserUtilisateurButton:hover{
@@ -1073,6 +1083,7 @@ footer nav div p{
     border: none;
     background: var(--danger-color);
     transition: var(--transition);
+    cursor: pointer;
 }
 
 .estBloquerUserTabAction .tabFormBloquerButton:hover{
@@ -1085,6 +1096,7 @@ footer nav div p{
     border: none;
     background: var(--success-color);
     transition: var(--transition);
+    cursor: pointer;
 }
 
 .estPasBloquerUserTabAction .tabFormDebloquerButton:hover{
