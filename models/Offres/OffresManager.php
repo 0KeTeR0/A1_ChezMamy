@@ -132,5 +132,14 @@ class OffresManager extends model
         return $result;
     }
 
-
+    /**
+     * Approuve l'offre dans la BDD
+     * @param int $idOffre
+     * @return bool
+     * @author Romain Card
+     */
+    public function approveOffre(int $idOffre): bool
+    {
+        return ($this->execRequest("UPDATE OFFRES SET approbation = 1 WHERE idOffre=?", array($idOffre)) !== false);
+    }
 }
