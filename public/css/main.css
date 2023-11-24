@@ -1132,8 +1132,17 @@ footer nav div p{
 
 /* ----------------------- vueApprouveOffres ----------------------- */
 
+.boutonsApprouverSuppriemer{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5px;
+}
+
 .denyOfferButton{
     color: var(--bg-color);
+    width: 105px;
+    height: 25px;
     border-radius: 3px;
     border: none;
     background: var(--danger-color);
@@ -1153,6 +1162,8 @@ footer nav div p{
 .approveOfferButton{
     color: var(--bg-color);
     border-radius: 3px;
+    width: 105px;
+    height: 25px;
     border: none;
     background: var(--success-color);
     transition: var(--transition);
