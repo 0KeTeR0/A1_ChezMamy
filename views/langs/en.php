@@ -258,6 +258,7 @@ return [
     "gérer_compte_tab_form_passer_utilisateur" => "cancel moderator",
 
     //vueApprouveOffres.php
+    "accept_offer_title" => "List of offers to approve",
     "deny_offer" => "deny offer",
     "approve_offer" => "approve offer"
 ];

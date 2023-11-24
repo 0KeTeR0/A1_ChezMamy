@@ -258,6 +258,7 @@ return [
     "gérer_compte_tab_form_passer_utilisateur" => "Retirer modérateur",
 
     //vueApprouveOffres.php
+    "accept_offer_title" => "Liste des offres à approuver",
     "deny_offer" => "refuser offre",
     "approve_offer" => "approuver offre"
 
