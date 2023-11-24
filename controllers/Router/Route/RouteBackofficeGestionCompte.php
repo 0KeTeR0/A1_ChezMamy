@@ -51,6 +51,8 @@ class RouteBackofficeGestionCompte extends Route
             try {
                 if (!empty($params['idUserABloquer']))  $message = $this->controller->bloqueCompte($this->getParam($params, "idUserABloquer"));
                 if (!empty($params['idUserADebloquer'])) $message = $this->controller->debloqueCompte($this->getParam($params, "idUserADebloquer"));
+                if (!empty($params['idUserPasserUtilisateur'])) $message = $this->controller->changePermission($this->getParam($params, "idUserPasserUtilisateur"), 1);
+                if (!empty($params['idUserPasserModo'])) $message = $this->controller->changePermission($this->getParam($params, "idUserPasserModo"), 2);
             }
             catch (\Exception $e){
                 $message = new Message($e->getMessage());

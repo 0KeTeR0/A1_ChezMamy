@@ -273,6 +273,44 @@ class UtilisateurController
         return $res;
     }
 
+    /**
+     * Change le role d'un compte à partir de son idUtilisateur
+     * @param int $idUtilisateur id de l'utilisateur dont on veut changer le role
+     * @param int $idRole id du role à donner à l'utilisateur
+     * @return Message message d'erreur ou de succès de l'opération
+     * @author Romain Card
+     */
+    public function changePermission(int $idUtilisateur, int $idRole):Message{
+        $res = new Message("Une erreur est survenue pendant le changement de permission.","Erreur de changement de permission");
+
+        //On crée les managers
+        $utilisateurManager = new UtilisateurManager();
+        $tokenManager = new TokensManager();
+
+        //On vérifie que le compte à modifier existe
+        $compte = $utilisateurManager->getByID($idUtilisateur);
+        if($compte!=null){
+            //Puis on vérifie que le compte souhaitant modifier a les permissions pour
+            $role = $utilisateurManager->getByID($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur())->getIdRole();
+            if($compte->getIdRole() <= $role){
+                if($idRole < $role) {
+                    $utilisateurManager->updateRole($idUtilisateur, $idRole);
+
+                    $res = new Message("Le compte a bien été modifié.", "Compte modifié", "success");
+                }
+                else $res->setMessage("Vous n'êtes pas autorisé à donner ce rôle.");
+            }
+            else{
+                $res->setMessage("Vous n'êtes pas autorisé à modifier ce compte.");
+            }
+        }
+        else{
+            $res->setMessage("Ce compte n'existe pas.");
+        }
+
+        return $res;
+    }
+
 
     /**
      * vérifie si l'utilisateur est du staff ou pas (modérateur/admin)
