@@ -246,6 +246,38 @@ class OffresController
         return $res;
     }
 
+
+    /**
+     * Supprime l'offre de la bdd sans vérification d'appartenance
+     * @param array $data données de l'offre
+     * @return Message message affiché en cas d'échec ou de réussite
+     * @author Valentin Colindre
+     */
+    public function supprimerOffresStaff(int $idOffre): Message
+    {
+        $res = new Message("");
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+
+        $tokenManager = new TokensManager();
+        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+            $OffresManager = new OffresManager();
+            //On vérifie que l'offre appartient bien à l'utilisateur
+            //On supprime les images de l'offre
+            $imageOffreManager = new ImagesOffresManager();
+            while (($image = $imageOffreManager->getOneByIdOffres($idOffre)) != null) {
+                $link = $image->getLienImage();
+                $imageOffreManager->deleteByLink($link);
+                unlink("public" . DIRECTORY_SEPARATOR . $link);
+            }
+            if ($OffresManager->deleteByIdOffre($idOffre)) {
+                $res = new Message("L'Offre a bien été supprimé", "Succès", "success");
+            } else $res = new Message("L'Offre n'a pas pu être supprimé", "Erreur");
+
+        }
+
+        return $res;
+    }
+
     /**
      * Supprime un signalement de la bdd
      * @param array $data données de l'offre
