@@ -607,4 +607,30 @@ class OffresController
         if($error!=null) $view->generer(["offres" => $offres,"message" => $error]);
         else $view->generer(["offres" => $offres]);
     }
+
+    /**
+     * Vérifie les informations pour approuver une offre
+     * @param int $idOffre id de l'offre à approuver
+     * @return Message message de retour de l'opération
+     */
+    public function backofficeApprouver(int $idOffre): Message
+    {
+        $res = new Message("Une erreur est survenue pendant l'approbation de l'offre.", "Erreur d'approbation");
+
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        if($this->userIsStaff()) {
+            $offreManager = new OffresManager();
+            $offre = $offreManager->getByIdOffre($idOffre);
+            //On vérifie que l'offre existe
+            if ($offre != null) {
+                //Si l'offre n'est pas déjà approuvée
+                if ($offreManager->approveOffre($idOffre)) $res = new Message("L'offre a bien été approuvée.", "Offre approuvée", "success");
+                //Sinon on affiche un message d'erreur
+                else $res->setMessage("L'offre n'a pas pu être approuvée.");
+            } else $res->setMessage("L'offre n'existe pas.");
+        }
+        else $res->setMessage("Vous n'avez pas les droits pour approuver une offre.");
+
+        return $res;
+    }
 }
