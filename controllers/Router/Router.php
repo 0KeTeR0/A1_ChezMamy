@@ -3,6 +3,7 @@
 namespace App\ChezMamy\controllers\Router;
 
 use App\ChezMamy\controllers\MainController;
+use App\ChezMamy\controllers\Router\Route\RouteBackofficeApprouverOffre;
 use App\ChezMamy\controllers\Router\Route\RouteBackofficeGestionCompte;
 use App\ChezMamy\controllers\Router\Route\RouteBackofficeIndex;
 use App\ChezMamy\controllers\Router\Route\RouteBackofficeSignalement;
@@ -71,7 +72,8 @@ class Router
             "gererDemandes" => new RouteGererDemandesSenior($this->ctrlList["offres"]),
             "backofficeIndex"=> new RouteBackofficeIndex($this->ctrlList["main"]),
             "backofficeSignalement" => new RouteBackofficeSignalement($this->ctrlList["offres"]),
-            "backofficeGestionCompte" => new RouteBackofficeGestionCompte($this->ctrlList["utilisateur"])
+            "backofficeGestionCompte" => new RouteBackofficeGestionCompte($this->ctrlList["utilisateur"]),
+            "backofficeApprouver"=> new RouteBackofficeApprouverOffre($this->ctrlList["offres"])
         ];
     }
 
