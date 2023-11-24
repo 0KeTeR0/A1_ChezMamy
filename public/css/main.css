@@ -1085,7 +1085,7 @@ footer nav div p{
 
 .tabFormPasserUtilisateurButton:focus{
     box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23) inset;
-    color: var(--bg-color);
+    color: var(--txt-color);
     background-color: #ffdc4d;
 }
 
