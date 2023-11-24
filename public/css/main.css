@@ -1064,6 +1064,11 @@ footer nav div p{
     background-color: #7A1010FF;
 }
 
+.tabFormPasserModoButton:focus{
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23) inset;
+    background-color: #a22a2a;
+}
+
 .tabFormPasserUtilisateurButton{
     color: var(--bg-color);
     border-radius: 3px;
@@ -1075,6 +1080,11 @@ footer nav div p{
 
 .tabFormPasserUtilisateurButton:hover{
     background-color: #AD8F1EFF;
+}
+
+.tabFormPasserUtilisateurButton:focus{
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23) inset;
+    background-color: #d0b445;
 }
 
 .estBloquerUserTabAction .tabFormBloquerButton{
@@ -1090,6 +1100,11 @@ footer nav div p{
     background-color: #7A1010FF;
 }
 
+.estBloquerUserTabAction .tabFormBloquerButton:focus{
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23) inset;
+    background-color: #a22a2a;
+}
+
 .estPasBloquerUserTabAction .tabFormDebloquerButton{
     color: var(--bg-color);
     border-radius: 3px;
@@ -1101,6 +1116,11 @@ footer nav div p{
 
 .estPasBloquerUserTabAction .tabFormDebloquerButton:hover{
     background-color: #1E541CFF;
+}
+
+.estPasBloquerUserTabAction .tabFormDebloquerButton:focus{
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23) inset;
+    background-color: #46a442;
 }
 
 /*--------------------responsive (header/footer */
