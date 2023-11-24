@@ -210,8 +210,8 @@ class UtilisateurController
      * @return string|null message d'erreur ou null
      * @author Valentin Colindre
      */
-    public function bloqueCompte(int $idUtilisateur):string|null{
-        $res = null;
+    public function bloqueCompte(int $idUtilisateur):Message{
+        $res = new Message("Une erreur est survenue pendant le blocage du compte.","Erreur de blocage de compte");
 
         $utilisateurManager = new UtilisateurManager();
         $tokenManager = new TokensManager();
@@ -222,13 +222,15 @@ class UtilisateurController
             if($compte->getIdRole()<=$utilisateurManager->getByID($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur())->getIdRole()){
                 $compteBloqueManager = new ComptesBloquesManager();
                 $compteBloqueManager->creationCompteBloque($idUtilisateur);
+
+                $res = new Message("Le compte a bien été bloqué.","Compte bloqué","success");
             }
             else{
-                $res="Vous n'êtes pas autorisé à bloquer ce compte";
+                $res->setMessage("Vous n'êtes pas autorisé à bloquer ce compte");
             }
         }
         else{
-            $res="Ce compte n'existe pas.";
+            $res->setMessage("Ce compte n'existe pas.");
         }
 
         return $res;
@@ -240,8 +242,8 @@ class UtilisateurController
      * @return string|null message d'erreur ou null
      * @author Valentin Colindre
      */
-    public function debloqueCompte(int $idUtilisateur):string|null{
-        $res = null;
+    public function debloqueCompte(int $idUtilisateur):Message{
+        $res = new Message("Une erreur est survenue pendant le déblocage du compte.","Erreur de déblocage de compte");
 
         $utilisateurManager = new UtilisateurManager();
         $tokenManager = new TokensManager();
@@ -252,18 +254,20 @@ class UtilisateurController
             if($compte->getIdRole()<=$utilisateurManager->getByID($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur())->getIdRole()){
                 $compteBloqueManager = new ComptesBloquesManager();
                 //Puis on vérifie si l'utilisateur à débloquer est bien bloqué
-                if($compteBloqueManager->getByIdUtilisateur($idUtilisateur)!=null)
+                if($compteBloqueManager->getByIdUtilisateur($idUtilisateur)!=null) {
                     $compteBloqueManager->deleteByIdUtilisateur($idUtilisateur);
-                else
-                    $res="Ce compte n'est pas bloqué.";
+
+                    $res = new Message("Le compte a bien été débloqué.", "Compte débloqué", "success");
+                }
+                else $res->setMessage("Ce compte n'est pas bloqué.");
 
             }
             else{
-                $res="Vous n'êtes pas autorisé à débloquer ce compte.";
+                $res->setMessage("Vous n'êtes pas autorisé à débloquer ce compte.");
             }
         }
         else{
-            $res="Ce compte n'existe pas.";
+            $res->setMessage("Ce compte n'existe pas.");
         }
 
         return $res;

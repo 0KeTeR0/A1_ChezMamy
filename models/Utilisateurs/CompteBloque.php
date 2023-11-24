@@ -13,7 +13,7 @@ class CompteBloque{
     private int $idCompteBloque;
 
     //raison
-    private string $raison;
+    private ?string $raison;
 
     //id de l'utilisateur bloqué
     private int $idUtilisateur;
@@ -45,12 +45,12 @@ class CompteBloque{
         $this->idCompteBloque = $idCompteBloque;
     }
 
-    public function getRaison(): string
+    public function getRaison(): ?string
     {
-        return $this->raison;
+        return $this->raison ?? "Aucune raison";
     }
 
-    public function setRaison(string $raison): void
+    public function setRaison(?string $raison): void
     {
         $this->raison = $raison;
     }

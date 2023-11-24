@@ -17,7 +17,6 @@
                 </thead>
                 <tbody>
                 <?php foreach($utilisateurs as $objet): ?>
-                    <?php var_dump($objet['bloque']) ?>
                     <tr>
                         <td class="idUserTab"><strong> <?= $objet['utilisateur']->getIdUtilisateur() ?> </strong></td>
                         <td class="nomPrenomUserTab"><?= $objet['infosUtilisateur']->getPrenom()." ".$objet['infosUtilisateur']->getNom() ?></td>
@@ -35,6 +34,23 @@
                         </td>
                         <?php if($objet['bloque']): ?>
                             <td class="estBloquerUserTab"><?= $traductions['gérer_compte_tab_bloqué'] ?></td>
+                            <td class="estPasBloquerUserTabAction">
+                                <form action="" method="post">
+                                    <?php if($objet['isAdmin']): ?>
+                                        <?php if($objet['role'] == "utilisateur"): ?>
+                                            <button class="tabFormPasserModoButton"><?= $traductions['gérer_compte_tab_form_passer_mod'] ?></button>
+                                            <input type="hidden" name="idUserPasserModo" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
+                                        <?php elseif ($objet['role'] == "moderateur"): ?>
+                                            <button class="tabFormPasserUtilisateurButton"><?= $traductions['gérer_compte_tab_form_passer_utilisateur'] ?></button>
+                                            <input type="hidden" name="idUserPasserUtilisateur value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <button class="tabFormDebloquerButton"><?= $traductions['gérer_compte_tab_form_debloquer'] ?></button>
+                                    <input type="hidden" name="idUserADebloquer" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
+                                </form>
+                            </td>
+                        <?php else: ?>
+                            <td class="estPasBloquerUserTab"><?= $traductions['gérer_compte_tab_pas_bloqué'] ?></td>
                             <td class="estBloquerUserTabAction">
                                 <form action="" method="post">
                                     <?php if($objet['isAdmin']): ?>
@@ -49,23 +65,6 @@
                                     <?php endif; ?>
                                     <button class="tabFormBloquerButton"><?= $traductions['gérer_compte_tab_form_bloquer'] ?></button>
                                     <input type="hidden" name="idUserABloquer" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
-                                </form>
-                            </td>
-                        <?php else: ?>
-                            <td class="estPasBloquerUserTab"><?= $traductions['gérer_compte_tab_pas_bloqué'] ?></td>
-                            <td class="estPasBloquerUserTabAction">
-                                <form action="" method="post">
-                                    <?php if($objet['isAdmin']): ?>
-                                        <?php if($objet['role'] == "utilisateur"): ?>
-                                            <button class="tabFormPasserModoButton"><?= $traductions['gérer_compte_tab_form_passer_mod'] ?></button>
-                                            <input type="hidden" name="idUserPasserModo" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
-                                        <?php elseif ($objet['role'] == "moderateur"): ?>
-                                            <button class="tabFormPasserUtilisateurButton"><?= $traductions['gérer_compte_tab_form_passer_utilisateur'] ?></button>
-                                            <input type="hidden" name="idUserPasserUtilisateur value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-                                    <button class="tabFormDebloquerButton"><?= $traductions['gérer_compte_tab_form_debloquer'] ?></button>
-                                    <input type="hidden" name="idUserADebloquer" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
                                 </form>
                             </td>
                         <?php endif; ?>
