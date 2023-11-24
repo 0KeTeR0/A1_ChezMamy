@@ -204,6 +204,59 @@ class UtilisateurController
         }
     }
 
+    public function bloqueCompte(int $idUtilisateur):string|null{
+        $res = null;
+
+        $utilisateurManager = new UtilisateurManager();
+        $tokenManager = new TokensManager();
+        //On récupère le compte à bloquer pour vérifier son existence
+        $compte = $utilisateurManager->getByID($idUtilisateur);
+        if($compte!=null){
+            //Puis on vérifie que le compte souhaitant bloquer a les permissions pour
+            if($compte->getIdRole()<=$utilisateurManager->getByID($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur())->getIdRole()){
+                $compteBloqueManager = new ComptesBloquesManager();
+                $compteBloqueManager->creationCompteBloque($idUtilisateur);
+            }
+            else{
+                $res="Vous n'êtes pas autorisé à bloquer ce compte";
+            }
+        }
+        else{
+            $res="Ce compte n'existe pas.";
+        }
+
+        return $res;
+    }
+
+    public function debloqueCompte(int $idUtilisateur):bool{
+        $res = null;
+
+        $utilisateurManager = new UtilisateurManager();
+        $tokenManager = new TokensManager();
+        //On vérifie que le compte à débloquer existe
+        $compte = $utilisateurManager->getByID($idUtilisateur);
+        if($compte!=null){
+            //Puis on vérifie que le compte souhaitant débloquer a les permissions pour
+            if($compte->getIdRole()<=$utilisateurManager->getByID($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur())->getIdRole()){
+                $compteBloqueManager = new ComptesBloquesManager();
+                //Puis on vérifie si l'utilisateur à débloquer est bien bloqué
+                if($compteBloqueManager->getByIdUtilisateur($idUtilisateur)!=null)
+                    $compteBloqueManager->deleteByIdUtilisateur($idUtilisateur);
+                else
+                    $res="Ce compte n'est pas bloqué.";
+
+            }
+            else{
+                $res="Vous n'êtes pas autorisé à débloquer ce compte.";
+            }
+        }
+        else{
+            $res="Ce compte n'existe pas.";
+        }
+
+        return $res;
+    }
+
 
     /**
      * Affiche la page de gestion de compte du backoffice
@@ -255,6 +308,8 @@ class UtilisateurController
                 $bloqueManager = new ComptesBloquesManager();
                 $bloque=$bloqueManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())!=null;
 
+                $isAdmin = $utilisateurManager->getByID($idUtilisateur)->getIdRole()>=3;
+
 
                 $utilisateurs[]=[
                     "utilisateur"=>$utilisateur,
@@ -262,7 +317,8 @@ class UtilisateurController
                     "isSenior"=>$isSenior,
                     "isEtudiant"=>$isEtudiant,
                     "role"=>$role,
-                    "bloque"=>$bloque
+                    "bloque"=>$bloque,
+                    "isAdmin"=>$isAdmin
                 ];
             }
 
