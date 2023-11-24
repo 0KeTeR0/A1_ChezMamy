@@ -256,5 +256,10 @@ return [
     "gérer_compte_tab_pas_bloqué" => "Actif",
     "gérer_compte_tab_form_debloquer" => "Debloquer",
     "gérer_compte_tab_form_passer_mod" => "Passer modérateur",
-    "gérer_compte_tab_form_passer_utilisateur" => "Retirer modérateur"
+    "gérer_compte_tab_form_passer_utilisateur" => "Retirer modérateur",
+
+    //vueApprouveOffres.php
+    "deny_offer" => "refuser offre",
+    "approve_offer" => "approuver offre"
+
 ];

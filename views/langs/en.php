@@ -256,5 +256,9 @@ return [
     "gérer_compte_tab_pas_bloqué" => "Active",
     "gérer_compte_tab_form_debloquer" => "Unblock",
     "gérer_compte_tab_form_passer_mod" => "make moderator",
-    "gérer_compte_tab_form_passer_utilisateur" => "cancel moderator"
+    "gérer_compte_tab_form_passer_utilisateur" => "cancel moderator",
+
+    //vueApprouveOffres.php
+    "deny_offer" => "deny offer",
+    "approve_offer" => "approve offer"
 ];

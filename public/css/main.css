@@ -1130,6 +1130,44 @@ footer nav div p{
     background-color: #46a442;
 }
 
+/* ----------------------- vueApprouveOffres ----------------------- */
+
+.denyOfferButton{
+    color: var(--bg-color);
+    border-radius: 3px;
+    border: none;
+    background: var(--danger-color);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.denyOfferButton:hover{
+    background-color: #7A1010FF;
+}
+
+.denyOfferButton:focus{
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23) inset;
+    background-color: #a22a2a;
+}
+
+.approveOfferButton{
+    color: var(--bg-color);
+    border-radius: 3px;
+    border: none;
+    background: var(--success-color);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.approveOfferButton:hover{
+    background-color: #1E541CFF;
+}
+
+.approveOfferButton:focus{
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23) inset;
+    background-color: #46a442;
+}
+
 /*--------------------responsive (header/footer */
 
 
