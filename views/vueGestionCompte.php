@@ -45,6 +45,8 @@
                                             <input type="hidden" name="idUserPasserUtilisateur" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
                                         <?php endif; ?>
                                     <?php endif; ?>
+                                </form>
+                                <form action="" method="post">
                                     <button class="tabFormDebloquerButton"><?= $traductions['gérer_compte_tab_form_debloquer'] ?></button>
                                     <input type="hidden" name="idUserADebloquer" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
                                 </form>
@@ -63,6 +65,8 @@
                                         <?php endif; ?>
 
                                     <?php endif; ?>
+                                </form>
+                                <form action="" method="post">
                                     <button class="tabFormBloquerButton"><?= $traductions['gérer_compte_tab_form_bloquer'] ?></button>
                                     <input type="hidden" name="idUserABloquer" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
                                 </form>
