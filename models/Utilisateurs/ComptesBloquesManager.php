@@ -73,6 +73,7 @@ class ComptesBloquesManager extends Model
      * Débloque un compte
      * @param int $idUtilisateur id du compte à débloquer
      * @return bool vrai si succès faux si échec
+     * @author Valentin Colindre
      */
     public function deleteByIdUtilisateur(int $idUtilisateur):bool
     {
