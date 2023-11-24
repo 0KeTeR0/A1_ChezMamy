@@ -5,6 +5,7 @@ namespace App\ChezMamy\controllers\Router\Route;
 use App\ChezMamy\controllers\MainController;
 use App\ChezMamy\controllers\Router\Route;
 use App\ChezMamy\controllers\UtilisateurController;
+use App\ChezMamy\helpers\Message;
 
 /**
  * Classe RouteBackofficeGestionCompte
@@ -44,6 +45,19 @@ class RouteBackofficeGestionCompte extends Route
      */
     protected function post(array $params = []): void
     {
+        $message =null;
 
+        if($this->controller->isStaff()){
+            try {
+                if (!empty($this->getParam($params, "idUserABloquer"))) $this->controller->bloqueCompte($this->getParam($params, "idUserABloquer"));
+                if (!empty($this->getParam($params, "idUserADebloquer"))) $this->controller->debloqueCompte($this->getParam($params, "idUserABloquer"));
+            }
+            catch (\Exception $e){
+                $message = new Message($e->getMessage());
+            }
+        }
+        else header('Location: accueil');
+
+        $this->controller->BackofficeGestionCompte($message);
     }
 }

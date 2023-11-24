@@ -259,6 +259,27 @@ class UtilisateurController
 
 
     /**
+     * vérifie si l'utilisateur est du staff ou pas (modérateur/admin)
+     * @return bool vrai ou faux
+     * @author Valentin Colindre
+     */
+    public function isStaff():bool{
+        $res=false;
+        $tokenManager = new TokensManager();
+        $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+
+        if ($tokenOk) {
+            $token = $tokenManager->getByToken($_SESSION['auth_token']);
+            $idUtilisateur = $token->getIdUtilisateur();
+
+            $utilisateurManager = new UtilisateurManager();
+            $res = $utilisateurManager->isStaff($idUtilisateur);
+        }
+        return $res;
+    }
+
+
+    /**
      * Affiche la page de gestion de compte du backoffice
      * @param Message|null $message le message à passer ou null
      * @return void
@@ -268,23 +289,17 @@ class UtilisateurController
         $res = false;
 
         if (!empty($_SESSION['auth_token'])) {
-            $tokenManager = new TokensManager();
-            $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
-
-            if ($tokenOk) {
-                $token = $tokenManager->getByToken($_SESSION['auth_token']);
-                $idUtilisateur = $token->getIdUtilisateur();
-
-                $utilisateurManager = new UtilisateurManager();
-                $res = $utilisateurManager->isStaff($idUtilisateur);
-            }
+            $res=$this->isStaff();
         }
         if(!$res) header('Location: accueil');
         else{
 
             $utilisateurs=array();
 
-            $UtilisateurManager = new UtilisateurManager();
+            $utilisateurManager = new UtilisateurManager();
+            $tokenManager = new TokensManager();
+            $token = $tokenManager->getByToken($_SESSION['auth_token']);
+            $idUtilisateur = $token->getIdUtilisateur();
             foreach($utilisateurManager->getAll() as $utilisateur){
 
                 //On récupère les infos du compte
