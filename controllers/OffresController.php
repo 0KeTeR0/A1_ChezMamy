@@ -612,6 +612,7 @@ class OffresController
      * Vérifie les informations pour approuver une offre
      * @param int $idOffre id de l'offre à approuver
      * @return Message message de retour de l'opération
+     * @author Romain Card
      */
     public function backofficeApprouver(int $idOffre): Message
     {
