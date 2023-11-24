@@ -106,7 +106,7 @@ Class TokensManager extends Model{
         $result = false;
 
         $bloqueManager = new ComptesBloquesManager();
-        if($bloqueManager->getByIdUtilisateur($this->getByToken($oldToken)->getIdUtilisateur())==null){
+        if($bloqueManager->getByIdUtilisateur($oldToken->getIdUtilisateur())==null){
             $currentTime = new DateTime();
             if($oldToken!==null && isset($_SESSION['auth_token']) && $_SESSION['auth_token'] === $oldToken->getToken()){
                 $diff = $oldToken->getExpirationTime()->getTimestamp() - $currentTime->getTimestamp();
