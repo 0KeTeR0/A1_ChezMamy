@@ -253,5 +253,7 @@ return [
     "gérer_compte_tab_bloqué" => "Bloqué",
     "gérer_compte_tab_form_bloquer" => "Bloquer",
     "gérer_compte_tab_pas_bloqué" => "Actif",
-    "gérer_compte_tab_form_debloquer" => "Debloquer"
+    "gérer_compte_tab_form_debloquer" => "Debloquer",
+    "gérer_compte_tab_form_passer_mod" => "Passer modérateur",
+    "gérer_compte_tab_form_passer_utilisateur" => "Retirer modérateur"
 ];
