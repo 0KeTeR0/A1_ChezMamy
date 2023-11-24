@@ -33,7 +33,7 @@
                             ?>
                         </td>
                         <?php if($objet['bloque']): ?>
-                            <td class="estBloquerUserTab"><?= $traductions['gérer_compte_tab_bloqué'] ?></td>
+                            <td class="estBloquerUserTab"><strong><?= $traductions['gérer_compte_tab_bloqué'] ?></strong></td>
                             <td class="estPasBloquerUserTabAction">
                                 <form action="" method="post">
                                     <?php if($objet['isAdmin']): ?>
