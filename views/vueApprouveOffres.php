@@ -1,7 +1,7 @@
 <?php include('menuBackoffice.php')?>
 <section class="chercher-offres">
     <?php include('message.php'); ?>
-    <h2 class="section-title"><?= $traductions['report_title'] ?></h2>
+    <h2 class="section-title"><?= $traductions['accept_offer_title'] ?></h2>
     <div class="offres">
         <?php foreach($offres as $offre): ?>
             <article class="offre">
@@ -28,11 +28,11 @@
                     </ul>
                     <div class="boutons-signalement-supprimer">
                         <form action="" method="post">
-                            <button class="denyOfferButton"><?= $traductions['deny_offer']?></button>
+                            <button class="approveOfferButton"><?= $traductions['approve_offer'] ?></button>
                             <input type="hidden" name="idOffreToApprove" value="<?=$offre['offre']->getIdOffre() ?>">
                         </form>
                         <form action="" method="post">
-                            <button class="approveOfferButton"><?= $traductions['approve_offer'] ?></button>
+                            <button class="denyOfferButton"><?= $traductions['deny_offer']?></button>
                             <input type="hidden" name="idOffreToDeny" value="<?=$offre['offre']->getIdOffre() ?>">
                         </form>
                     </div>
