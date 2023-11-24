@@ -45,7 +45,7 @@ class RouteBackofficeApprouverOffre extends Route
 
         if($this->controller->userIsStaff())
         {
-            if(!empty($params['idOffreToApprove'])) $message = new Message($this->controller->backofficeApprouver($this->getParam($params, "idOffreToApprove")));
+            if(!empty($params['idOffreToApprove'])) $message = $this->controller->backofficeApprouver($this->getParam($params, "idOffreToApprove"));
             if(!empty($params['idOffreToDeny'])) $message = $this->controller->supprimerOffres($this->getParam($params, "idOffreToDeny"));
             $this->controller->displayApprouverOffre($message);
         }
