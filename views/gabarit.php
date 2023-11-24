@@ -88,7 +88,7 @@
             <li><p><?=$traductions["footer_nav"]?></p>
                 <ul>
                     <li><a id="accueilFooter" href="accueil"><?=$traductions["footer_home"]?></a></li>
-                    <li><a id="rechercherFooter" href="#"><?=$traductions["footer_search"]?></a></li>
+                    <li><a id="rechercherFooter" href="recherche"><?=$traductions["footer_search"]?></a></li>
                     <li><a id="contactFooter" href="contact"><?=$traductions["footer_contact"]?></a></li>
                     <li><a id="connexionFooter" href="connexion"><?=$traductions["footer_connection"]?></a></li>
                     <li><a id="inscriptionFooter" href="inscription"><?=$traductions["footer_register"]?></a></li>

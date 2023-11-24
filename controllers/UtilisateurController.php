@@ -3,11 +3,13 @@ namespace App\ChezMamy\controllers;
 
 use App\ChezMamy\helpers\Message;
 use App\ChezMamy\models\Offres\TypeLogementManager;
+use App\ChezMamy\models\Utilisateurs\ComptesBloquesManager;
 use App\ChezMamy\models\Utilisateurs\ConnaissancesAssociationManager;
 use App\ChezMamy\models\Utilisateurs\Etudiants\ComptesEtudiantsManager;
 use App\ChezMamy\models\Utilisateurs\Etudiants\EDisposManager;
 use App\ChezMamy\models\Utilisateurs\Etudiants\EDomainesEtudeManager;
 use App\ChezMamy\models\Utilisateurs\InfoUtilisateursManager;
+use App\ChezMamy\models\Utilisateurs\RolesManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\CompteSeniorSBesoinManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\ComptesSeniorsManager;
 use App\ChezMamy\models\Utilisateurs\Seniors\SBesoinsManager;
@@ -26,6 +28,8 @@ use App\ChezMamy\Views\View;
  */
 class UtilisateurController
 {
+
+
     /**
      * Vérifie que l'utilisateur ne soit pas connecté pour accéder aux inscription et connexion
      * Renvoie sur la page d'accueil si l'utilisateur est déjà connecté
@@ -197,6 +201,199 @@ class UtilisateurController
         }//Sinon on affiche que le compte existe déjà
         else{
             $this->displayInscription(new Message("Login déjà utilisé", "Erreur d'inscription", "danger"));
+        }
+    }
+
+    /**
+     * Bloque un compte à partir de son idUtilisateur
+     * @param int $idUtilisateur id de l'utilisateur
+     * @return string|null message d'erreur ou null
+     * @author Valentin Colindre
+     */
+    public function bloqueCompte(int $idUtilisateur):Message{
+        $res = new Message("Une erreur est survenue pendant le blocage du compte.","Erreur de blocage de compte");
+
+        $utilisateurManager = new UtilisateurManager();
+        $tokenManager = new TokensManager();
+        //On récupère le compte à bloquer pour vérifier son existence
+        $compte = $utilisateurManager->getByID($idUtilisateur);
+        if($compte!=null){
+            //Puis on vérifie que le compte souhaitant bloquer a les permissions pour
+            if($compte->getIdRole()<=$utilisateurManager->getByID($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur())->getIdRole()){
+                $compteBloqueManager = new ComptesBloquesManager();
+                $compteBloqueManager->creationCompteBloque($idUtilisateur);
+
+                $res = new Message("Le compte a bien été bloqué.","Compte bloqué","success");
+            }
+            else{
+                $res->setMessage("Vous n'êtes pas autorisé à bloquer ce compte");
+            }
+        }
+        else{
+            $res->setMessage("Ce compte n'existe pas.");
+        }
+
+        return $res;
+    }
+
+    /**
+     * débloque un compte à partir de son idUtilisateur
+     * @param int $idUtilisateur id de l'utilisateur
+     * @return string|null message d'erreur ou null
+     * @author Valentin Colindre
+     */
+    public function debloqueCompte(int $idUtilisateur):Message{
+        $res = new Message("Une erreur est survenue pendant le déblocage du compte.","Erreur de déblocage de compte");
+
+        $utilisateurManager = new UtilisateurManager();
+        $tokenManager = new TokensManager();
+        //On vérifie que le compte à débloquer existe
+        $compte = $utilisateurManager->getByID($idUtilisateur);
+        if($compte!=null){
+            //Puis on vérifie que le compte souhaitant débloquer a les permissions pour
+            if($compte->getIdRole()<=$utilisateurManager->getByID($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur())->getIdRole()){
+                $compteBloqueManager = new ComptesBloquesManager();
+                //Puis on vérifie si l'utilisateur à débloquer est bien bloqué
+                if($compteBloqueManager->getByIdUtilisateur($idUtilisateur)!=null) {
+                    $compteBloqueManager->deleteByIdUtilisateur($idUtilisateur);
+
+                    $res = new Message("Le compte a bien été débloqué.", "Compte débloqué", "success");
+                }
+                else $res->setMessage("Ce compte n'est pas bloqué.");
+
+            }
+            else{
+                $res->setMessage("Vous n'êtes pas autorisé à débloquer ce compte.");
+            }
+        }
+        else{
+            $res->setMessage("Ce compte n'existe pas.");
+        }
+
+        return $res;
+    }
+
+    /**
+     * Change le role d'un compte à partir de son idUtilisateur
+     * @param int $idUtilisateur id de l'utilisateur dont on veut changer le role
+     * @param int $idRole id du role à donner à l'utilisateur
+     * @return Message message d'erreur ou de succès de l'opération
+     * @author Romain Card
+     */
+    public function changePermission(int $idUtilisateur, int $idRole):Message{
+        $res = new Message("Une erreur est survenue pendant le changement de permission.","Erreur de changement de permission");
+
+        //On crée les managers
+        $utilisateurManager = new UtilisateurManager();
+        $tokenManager = new TokensManager();
+
+        //On vérifie que le compte à modifier existe
+        $compte = $utilisateurManager->getByID($idUtilisateur);
+        if($compte!=null){
+            //Puis on vérifie que le compte souhaitant modifier a les permissions pour
+            $role = $utilisateurManager->getByID($tokenManager->getByToken($_SESSION["auth_token"])->getIdUtilisateur())->getIdRole();
+            if($compte->getIdRole() <= $role){
+                if($idRole < $role) {
+                    $utilisateurManager->updateRole($idUtilisateur, $idRole);
+
+                    $res = new Message("Le compte a bien été modifié.", "Compte modifié", "success");
+                }
+                else $res->setMessage("Vous n'êtes pas autorisé à donner ce rôle.");
+            }
+            else{
+                $res->setMessage("Vous n'êtes pas autorisé à modifier ce compte.");
+            }
+        }
+        else{
+            $res->setMessage("Ce compte n'existe pas.");
+        }
+
+        return $res;
+    }
+
+
+    /**
+     * vérifie si l'utilisateur est du staff ou pas (modérateur/admin)
+     * @return bool vrai ou faux
+     * @author Valentin Colindre
+     */
+    public function isStaff():bool{
+        $res=false;
+        $tokenManager = new TokensManager();
+        $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+
+        if ($tokenOk) {
+            $token = $tokenManager->getByToken($_SESSION['auth_token']);
+            $idUtilisateur = $token->getIdUtilisateur();
+
+            $utilisateurManager = new UtilisateurManager();
+            $res = $utilisateurManager->isStaff($idUtilisateur);
+        }
+        return $res;
+    }
+
+
+    /**
+     * Affiche la page de gestion de compte du backoffice
+     * @param Message|null $message le message à passer ou null
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function BackofficeGestionCompte(Message $message=null):void{
+        $res = false;
+
+        if (!empty($_SESSION['auth_token'])) {
+            $res=$this->isStaff();
+        }
+        if(!$res) header('Location: accueil');
+        else{
+
+            $utilisateurs=array();
+
+            $utilisateurManager = new UtilisateurManager();
+            $tokenManager = new TokensManager();
+            $token = $tokenManager->getByToken($_SESSION['auth_token']);
+            $idUtilisateur = $token->getIdUtilisateur();
+            foreach($utilisateurManager->getAll() as $utilisateur){
+
+                //On récupère les infos du compte
+                $infosManager = new InfoUtilisateursManager();
+                $infosUtilisateur = $infosManager->getByIdUtilisateur($utilisateur->getIdUtilisateur());
+
+                //On vérifie si l'utilisateur est un senior ou non
+                $seniorManager = new ComptesSeniorsManager();
+                $isSenior = $seniorManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())!=null;
+
+                $etudiantManager = new ComptesEtudiantsManager();
+                $isEtudiant = $etudiantManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())!=null;
+
+                //On récupère le role de l'utilisateur
+                $role="";
+                $rolesManager = new RolesManager();
+                foreach ($rolesManager->getAll() as $r){
+                    if($r->getIdRole()==$utilisateur->getIdRole()) $role=$r->getType();
+                }
+
+                $bloqueManager = new ComptesBloquesManager();
+                $bloque=$bloqueManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())!=null;
+
+                $isAdmin = $utilisateurManager->getByID($idUtilisateur)->getIdRole()>=3;
+
+
+                $utilisateurs[]=[
+                    "utilisateur"=>$utilisateur,
+                    "infosUtilisateur"=>$infosUtilisateur,
+                    "isSenior"=>$isSenior,
+                    "isEtudiant"=>$isEtudiant,
+                    "role"=>$role,
+                    "bloque"=>$bloque,
+                    "isAdmin"=>$isAdmin
+                ];
+            }
+
+            // affichage de la vue
+            $connexionView = new View('GestionCompte');
+            $connexionView->generer(["message" => $message,"utilisateurs"=>$utilisateurs]);
         }
     }
 

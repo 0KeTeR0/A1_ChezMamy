@@ -246,6 +246,38 @@ class OffresController
         return $res;
     }
 
+
+    /**
+     * Supprime l'offre de la bdd sans vérification d'appartenance
+     * @param array $data données de l'offre
+     * @return Message message affiché en cas d'échec ou de réussite
+     * @author Valentin Colindre
+     */
+    public function supprimerOffresStaff(int $idOffre): Message
+    {
+        $res = new Message("");
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+
+        $tokenManager = new TokensManager();
+        if ($tokenManager->checkToken($_SESSION["auth_token"])) {
+            $OffresManager = new OffresManager();
+            //On vérifie que l'offre appartient bien à l'utilisateur
+            //On supprime les images de l'offre
+            $imageOffreManager = new ImagesOffresManager();
+            while (($image = $imageOffreManager->getOneByIdOffres($idOffre)) != null) {
+                $link = $image->getLienImage();
+                $imageOffreManager->deleteByLink($link);
+                unlink("public" . DIRECTORY_SEPARATOR . $link);
+            }
+            if ($OffresManager->deleteByIdOffre($idOffre)) {
+                $res = new Message("L'Offre a bien été supprimé", "Succès", "success");
+            } else $res = new Message("L'Offre n'a pas pu être supprimé", "Erreur");
+
+        }
+
+        return $res;
+    }
+
     /**
      * Supprime un signalement de la bdd
      * @param array $data données de l'offre
@@ -606,5 +638,110 @@ class OffresController
         $view = new View("GererDemandesSenior");
         if($error!=null) $view->generer(["offres" => $offres,"message" => $error]);
         else $view->generer(["offres" => $offres]);
+    }
+
+
+    /**
+     * Affiche la page d'approbation des offres
+     * @param Message|null $message le message à afficher en cas d'évènement
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function displayApprouverOffre(Message $message=null){
+        $this->userIsStaff();
+        $appView = new View('ApprouveOffres');
+        $offreManager = new OffresManager();
+        $offres = array();
+        //On récupère les infos des différentes offres
+        foreach ($offreManager->getUnapproveOffres() as $offre) {
+            $idOffre = $offre->getIdOffre();
+
+            $infoManager = new InfosOffresManager();
+            $infoOffre = $infoManager->getByIdOffres($idOffre);
+            $typesLogement = (new TypeLogementManager())->getAll();
+            $typeLogement = "None";
+
+            foreach ($typesLogement as $tl)
+                if ($tl->getIdTypeLogement() == $infoOffre->getIdTypeLogement()) $typeLogement = $tl;
+
+            //On récupère les besoins en lien avec l'offre
+            $besoinManager = new BesoinsOffresManager();
+            $besoinsOffres = $besoinManager->GetAllByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On compare ça avec les besoins de la table SBesoin
+            $SBesoinsManager = new SBesoinsManager();
+            $listeBesoins = $SBesoinsManager->getAll();
+
+            //On créer la liste des besoins
+            $besoins = array();
+            if($listeBesoins!=null&&$besoinsOffres!=null) {
+                foreach ($listeBesoins as $bs)
+                    foreach ($besoinsOffres as $besoinsOffre)
+                        if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+            }
+
+
+            //On récupère les infos complémentaires
+            $infosComplementairesManager = new InfosComplementairesManager();
+            $infoComp = $infosComplementairesManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On récupère les dates des offres
+            $datesOffresManager = new DatesOffreManager();
+            $datesOffre = $datesOffresManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On récupère l'image
+            $imagesOffresManager = new ImagesOffresManager();
+            $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
+
+            $utilisateurMangager = new UtilisateurManager();
+            $auteur = $utilisateurMangager->getByID($offre->getIdUtilisateur())->getLogin();
+
+
+            //On ajoute tout ça à une entrée de la liste de retour.
+            $offres[] = [
+                "offre" => $offre,
+                "infoOffre" => $infoOffre,
+                "typeLogement" => $typeLogement,
+                "besoins" => $besoins,
+                "infosComplementaires" => $infoComp,
+                "datesOffre" => $datesOffre,
+                "imageOffre" => $image,
+                "auteur"=> $auteur
+            ];
+        }
+        if($message!=null)
+            $appView->generer(["offres" => $offres,"message" => $message]);
+        else
+            $appView->generer(["offres" => $offres]);
+    }
+
+    /**
+     * Vérifie les informations pour approuver une offre
+     * @param int $idOffre id de l'offre à approuver
+     * @return Message message de retour de l'opération
+     * @author Romain Card
+     */
+    public function backofficeApprouver(int $idOffre): Message
+    {
+        $res = new Message("Une erreur est survenue pendant l'approbation de l'offre.", "Erreur d'approbation");
+
+        // Vérifie que l'utilisateur puisse accéder à cette fonctionnalité
+        if($this->userIsStaff()) {
+            $offreManager = new OffresManager();
+            $offre = $offreManager->getByIdOffre($idOffre);
+            //On vérifie que l'offre existe
+            if ($offre != null) {
+                //Si l'offre n'est pas déjà approuvée
+                if ($offreManager->approveOffre($idOffre)) $res = new Message("L'offre a bien été approuvée.", "Offre approuvée", "success");
+                //Sinon on affiche un message d'erreur
+                else $res->setMessage("L'offre n'a pas pu être approuvée.");
+            } else $res->setMessage("L'offre n'existe pas.");
+        }
+        else $res->setMessage("Vous n'avez pas les droits pour approuver une offre.");
+
+        return $res;
     }
 }

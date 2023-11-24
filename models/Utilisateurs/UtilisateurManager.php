@@ -107,6 +107,17 @@ Class UtilisateurManager extends Model{
     }
 
     /**
+     * Change le rôle de l'utilisateur
+     * @param int $idUtilisateur l'id de l'utilisateur dont on veut changer le rôle
+     * @param int $idRole l'id du nouveau rôle
+     * @return bool true si la requête a réussi, false sinon
+     * @author Romain Card
+     */
+    public function updateRole(int $idUtilisateur, int $idRole):bool{
+        return ($this->execRequest("UPDATE UTILISATEURS SET idRole=? WHERE idUtilisateur=?",array($idRole,$idUtilisateur))!==false);
+    }
+
+    /**
      * Vérifie si l'utilisateur est un senior
      * @param int $idUtilisateur l'id de l'utilisateur à vérifier
      * @return bool true si l'utilisateur est un senior, false sinon
