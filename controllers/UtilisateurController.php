@@ -204,6 +204,12 @@ class UtilisateurController
         }
     }
 
+    /**
+     * Bloque un compte à partir de son idUtilisateur
+     * @param int $idUtilisateur id de l'utilisateur
+     * @return string|null message d'erreur ou null
+     * @author Valentin Colindre
+     */
     public function bloqueCompte(int $idUtilisateur):string|null{
         $res = null;
 
@@ -228,7 +234,13 @@ class UtilisateurController
         return $res;
     }
 
-    public function debloqueCompte(int $idUtilisateur):bool{
+    /**
+     * débloque un compte à partir de son idUtilisateur
+     * @param int $idUtilisateur id de l'utilisateur
+     * @return string|null message d'erreur ou null
+     * @author Valentin Colindre
+     */
+    public function debloqueCompte(int $idUtilisateur):string|null{
         $res = null;
 
         $utilisateurManager = new UtilisateurManager();
