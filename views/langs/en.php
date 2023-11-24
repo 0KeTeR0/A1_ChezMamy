@@ -260,6 +260,6 @@ return [
 
     //vueApprouveOffres.php
     "accept_offer_title" => "List of offers to approve",
-    "deny_offer" => "deny offer",
-    "approve_offer" => "approve offer"
+    "deny_offer" => "Deny offer",
+    "approve_offer" => "Approve offer"
 ];

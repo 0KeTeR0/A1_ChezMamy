@@ -260,7 +260,7 @@ return [
 
     //vueApprouveOffres.php
     "accept_offer_title" => "Liste des offres à approuver",
-    "deny_offer" => "refuser offre",
-    "approve_offer" => "approuver offre"
+    "deny_offer" => "Refuser offre",
+    "approve_offer" => "Approuver offre"
 
 ];
