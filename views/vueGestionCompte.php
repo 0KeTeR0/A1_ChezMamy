@@ -42,7 +42,7 @@
                                             <input type="hidden" name="idUserPasserModo" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
                                         <?php elseif ($objet['role'] == "moderateur"): ?>
                                             <button class="tabFormPasserUtilisateurButton"><?= $traductions['gérer_compte_tab_form_passer_utilisateur'] ?></button>
-                                            <input type="hidden" name="idUserPasserUtilisateur value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
+                                            <input type="hidden" name="idUserPasserUtilisateur" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
                                         <?php endif; ?>
                                     <?php endif; ?>
                                     <button class="tabFormDebloquerButton"><?= $traductions['gérer_compte_tab_form_debloquer'] ?></button>
@@ -59,7 +59,7 @@
                                             <input type="hidden" name="idUserPasserModo" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
                                         <?php elseif ($objet['role'] == "moderateur"): ?>
                                             <button class="tabFormPasserUtilisateurButton"><?= $traductions['gérer_compte_tab_form_passer_utilisateur'] ?></button>
-                                            <input type="hidden" name="idUserPasserUtilisateur value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
+                                            <input type="hidden" name="idUserPasserUtilisateur" value="<?=$objet['utilisateur']->getIdUtilisateur() ?>">
                                         <?php endif; ?>
 
                                     <?php endif; ?>
