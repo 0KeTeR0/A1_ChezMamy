@@ -1070,7 +1070,7 @@ footer nav div p{
 }
 
 .tabFormPasserUtilisateurButton{
-    color: var(--bg-color);
+    color: var(--txt-color);
     border-radius: 3px;
     border: none;
     background: var(--warning-color);
@@ -1080,11 +1080,13 @@ footer nav div p{
 
 .tabFormPasserUtilisateurButton:hover{
     background-color: #AD8F1EFF;
+    color: var(--bg-color);
 }
 
 .tabFormPasserUtilisateurButton:focus{
     box-shadow: 0 3px 5px 1px rgba(0, 0, 0, .23) inset;
-    background-color: #d0b445;
+    color: var(--bg-color);
+    background-color: #ffdc4d;
 }
 
 .estBloquerUserTabAction .tabFormBloquerButton{
