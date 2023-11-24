@@ -7,6 +7,7 @@
     --txt-color: #000;
     --bg-color: #fff;
     --success-color: #32812c;
+    --warning-color: #F3C723;
     --danger-color: #ab1515;
     --transition: .2s ease-in-out;
 }
@@ -984,6 +985,111 @@ footer nav div p{
     cursor: pointer;
 }
 
+/* ----------------------- vueGestionCompte ----------------------- */
+
+.styled-tab{
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-tab thead tr{
+    margin-bottom: 5px;
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    text-align: left;
+}
+
+.styled-tab thead tr th{
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    font-weight: bold;
+}
+
+.styled-tab th,
+.styled-tab td{
+    padding: 12px 15px;
+}
+
+.styled-tab tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-tab tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.styled-tab tbody tr:last-of-type {
+    border-bottom: 2px solid var(--main-color);
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.estPasBloquerUserTabAction{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.estBloquerUserTab{
+    color: var(--danger-color);
+}
+
+.estPasBloquerUserTab{
+    color: var(--success-color);
+}
+
+.tabFormPasserModoButton{
+    color: var(--bg-color);
+    border-radius: 3px;
+    border: none;
+    background: var(--danger-color);
+    transition: var(--transition);
+}
+
+.tabFormPasserModoButton:hover{
+    background-color: #7A1010FF;
+}
+
+.tabFormPasserUtilisateurButton{
+    color: var(--bg-color);
+    border-radius: 3px;
+    border: none;
+    background: var(--warning-color);
+    transition: var(--transition);
+}
+
+.tabFormPasserUtilisateurButton:hover{
+    background-color: #AD8F1EFF;
+}
+
+.estBloquerUserTabAction .tabFormBloquerButton{
+    color: var(--bg-color);
+    border-radius: 3px;
+    border: none;
+    background: var(--danger-color);
+    transition: var(--transition);
+}
+
+.estBloquerUserTabAction .tabFormBloquerButton:hover{
+    background-color: #7A1010FF;
+}
+
+.estPasBloquerUserTabAction .tabFormDebloquerButton{
+    color: var(--bg-color);
+    border-radius: 3px;
+    border: none;
+    background: var(--success-color);
+    transition: var(--transition);
+}
+
+.estPasBloquerUserTabAction .tabFormDebloquerButton:hover{
+    background-color: #1E541CFF;
+}
 
 /*--------------------responsive (header/footer */
 
@@ -994,7 +1100,7 @@ footer nav div p{
     margin-top: 0;
     height: 6px;
     width: 40px;
-    background: #460B4A;
+    background: var(--main-color);
     cursor: pointer;
     border-radius: 50px;
 }
@@ -1006,7 +1112,7 @@ footer nav div p{
     top: -10px;
     height: 6px;
     width: 40px;
-    background: #460B4A;
+    background: var(--main-color);
 }
 .menuBurger:after {
     top: 10px;
@@ -1027,7 +1133,7 @@ footer nav div p{
     height: 6px;
     width: 40px;
     transform: rotateZ(45deg);
-    background: #460B4A;
+    background: var(--main-color);
     border-radius: 50px;
 }
 .closeMenu:after {
@@ -1090,10 +1196,10 @@ footer nav div p{
         margin-bottom: 15px;
     }
     header nav .menu .menuBtn a {
-        color: #460B4A;
+        color: var(--main-color);
     }
     header nav .menu .menuBtn a:after {
-        background: #460B4A;
+        background: var(--main-color);
     }
 
     header nav ul li{
