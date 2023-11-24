@@ -607,4 +607,81 @@ class OffresController
         if($error!=null) $view->generer(["offres" => $offres,"message" => $error]);
         else $view->generer(["offres" => $offres]);
     }
+
+
+
+    public function displayApprouverOffre(Message $message=null){
+        $this->userIsStaff();
+        $appView = new View('ApprouveOffres');
+        $offreManager = new OffresManager();
+        $offreSignaler = new OffresSignaleesManager();
+        $offresSignaler = array();
+        $offres = array();
+        foreach ($offreSignaler->getAll() as $signalement)
+            $offresSignaler[] = array($offreManager->getByIdOffre($signalement->getIdOffre()),$signalement->getIdUtilisateur());
+        //On récupère les infos des différentes offres
+        foreach ($offresSignaler as $offre) {
+            $idOffre = $offre[0]->getIdOffre();
+
+            $infoManager = new InfosOffresManager();
+            $infoOffre = $infoManager->getByIdOffres($idOffre);
+            $typesLogement = (new TypeLogementManager())->getAll();
+            $typeLogement = "None";
+
+            foreach ($typesLogement as $tl)
+                if ($tl->getIdTypeLogement() == $infoOffre->getIdTypeLogement()) $typeLogement = $tl;
+
+            //On récupère les besoins en lien avec l'offre
+            $besoinManager = new BesoinsOffresManager();
+            $besoinsOffres = $besoinManager->GetAllByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On compare ça avec les besoins de la table SBesoin
+            $SBesoinsManager = new SBesoinsManager();
+            $listeBesoins = $SBesoinsManager->getAll();
+
+            //On créer la liste des besoins
+            $besoins = array();
+            if($listeBesoins!=null&&$besoinsOffres!=null) {
+                foreach ($listeBesoins as $bs)
+                    foreach ($besoinsOffres as $besoinsOffre)
+                        if ($bs->getIdBesoin() == $besoinsOffre->getIdBesoin()) $besoins[] = $bs;
+            }
+
+
+            //On récupère les infos complémentaires
+            $infosComplementairesManager = new InfosComplementairesManager();
+            $infoComp = $infosComplementairesManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On récupère les dates des offres
+            $datesOffresManager = new DatesOffreManager();
+            $datesOffre = $datesOffresManager->getByIdInfosOffre($infoOffre->getIdInfosOffre());
+
+
+            //On récupère l'image
+            $imagesOffresManager = new ImagesOffresManager();
+            $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
+
+            $utilisateurMangager = new UtilisateurManager();
+            $auteur = $utilisateurMangager->getByID($offre[0]->getIdUtilisateur())->getLogin();
+
+
+            //On ajoute tout ça à une entrée de la liste de retour.
+            $offres[] = [
+                "offre" => $offre[0],
+                "infoOffre" => $infoOffre,
+                "typeLogement" => $typeLogement,
+                "besoins" => $besoins,
+                "infosComplementaires" => $infoComp,
+                "datesOffre" => $datesOffre,
+                "imageOffre" => $image,
+                "auteur"=> $auteur
+            ];
+        }
+        if($message!=null)
+            $appView->generer(["offres" => $offres,"message" => $message]);
+        else
+            $appView->generer(["offres" => $offres]);
+    }
 }

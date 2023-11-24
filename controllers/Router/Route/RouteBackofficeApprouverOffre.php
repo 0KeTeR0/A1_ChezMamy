@@ -4,6 +4,7 @@ namespace App\ChezMamy\controllers\Router\Route;
 
 use App\ChezMamy\controllers\OffresController;
 use App\ChezMamy\controllers\Router\Route;
+use App\ChezMamy\helpers\Message;
 
 class RouteBackofficeApprouverOffre extends Route
 {
@@ -12,7 +13,7 @@ class RouteBackofficeApprouverOffre extends Route
     /**
      * Prépare l'affichage de la page
      * @param OffresController $controller
-     * @author Louis Demeocq
+     * @author Valentin Colindre
      */
     public function __construct(OffresController $controller)
     {
@@ -24,22 +25,30 @@ class RouteBackofficeApprouverOffre extends Route
      * Affiche la page des offres
      * @param array $params Paramètres à passer à la page
      * @return void
-     * @author Louis Demeocq
+     * @author Valentin Colindre
      */
     protected function get(array $params = []): void
     {
-
+        $this->controller->displayApprouverOffre();
     }
 
     /**
      * Exécute une action
      * @param array $params Paramètres à passer à l'exécution
      * @return void
-     * @author Louis Demeocq
+     * @author Valentin Colindre
      */
     protected function post(array $params = []): void
     {
+        $message = null;
 
+
+        if($this->controller->userIsStaff())
+        {
+            if(!empty($params['idOffreToApprove'])) $message = new Message($this->controller->backofficeApprouver($this->getParam($params, "idOffreToApprove")));
+            if(!empty($params['idOffreToDeny'])) $message = $this->controller->supprimerOffres($this->getParam($params, "idOffreToDeny"));
+            $this->controller->displayApprouverOffre($message);
+        }
 
     }
 
