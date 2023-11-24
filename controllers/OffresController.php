@@ -609,19 +609,20 @@ class OffresController
     }
 
 
-
+    /**
+     * Affiche la page d'approbation des offres
+     * @param Message|null $message le message à afficher en cas d'évènement
+     * @return void
+     * @author Valentin Colindre
+     */
     public function displayApprouverOffre(Message $message=null){
         $this->userIsStaff();
         $appView = new View('ApprouveOffres');
         $offreManager = new OffresManager();
-        $offreSignaler = new OffresSignaleesManager();
-        $offresSignaler = array();
         $offres = array();
-        foreach ($offreSignaler->getAll() as $signalement)
-            $offresSignaler[] = array($offreManager->getByIdOffre($signalement->getIdOffre()),$signalement->getIdUtilisateur());
         //On récupère les infos des différentes offres
-        foreach ($offresSignaler as $offre) {
-            $idOffre = $offre[0]->getIdOffre();
+        foreach ($offreManager->getUnapproveOffres() as $offre) {
+            $idOffre = $offre->getIdOffre();
 
             $infoManager = new InfosOffresManager();
             $infoOffre = $infoManager->getByIdOffres($idOffre);
@@ -664,12 +665,12 @@ class OffresController
             $image = ($imagesOffresManager->getOneByIdOffres($idOffre))->getLienImage() ?? "public/img/offres/defaut.png";
 
             $utilisateurMangager = new UtilisateurManager();
-            $auteur = $utilisateurMangager->getByID($offre[0]->getIdUtilisateur())->getLogin();
+            $auteur = $utilisateurMangager->getByID($offre->getIdUtilisateur())->getLogin();
 
 
             //On ajoute tout ça à une entrée de la liste de retour.
             $offres[] = [
-                "offre" => $offre[0],
+                "offre" => $offre,
                 "infoOffre" => $infoOffre,
                 "typeLogement" => $typeLogement,
                 "besoins" => $besoins,
