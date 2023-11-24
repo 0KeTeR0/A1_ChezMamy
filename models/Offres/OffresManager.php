@@ -142,4 +142,25 @@ class OffresManager extends model
     {
         return ($this->execRequest("UPDATE OFFRES SET approbation = 1 WHERE idOffre=?", array($idOffre)) !== false);
     }
+
+    /**
+     * Renvoie les offres non approuvées
+     * @return array liste des offres non approuvées
+     * @author Romain Card
+     */
+    public function getUnapproveOffres(): array
+    {
+        $result = $this->execRequest("SELECT * FROM OFFRES WHERE approbation = 0")->fetchAll();
+        if($result!==false){
+            $val = array();
+            foreach ($result as $offre){
+                $nOffre = new Offre();
+                $nOffre->hydrate($offre);
+                $val[] = $nOffre;
+            }
+        }
+        else $val=array();
+
+        return $val;
+    }
 }
