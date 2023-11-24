@@ -226,7 +226,6 @@ return [
     "Email-address" => "Email address : ",
     "Phone-number" => "Phone number : ",
     "delete_offer" => "Delete the offer",
-    "delete_offer" => "Delete",
     "no_approbation"=>"Offer not approved yet",
     "yes_approbation"=>"Offer approved!",
 
@@ -250,6 +249,7 @@ return [
     "juste_Etudiant" => "Student",
     "juste_role_utilisateur" => "User",
     "juste_role_moderateur" => "Moderator",
+    "juste_role_administrateur" => "Administrator",
     "gérer_compte_tab_bloqué" => "Blocked",
     "gérer_compte_tab_form_bloquer" => "Block",
     "gérer_compte_tab_pas_bloqué" => "Active",
