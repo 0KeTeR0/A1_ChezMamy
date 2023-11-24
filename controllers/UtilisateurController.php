@@ -333,7 +333,7 @@ class UtilisateurController
                 }
 
                 $bloqueManager = new ComptesBloquesManager();
-                $bloque=$bloqueManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())!=null;
+                $bloque=$bloqueManager->getByIdUtilisateur($utilisateur->getIdUtilisateur())==null;
 
                 $isAdmin = $utilisateurManager->getByID($idUtilisateur)->getIdRole()>=3;
 
