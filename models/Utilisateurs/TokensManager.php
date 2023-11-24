@@ -106,9 +106,9 @@ Class TokensManager extends Model{
         $result = false;
 
         $bloqueManager = new ComptesBloquesManager();
-        if($bloqueManager->getByIdUtilisateur($oldToken->getIdUtilisateur())==null){
+        if($oldToken!==null && $oldToken->getByIdUtilisateur($oldToken->getIdUtilisateur())==null){
             $currentTime = new DateTime();
-            if($oldToken!==null && isset($_SESSION['auth_token']) && $_SESSION['auth_token'] === $oldToken->getToken()){
+            if(isset($_SESSION['auth_token']) && $_SESSION['auth_token'] === $oldToken->getToken()){
                 $diff = $oldToken->getExpirationTime()->getTimestamp() - $currentTime->getTimestamp();
                 if($diff > 0){
                     $time= ($currentTime)->add(\DateInterval::createFromDateString("900 seconds"));
