@@ -12,16 +12,19 @@ class SPropriete
 {
     /**
      * @var int l'id des valeurs de la table
+     * @author Valentin Colindre
      */
     private int $idPropriete;
 
     /**
      * @var string le type de propriete
+     * @author Valentin Colindre
      */
     private string $type;
 
     /**
      * @return int renvoi l'id de la table
+     * @author Valentin Colindre
      */
     public function getIdPropriete(): int
     {
@@ -31,6 +34,7 @@ class SPropriete
     /**
      * @param int $idPropriete l'id à mettre
      * @return void
+     * @author Valentin Colindre
      */
     public function setIdPropriete(int $idPropriete): void
     {
@@ -39,6 +43,7 @@ class SPropriete
 
     /**
      * @return string une manière de connaitre le type
+     * @author Valentin Colindre
      */
     public function getType(): string
     {
@@ -49,6 +54,7 @@ class SPropriete
      * set le type de propriete
      * @param string $type type de propriete
      * @return void
+     * @author Valentin Colindre
      */
     public function setType(string $type): void
     {

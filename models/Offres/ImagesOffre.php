@@ -11,21 +11,25 @@ class ImagesOffre
 {
     /**
      * @var int l'id de l'image
+     * @author Louis Demeocq
      */
     private int $idImageOffre;
 
     /**
      * @var string le lien vers l'image
+     * @author Louis Demeocq
      */
     private string $lienImage;
 
     /**
      * @var int l'id de l'Offre
+     * @author Louis Demeocq
      */
     private int $idOffre;
 
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getIdImageOffre(): int
     {
@@ -34,6 +38,7 @@ class ImagesOffre
 
     /**
      * @param int $idImageOffre
+     * @author Louis Demeocq
      */
     public function setIdImageOffre(int $idImageOffre): void
     {
@@ -42,6 +47,7 @@ class ImagesOffre
 
     /**
      * @return string
+     * @author Louis Demeocq
      */
     public function getLienImage(): string
     {
@@ -50,6 +56,7 @@ class ImagesOffre
 
     /**
      * @param string $lienImage
+     * @author Louis Demeocq
      */
     public function setLienImage(string $lienImage): void
     {
@@ -58,6 +65,7 @@ class ImagesOffre
 
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getIdOffre(): int
     {
@@ -66,6 +74,7 @@ class ImagesOffre
 
     /**
      * @param int $idOffre
+     * @author Louis Demeocq
      */
     public function setIdOffre(int $idOffre): void
     {

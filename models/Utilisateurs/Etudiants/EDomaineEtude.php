@@ -10,10 +10,12 @@ class EDomaineEtude
 {
     /**
      * @var int l'id du domaine d'étude
+     * @author Romain Card
      */
     private int $idDomaineEtude;
     /**
      * @var string le nom du domaine d'étude
+     * @author Romain Card
      */
     private string $domaine;
 

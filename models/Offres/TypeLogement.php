@@ -11,16 +11,19 @@ class TypeLogement
 {
     /**
      * @var int l'id de la valeur de la table
+     * @author Louis Demeocq
      */
     private int $idTypeLogement;
 
     /**
      * @var string les différents types de logement
+     * @author Louis Demeocq
      */
     private string $type;
 
     /**
      * @return int renvoi l'id du type
+     * @author Louis Demeocq
      */
     public function getIdTypeLogement(): int
     {
@@ -30,6 +33,7 @@ class TypeLogement
     /**
      * @param int $idTypeLogement l'id à mettre
      * @return void
+     * @author Louis Demeocq
      */
     public function setIdTypeLogement(int $idTypeLogement): void
     {
@@ -38,6 +42,7 @@ class TypeLogement
 
     /**
      * @return string un type de logement à mettre
+     * @author Louis Demeocq
      */
     public function getType(): string
     {
@@ -47,6 +52,7 @@ class TypeLogement
     /**
      * @param string $type un type de logement
      * @return void
+     * @author Louis Demeocq
      */
     public function setType(string $type): void
     {

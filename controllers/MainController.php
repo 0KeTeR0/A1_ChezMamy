@@ -49,6 +49,33 @@ class MainController
     }
 
     /**
+     * Affiche la page d'accueil du backoffice
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function BackofficeIndex():void{
+        $isStaff = false;
+
+        if (!empty($_SESSION['auth_token'])) {
+            $tokenManager = new TokensManager();
+            $tokenOk = $tokenManager->checkToken($_SESSION['auth_token']);
+
+            if($tokenOk) {
+                $idUtilisateur = (new TokensManager())->getByToken($_SESSION['auth_token'])->getIdUtilisateur();
+                $isStaff = (new UtilisateurManager())->isStaff($idUtilisateur);
+            }
+        }
+
+        // affichage de la vue
+        if($isStaff){
+            $indexView = new View('BackofficeIndex');
+            $indexView->generer(['isStaff' => $isStaff]);
+        }
+        else $this->Index();
+    }
+
+
+    /**
      * Affiche la page contact
      * @param Message|null $message Message éventuel à afficher
      * @return void

@@ -22,7 +22,7 @@ class InfosOffresManager extends model
     {
         $result = false;
         if ($this->getByIdOffres($idOffre) == null){
-            if ($this->execRequest("INSERT INTO INFOS_OFFRES (idOffre, SuperficieDeLaChambre,idLogement ) VALUES(?, ?, ?)", array($idOffre, $superficie,$idLogement)) !== false){
+            if ($this->execRequest("INSERT INTO INFOS_OFFRES (idOffre, SuperficieDeLaChambre,idTypeLogement ) VALUES(?, ?, ?)", array($idOffre, $superficie,$idLogement)) !== false){
                 $result = true;
             }
         }
@@ -61,5 +61,20 @@ class InfosOffresManager extends model
             $infos_array[] = $infos_object;
         }
         return $infos_array;
+    }
+
+    /**
+     * Supprime l'InfosOffre d'id $idOffre dans la BDD
+     * @param int $idOffre l'id de l'InfosOffre que l'on veut supprimer
+     * @return bool renvoie True si la requête est bien exécuté
+     * @author Louis Dememocq
+     */
+    public function deleteByIdOffre(int $idOffre): bool
+    {
+        $result = false;
+        if ($this->execRequest("DElETE FROM INFOS_OFFRES WHERE idOffre=?", array($idOffre)) !== false) {
+            $result = true;
+        }
+        return $result;
     }
 }

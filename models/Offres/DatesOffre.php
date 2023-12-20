@@ -64,8 +64,9 @@ class DatesOffre{
         return $this->DateDebut;
     }
 
-    public function setDateDebut(DateTime $DateDebut): void
+    public function setDateDebut(string $DateDebut): void
     {
+        $DateDebut = new DateTime($DateDebut);
         $this->DateDebut = $DateDebut;
     }
 
@@ -74,8 +75,9 @@ class DatesOffre{
         return $this->DateFin;
     }
 
-    public function setDateFin(DateTime $DateFin): void
+    public function setDateFin(string $DateFin): void
     {
+        $DateFin = new DateTime($DateFin);
         $this->DateFin = $DateFin;
     }
 

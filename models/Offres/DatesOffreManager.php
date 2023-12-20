@@ -14,7 +14,6 @@ use DateTime;
 class DatesOffreManager extends Model
 {
 
-
     /**
      * Créer un nouvel DatesOffre à partir des champs
      * nécessaires. Renvoi vrai si l'opération
@@ -37,7 +36,7 @@ class DatesOffreManager extends Model
     }
 
     /**
-     * récupère le DatesOffre qui détient la clé étrangère idInfosOffre
+     * Récupère le DatesOffre qui détient la clé étrangère idInfosOffre
      * de la valeur donnée en paramètre
      * @param int $idInfosOffre l'ID de l'infoOffre
      * @return DatesOffre|null renvoi le DatesOffre ou rien s'il n'existe pas dans la DB.
@@ -52,5 +51,20 @@ class DatesOffreManager extends Model
         else $val=null;
 
         return $val;
+    }
+
+    /**
+     * Supprimes les datesOffre d'id $idInfosOffre dans la BDD
+     * @param int $idInfosOffre l'id des datesOffres que l'on veut supprimer
+     * @return bool renvoie True si la requête est bien exécuté
+     * @author Louis Dememocq
+     */
+    public function deleteByIdOffre(int $idInfosOffre): bool
+    {
+        $result = false;
+        if ($this->execRequest("DElETE FROM DATES_OFFRE WHERE idInfosOffre=?", array($idInfosOffre)) !== false) {
+            $result = true;
+        }
+        return $result;
     }
 }

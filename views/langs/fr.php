@@ -11,6 +11,12 @@ return [
     "nav_disconnect"=>"Déconnexion",
     "nav_searchHolder" => "Rechercher une offre",
     "nav_post_offers" => "Poster une offre",
+    "nav_my_offers" => "Gérer mes offres",
+    //menuBackoffice
+    "nav_admin"=>"Administration",
+    "nav_sig"=>"Signalements",
+    "nav_users"=>"Utilisateurs",
+    "nav_app"=> "Approbations",
     // faq
     "faq_q1" => "La cohabitation intergénérationnelle et solidaire peut-elle être réalisée à n'importe quel âge ?",
     "faq_a1" => "Le concept de cohabitation intergénérationnelle et solidaire est encadré par la Loi Elan et stipule que les jeunes de moins de 30 ans et les personnes de plus de 60 ans peuvent cohabiter de manière intergénérationnelle.<br><br>Si vous avez plus de 30 ans et moins de 60 ans, nous vous invitons à visiter 'La Carte des Colocs' ou 'Cooloc'. Ils proposent des logements partagés, des chambres chez l'habitant et des colocations pour tous les âges.",
@@ -208,5 +214,53 @@ return [
     "offer_description" => "Description",
     "offer_drop_files" => "Déposer vos photos ici",
     "offer_images" => "Images de l'offre",
-    "offer_submit" => "Poster l'offre"
+    "offer_submit" => "Poster l'offre",
+
+    // vueRechercherOffres.php
+    "search_title" => "Rechercher une offre de logement",
+    "offer_apply" => "Postuler pour l'offre",
+    "no_offer" => "Aucune offre ne correspond à votre recherche.",
+
+    // vueGererDemandesSenior.php
+    "management_title" => "Gérer vos offres",
+    "Name-and-surname" => "Prénom et nom : ",
+    "Email-address" => "Adresse email : ",
+    "Phone-number" => "Numéro de téléphone : ",
+    "no_approbation"=>"Demande en cours d'approbation",
+    "yes_approbation"=>"Demande approuvée !",
+    "delete_offer" => "Supprimer l'annonce",
+
+    //vueSignalementAdmin.php
+    "report_title" => "Liste des signalements",
+    "false_report" => "Faux signalement",
+    "no_report" => "Aucun signalement à traiter.",
+    "needs"=>"Besoins :",
+    "sigBy"=>"Signalée par :",
+    "author"=>"Auteur•rice de l'offre :",
+    "address"=>"Adresse :",
+
+    //vueGestionCompte.php
+    "titre_page_gerer_compte" => "Gérer les comptes",
+    "gérer_compte_tab_header_identité" => "Identité",
+    "gérer_compte_tab_header_type" => "Type",
+    "gérer_compte_tab_header_role" => "Rôle",
+    "gérer_compte_tab_header_etat" => "Etat",
+    "gérer_compte_tab_header_action" => "Actions rapides",
+    "juste_Senior" => "Senior",
+    "juste_Etudiant" => "Etudiant",
+    "juste_role_utilisateur" => "Utilisateur",
+    "juste_role_moderateur" => "Modérateur",
+    "juste_role_administrateur" => "Administrateur",
+    "gérer_compte_tab_bloqué" => "Bloqué",
+    "gérer_compte_tab_form_bloquer" => "Bloquer",
+    "gérer_compte_tab_pas_bloqué" => "Actif",
+    "gérer_compte_tab_form_debloquer" => "Debloquer",
+    "gérer_compte_tab_form_passer_mod" => "Passer modérateur",
+    "gérer_compte_tab_form_passer_utilisateur" => "Retirer modérateur",
+
+    //vueApprouveOffres.php
+    "accept_offer_title" => "Liste des offres à approuver",
+    "deny_offer" => "Refuser offre",
+    "approve_offer" => "Approuver offre"
+
 ];

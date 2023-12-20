@@ -32,4 +32,39 @@ class BesoinsOffresManager extends Model
     }
 
 
+    /**
+     * Renvoi la liste des besoins liés à une offre
+     * @param int $idInfosOffre Id de l'infoOffre lié aux besoins
+     * @return array Liste des besoins
+     * @author Valentin Colindre
+     */
+    public function GetAllByIdInfosOffre(int $idInfosOffre):?array{
+        $result = $this->execRequest("SELECT * FROM BESOINS_OFFRES WHERE idInfosOffre=?", array($idInfosOffre))->fetchAll();
+        if ($result != false){
+            $besoins = array();
+            foreach ($result as $besoin){
+                $besoinInstance = new BesoinOffres();
+                $besoinInstance->hydrate($besoin);
+                $besoins[] = $besoinInstance;
+            }
+        }
+        else $besoins = null;
+
+        return $besoins;
+    }
+
+    /**
+     * Supprimes les besoinsOffres d'id $idInfosOffre dans la BDD
+     * @param int $idInfosOffre l'id des besoinsOffres que l'on veut supprimer
+     * @return bool renvoie True si la requête est bien exécuté
+     * @author Louis Dememocq
+     */
+    public function deleteByIdOffre(int $idInfosOffre): bool
+    {
+        $result = false;
+        if ($this->execRequest("DElETE FROM BESOINS_OFFRES WHERE idInfosOffre=?", array($idInfosOffre)) !== false) {
+            $result = true;
+        }
+        return $result;
+    }
 }

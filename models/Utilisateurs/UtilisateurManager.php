@@ -107,6 +107,17 @@ Class UtilisateurManager extends Model{
     }
 
     /**
+     * Change le rôle de l'utilisateur
+     * @param int $idUtilisateur l'id de l'utilisateur dont on veut changer le rôle
+     * @param int $idRole l'id du nouveau rôle
+     * @return bool true si la requête a réussi, false sinon
+     * @author Romain Card
+     */
+    public function updateRole(int $idUtilisateur, int $idRole):bool{
+        return ($this->execRequest("UPDATE UTILISATEURS SET idRole=? WHERE idUtilisateur=?",array($idRole,$idUtilisateur))!==false);
+    }
+
+    /**
      * Vérifie si l'utilisateur est un senior
      * @param int $idUtilisateur l'id de l'utilisateur à vérifier
      * @return bool true si l'utilisateur est un senior, false sinon
@@ -124,5 +135,15 @@ Class UtilisateurManager extends Model{
      */
     public function isEtudiant(int $idUtilisateur):bool {
         return ($this->execRequest("SELECT * FROM COMPTES_ETUDIANTS WHERE idUtilisateur=?", array($idUtilisateur))->rowCount() == 1);
+    }
+
+    /**
+     * Vérifie si l'utilisateur est du staff (modérateur, administrateur)
+     * @param int $idUtilisateur l'id de l'utilisateur à vérifier
+     * @return bool true si l'utilisateur est du staff, false sinon
+     * @author Valentin Colindre
+     */
+    public function isStaff(int $idUtilisateur):bool{
+        return ($this->execRequest("SELECT idRole FROM UTILISATEURS WHERE idUtilisateur=?", array($idUtilisateur))->fetch()["idRole"] > 1);
     }
 }

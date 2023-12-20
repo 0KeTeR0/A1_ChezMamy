@@ -4,9 +4,9 @@
         <p><?= $traductions['index_presentation'] ?></p>
     </div>
     <div class="bouton-group">
-        <div class="bouton">
+        <a href="recherche" class="bouton">
             <p><?= $traductions['index_button1'] ?></p>
-        </div>
+        </a>
         <a href="<?= $isSenior ? 'posterOffres' : 'inscription' ?>" class="bouton">
             <p><?= $traductions['index_button2'] ?></p>
         </a>

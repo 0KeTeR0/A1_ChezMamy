@@ -11,16 +11,19 @@ class ConnaissancesAssociation
 {
     /**
      * @var int l'id des valeurs de la table
+     * @author Louis Demeocq
      */
     private int $idConnaissanceAssociation;
 
     /**
      * @var string les différentes manières de connaitre l'association
+     * @author Louis Demeocq
      */
     private string $moyen;
 
     /**
      * @return int renvoi l'id de la table
+     * @author Louis Demeocq
      */
     public function getIdConnaissanceAssociation(): int
     {
@@ -30,6 +33,7 @@ class ConnaissancesAssociation
     /**
      * @param int $idConnaissanceAssociation l'id à mettre
      * @return void
+     * @author Louis Demeocq
      */
     public function setIdConnaissanceAssociation(int $idConnaissanceAssociation): void
     {
@@ -38,6 +42,7 @@ class ConnaissancesAssociation
 
     /**
      * @return string une manière de connaitre l'association
+     * @author Louis Demeocq
      */
     public function getMoyen(): string
     {
@@ -47,6 +52,7 @@ class ConnaissancesAssociation
     /**
      * @param string $moyen une manière de connaitre à mettre
      * @return void
+     * @author Louis Demeocq
      */
     public function setMoyen(string $moyen): void
     {

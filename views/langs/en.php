@@ -11,6 +11,12 @@ return [
     "nav_disconnect"=>"Disconnect",
     "nav_searchHolder"=>"Search an offer",
     "nav_post_offers"=>"Post an offer",
+    "nav_my_offers"=>"Manage my offers",
+    //menuBackoffice
+    "nav_admin"=>"Administration",
+    "nav_sig"=>"Reports",
+    "nav_users"=>"Users",
+    "nav_app"=> "Approbations",
     // faq
     "faq_q1"=>"Can intergenerational, supportive cohabitation be achieved at any age?",
     "faq_a1"=>"The concept of intergenerational and supportive cohabitation is framed by the Loi Elan and stipulates that young people under 30 and people over 60, can do intergenerational cohabitation.<br><br>If you're over 30 and under 60, we invite you to visit 'La Carte des Colocs' or 'Cooloc'. They offer shared accommodation, rooms in private homes and room-sharing for all ages.",
@@ -208,5 +214,52 @@ return [
     "offer_description" => "Description",
     "offer_drop_files" => "Drop your pictures here",
     "offer_images" => "Images",
-    "offer_submit" => "Submit offer"
+    "offer_submit" => "Submit offer",
+
+    // vueChercherOffres.php
+    "search_title" => "Search an offer",
+    "offer_apply" => "Apply to offer",
+    "no_offer" => "No offer found for your search.",
+
+    // vueGererDemandesSenior.php
+    "management_title" => "Manage your offers",
+    "Name-and-surname" => "Name and surname : ",
+    "Email-address" => "Email address : ",
+    "Phone-number" => "Phone number : ",
+    "delete_offer" => "Delete the offer",
+    "no_approbation"=>"Offer not approved yet",
+    "yes_approbation"=>"Offer approved!",
+
+    //vueSignalementAdmin.php
+    "report_title" => "Reports list",
+    "false_report" => "False report",
+    "no_report" => "No report to handle.",
+    "needs"=>"Needs :",
+    "sigBy"=>"Reported by :",
+    "author"=>"Author :",
+    "address"=>"Address :",
+
+    //vueGestionCompte.php
+    "titre_page_gerer_compte" => "Manage accounts",
+    "gérer_compte_tab_header_identité" => "Identity",
+    "gérer_compte_tab_header_type" => "Type",
+    "gérer_compte_tab_header_role" => "Role",
+    "gérer_compte_tab_header_etat" => "State",
+    "gérer_compte_tab_header_action" => "Quick actions",
+    "juste_Senior" => "Senior",
+    "juste_Etudiant" => "Student",
+    "juste_role_utilisateur" => "User",
+    "juste_role_moderateur" => "Moderator",
+    "juste_role_administrateur" => "Administrator",
+    "gérer_compte_tab_bloqué" => "Blocked",
+    "gérer_compte_tab_form_bloquer" => "Block",
+    "gérer_compte_tab_pas_bloqué" => "Active",
+    "gérer_compte_tab_form_debloquer" => "Unblock",
+    "gérer_compte_tab_form_passer_mod" => "make moderator",
+    "gérer_compte_tab_form_passer_utilisateur" => "cancel moderator",
+
+    //vueApprouveOffres.php
+    "accept_offer_title" => "List of offers to approve",
+    "deny_offer" => "Deny offer",
+    "approve_offer" => "Approve offer"
 ];

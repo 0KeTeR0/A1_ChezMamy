@@ -5,6 +5,7 @@ namespace App\ChezMamy\config;
 /**
  * Classe Config
  * Représente la configuration de l'application
+ * @author Romain Card
  */
 class Config
 {
@@ -31,6 +32,7 @@ class Config
     /**
      * Récupère les informations du fichier de configuration
      * @return Config
+     * @author Romain Card
      */
     public static function getInstance(): Config {
         if (self::$instance === null) {
