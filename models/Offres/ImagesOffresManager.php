@@ -28,16 +28,16 @@ class ImagesOffresManager extends model
     }
 
     /**
-     * Récupère l'offre d'id idOffres
-     * @param int $idOffres l'ID de l'offre recherchée
-     * @return Offre|null renvoi l'offre ou rien si elle n'existe pas dans la DB.
-     * @author Louis Demeocq
+     * Récupère une image offre d'id idOffres
+     * @param int $idOffres l'ID de l'image offre recherchée
+     * @return ImagesOffre|null renvoi l'imageOffre ou rien si elle n'existe pas dans la DB.
+     * @authors Louis Demeocq, Valentin Colindre
      */
-    public function getByIdOffres(int $idOffres):?Offre
+    public function getOneByIdOffres(int $idOffres):?ImagesOffre
     {
-        $result = $this->execRequest("SELECT * FROM OFFRES WHERE idOffre=?", array($idOffres))->fetch();
+        $result = $this->execRequest("SELECT * FROM IMAGES_OFFRE WHERE idOffre=?", array($idOffres))->fetch();
         if ($result != false){
-            $offre = new Offre();
+            $offre = new ImagesOffre();
             $offre->hydrate($result);
         }
         else $offre = null;
@@ -51,7 +51,7 @@ class ImagesOffresManager extends model
      * @author Louis Demeocq
      */
     public function getAll():array{
-        $result = $this->execRequest("SELECT * FROM INFOS_OFFRES");
+        $result = $this->execRequest("SELECT * FROM IMAGES_OFFRE");
         $images_array = array();
         foreach($result->fetchAll() as $image){
             $image_object = new ImagesOffre();
@@ -60,4 +60,20 @@ class ImagesOffresManager extends model
         }
         return $images_array;
     }
+
+    /**
+     * Supprime les images offres d'id $idOffre dans la BDD
+     * @param string $link le lien des images
+     * @return bool renvoie True si la requête est bien exécuté
+     * @authors Louis Dememocq, Valentin Colindre
+     */
+    public function deleteByLink(string $link): bool
+    {
+        $result = false;
+        if ($this->execRequest("DElETE FROM IMAGES_OFFRE WHERE LienImage=?", array($link)) !== false) {
+            $result = true;
+        }
+        return $result;
+    }
+
 }

@@ -3,12 +3,18 @@
 namespace App\ChezMamy\controllers\Router;
 
 use App\ChezMamy\controllers\MainController;
+use App\ChezMamy\controllers\Router\Route\RouteBackofficeApprouverOffre;
+use App\ChezMamy\controllers\Router\Route\RouteBackofficeGestionCompte;
+use App\ChezMamy\controllers\Router\Route\RouteBackofficeIndex;
+use App\ChezMamy\controllers\Router\Route\RouteBackofficeSignalement;
 use App\ChezMamy\controllers\Router\Route\RouteChangeLanguage;
 use App\ChezMamy\controllers\OffresController;
+use App\ChezMamy\controllers\Router\Route\RouteChercherOffres;
 use App\ChezMamy\controllers\Router\Route\RouteConnexion;
 use App\ChezMamy\controllers\Router\Route\RouteContact;
 use App\ChezMamy\controllers\Router\Route\RouteDeco;
 use App\ChezMamy\controllers\Router\Route\RouteException;
+use App\ChezMamy\controllers\Router\Route\RouteGererDemandesSenior;
 use App\ChezMamy\controllers\Router\Route\RouteIndex;
 use App\ChezMamy\controllers\Router\Route\RouteInscription;
 use App\ChezMamy\controllers\Router\Route\RoutePosterOffres;
@@ -61,7 +67,13 @@ class Router
             "changeLanguage" => new RouteChangeLanguage($this->ctrlList["main"]),
             "deco" => new RouteDeco($this->ctrlList["utilisateur"]),
             "exception" => new RouteException($this->ctrlList["main"]),
-            "posterOffres" => new RoutePosterOffres($this->ctrlList["offres"])
+            "posterOffres" => new RoutePosterOffres($this->ctrlList["offres"]),
+            "recherche" => new RouteChercherOffres($this->ctrlList["offres"]),
+            "gererDemandes" => new RouteGererDemandesSenior($this->ctrlList["offres"]),
+            "backofficeIndex"=> new RouteBackofficeIndex($this->ctrlList["main"]),
+            "backofficeSignalement" => new RouteBackofficeSignalement($this->ctrlList["offres"]),
+            "backofficeGestionCompte" => new RouteBackofficeGestionCompte($this->ctrlList["utilisateur"]),
+            "backofficeApprouver"=> new RouteBackofficeApprouverOffre($this->ctrlList["offres"])
         ];
     }
 

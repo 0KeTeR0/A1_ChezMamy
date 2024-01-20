@@ -38,6 +38,7 @@ Class Utilisateur{
 
     /**
      * @return int renvoi l'idUtilisateur de l'utilisateur
+     * @author Valentin Colindre
      */
     public function getIdUtilisateur(): int
     {
@@ -48,6 +49,7 @@ Class Utilisateur{
      * set l'idUtilisateur de l'utilisateur
      * @param int $idUtilisateur l'id à mettre
      * @return void
+     * @author Valentin Colindre
      */
     public function setIdUtilisateur(int $idUtilisateur): void
     {
@@ -56,6 +58,7 @@ Class Utilisateur{
 
     /**
      * @return string renvoi le login de l'utilisateur
+     * @author Valentin Colindre
      */
     public function getLogin(): string
     {
@@ -66,6 +69,7 @@ Class Utilisateur{
      * set le login de l'utilisateur
      * @param string $login le login à set
      * @return void
+     * @author Valentin Colindre
      */
     public function setLogin(string $login): void
     {
@@ -74,6 +78,7 @@ Class Utilisateur{
 
     /**
      * @return string renvoi le hash du mot de passe de l'utilisateur
+     * @author Valentin Colindre
      */
     public function getHash(): string
     {
@@ -84,6 +89,7 @@ Class Utilisateur{
      * set le hash du mot de passe de l'utilisateur
      * @param string $hash le hash à set
      * @return void
+     * @author Valentin Colindre
      */
     public function setHash(string $hash): void
     {
@@ -92,6 +98,7 @@ Class Utilisateur{
 
     /**
      * @return int renvoi l'id du role de l'utilisateur
+     * @author Valentin Colindre
      */
     public function getIdRole(): int
     {
@@ -105,6 +112,7 @@ Class Utilisateur{
      * 3 = admin
      * @param int $idRole l'id à set
      * @return void
+     * @author Valentin Colindre
      */
     public function setIdRole(int $idRole): void
     {

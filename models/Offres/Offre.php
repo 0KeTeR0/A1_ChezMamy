@@ -5,7 +5,7 @@ namespace App\ChezMamy\models\Offres;
 /**
  * Une Offre de la table Offre
  * (une entrée de la table)
- * @author Louis Demeocq
+ * @authors Louis Demeocq, Valentin Colindre
  */
 class Offre
 {
@@ -18,8 +18,12 @@ class Offre
     //l'ID de l'offre
     private int $idOffre;
 
+    //Si l'offre est approuvée ou non
+    private bool $approbation;
+
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getIdUtilisateur(): int
     {
@@ -28,6 +32,7 @@ class Offre
 
     /**
      * @param int $idUtilisateur
+     * @author Louis Demeocq
      */
     public function setIdUtilisateur(int $idUtilisateur): void
     {
@@ -36,6 +41,7 @@ class Offre
 
     /**
      * @return string
+     * @author Louis Demeocq
      */
     public function getTitreDeLoffre(): string
     {
@@ -44,6 +50,7 @@ class Offre
 
     /**
      * @param string $TitreDeLoffre
+     * @author Louis Demeocq
      */
     public function setTitreDeLoffre(string $TitreDeLoffre): void
     {
@@ -52,6 +59,7 @@ class Offre
 
     /**
      * @return int
+     * @author Louis Demeocq
      */
     public function getIdOffre(): int
     {
@@ -60,6 +68,7 @@ class Offre
 
     /**
      * @param int $idOffre
+     * @author Louis Demeocq
      */
     public function setIdOffre(int $idOffre): void
     {
@@ -80,5 +89,26 @@ class Offre
                 $this->$method($value);
             }
         }
+    }
+
+    /**
+     * get approbation
+     * @return bool
+     * @author Valentin Colindre
+     */
+    public function isApprobation(): bool
+    {
+        return $this->approbation;
+    }
+
+    /**
+     * set approbation
+     * @param bool $approbation
+     * @return void
+     * @author Valentin Colindre
+     */
+    public function setApprobation(bool $approbation): void
+    {
+        $this->approbation = $approbation;
     }
 }

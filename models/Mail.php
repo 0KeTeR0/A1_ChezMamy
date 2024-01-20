@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * Classe permettant d'envoyer un mail
+ * @author Romain Card
  */
 class Mail
 {
